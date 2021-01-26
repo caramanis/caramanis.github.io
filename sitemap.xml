@@ -10,6 +10,9 @@
 <loc>http://localhost:4000/publications/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/researchgroup/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/researchprojects/</loc>
 </url>
 <url>
