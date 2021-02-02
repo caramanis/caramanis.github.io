@@ -74,7 +74,134 @@
 
 <h2 id="pre-prints">Pre-prints</h2>
 
-<ol class="bibliography"><li><div class="text-justify"><span id="yi2016solving">Yi, Xinyang, Constantine Caramanis, and Sujay Sanghavi. “Solving a Mixture of Many Random Linear Equations by Tensor Decomposition and Alternating Minimization.” <i>ArXiv Preprint ArXiv:1608.05749</i>, 2016.</span></div>
+<ol class="bibliography"><li><div class="text-justify"><span id="zhuoSlowMatrix2021">Zhuo, Jiacheng, Jeongyeol Kwon, Nhat Ho, and Constantine Caramanis. “On the Computational and Statistical Complexity of over-Parameterized Matrix Sensing.” <i>Preprint</i>, 2021.</span></div>
+<button class="button0" onclick="toggleBibtexzhuoSlowMatrix2021()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractzhuoSlowMatrix2021()">Abstract</button>
+
+
+
+    <a href="https://www.cs.utexas.edu/ jzhuo/over-parametrized.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="BzhuoSlowMatrix2021" style="display: none;">
+<pre>@article{zhuoSlowMatrix2021,
+  title = {On the computational and statistical complexity of over-parameterized matrix sensing},
+  author = {Zhuo, Jiacheng and Kwon, Jeongyeol and Ho, Nhat and Caramanis, Constantine},
+  journal = {preprint},
+  year = {2021},
+  group = {misc},
+  arxiv = {https://www.cs.utexas.edu/~jzhuo/over-parametrized.pdf}
+}
+</pre>
+</div>
+
+<div id="azhuoSlowMatrix2021" style="display: none;">
+<pre>We consider solving the low rank matrix sensing problem with Factorized Gradient Descend (FGD) method when the true rank is unknown and over-specified, which we refer to as over-parameterized matrix sensing.
+If the ground truth signal X^* ∈\mathbbR^d*d is of rank r, but we try to recover it using FF^⊤where F ∈\mathbbR^d*k and k&gt;r, the existing statistical analysis falls short, due to a flat local curvature of the loss function around the global maxima. By decomposing the factorized matrix \fitMat into separate column spaces to capture the effect of extra ranks, we show that ||F_t F_t - F||_F^2 converges to a statistical error of \tilde\mathcalO \parenthk d σ^2/n after \tilde\mathcalO(\frac\sigma_rσ\sqrt\fracnd) number of iterations where \fitMat_t is the output of FGD after t iterations, σ^2 is the variance of the observation noise, \sigma_r is the r-th largest eigenvalue of \trueMat, and n is the number of sample. Our results, therefore, offer a comprehensive picture of the statistical and computational complexity of FGD for the over-parameterized matrix sensing problem.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCzhuoSlowMatrix2021(parameter) {
+    var x= document.getElementById('azhuoSlowMatrix2021');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexzhuoSlowMatrix2021(parameter) {
+    var x= document.getElementById('BzhuoSlowMatrix2021');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractzhuoSlowMatrix2021(parameter) {
+    var x= document.getElementById('azhuoSlowMatrix2021');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="papadig2021recurrent">Papadigenopoulos, Orestis, and Constantine Caramanis. “Recurrent Submodular Welfare and Matroid Blocking Bandits.” <i>ArXiv Preprint ArXiv:2102.00321</i>, 2021.</span></div>
+<button class="button0" onclick="toggleBibtexpapadig2021recurrent()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractpapadig2021recurrent()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2102.00321.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Bpapadig2021recurrent" style="display: none;">
+<pre>@article{papadig2021recurrent,
+  title = {Recurrent Submodular Welfare and Matroid Blocking Bandits},
+  author = {Papadigenopoulos, Orestis and Caramanis, Constantine},
+  journal = {arXiv preprint arXiv:2102.00321},
+  year = {2021},
+  group = {misc},
+  arxiv = {https://arxiv.org/pdf/2102.00321.pdf}
+}
+</pre>
+</div>
+
+<div id="apapadig2021recurrent" style="display: none;">
+<pre>A recent line of research focuses on the study of the stochastic multi-armed bandits problem (MAB), in the case where temporal correlations of specific structure are imposed between the player’s actions and the reward distributions of the arms (Kleinberg and Immorlica [FOCS18], Basu et al. [NIPS19]). As opposed to the standard MAB setting, where the optimal solution in hindsight can be trivially characterized, these correlations lead to (sub-)optimal solutions that exhibit interesting dynamical patterns – a phenomenon that yields new challenges both from an algorithmic as well as a learning perspective. In this work, we extend the above direction to a combinatorial bandit setting and study a variant of stochastic MAB, where arms are subject to matroid constraints and each arm becomes unavailable (blocked) for a fixed number of rounds after each play. A natural common generalization of the state-of-the-art for blocking bandits, and that for matroid bandits, yields a (1−1/e)-approximation for partition matroids, yet it only guarantees a 1/2-approximation for general matroids. In this paper we develop new algorithmic ideas that allow us to obtain a polynomial-time (1−1/e)-approximation algorithm (asymptotically and in expectation) for any matroid, and thus allow us to control the (1−1/e)-approximate regret. A key ingredient is the technique of correlated (interleaved) scheduling. Along the way, we discover an interesting connection to a variant of Submodular Welfare Maximization, for which we provide (asymptotically) matching upper and lower approximability bounds.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCpapadig2021recurrent(parameter) {
+    var x= document.getElementById('apapadig2021recurrent');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexpapadig2021recurrent(parameter) {
+    var x= document.getElementById('Bpapadig2021recurrent');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractpapadig2021recurrent(parameter) {
+    var x= document.getElementById('apapadig2021recurrent');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="yi2016solving">Yi, Xinyang, Constantine Caramanis, and Sujay Sanghavi. “Solving a Mixture of Many Random Linear Equations by Tensor Decomposition and Alternating Minimization.” <i>ArXiv Preprint ArXiv:1608.05749</i>, 2016.</span></div>
 <button class="button0" onclick="toggleBibtexyi2016solving()">Bibtex</button>
  
 
@@ -148,7 +275,7 @@ function toggleAbstractyi2016solving(parameter) {
 
 
 
-    <a href="arXiv preprint arXiv:2006.02601"><input class="button4" type="button" value="ArXiv" /></a>
+    <a href="https://arxiv.org/pdf/2003.03426.pdf"><input class="button4" type="button" value="ArXiv" /></a>
 
  
 
@@ -162,7 +289,7 @@ function toggleAbstractyi2016solving(parameter) {
   year = {2021},
   organization = {PMLR},
   group = {proceedings},
-  arxiv = {arXiv preprint arXiv:2006.02601}
+  arxiv = {https://arxiv.org/pdf/2003.03426.pdf}
 }
 </pre>
 </div>
@@ -215,7 +342,7 @@ function toggleAbstractbasu2020contextual(parameter) {
 
 
 
-    <a href="arXiv preprint arXiv:2006.02601"><input class="button4" type="button" value="ArXiv" /></a>
+    <a href="https://arxiv.org/pdf/2006.02601.pdf"><input class="button4" type="button" value="ArXiv" /></a>
 
  
 
@@ -229,7 +356,7 @@ function toggleAbstractbasu2020contextual(parameter) {
   year = {2021},
   organization = {PMLR},
   group = {proceedings},
-  arxiv = {arXiv preprint arXiv:2006.02601}
+  arxiv = {https://arxiv.org/pdf/2006.02601.pdf}
 }
 </pre>
 </div>
