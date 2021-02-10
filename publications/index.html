@@ -74,7 +74,7 @@
 
 <h2 id="pre-prints">Pre-prints</h2>
 
-<ol class="bibliography"><li><div class="text-justify"><span id="zhuoSlowMatrix2021">Zhuo, Jiacheng, Jeongyeol Kwon, Nhat Ho, and Constantine Caramanis. “On the Computational and Statistical Complexity of over-Parameterized Matrix Sensing.” <i>Preprint</i>, 2021.</span></div>
+<ol class="bibliography"><li><div class="text-justify"><span id="zhuoSlowMatrix2021">Kwon, Jeongyeol, Yonathan Efroni, Constantine Caramanis, and Shie Mannor. “On the Computational and Statistical Complexity of over-Parameterized Matrix Sensing.” <i>Preprint</i>, 2021.</span></div>
 <button class="button0" onclick="toggleBibtexzhuoSlowMatrix2021()">Bibtex</button>
  
 
@@ -82,7 +82,7 @@
 
 
 
-    <a href="https://arxiv.org/pdf/2102.02756.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+    <a href="https://arxiv.org/pdf/2102.04939.pdf"><input class="button4" type="button" value="ArXiv" /></a>
 
  
 
@@ -90,18 +90,17 @@
 <div id="BzhuoSlowMatrix2021" style="display: none;">
 <pre>@article{zhuoSlowMatrix2021,
   title = {On the computational and statistical complexity of over-parameterized matrix sensing},
-  author = {Zhuo, Jiacheng and Kwon, Jeongyeol and Ho, Nhat and Caramanis, Constantine},
+  author = {Kwon, Jeongyeol and Efroni, Yonathan and Caramanis, Constantine and Mannor, Shie},
   journal = {preprint},
   year = {2021},
   group = {misc},
-  arxiv = {https://arxiv.org/pdf/2102.02756.pdf}
+  arxiv = {https://arxiv.org/pdf/2102.04939.pdf}
 }
 </pre>
 </div>
 
 <div id="azhuoSlowMatrix2021" style="display: none;">
-<pre>We consider solving the low rank matrix sensing problem with Factorized Gradient Descend (FGD) method when the true rank is unknown and over-specified, which we refer to as over-parameterized matrix sensing.
-If the ground truth signal X^* ∈\mathbbR^d*d is of rank r, but we try to recover it using FF^⊤where F ∈\mathbbR^d*k and k&gt;r, the existing statistical analysis falls short, due to a flat local curvature of the loss function around the global maxima. By decomposing the factorized matrix \fitMat into separate column spaces to capture the effect of extra ranks, we show that ||F_t F_t - F||_F^2 converges to a statistical error of \tilde\mathcalO \parenthk d σ^2/n after \tilde\mathcalO(\frac\sigma_rσ\sqrt\fracnd) number of iterations where \fitMat_t is the output of FGD after t iterations, σ^2 is the variance of the observation noise, \sigma_r is the r-th largest eigenvalue of \trueMat, and n is the number of sample. Our results, therefore, offer a comprehensive picture of the statistical and computational complexity of FGD for the over-parameterized matrix sensing problem.</pre>
+<pre>In this work, we consider the regret minimization problem for reinforcement learning in latent Markov Decision Processes (LMDP). In an LMDP, an MDP is randomly drawn from a set of M possible MDPs at the beginning of the interaction, but the identity of the chosen MDP is not revealed to the agent. We first show that a general instance of LMDPs requires at least ?((SA)M) episodes to even approximate the optimal policy. Then, we consider sufficient assumptions under which learning good policies requires polynomial number of episodes. We show that the key link is a notion of separation between the MDP system dynamics. With sufficient separation, we provide an efficient algorithm with local guarantee, \it i.e., providing a sublinear regret guarantee when we are given a good initialization. Finally, if we are given standard statistical sufficiency assumptions common in the Predictive State Representation (PSR) literature (e.g., Boots et al.) and a reachability assumption, we show that the need for initialization can be removed.</pre>
 </div>
 
 
@@ -130,6 +129,70 @@ function toggleBibtexzhuoSlowMatrix2021(parameter) {
 <script>
 function toggleAbstractzhuoSlowMatrix2021(parameter) {
     var x= document.getElementById('azhuoSlowMatrix2021');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="zhuoSlowMatrix2022">Zhuo, Jiacheng, Jeongyeol Kwon, Nhat Ho, and Constantine Caramanis. “On the Computational and Statistical Complexity of over-Parameterized Matrix Sensing.” <i>Preprint</i>, 2021.</span></div>
+<button class="button0" onclick="toggleBibtexzhuoSlowMatrix2022()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractzhuoSlowMatrix2022()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2102.02756.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="BzhuoSlowMatrix2022" style="display: none;">
+<pre>@article{zhuoSlowMatrix2022,
+  title = {On the computational and statistical complexity of over-parameterized matrix sensing},
+  author = {Zhuo, Jiacheng and Kwon, Jeongyeol and Ho, Nhat and Caramanis, Constantine},
+  journal = {preprint},
+  year = {2021},
+  group = {misc},
+  arxiv = {https://arxiv.org/pdf/2102.02756.pdf}
+}
+</pre>
+</div>
+
+<div id="azhuoSlowMatrix2022" style="display: none;">
+<pre>We consider solving the low rank matrix sensing problem with Factorized Gradient Descend (FGD) method when the true rank is unknown and over-specified, which we refer to as over-parameterized matrix sensing.
+If the ground truth signal X^* ∈\mathbbR^d*d is of rank r, but we try to recover it using FF^⊤where F ∈\mathbbR^d*k and k&gt;r, the existing statistical analysis falls short, due to a flat local curvature of the loss function around the global maxima. By decomposing the factorized matrix \fitMat into separate column spaces to capture the effect of extra ranks, we show that ||F_t F_t - F||_F^2 converges to a statistical error of \tilde\mathcalO \parenthk d σ^2/n after \tilde\mathcalO(\frac\sigma_rσ\sqrt\fracnd) number of iterations where \fitMat_t is the output of FGD after t iterations, σ^2 is the variance of the observation noise, \sigma_r is the r-th largest eigenvalue of \trueMat, and n is the number of sample. Our results, therefore, offer a comprehensive picture of the statistical and computational complexity of FGD for the over-parameterized matrix sensing problem.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCzhuoSlowMatrix2022(parameter) {
+    var x= document.getElementById('azhuoSlowMatrix2022');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexzhuoSlowMatrix2022(parameter) {
+    var x= document.getElementById('BzhuoSlowMatrix2022');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractzhuoSlowMatrix2022(parameter) {
+    var x= document.getElementById('azhuoSlowMatrix2022');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
