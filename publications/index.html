@@ -585,7 +585,136 @@ function toggleAbstractyi2016solving(parameter) {
 
 <h2 id="conference-papers">Conference Papers</h2>
 
-<ol class="bibliography"><li><div class="text-justify"><span id="basu2020contextual">Basu, Soumya, Orestis Papadigenopoulos, Constantine Caramanis, and Sanjay Shakkottai. “Contextual Blocking Bandits.” In <i>International Conference on Artificial Intelligence and Statistics (AISTATS)</i>. PMLR, 2021.</span></div>
+<ol class="bibliography"><li><div class="text-justify"><span id="kwon2020minimax">Kwon, Jeongyeol, Nhat Ho, and Constantine Caramanis. “On the Minimax Optimality of the Em Algorithm for Learning Two-Component Mixed Linear Regression.” In <i>International Conference on Artificial Intelligence and Statistics (AISTATS)</i>. PMLR, 2021.</span></div>
+<button class="button0" onclick="toggleBibtexkwon2020minimax()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractkwon2020minimax()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2006.02601.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Bkwon2020minimax" style="display: none;">
+<pre>@inproceedings{kwon2020minimax,
+  title = {On the minimax optimality of the em algorithm for learning two-component mixed linear regression},
+  author = {Kwon, Jeongyeol and Ho, Nhat and Caramanis, Constantine},
+  booktitle = {International Conference on Artificial Intelligence and Statistics (AISTATS)},
+  pages = {},
+  year = {2021},
+  organization = {PMLR},
+  group = {proceedings},
+  arxiv = {https://arxiv.org/pdf/2006.02601.pdf}
+}
+</pre>
+</div>
+
+<div id="akwon2020minimax" style="display: none;">
+<pre>We study the convergence rates of the EM algorithm for learning two-component mixed linear regression under all regimes of signal-to-noise ratio (SNR). We resolve a long-standing question that many recent results have attempted to tackle: we completely characterize the convergence behavior of EM, and show that the EM algorithm achieves minimax optimal sample complexity under all SNR regimes. In particular, when the SNR is sufficiently large, the EM updates converge to the true parameter θ^* at the standard parametric convergence rate \calo((d/n)^1/2) after \calo(\log(n/d)) iterations. In the regime where the SNR is above \calo((d/n)^1/4) and below some constant, the EM iterates converge to a \calo(\rm SNR^-1 (d/n)^1/2) neighborhood of the true parameter, when the number of iterations is of the order \calo(\rm SNR^-2 \log(n/d)). In the low SNR regime where the SNR is below \calo((d/n)^1/4), we show that EM converges to a \calo((d/n)^1/4) neighborhood of the true parameters, after \calo((n/d)^1/2) iterations. Notably, these results are achieved under mild conditions of either random initialization or an efficiently computable local initialization. By providing tight convergence guarantees of the EM algorithm in middle-to-low SNR regimes, we fill the remaining gap in the literature, and significantly, reveal that in low SNR, EM changes rate, matching the n^-1/4 rate of the MLE, a behavior that previous work had been unable to show. </pre>
+</div>
+
+
+<script>
+function toggleAbstractCCkwon2020minimax(parameter) {
+    var x= document.getElementById('akwon2020minimax');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexkwon2020minimax(parameter) {
+    var x= document.getElementById('Bkwon2020minimax');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractkwon2020minimax(parameter) {
+    var x= document.getElementById('akwon2020minimax');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="atsidakou2021combinatorial">Atsidakou, Alexia, Orestis Papadigenopoulos, Soumya Basu, Constantine Caramanis, and Sanjay Shakkottai. “Combinatorial Blocking Bandits with Stochastic Delays.” In <i>International Conference on Machine Learning (ICML)</i>. PMLR, 2021.</span></div>
+<button class="button0" onclick="toggleBibtexatsidakou2021combinatorial()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractatsidakou2021combinatorial()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2105.10625.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Batsidakou2021combinatorial" style="display: none;">
+<pre>@inproceedings{atsidakou2021combinatorial,
+  title = {Combinatorial Blocking Bandits with Stochastic Delays},
+  author = {Atsidakou, Alexia and Papadigenopoulos, Orestis and Basu, Soumya and Caramanis, Constantine and Shakkottai, Sanjay},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  year = {2021},
+  organization = {PMLR},
+  group = {proceedings},
+  arxiv = {https://arxiv.org/pdf/2105.10625.pdf}
+}
+</pre>
+</div>
+
+<div id="aatsidakou2021combinatorial" style="display: none;">
+<pre>Recent work has considered natural variations of the \em multi-armed bandit problem, where the reward distribution of each arm is a special function of the time passed since its last pulling. In this direction, a simple (yet widely applicable) model is that of \em blocking bandits, where an arm becomes unavailable for a deterministic number of rounds after each play. In this work, we extend the above model in two directions: (i) We consider the general combinatorial setting where more than one arms can be played at each round, subject to feasibility constraints. (ii) We allow the blocking time of each arm to be stochastic. We first study the computational/unconditional hardness of the above setting and identify the necessary conditions for the problem to become tractable (even in an approximate sense). Based on these conditions, we provide a tight analysis of the approximation guarantee of a natural greedy heuristic that always plays the maximum expected reward feasible subset among the available (non-blocked) arms. When the arms’ expected rewards are unknown, we adapt the above heuristic into a bandit algorithm, based on UCB, for which we provide sublinear (approximate) regret guarantees, matching the theoretical lower bounds in the limiting case of absence of delays.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCatsidakou2021combinatorial(parameter) {
+    var x= document.getElementById('aatsidakou2021combinatorial');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexatsidakou2021combinatorial(parameter) {
+    var x= document.getElementById('Batsidakou2021combinatorial');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractatsidakou2021combinatorial(parameter) {
+    var x= document.getElementById('aatsidakou2021combinatorial');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="basu2020contextual">Basu, Soumya, Orestis Papadigenopoulos, Constantine Caramanis, and Sanjay Shakkottai. “Contextual Blocking Bandits.” In <i>International Conference on Artificial Intelligence and Statistics (AISTATS)</i>. PMLR, 2021.</span></div>
 <button class="button0" onclick="toggleBibtexbasu2020contextual()">Bibtex</button>
  
 
@@ -644,71 +773,6 @@ function toggleBibtexbasu2020contextual(parameter) {
 <script>
 function toggleAbstractbasu2020contextual(parameter) {
     var x= document.getElementById('abasu2020contextual');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="kwon2020minimax">Kwon, Jeongyeol, Nhat Ho, and Constantine Caramanis. “On the Minimax Optimality of the Em Algorithm for Learning Two-Component Mixed Linear Regression.” In <i>International Conference on Artificial Intelligence and Statistics (AISTATS)</i>. PMLR, 2021.</span></div>
-<button class="button0" onclick="toggleBibtexkwon2020minimax()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractkwon2020minimax()">Abstract</button>
-
-
-
-    <a href="https://arxiv.org/pdf/2006.02601.pdf"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Bkwon2020minimax" style="display: none;">
-<pre>@inproceedings{kwon2020minimax,
-  title = {On the minimax optimality of the em algorithm for learning two-component mixed linear regression},
-  author = {Kwon, Jeongyeol and Ho, Nhat and Caramanis, Constantine},
-  booktitle = {International Conference on Artificial Intelligence and Statistics (AISTATS)},
-  pages = {},
-  year = {2021},
-  organization = {PMLR},
-  group = {proceedings},
-  arxiv = {https://arxiv.org/pdf/2006.02601.pdf}
-}
-</pre>
-</div>
-
-<div id="akwon2020minimax" style="display: none;">
-<pre>We study the convergence rates of the EM algorithm for learning two-component mixed linear regression under all regimes of signal-to-noise ratio (SNR). We resolve a long-standing question that many recent results have attempted to tackle: we completely characterize the convergence behavior of EM, and show that the EM algorithm achieves minimax optimal sample complexity under all SNR regimes. In particular, when the SNR is sufficiently large, the EM updates converge to the true parameter θ^* at the standard parametric convergence rate \calo((d/n)^1/2) after \calo(\log(n/d)) iterations. In the regime where the SNR is above \calo((d/n)^1/4) and below some constant, the EM iterates converge to a \calo(\rm SNR^-1 (d/n)^1/2) neighborhood of the true parameter, when the number of iterations is of the order \calo(\rm SNR^-2 \log(n/d)). In the low SNR regime where the SNR is below \calo((d/n)^1/4), we show that EM converges to a \calo((d/n)^1/4) neighborhood of the true parameters, after \calo((n/d)^1/2) iterations. Notably, these results are achieved under mild conditions of either random initialization or an efficiently computable local initialization. By providing tight convergence guarantees of the EM algorithm in middle-to-low SNR regimes, we fill the remaining gap in the literature, and significantly, reveal that in low SNR, EM changes rate, matching the n^-1/4 rate of the MLE, a behavior that previous work had been unable to show. </pre>
-</div>
-
-
-<script>
-function toggleAbstractCCkwon2020minimax(parameter) {
-    var x= document.getElementById('akwon2020minimax');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexkwon2020minimax(parameter) {
-    var x= document.getElementById('Bkwon2020minimax');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractkwon2020minimax(parameter) {
-    var x= document.getElementById('akwon2020minimax');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -900,69 +964,6 @@ function toggleBibtexhoffmann2019disentangling(parameter) {
 <script>
 function toggleAbstracthoffmann2019disentangling(parameter) {
     var x= document.getElementById('ahoffmann2019disentangling');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="kwon2020algorithm">Kwon, Jeongyeol, and Constantine Caramanis. “The EM Algorithm Gives Sample-Optimality for Learning Mixtures of Well-Separated Gaussians.” <i>The Conference on Learning Theory (COLT)</i>, 2020.</span></div>
-<button class="button0" onclick="toggleBibtexkwon2020algorithm()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractkwon2020algorithm()">Abstract</button>
-
-
-
-    <a href="https://arxiv.org/pdf/2002.00329.pdf"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Bkwon2020algorithm" style="display: none;">
-<pre>@article{kwon2020algorithm,
-  title = {The EM algorithm gives sample-optimality for learning mixtures of well-separated gaussians},
-  author = {Kwon, Jeongyeol and Caramanis, Constantine},
-  journal = {The Conference on Learning Theory (COLT)},
-  year = {2020},
-  group = {proceedings},
-  arxiv = {https://arxiv.org/pdf/2002.00329.pdf}
-}
-</pre>
-</div>
-
-<div id="akwon2020algorithm" style="display: none;">
-<pre>We consider the problem of spherical Gaussian Mixture models with k?3 components when the components are well separated. A fundamental previous result established that separation of Ω(\sqrt \log k) is necessary and sufficient for identifiability of the parameters with polynomial sample complexity (Regev and Vijayaraghavan, 2017). In the same context, we show that O(kd/ε^2) samples suffice for any ??1/k, closing the gap from polynomial to linear, and thus giving the first optimal sample upper bound for the parameter estimation of well-separated Gaussian mixtures. We accomplish this by proving a new result for the Expectation-Maximization (EM) algorithm: we show that EM converges locally, under separation Ω(\sqrt \log k ). The previous best-known guarantee required Ω(\sqrt k) separation (Yan, et al., 2017). Unlike prior work, our results do not assume or use prior knowledge of the (potentially different) mixing weights or variances of the Gaussian components. Furthermore, our results show that the finite-sample error of EM does not depend on non-universal quantities such as pairwise distances between means of Gaussian components.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCkwon2020algorithm(parameter) {
-    var x= document.getElementById('akwon2020algorithm');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexkwon2020algorithm(parameter) {
-    var x= document.getElementById('Bkwon2020algorithm');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractkwon2020algorithm(parameter) {
-    var x= document.getElementById('akwon2020algorithm');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -1165,7 +1166,70 @@ function toggleAbstractzhuo2020communication(parameter) {
 }
 </script>
 </li>
-<li><div class="text-justify"><span id="kwon2020converges">Kwon, Jeongyeol, and Constantine Caramanis. “EM Converges for a Mixture of Many Linear Regressions.” In <i>International Conference on Artificial Intelligence and Statistics (AISTATS)</i>, 1727–36. PMLR, 2020.</span></div>
+<li><div class="text-justify"><span id="kwon2020algorithm">Kwon, Jeongyeol, and Constantine Caramanis. “The EM Algorithm Gives Sample-Optimality for Learning Mixtures of Well-Separated Gaussians.” <i>The Conference on Learning Theory (COLT)</i>, 2020.</span></div>
+<button class="button0" onclick="toggleBibtexkwon2020algorithm()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractkwon2020algorithm()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2002.00329.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Bkwon2020algorithm" style="display: none;">
+<pre>@article{kwon2020algorithm,
+  title = {The EM algorithm gives sample-optimality for learning mixtures of well-separated gaussians},
+  author = {Kwon, Jeongyeol and Caramanis, Constantine},
+  journal = {The Conference on Learning Theory (COLT)},
+  year = {2020},
+  group = {proceedings},
+  arxiv = {https://arxiv.org/pdf/2002.00329.pdf}
+}
+</pre>
+</div>
+
+<div id="akwon2020algorithm" style="display: none;">
+<pre>We consider the problem of spherical Gaussian Mixture models with k?3 components when the components are well separated. A fundamental previous result established that separation of Ω(\sqrt \log k) is necessary and sufficient for identifiability of the parameters with polynomial sample complexity (Regev and Vijayaraghavan, 2017). In the same context, we show that O(kd/ε^2) samples suffice for any ??1/k, closing the gap from polynomial to linear, and thus giving the first optimal sample upper bound for the parameter estimation of well-separated Gaussian mixtures. We accomplish this by proving a new result for the Expectation-Maximization (EM) algorithm: we show that EM converges locally, under separation Ω(\sqrt \log k ). The previous best-known guarantee required Ω(\sqrt k) separation (Yan, et al., 2017). Unlike prior work, our results do not assume or use prior knowledge of the (potentially different) mixing weights or variances of the Gaussian components. Furthermore, our results show that the finite-sample error of EM does not depend on non-universal quantities such as pairwise distances between means of Gaussian components.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCkwon2020algorithm(parameter) {
+    var x= document.getElementById('akwon2020algorithm');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexkwon2020algorithm(parameter) {
+    var x= document.getElementById('Bkwon2020algorithm');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractkwon2020algorithm(parameter) {
+    var x= document.getElementById('akwon2020algorithm');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="kwon2020converges">———. “EM Converges for a Mixture of Many Linear Regressions.” In <i>International Conference on Artificial Intelligence and Statistics (AISTATS)</i>, 1727–36. PMLR, 2020.</span></div>
 <button class="button0" onclick="toggleBibtexkwon2020converges()">Bibtex</button>
  
 
@@ -2851,39 +2915,37 @@ function toggleAbstractwang2014enabling(parameter) {
 }
 </script>
 </li>
-<li><div class="text-justify"><span id="chen2013robust">Chen, Yudong, Constantine Caramanis, and Shie Mannor. “Robust Sparse Regression under Adversarial Corruption.” In <i>International Conference on Machine Learning (ICML)</i>, 774–82. PMLR, 2013.</span></div>
-<button class="button0" onclick="toggleBibtexchen2013robust()">Bibtex</button>
+<li><div class="text-justify"><span id="milling2013detecting">Milling, Chris, Constantine Caramanis, Shie Mannor, and Sanjay Shakkottai. “Detecting Epidemics Using Highly Noisy Data.” In <i>Proceedings of the Fourteenth ACM International Symposium on Mobile Ad Hoc Networking and Computing</i>, 177–86, 2013.</span></div>
+<button class="button0" onclick="toggleBibtexmilling2013detecting()">Bibtex</button>
  
 
-<button class="button0" onclick="toggleAbstractchen2013robust()">Abstract</button>
+<button class="button0" onclick="toggleAbstractmilling2013detecting()">Abstract</button>
 
 
 
  
 
 
-<div id="Bchen2013robust" style="display: none;">
-<pre>@inproceedings{chen2013robust,
-  title = {Robust sparse regression under adversarial corruption},
-  author = {Chen, Yudong and Caramanis, Constantine and Mannor, Shie},
-  booktitle = {International Conference on Machine Learning (ICML)},
-  pages = {774--782},
+<div id="Bmilling2013detecting" style="display: none;">
+<pre>@inproceedings{milling2013detecting,
+  title = {Detecting epidemics using highly noisy data},
+  author = {Milling, Chris and Caramanis, Constantine and Mannor, Shie and Shakkottai, Sanjay},
+  booktitle = {Proceedings of the fourteenth ACM international symposium on Mobile ad hoc networking and computing},
+  pages = {177--186},
   year = {2013},
-  organization = {PMLR},
   group = {proceedings}
 }
 </pre>
 </div>
 
-<div id="achen2013robust" style="display: none;">
-<pre>We consider high dimensional sparse regression with arbitrary - possibly, severe or coordinated - errors in the covariates matrix. We are interested in understanding how many corruptions we can tolerate, while identifying the correct support. To the best of our knowledge, neither standard outlier rejection techniques, nor recently developed robust regression algorithms (that focus only on corrupted response variables), nor recent algorithms for dealing with stochastic noise or erasures, can provide guarantees on support recovery. As we show, neither can the natural brute force algorithm that takes exponential time to find the subset of data and support columns, that yields the smallest regression error.
-We explore the power of a simple idea: replace the essential linear algebraic calculation - the inner product - with a robust counterpart that cannot be greatly affected by a controlled number of arbitrarily corrupted points: the trimmed inner product. We consider three popular algorithms in the uncorrupted setting: Thresholding Regression, Lasso, and the Dantzig selector, and show that the counterparts obtained using the trimmed inner product are provably robust.</pre>
+<div id="amilling2013detecting" style="display: none;">
+<pre>From Cholera, AIDS/HIV, and Malaria, to rumors and viral video, understanding the causative network behind an epidemic’s spread has repeatedly proven critical for managing the spread (controlling or encouraging, as the case may be). Our current approaches to understand and predict epidemics rely on the scarce, but exact/reliable, expert diagnoses. This paper proposes a different way forward: use more readily available but also more noisy data with many false negatives and false positives, to determine the causative network of an epidemic. Specifically, we consider an epidemic that spreads according to one of two networks. At some point in time we see a small random subsample (perhaps a vanishingly small fraction) of those infected, along with an order-wise similar number of false positives. We derive sufficient conditions for this problem to be detectable, and provide an efficient algorithm that solves the hypothesis testing problem. We apply this model to two settings. In the first setting, we simply want to distinguish between random illness (a complete graph) and an epidemic (spread along a structured graph). In the second, we have a superposition of both of these, and we wish to detect which is the strongest component.</pre>
 </div>
 
 
 <script>
-function toggleAbstractCCchen2013robust(parameter) {
-    var x= document.getElementById('achen2013robust');
+function toggleAbstractCCmilling2013detecting(parameter) {
+    var x= document.getElementById('amilling2013detecting');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -2893,8 +2955,8 @@ function toggleAbstractCCchen2013robust(parameter) {
 </script>
 
 <script>
-function toggleBibtexchen2013robust(parameter) {
-    var x= document.getElementById('Bchen2013robust');
+function toggleBibtexmilling2013detecting(parameter) {
+    var x= document.getElementById('Bmilling2013detecting');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -2904,8 +2966,8 @@ function toggleBibtexchen2013robust(parameter) {
 </script>
 
 <script>
-function toggleAbstractchen2013robust(parameter) {
-    var x= document.getElementById('achen2013robust');
+function toggleAbstractmilling2013detecting(parameter) {
+    var x= document.getElementById('amilling2013detecting');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -3094,37 +3156,39 @@ function toggleAbstractkhalek2013video(parameter) {
 }
 </script>
 </li>
-<li><div class="text-justify"><span id="milling2013detecting">Milling, Chris, Constantine Caramanis, Shie Mannor, and Sanjay Shakkottai. “Detecting Epidemics Using Highly Noisy Data.” In <i>Proceedings of the Fourteenth ACM International Symposium on Mobile Ad Hoc Networking and Computing</i>, 177–86, 2013.</span></div>
-<button class="button0" onclick="toggleBibtexmilling2013detecting()">Bibtex</button>
+<li><div class="text-justify"><span id="chen2013robust">Chen, Yudong, Constantine Caramanis, and Shie Mannor. “Robust Sparse Regression under Adversarial Corruption.” In <i>International Conference on Machine Learning (ICML)</i>, 774–82. PMLR, 2013.</span></div>
+<button class="button0" onclick="toggleBibtexchen2013robust()">Bibtex</button>
  
 
-<button class="button0" onclick="toggleAbstractmilling2013detecting()">Abstract</button>
+<button class="button0" onclick="toggleAbstractchen2013robust()">Abstract</button>
 
 
 
  
 
 
-<div id="Bmilling2013detecting" style="display: none;">
-<pre>@inproceedings{milling2013detecting,
-  title = {Detecting epidemics using highly noisy data},
-  author = {Milling, Chris and Caramanis, Constantine and Mannor, Shie and Shakkottai, Sanjay},
-  booktitle = {Proceedings of the fourteenth ACM international symposium on Mobile ad hoc networking and computing},
-  pages = {177--186},
+<div id="Bchen2013robust" style="display: none;">
+<pre>@inproceedings{chen2013robust,
+  title = {Robust sparse regression under adversarial corruption},
+  author = {Chen, Yudong and Caramanis, Constantine and Mannor, Shie},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  pages = {774--782},
   year = {2013},
+  organization = {PMLR},
   group = {proceedings}
 }
 </pre>
 </div>
 
-<div id="amilling2013detecting" style="display: none;">
-<pre>From Cholera, AIDS/HIV, and Malaria, to rumors and viral video, understanding the causative network behind an epidemic’s spread has repeatedly proven critical for managing the spread (controlling or encouraging, as the case may be). Our current approaches to understand and predict epidemics rely on the scarce, but exact/reliable, expert diagnoses. This paper proposes a different way forward: use more readily available but also more noisy data with many false negatives and false positives, to determine the causative network of an epidemic. Specifically, we consider an epidemic that spreads according to one of two networks. At some point in time we see a small random subsample (perhaps a vanishingly small fraction) of those infected, along with an order-wise similar number of false positives. We derive sufficient conditions for this problem to be detectable, and provide an efficient algorithm that solves the hypothesis testing problem. We apply this model to two settings. In the first setting, we simply want to distinguish between random illness (a complete graph) and an epidemic (spread along a structured graph). In the second, we have a superposition of both of these, and we wish to detect which is the strongest component.</pre>
+<div id="achen2013robust" style="display: none;">
+<pre>We consider high dimensional sparse regression with arbitrary - possibly, severe or coordinated - errors in the covariates matrix. We are interested in understanding how many corruptions we can tolerate, while identifying the correct support. To the best of our knowledge, neither standard outlier rejection techniques, nor recently developed robust regression algorithms (that focus only on corrupted response variables), nor recent algorithms for dealing with stochastic noise or erasures, can provide guarantees on support recovery. As we show, neither can the natural brute force algorithm that takes exponential time to find the subset of data and support columns, that yields the smallest regression error.
+We explore the power of a simple idea: replace the essential linear algebraic calculation - the inner product - with a robust counterpart that cannot be greatly affected by a controlled number of arbitrarily corrupted points: the trimmed inner product. We consider three popular algorithms in the uncorrupted setting: Thresholding Regression, Lasso, and the Dantzig selector, and show that the counterparts obtained using the trimmed inner product are provably robust.</pre>
 </div>
 
 
 <script>
-function toggleAbstractCCmilling2013detecting(parameter) {
-    var x= document.getElementById('amilling2013detecting');
+function toggleAbstractCCchen2013robust(parameter) {
+    var x= document.getElementById('achen2013robust');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -3134,8 +3198,8 @@ function toggleAbstractCCmilling2013detecting(parameter) {
 </script>
 
 <script>
-function toggleBibtexmilling2013detecting(parameter) {
-    var x= document.getElementById('Bmilling2013detecting');
+function toggleBibtexchen2013robust(parameter) {
+    var x= document.getElementById('Bchen2013robust');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -3145,8 +3209,8 @@ function toggleBibtexmilling2013detecting(parameter) {
 </script>
 
 <script>
-function toggleAbstractmilling2013detecting(parameter) {
-    var x= document.getElementById('amilling2013detecting');
+function toggleAbstractchen2013robust(parameter) {
+    var x= document.getElementById('achen2013robust');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
