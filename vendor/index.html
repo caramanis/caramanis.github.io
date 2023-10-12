@@ -247,7 +247,74 @@ I am a Professor in the ECE department of The University of Texas at Austin. I r
 
 <hr />
 <h3 id="the-last-ten-publications-chronologically">The last ten publications, chronologically…</h3>
-<ol class="bibliography"><li><div class="text-justify"><span id="rout23theoretical">Rout, Litu, Advait Parulekar, Constantine Caramanis, and Sanjay Shakkottai. “A Theoretical Justification for Image Inpainting Using Denoising Diffusion Probabilistic Models.” <i>Preprint</i>, 2023.</span></div>
+<ol class="bibliography"><li><div class="text-justify"><span id="atsidakou23bpandora">Atsidakou, Alexia, Constantine Caramanis, Evangelia Gergatsouli, Orestis Papadigenopoulos, and Christos Tzamos. “Contextual Pandora’s Box.” <i>Preprint</i>, 2023.</span></div>
+<button class="button0" onclick="toggleBibtexatsidakou23bpandora()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractatsidakou23bpandora()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2205.13114.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Batsidakou23bpandora" style="display: none;">
+<pre>@article{atsidakou23bpandora,
+  title = {Contextual Pandora's Box},
+  author = {Atsidakou, Alexia and Caramanis, Constantine and Gergatsouli, Evangelia and Papadigenopoulos, Orestis and Tzamos, Christos},
+  journal = {preprint},
+  year = {2023},
+  group = {misc},
+  arxiv = {https://arxiv.org/pdf/2205.13114.pdf}
+}
+</pre>
+</div>
+
+<div id="aatsidakou23bpandora" style="display: none;">
+<pre>Pandora’s Box is a fundamental stochastic optimization problem, where the decision-maker must find a good alternative while minimizing the search cost of exploring the value of each alternative. In the original formulation, it is assumed that accurate priors are given for the values of all the alternatives, while
+recent work studies the online variant of Pandora’s Box where priors are originally unknown. 
+In this work, we extend Pandora’s Box to the online setting, while incorporating context. 
+At every round, we are presented with a number of alternatives each having a context, an exploration cost and an unknown value drawn from an unknown prior distribution that may change at every round. Our main result is a no-regret algorithm that performs comparably well to the optimal algorithm which knows all prior distributions exactly. Our algorithm works even in the bandit setting where the algorithm never learns the values of the alternatives that were not explored. 
+The key technique that enables our result is novel a modification of the realizability condition in contextual bandits that connects a context to the reservation value of the corresponding distribution rather than its mean.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCatsidakou23bpandora(parameter) {
+    var x= document.getElementById('aatsidakou23bpandora');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexatsidakou23bpandora(parameter) {
+    var x= document.getElementById('Batsidakou23bpandora');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractatsidakou23bpandora(parameter) {
+    var x= document.getElementById('aatsidakou23bpandora');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="rout23theoretical">Rout, Litu, Advait Parulekar, Constantine Caramanis, and Sanjay Shakkottai. “A Theoretical Justification for Image Inpainting Using Denoising Diffusion Probabilistic Models.” <i>Preprint</i>, 2023.</span></div>
 <button class="button0" onclick="toggleBibtexrout23theoretical()">Bibtex</button>
  
 
@@ -302,73 +369,6 @@ function toggleBibtexrout23theoretical(parameter) {
 <script>
 function toggleAbstractrout23theoretical(parameter) {
     var x= document.getElementById('arout23theoretical');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="atsidakou23pandora">Atsidakou, Alexia, Constantine Caramanis, Evangelia Gergatsouli, Orestis Papadigenopoulos, and Christos Tzamos. “Contextual Pandora’s Box.” <i>Preprint</i>, 2023.</span></div>
-<button class="button0" onclick="toggleBibtexatsidakou23pandora()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractatsidakou23pandora()">Abstract</button>
-
-
-
-    <a href="https://arxiv.org/pdf/2205.13114.pdf"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Batsidakou23pandora" style="display: none;">
-<pre>@article{atsidakou23pandora,
-  title = {Contextual Pandora's Box},
-  author = {Atsidakou, Alexia and Caramanis, Constantine and Gergatsouli, Evangelia and Papadigenopoulos, Orestis and Tzamos, Christos},
-  journal = {preprint},
-  year = {2023},
-  group = {misc},
-  arxiv = {https://arxiv.org/pdf/2205.13114.pdf}
-}
-</pre>
-</div>
-
-<div id="aatsidakou23pandora" style="display: none;">
-<pre>Pandora’s Box is a fundamental stochastic optimization problem, where the decision-maker must find a good alternative while minimizing the search cost of exploring the value of each alternative. In the original formulation, it is assumed that accurate priors are given for the values of all the alternatives, while
-recent work studies the online variant of Pandora’s Box where priors are originally unknown. 
-In this work, we extend Pandora’s Box to the online setting, while incorporating context. 
-At every round, we are presented with a number of alternatives each having a context, an exploration cost and an unknown value drawn from an unknown prior distribution that may change at every round. Our main result is a no-regret algorithm that performs comparably well to the optimal algorithm which knows all prior distributions exactly. Our algorithm works even in the bandit setting where the algorithm never learns the values of the alternatives that were not explored. 
-The key technique that enables our result is novel a modification of the realizability condition in contextual bandits that connects a context to the reservation value of the corresponding distribution rather than its mean.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCatsidakou23pandora(parameter) {
-    var x= document.getElementById('aatsidakou23pandora');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexatsidakou23pandora(parameter) {
-    var x= document.getElementById('Batsidakou23pandora');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractatsidakou23pandora(parameter) {
-    var x= document.getElementById('aatsidakou23pandora');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -435,6 +435,195 @@ function toggleBibtexfaw23beyond(parameter) {
 <script>
 function toggleAbstractfaw23beyond(parameter) {
     var x= document.getElementById('afaw23beyond');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="caramanis23samplers">Caramanis, Constantine, Dimitris Fotakis, Alkis Kalavasis, Vasilis Kontonis, and Christos Tzamos. “Optimizing Solution-Samplers for Combinatorial Problems: The Landscape of Policy-Gradient Methods.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2023.</span></div>
+<button class="button0" onclick="toggleBibtexcaramanis23samplers()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractcaramanis23samplers()">Abstract</button>
+
+
+
+    <a href=""><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Bcaramanis23samplers" style="display: none;">
+<pre>@article{caramanis23samplers,
+  title = {Optimizing Solution-Samplers for Combinatorial Problems: The Landscape of Policy-Gradient Methods},
+  author = {Caramanis, Constantine and Fotakis, Dimitris and Kalavasis, Alkis and Kontonis, Vasilis and Tzamos, Christos},
+  journal = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year = {2023},
+  group = {proceedings},
+  arxiv = {}
+}
+</pre>
+</div>
+
+<div id="acaramanis23samplers" style="display: none;">
+<pre>Deep Neural Networks and Reinforcement Learning methods have empirically shown great promise in tackling challenging combinatorial problems. In those methods a deep neural network is used as a solution generator which is then trained by gradient-based methods (e.g., policy gradient) to successively obtain better solution distributions. In this work we introduce a novel theoretical framework for analyzing the effectiveness of such methods. We ask whether there exist generative models that (i) are expressive enough to generate approximately optimal solutions; (ii) have a tractable, i.e, polynomial in the size of the input, number of parameters; (iii) their optimization landscape is benign in the sense that it does not contain sub-optimal stationary points. Our main contribution is a positive answer to this question. Our result holds for a broad class of combinatorial problems including Max- and Min-Cut, Max-k-CSP, Maximum-Weight-Bipartite-Matching, and the Traveling Salesman Problem. As a byproduct of our analysis we introduce a novel regularization process over vanilla gradient descent and provide theoretical and experimental evidence that it helps address vanishing-gradient issues and escape bad stationary points.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCcaramanis23samplers(parameter) {
+    var x= document.getElementById('acaramanis23samplers');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexcaramanis23samplers(parameter) {
+    var x= document.getElementById('Bcaramanis23samplers');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractcaramanis23samplers(parameter) {
+    var x= document.getElementById('acaramanis23samplers');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="rout23inverse">Rout, Litu, Negin Raoof, Giannis Daras, Constantine Caramanis, Alexandros Dimakis, and Sanjay Shakkottai. “Solving Linear Inverse Problems Provably via Posterior Sampling with Latent Diffusion Models.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2023.</span></div>
+<button class="button0" onclick="toggleBibtexrout23inverse()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractrout23inverse()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2307.00619.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Brout23inverse" style="display: none;">
+<pre>@article{rout23inverse,
+  title = {Solving Linear Inverse Problems Provably via Posterior Sampling with Latent Diffusion Models},
+  author = {Rout, Litu and Raoof, Negin and Daras, Giannis and Caramanis, Constantine and Dimakis, Alexandros and Shakkottai, Sanjay},
+  journal = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year = {2023},
+  group = {proceedings},
+  arxiv = {https://arxiv.org/pdf/2307.00619.pdf}
+}
+</pre>
+</div>
+
+<div id="arout23inverse" style="display: none;">
+<pre>We present the first framework to solve linear inverse problems leveraging pre-trained latent diffusion models. Previously proposed algorithms (such as DPS and DDRM) only apply to pixel-space diffusion models. We theoretically analyze our algorithm showing provable sample recovery in a linear model setting. The algorithmic insight obtained from our analysis extends to more general settings often considered in practice. Experimentally, we outperform previously proposed posterior sampling algorithms in a wide variety of problems including random inpainting, block inpainting, denoising, deblurring, destriping, and super-resolution.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCrout23inverse(parameter) {
+    var x= document.getElementById('arout23inverse');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexrout23inverse(parameter) {
+    var x= document.getElementById('Brout23inverse');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractrout23inverse(parameter) {
+    var x= document.getElementById('arout23inverse');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="atsidakou23abayes">Atsidakou, Alexia, Branislav Kveton, Sumeet Katariya, Constantine Caramanis, and Sujay Sanghavi. “Logarithmic Bayes Regret Bounds.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2023.</span></div>
+<button class="button0" onclick="toggleBibtexatsidakou23abayes()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractatsidakou23abayes()">Abstract</button>
+
+
+
+    <a href=""><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Batsidakou23abayes" style="display: none;">
+<pre>@article{atsidakou23abayes,
+  title = {Logarithmic Bayes Regret Bounds},
+  author = {Atsidakou, Alexia and Kveton, Branislav and Katariya, Sumeet and Caramanis, Constantine and Sanghavi, Sujay},
+  journal = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year = {2023},
+  group = {proceedings},
+  arxiv = {}
+}
+</pre>
+</div>
+
+<div id="aatsidakou23abayes" style="display: none;">
+<pre>We derive the first finite-time logarithmic regret bounds for Bayesian bandits. For Gaussian bandits, we obtain a O(c_h \log^2 n) bound, where c_h is a prior-dependent constant. This matches the asymptotic lower bound of Lai (1987). Our proofs mark a technical departure from prior works, and are simple and general. To show generality, we apply our technique to linear bandits. Our bounds shed light on the value of the prior in the Bayesian setting, both in the objective and as a side information given to the learner. They significantly improve the \tildeO(\sqrtn) bounds, that despite the existing lower bounds, have become standard in the literature.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCatsidakou23abayes(parameter) {
+    var x= document.getElementById('aatsidakou23abayes');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexatsidakou23abayes(parameter) {
+    var x= document.getElementById('Batsidakou23abayes');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractatsidakou23abayes(parameter) {
+    var x= document.getElementById('aatsidakou23abayes');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -690,198 +879,6 @@ function toggleBibtexatsidakou202asymptotically(parameter) {
 <script>
 function toggleAbstractatsidakou202asymptotically(parameter) {
     var x= document.getElementById('aatsidakou202asymptotically');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="kwon2022tractable">Kwon, Jeongyeol, Yonathan Efroni, Constantine Caramanis, and Shie Mannor. “Tractable Optimality in Episodic Latent MABs.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2022.</span></div>
-<button class="button0" onclick="toggleBibtexkwon2022tractable()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractkwon2022tractable()">Abstract</button>
-
-
-
-    <a href="https://arxiv.org/pdf/2210.03528.pdf"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Bkwon2022tractable" style="display: none;">
-<pre>@article{kwon2022tractable,
-  title = {Tractable Optimality in Episodic Latent MABs},
-  author = {Kwon, Jeongyeol and Efroni, Yonathan and Caramanis, Constantine and Mannor, Shie},
-  journal = {Advances in Neural Information Processing Systems (NeurIPS)},
-  year = {2022},
-  group = {proceedings},
-  arxiv = {https://arxiv.org/pdf/2210.03528.pdf}
-}
-</pre>
-</div>
-
-<div id="akwon2022tractable" style="display: none;">
-<pre>We consider a multi-armed bandit problem with A actions and M latent contexts, where an agent interacts with the environment for an episode of H time steps. Depending on the length of the episode, the learner may not be able to estimate accurately the latent context. The resulting partial observation of the environment makes the learning task significantly more challenging. 
-Without any additional structural assumptions, existing techniques to tackle partially observed settings imply the decision maker can learn a near-optimal policy with O(A)^H episodes, but do not promise more. 
-In this work, we show that learning with \em polynomial samples in A is possible. We achieve this by using techniques from experiment design. Then, through a method-of-moments approach, we design a procedure that provably learns a near-optimal policy with O(\poly(A) + \poly(M,H)^\min(M,H)) interactions. In practice, we show that we can formulate the moment-matching via maximum likelihood estimation. In our experiments, this significantly outperforms the worst-case guarantees, as well as existing practical methods.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCkwon2022tractable(parameter) {
-    var x= document.getElementById('akwon2022tractable');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexkwon2022tractable(parameter) {
-    var x= document.getElementById('Bkwon2022tractable');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractkwon2022tractable(parameter) {
-    var x= document.getElementById('akwon2022tractable');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="papadigenopoulos2022non">Papadigenopoulos, Orestis, Constantine Caramanis, and Sanjay Shakkottai. “Non-Stationary Bandits under Recharging Payoffs: Improved Planning with Sublinear Regret.” In <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2022.</span></div>
-<button class="button0" onclick="toggleBibtexpapadigenopoulos2022non()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractpapadigenopoulos2022non()">Abstract</button>
-
-
-
-    <a href="https://arxiv.org/pdf/2205.14790.pdf"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Bpapadigenopoulos2022non" style="display: none;">
-<pre>@inproceedings{papadigenopoulos2022non,
-  title = {Non-Stationary Bandits under Recharging Payoffs: Improved Planning with Sublinear Regret},
-  author = {Papadigenopoulos, Orestis and Caramanis, Constantine and Shakkottai, Sanjay},
-  journal = {Advances in Neural Information Processing Systems (NeurIPS)},
-  year = {2022},
-  group = {proceedings},
-  arxiv = {https://arxiv.org/pdf/2205.14790.pdf}
-}
-</pre>
-</div>
-
-<div id="apapadigenopoulos2022non" style="display: none;">
-<pre>The stochastic multi-armed bandit setting has been recently studied in the non-stationary regime, where the mean payoff of each action is a non-decreasing function of the number of rounds passed since it was last played. This model captures natural behavioral aspects of the users which crucially determine the performance of recommendation platforms, ad placement systems, and more. Even assuming prior knowledge of the mean payoff functions, computing an optimal planning in the above model is NP-hard, while the state-of-the-art is a 1/4-approximation algorithm for the case where at most one arm can be played per round. We first focus on the setting where the mean payoff functions are known. In this setting, we significantly improve the best-known guarantees for the planning problem by developing a polynomial-time (1?1/e)-approximation algorithm (asymptotically and in expectation), based on a novel combination of randomized LP rounding and a time-correlated (interleaved) scheduling method. Furthermore, our algorithm achieves improved guarantees – compared to prior work – for the case where more than one arm can be played at each round. Moving to the bandit setting, when the mean payoff functions are initially unknown, we show how our algorithm can be transformed into a bandit algorithm with sublinear regret.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCpapadigenopoulos2022non(parameter) {
-    var x= document.getElementById('apapadigenopoulos2022non');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexpapadigenopoulos2022non(parameter) {
-    var x= document.getElementById('Bpapadigenopoulos2022non');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractpapadigenopoulos2022non(parameter) {
-    var x= document.getElementById('apapadigenopoulos2022non');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="katiyarRobustMRF2021">Katiyar, Ashish, Soumya Basu, Vatsal Shah, and Constantine Caramanis. “Robust Estimation of Tree Structured Markov Random Fields.” <i>International Conference on Artificial Intelligence and Statistics (AISTATS)</i>, 2022.</span></div>
-<button class="button0" onclick="toggleBibtexkatiyarRobustMRF2021()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractkatiyarRobustMRF2021()">Abstract</button>
-
-
-
-    <a href="https://arxiv.org/pdf/2102.08554.pdf"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="BkatiyarRobustMRF2021" style="display: none;">
-<pre>@article{katiyarRobustMRF2021,
-  title = {Robust Estimation of Tree Structured Markov Random Fields},
-  author = {Katiyar, Ashish and Basu, Soumya and Shah, Vatsal and Caramanis, Constantine},
-  booktitle = {International Conference on Artificial Intelligence and Statistics (AISTATS)},
-  year = {2022},
-  group = {proceedings},
-  arxiv = {https://arxiv.org/pdf/2102.08554.pdf}
-}
-</pre>
-</div>
-
-<div id="akatiyarRobustMRF2021" style="display: none;">
-<pre>We study the problem of learning tree-structured Markov random fields (MRF) on discrete random variables with common support when the observations are corrupted by a k-ary symmetric noise channel with unknown probability of error. 
- For Ising models (support size = 2), past work has shown that graph structure can only be recovered up to the leaf clusters (a leaf node, its parent, and its siblings form a leaf cluster) and exact recovery is impossible. No prior work has addressed the setting of support size of 3 or more, and indeed this setting is far richer. As we show, when the support size is 3 or more, the structure of the leaf clusters may be partially or fully identifiable. We provide a precise characterization of this phenomenon and show that the extent of recoverability is dictated by the joint PMF of the random variables.  In particular, we provide necessary and sufficient conditions for exact recoverability. Furthermore, we present a polynomial time, sample efficient algorithm that recovers the exact tree when this is possible, or up to the unidentifiability as promised by our characterization, when full recoverability is impossible. Finally, we  demonstrate the efficacy of our algorithm experimentally.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCkatiyarRobustMRF2021(parameter) {
-    var x= document.getElementById('akatiyarRobustMRF2021');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexkatiyarRobustMRF2021(parameter) {
-    var x= document.getElementById('BkatiyarRobustMRF2021');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractkatiyarRobustMRF2021(parameter) {
-    var x= document.getElementById('akatiyarRobustMRF2021');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
