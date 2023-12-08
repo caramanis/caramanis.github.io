@@ -247,7 +247,70 @@ I am a Professor in the ECE department of The University of Texas at Austin. I r
 
 <hr />
 <h3 id="the-last-ten-publications-chronologically">The last ten publications, chronologically…</h3>
-<ol class="bibliography"><li><div class="text-justify"><span id="atsidakou23bpandora">Atsidakou, Alexia, Constantine Caramanis, Evangelia Gergatsouli, Orestis Papadigenopoulos, and Christos Tzamos. “Contextual Pandora’s Box.” <i>Preprint</i>, 2023.</span></div>
+<ol class="bibliography"><li><div class="text-justify"><span id="rout2023secondorder">Rout, Litu, Yujia Chen, Abhishek Kumar, Constantine Caramanis, Sanjay Shakkottai, and Wen-Sheng Chu. “Beyond First-Order Tweedie: Solving Inverse Problems Using Latent Diffusion.” <i>Preprint</i>, 2023.</span></div>
+<button class="button0" onclick="toggleBibtexrout2023secondorder()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractrout2023secondorder()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2312.00852.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Brout2023secondorder" style="display: none;">
+<pre>@article{rout2023secondorder,
+  title = {Beyond First-Order Tweedie: Solving Inverse Problems using Latent Diffusion},
+  author = {Rout, Litu and Chen, Yujia and Kumar, Abhishek and Caramanis, Constantine and Shakkottai, Sanjay and Chu, Wen-Sheng},
+  journal = {preprint},
+  year = {2023},
+  group = {misc},
+  arxiv = {https://arxiv.org/pdf/2312.00852.pdf}
+}
+</pre>
+</div>
+
+<div id="arout2023secondorder" style="display: none;">
+<pre>Sampling from the posterior distribution poses a major computational challenge in solving inverse problems using latent diffusion models. Common methods rely on Tweedie’s first-order moments, which are known to induce a quality-limiting bias. Existing second-order approximations are impractical due to prohibitive computational costs, making standard reverse diffusion processes intractable for posterior sampling. This paper introduces Second-order Tweedie sampler from Surrogate Loss (STSL), a novel sampler that offers efficiency comparable to first-order Tweedie with a tractable reverse process using second-order approximation. Our theoretical results reveal that the second-order approximation is lower bounded by our surrogate loss that only requires O(1) compute using the trace of the Hessian, and by the lower bound we derive a new drift term to make the reverse process tractable. Our method surpasses SoTA solvers PSLD and P2L, achieving 4X and 8X reduction in neural function evaluations, respectively, while notably enhancing sampling quality on FFHQ, ImageNet, and COCO benchmarks. In addition, we show STSL extends to text-guided image editing and addresses residual distortions present from corrupted images in leading text-guided image editing methods. To our best knowledge, this is the first work to offer an efficient second-order approximation in solving inverse problems using latent diffusion and editing real-world images with corruptions.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCrout2023secondorder(parameter) {
+    var x= document.getElementById('arout2023secondorder');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexrout2023secondorder(parameter) {
+    var x= document.getElementById('Brout2023secondorder');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractrout2023secondorder(parameter) {
+    var x= document.getElementById('arout2023secondorder');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="atsidakou23bpandora">Atsidakou, Alexia, Constantine Caramanis, Evangelia Gergatsouli, Orestis Papadigenopoulos, and Christos Tzamos. “Contextual Pandora’s Box.” <i>Preprint</i>, 2023.</span></div>
 <button class="button0" onclick="toggleBibtexatsidakou23bpandora()">Bibtex</button>
  
 
@@ -443,6 +506,69 @@ function toggleAbstractfaw23beyond(parameter) {
 }
 </script>
 </li>
+<li><div class="text-justify"><span id="atsidakou23abayes">Atsidakou, Alexia, Branislav Kveton, Sumeet Katariya, Constantine Caramanis, and Sujay Sanghavi. “Logarithmic Bayes Regret Bounds.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2023.</span></div>
+<button class="button0" onclick="toggleBibtexatsidakou23abayes()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractatsidakou23abayes()">Abstract</button>
+
+
+
+    <a href=""><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Batsidakou23abayes" style="display: none;">
+<pre>@article{atsidakou23abayes,
+  title = {Logarithmic Bayes Regret Bounds},
+  author = {Atsidakou, Alexia and Kveton, Branislav and Katariya, Sumeet and Caramanis, Constantine and Sanghavi, Sujay},
+  journal = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year = {2023},
+  group = {proceedings},
+  arxiv = {}
+}
+</pre>
+</div>
+
+<div id="aatsidakou23abayes" style="display: none;">
+<pre>We derive the first finite-time logarithmic regret bounds for Bayesian bandits. For Gaussian bandits, we obtain a O(c_h \log^2 n) bound, where c_h is a prior-dependent constant. This matches the asymptotic lower bound of Lai (1987). Our proofs mark a technical departure from prior works, and are simple and general. To show generality, we apply our technique to linear bandits. Our bounds shed light on the value of the prior in the Bayesian setting, both in the objective and as a side information given to the learner. They significantly improve the \tildeO(\sqrtn) bounds, that despite the existing lower bounds, have become standard in the literature.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCatsidakou23abayes(parameter) {
+    var x= document.getElementById('aatsidakou23abayes');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexatsidakou23abayes(parameter) {
+    var x= document.getElementById('Batsidakou23abayes');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractatsidakou23abayes(parameter) {
+    var x= document.getElementById('aatsidakou23abayes');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
 <li><div class="text-justify"><span id="caramanis23samplers">Caramanis, Constantine, Dimitris Fotakis, Alkis Kalavasis, Vasilis Kontonis, and Christos Tzamos. “Optimizing Solution-Samplers for Combinatorial Problems: The Landscape of Policy-Gradient Methods.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2023.</span></div>
 <button class="button0" onclick="toggleBibtexcaramanis23samplers()">Bibtex</button>
  
@@ -451,7 +577,7 @@ function toggleAbstractfaw23beyond(parameter) {
 
 
 
-    <a href=""><input class="button4" type="button" value="ArXiv" /></a>
+    <a href="https://arxiv.org/pdf/2310.05309.pdf"><input class="button4" type="button" value="ArXiv" /></a>
 
  
 
@@ -463,7 +589,7 @@ function toggleAbstractfaw23beyond(parameter) {
   journal = {Advances in Neural Information Processing Systems (NeurIPS)},
   year = {2023},
   group = {proceedings},
-  arxiv = {}
+  arxiv = {https://arxiv.org/pdf/2310.05309.pdf}
 }
 </pre>
 </div>
@@ -561,69 +687,6 @@ function toggleBibtexrout23inverse(parameter) {
 <script>
 function toggleAbstractrout23inverse(parameter) {
     var x= document.getElementById('arout23inverse');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="atsidakou23abayes">Atsidakou, Alexia, Branislav Kveton, Sumeet Katariya, Constantine Caramanis, and Sujay Sanghavi. “Logarithmic Bayes Regret Bounds.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2023.</span></div>
-<button class="button0" onclick="toggleBibtexatsidakou23abayes()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractatsidakou23abayes()">Abstract</button>
-
-
-
-    <a href=""><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Batsidakou23abayes" style="display: none;">
-<pre>@article{atsidakou23abayes,
-  title = {Logarithmic Bayes Regret Bounds},
-  author = {Atsidakou, Alexia and Kveton, Branislav and Katariya, Sumeet and Caramanis, Constantine and Sanghavi, Sujay},
-  journal = {Advances in Neural Information Processing Systems (NeurIPS)},
-  year = {2023},
-  group = {proceedings},
-  arxiv = {}
-}
-</pre>
-</div>
-
-<div id="aatsidakou23abayes" style="display: none;">
-<pre>We derive the first finite-time logarithmic regret bounds for Bayesian bandits. For Gaussian bandits, we obtain a O(c_h \log^2 n) bound, where c_h is a prior-dependent constant. This matches the asymptotic lower bound of Lai (1987). Our proofs mark a technical departure from prior works, and are simple and general. To show generality, we apply our technique to linear bandits. Our bounds shed light on the value of the prior in the Bayesian setting, both in the objective and as a side information given to the learner. They significantly improve the \tildeO(\sqrtn) bounds, that despite the existing lower bounds, have become standard in the literature.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCatsidakou23abayes(parameter) {
-    var x= document.getElementById('aatsidakou23abayes');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexatsidakou23abayes(parameter) {
-    var x= document.getElementById('Batsidakou23abayes');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractatsidakou23abayes(parameter) {
-    var x= document.getElementById('aatsidakou23abayes');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -815,70 +878,6 @@ function toggleBibtexkwon2022coordinated(parameter) {
 <script>
 function toggleAbstractkwon2022coordinated(parameter) {
     var x= document.getElementById('akwon2022coordinated');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="atsidakou202asymptotically">Atsidakou, Alexia, Orestis Papadigenopoulos, Constantine Caramanis, Sujay Sanghavi, and Sanjay Shakkottai. “Asymptotically-Optimal Gaussian Bandits with Side Observations.” In <i>International Conference on Machine Learning (ICML)</i>. PMLR, 2022.</span></div>
-<button class="button0" onclick="toggleBibtexatsidakou202asymptotically()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractatsidakou202asymptotically()">Abstract</button>
-
-
-
-    <a href="https://proceedings.mlr.press/v162/atsidakou22a/atsidakou22a.pdf"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Batsidakou202asymptotically" style="display: none;">
-<pre>@inproceedings{atsidakou202asymptotically,
-  title = {Asymptotically-Optimal Gaussian Bandits with Side Observations},
-  author = {Atsidakou, Alexia and Papadigenopoulos, Orestis and Caramanis, Constantine and Sanghavi, Sujay and Shakkottai, Sanjay},
-  journal = {International Conference on Machine Learning (ICML)},
-  year = {2022},
-  organization = {PMLR},
-  group = {proceedings},
-  arxiv = {https://proceedings.mlr.press/v162/atsidakou22a/atsidakou22a.pdf}
-}
-</pre>
-</div>
-
-<div id="aatsidakou202asymptotically" style="display: none;">
-<pre>Recent work has considered natural variations of the \em multi-armed bandit problem, where the reward distribution of each arm is a special function of the time passed since its last pulling. In this direction, a simple (yet widely applicable) model is that of \em blocking bandits, where an arm becomes unavailable for a deterministic number of rounds after each play. In this work, we extend the above model in two directions: (i) We consider the general combinatorial setting where more than one arms can be played at each round, subject to feasibility constraints. (ii) We allow the blocking time of each arm to be stochastic. We first study the computational/unconditional hardness of the above setting and identify the necessary conditions for the problem to become tractable (even in an approximate sense). Based on these conditions, we provide a tight analysis of the approximation guarantee of a natural greedy heuristic that always plays the maximum expected reward feasible subset among the available (non-blocked) arms. When the arms’ expected rewards are unknown, we adapt the above heuristic into a bandit algorithm, based on UCB, for which we provide sublinear (approximate) regret guarantees, matching the theoretical lower bounds in the limiting case of absence of delays.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCatsidakou202asymptotically(parameter) {
-    var x= document.getElementById('aatsidakou202asymptotically');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexatsidakou202asymptotically(parameter) {
-    var x= document.getElementById('Batsidakou202asymptotically');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractatsidakou202asymptotically(parameter) {
-    var x= document.getElementById('aatsidakou202asymptotically');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
