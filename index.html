@@ -247,7 +247,74 @@ I am a Professor in the ECE department of The University of Texas at Austin. I r
 
 <hr />
 <h3 id="the-last-ten-publications-chronologically">The last ten publications, chronologically…</h3>
-<ol class="bibliography"><li><div class="text-justify"><span id="rout2023secondorder">Rout, Litu, Yujia Chen, Abhishek Kumar, Constantine Caramanis, Sanjay Shakkottai, and Wen-Sheng Chu. “Beyond First-Order Tweedie: Solving Inverse Problems Using Latent Diffusion.” <i>Preprint</i>, 2023.</span></div>
+<ol class="bibliography"><li><div class="text-justify"><span id="atsidakou24apandora">Atsidakou, Alexia, Constantine Caramanis, Evangelia Gergatsouli, Orestis Papadigenopoulos, and Christos Tzamos. “Contextual Pandora’s Box.” <i>Association for the Advancement of Artificial Intelligence (AAAI)</i>, 2024.</span></div>
+<button class="button0" onclick="toggleBibtexatsidakou24apandora()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractatsidakou24apandora()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2205.13114.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Batsidakou24apandora" style="display: none;">
+<pre>@article{atsidakou24apandora,
+  title = {Contextual Pandora's Box},
+  author = {Atsidakou, Alexia and Caramanis, Constantine and Gergatsouli, Evangelia and Papadigenopoulos, Orestis and Tzamos, Christos},
+  journal = {Association for the Advancement of Artificial Intelligence (AAAI)},
+  year = {2024},
+  group = {proceedings},
+  arxiv = {https://arxiv.org/pdf/2205.13114.pdf}
+}
+</pre>
+</div>
+
+<div id="aatsidakou24apandora" style="display: none;">
+<pre>Pandora’s Box is a fundamental stochastic optimization problem, where the decision-maker must find a good alternative while minimizing the search cost of exploring the value of each alternative. In the original formulation, it is assumed that accurate priors are given for the values of all the alternatives, while
+recent work studies the online variant of Pandora’s Box where priors are originally unknown. 
+In this work, we extend Pandora’s Box to the online setting, while incorporating context. 
+At every round, we are presented with a number of alternatives each having a context, an exploration cost and an unknown value drawn from an unknown prior distribution that may change at every round. Our main result is a no-regret algorithm that performs comparably well to the optimal algorithm which knows all prior distributions exactly. Our algorithm works even in the bandit setting where the algorithm never learns the values of the alternatives that were not explored. 
+The key technique that enables our result is novel a modification of the realizability condition in contextual bandits that connects a context to the reservation value of the corresponding distribution rather than its mean.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCatsidakou24apandora(parameter) {
+    var x= document.getElementById('aatsidakou24apandora');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexatsidakou24apandora(parameter) {
+    var x= document.getElementById('Batsidakou24apandora');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractatsidakou24apandora(parameter) {
+    var x= document.getElementById('aatsidakou24apandora');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="rout2023secondorder">Rout, Litu, Yujia Chen, Abhishek Kumar, Constantine Caramanis, Sanjay Shakkottai, and Wen-Sheng Chu. “Beyond First-Order Tweedie: Solving Inverse Problems Using Latent Diffusion.” <i>Preprint</i>, 2023.</span></div>
 <button class="button0" onclick="toggleBibtexrout2023secondorder()">Bibtex</button>
  
 
@@ -302,73 +369,6 @@ function toggleBibtexrout2023secondorder(parameter) {
 <script>
 function toggleAbstractrout2023secondorder(parameter) {
     var x= document.getElementById('arout2023secondorder');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="atsidakou23bpandora">Atsidakou, Alexia, Constantine Caramanis, Evangelia Gergatsouli, Orestis Papadigenopoulos, and Christos Tzamos. “Contextual Pandora’s Box.” <i>Preprint</i>, 2023.</span></div>
-<button class="button0" onclick="toggleBibtexatsidakou23bpandora()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractatsidakou23bpandora()">Abstract</button>
-
-
-
-    <a href="https://arxiv.org/pdf/2205.13114.pdf"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Batsidakou23bpandora" style="display: none;">
-<pre>@article{atsidakou23bpandora,
-  title = {Contextual Pandora's Box},
-  author = {Atsidakou, Alexia and Caramanis, Constantine and Gergatsouli, Evangelia and Papadigenopoulos, Orestis and Tzamos, Christos},
-  journal = {preprint},
-  year = {2023},
-  group = {misc},
-  arxiv = {https://arxiv.org/pdf/2205.13114.pdf}
-}
-</pre>
-</div>
-
-<div id="aatsidakou23bpandora" style="display: none;">
-<pre>Pandora’s Box is a fundamental stochastic optimization problem, where the decision-maker must find a good alternative while minimizing the search cost of exploring the value of each alternative. In the original formulation, it is assumed that accurate priors are given for the values of all the alternatives, while
-recent work studies the online variant of Pandora’s Box where priors are originally unknown. 
-In this work, we extend Pandora’s Box to the online setting, while incorporating context. 
-At every round, we are presented with a number of alternatives each having a context, an exploration cost and an unknown value drawn from an unknown prior distribution that may change at every round. Our main result is a no-regret algorithm that performs comparably well to the optimal algorithm which knows all prior distributions exactly. Our algorithm works even in the bandit setting where the algorithm never learns the values of the alternatives that were not explored. 
-The key technique that enables our result is novel a modification of the realizability condition in contextual bandits that connects a context to the reservation value of the corresponding distribution rather than its mean.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCatsidakou23bpandora(parameter) {
-    var x= document.getElementById('aatsidakou23bpandora');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexatsidakou23bpandora(parameter) {
-    var x= document.getElementById('Batsidakou23bpandora');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractatsidakou23bpandora(parameter) {
-    var x= document.getElementById('aatsidakou23bpandora');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
