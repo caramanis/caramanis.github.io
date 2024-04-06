@@ -76,70 +76,7 @@
 
 <h2 id="pre-prints">Pre-prints</h2>
 
-<ol class="bibliography"><li><div class="text-justify"><span id="rout2023secondorder">Rout, Litu, Yujia Chen, Abhishek Kumar, Constantine Caramanis, Sanjay Shakkottai, and Wen-Sheng Chu. “Beyond First-Order Tweedie: Solving Inverse Problems Using Latent Diffusion.” <i>Preprint</i>, 2023.</span></div>
-<button class="button0" onclick="toggleBibtexrout2023secondorder()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractrout2023secondorder()">Abstract</button>
-
-
-
-    <a href="https://arxiv.org/pdf/2312.00852.pdf"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Brout2023secondorder" style="display: none;">
-<pre>@article{rout2023secondorder,
-  title = {Beyond First-Order Tweedie: Solving Inverse Problems using Latent Diffusion},
-  author = {Rout, Litu and Chen, Yujia and Kumar, Abhishek and Caramanis, Constantine and Shakkottai, Sanjay and Chu, Wen-Sheng},
-  journal = {preprint},
-  year = {2023},
-  group = {misc},
-  arxiv = {https://arxiv.org/pdf/2312.00852.pdf}
-}
-</pre>
-</div>
-
-<div id="arout2023secondorder" style="display: none;">
-<pre>Sampling from the posterior distribution poses a major computational challenge in solving inverse problems using latent diffusion models. Common methods rely on Tweedie’s first-order moments, which are known to induce a quality-limiting bias. Existing second-order approximations are impractical due to prohibitive computational costs, making standard reverse diffusion processes intractable for posterior sampling. This paper introduces Second-order Tweedie sampler from Surrogate Loss (STSL), a novel sampler that offers efficiency comparable to first-order Tweedie with a tractable reverse process using second-order approximation. Our theoretical results reveal that the second-order approximation is lower bounded by our surrogate loss that only requires O(1) compute using the trace of the Hessian, and by the lower bound we derive a new drift term to make the reverse process tractable. Our method surpasses SoTA solvers PSLD and P2L, achieving 4X and 8X reduction in neural function evaluations, respectively, while notably enhancing sampling quality on FFHQ, ImageNet, and COCO benchmarks. In addition, we show STSL extends to text-guided image editing and addresses residual distortions present from corrupted images in leading text-guided image editing methods. To our best knowledge, this is the first work to offer an efficient second-order approximation in solving inverse problems using latent diffusion and editing real-world images with corruptions.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCrout2023secondorder(parameter) {
-    var x= document.getElementById('arout2023secondorder');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexrout2023secondorder(parameter) {
-    var x= document.getElementById('Brout2023secondorder');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractrout2023secondorder(parameter) {
-    var x= document.getElementById('arout2023secondorder');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="rout23theoretical">Rout, Litu, Advait Parulekar, Constantine Caramanis, and Sanjay Shakkottai. “A Theoretical Justification for Image Inpainting Using Denoising Diffusion Probabilistic Models.” <i>Preprint</i>, 2023.</span></div>
+<ol class="bibliography"><li><div class="text-justify"><span id="rout23theoretical">Rout, Litu, Advait Parulekar, Constantine Caramanis, and Sanjay Shakkottai. “A Theoretical Justification for Image Inpainting Using Denoising Diffusion Probabilistic Models.” <i>Preprint</i>, 2023.</span></div>
 <button class="button0" onclick="toggleBibtexrout23theoretical()">Bibtex</button>
  
 
@@ -257,70 +194,6 @@ function toggleBibtexhoffmann2020quarantines(parameter) {
 <script>
 function toggleAbstracthoffmann2020quarantines(parameter) {
     var x= document.getElementById('ahoffmann2020quarantines');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="zhuoSlowMatrix2021">Zhuo, Jiacheng, Jeongyeol Kwon, Nhat Ho, and Constantine Caramanis. “On the Computational and Statistical Complexity of over-Parameterized Matrix Sensing.” <i>Preprint</i>, 2021.</span></div>
-<button class="button0" onclick="toggleBibtexzhuoSlowMatrix2021()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractzhuoSlowMatrix2021()">Abstract</button>
-
-
-
-    <a href="https://arxiv.org/pdf/2102.02756.pdf"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="BzhuoSlowMatrix2021" style="display: none;">
-<pre>@article{zhuoSlowMatrix2021,
-  title = {On the computational and statistical complexity of over-parameterized matrix sensing},
-  author = {Zhuo, Jiacheng and Kwon, Jeongyeol and Ho, Nhat and Caramanis, Constantine},
-  journal = {preprint},
-  year = {2021},
-  group = {misc},
-  arxiv = {https://arxiv.org/pdf/2102.02756.pdf}
-}
-</pre>
-</div>
-
-<div id="azhuoSlowMatrix2021" style="display: none;">
-<pre>We consider solving the low rank matrix sensing problem with Factorized Gradient Descend (FGD) method when the true rank is unknown and over-specified, which we refer to as over-parameterized matrix sensing.
-If the ground truth signal X^* ∈\mathbbR^d*d is of rank r, but we try to recover it using FF^⊤where F ∈\mathbbR^d*k and k&gt;r, the existing statistical analysis falls short, due to a flat local curvature of the loss function around the global maxima. By decomposing the factorized matrix \fitMat into separate column spaces to capture the effect of extra ranks, we show that ||F_t F_t - F||_F^2 converges to a statistical error of \tilde\mathcalO \parenthk d σ^2/n after \tilde\mathcalO(\frac\sigma_rσ\sqrt\fracnd) number of iterations where \fitMat_t is the output of FGD after t iterations, σ^2 is the variance of the observation noise, \sigma_r is the r-th largest eigenvalue of \trueMat, and n is the number of sample. Our results, therefore, offer a comprehensive picture of the statistical and computational complexity of FGD for the over-parameterized matrix sensing problem.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCzhuoSlowMatrix2021(parameter) {
-    var x= document.getElementById('azhuoSlowMatrix2021');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexzhuoSlowMatrix2021(parameter) {
-    var x= document.getElementById('BzhuoSlowMatrix2021');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractzhuoSlowMatrix2021(parameter) {
-    var x= document.getElementById('azhuoSlowMatrix2021');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -458,7 +331,70 @@ function toggleAbstractyi2016solving(parameter) {
 
 <h2 id="conference-papers">Conference Papers</h2>
 
-<ol class="bibliography"><li><div class="text-justify"><span id="atsidakou24apandora">Atsidakou, Alexia, Constantine Caramanis, Evangelia Gergatsouli, Orestis Papadigenopoulos, and Christos Tzamos. “Contextual Pandora’s Box.” <i>Association for the Advancement of Artificial Intelligence (AAAI)</i>, 2024.</span></div>
+<ol class="bibliography"><li><div class="text-justify"><span id="rout2024secondorder">Rout, Litu, Yujia Chen, Abhishek Kumar, Constantine Caramanis, Sanjay Shakkottai, and Wen-Sheng Chu. “Beyond First-Order Tweedie: Solving Inverse Problems Using Latent Diffusion.” <i>Proceedings of the Conference on Computer Vision and Pattern Recognition</i>, 2024.</span></div>
+<button class="button0" onclick="toggleBibtexrout2024secondorder()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractrout2024secondorder()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2312.00852.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Brout2024secondorder" style="display: none;">
+<pre>@article{rout2024secondorder,
+  title = {Beyond First-Order Tweedie: Solving Inverse Problems using Latent Diffusion},
+  author = {Rout, Litu and Chen, Yujia and Kumar, Abhishek and Caramanis, Constantine and Shakkottai, Sanjay and Chu, Wen-Sheng},
+  journal = {Proceedings of the Conference on Computer Vision and Pattern Recognition},
+  year = {2024},
+  group = {proceedings},
+  arxiv = {https://arxiv.org/pdf/2312.00852.pdf}
+}
+</pre>
+</div>
+
+<div id="arout2024secondorder" style="display: none;">
+<pre>Sampling from the posterior distribution poses a major computational challenge in solving inverse problems using latent diffusion models. Common methods rely on Tweedie’s first-order moments, which are known to induce a quality-limiting bias. Existing second-order approximations are impractical due to prohibitive computational costs, making standard reverse diffusion processes intractable for posterior sampling. This paper introduces Second-order Tweedie sampler from Surrogate Loss (STSL), a novel sampler that offers efficiency comparable to first-order Tweedie with a tractable reverse process using second-order approximation. Our theoretical results reveal that the second-order approximation is lower bounded by our surrogate loss that only requires O(1) compute using the trace of the Hessian, and by the lower bound we derive a new drift term to make the reverse process tractable. Our method surpasses SoTA solvers PSLD and P2L, achieving 4X and 8X reduction in neural function evaluations, respectively, while notably enhancing sampling quality on FFHQ, ImageNet, and COCO benchmarks. In addition, we show STSL extends to text-guided image editing and addresses residual distortions present from corrupted images in leading text-guided image editing methods. To our best knowledge, this is the first work to offer an efficient second-order approximation in solving inverse problems using latent diffusion and editing real-world images with corruptions.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCrout2024secondorder(parameter) {
+    var x= document.getElementById('arout2024secondorder');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexrout2024secondorder(parameter) {
+    var x= document.getElementById('Brout2024secondorder');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractrout2024secondorder(parameter) {
+    var x= document.getElementById('arout2024secondorder');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="atsidakou24apandora">Atsidakou, Alexia, Constantine Caramanis, Evangelia Gergatsouli, Orestis Papadigenopoulos, and Christos Tzamos. “Contextual Pandora’s Box.” <i>Association for the Advancement of Artificial Intelligence (AAAI)</i>, 2024.</span></div>
 <button class="button0" onclick="toggleBibtexatsidakou24apandora()">Bibtex</button>
  
 
@@ -1227,6 +1163,132 @@ function toggleAbstractkatiyarRobustMRF2021(parameter) {
 }
 </script>
 </li>
+<li><div class="text-justify"><span id="kwon2021rlb">Kwon, Jeongyeol, Yonathan Effroni, Constantine Caramanis, and Shie Mannor. “Reinforcement Learning in Reward-Mixing MDPs.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2021.</span></div>
+<button class="button0" onclick="toggleBibtexkwon2021rlb()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractkwon2021rlb()">Abstract</button>
+
+
+
+    <a href=""><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Bkwon2021rlb" style="display: none;">
+<pre>@article{kwon2021rlb,
+  title = {Reinforcement Learning in Reward-Mixing MDPs},
+  author = {Kwon, Jeongyeol and Effroni, Yonathan and Caramanis, Constantine and Mannor, Shie},
+  journal = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year = {2021},
+  group = {proceedings},
+  arxiv = {}
+}
+</pre>
+</div>
+
+<div id="akwon2021rlb" style="display: none;">
+<pre>ILearning a near optimal policy in a partially observable system remains an elusive challenge in contemporary reinforcement learning. In this work, we consider episodic reinforcement learning in a reward-mixing Markov decision process (MDP). There, a reward function is drawn from one of multiple possible reward models at the beginning of every episode, but the identity of the chosen reward model is not revealed to the agent. Hence, the latent state space, for which the dynamics are Markovian, is not given to the agent. We study the problem of learning a near optimal policy for two reward-mixing MDPs. Unlike existing approaches that rely on strong assumptions on the dynamics, we make no assumptions and study the problem in full generality. Indeed, with no further assumptions, even for two switching reward-models, the problem requires several new ideas beyond existing algorithmic and analysis techniques for efficient exploration. We provide the first polynomial-time algorithm that finds an ε-optimal policy after exploring \tildeO(poly(H,ε^-1) ⋅S^2 A^2) episodes, where H is time-horizon and S, A are the number of states and actions respectively. This is the first efficient algorithm that does not require any assumptions in partially observed environments where the observation space is smaller than the latent state space.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCkwon2021rlb(parameter) {
+    var x= document.getElementById('akwon2021rlb');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexkwon2021rlb(parameter) {
+    var x= document.getElementById('Bkwon2021rlb');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractkwon2021rlb(parameter) {
+    var x= document.getElementById('akwon2021rlb');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="kwon2021rl">———. “RL for Latent MDPs: Regret Guarantees and a Lower Bound.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2021.</span></div>
+<button class="button0" onclick="toggleBibtexkwon2021rl()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractkwon2021rl()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2102.00321.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Bkwon2021rl" style="display: none;">
+<pre>@article{kwon2021rl,
+  title = {RL for Latent MDPs: Regret Guarantees and a Lower Bound},
+  author = {Kwon, Jeongyeol and Effroni, Yonathan and Caramanis, Constantine and Mannor, Shie},
+  journal = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year = {2021},
+  group = {proceedings},
+  arxiv = {https://arxiv.org/pdf/2102.00321.pdf}
+}
+</pre>
+</div>
+
+<div id="akwon2021rl" style="display: none;">
+<pre>In this work, we consider the regret minimization problem for reinforcement learning in latent Markov Decision Processes (LMDP). In an LMDP, an MDP is randomly drawn from a set of M possible MDPs at the beginning of the interaction, but the identity of the chosen MDP is not revealed to the agent. We first show that a general instance of LMDPs requires at least Ω((SA)M) episodes to even approximate the optimal policy. Then, we consider sufficient assumptions under which learning good policies requires polynomial number of episodes. We show that the key link is a notion of separation between the MDP system dynamics. With sufficient separation, we provide an efficient algorithm with local guarantee, \it i.e., providing a sublinear regret guarantee when we are given a good initialization. Finally, if we are given standard statistical sufficiency assumptions common in the Predictive State Representation (PSR) literature (e.g., Boots et al.) and a reachability assumption, we show that the need for initialization can be removed.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCkwon2021rl(parameter) {
+    var x= document.getElementById('akwon2021rl');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexkwon2021rl(parameter) {
+    var x= document.getElementById('Bkwon2021rl');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractkwon2021rl(parameter) {
+    var x= document.getElementById('akwon2021rl');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
 <li><div class="text-justify"><span id="papadig2021recurrent">Papadigenopoulos, Orestis, and Constantine Caramanis. “Recurrent Submodular Welfare and Matroid Blocking Bandits.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2021.</span></div>
 <button class="button0" onclick="toggleBibtexpapadig2021recurrent()">Bibtex</button>
  
@@ -1290,166 +1352,41 @@ function toggleAbstractpapadig2021recurrent(parameter) {
 }
 </script>
 </li>
-<li><div class="text-justify"><span id="kwon2021rl">Kwon, Jeongyeol, Yonathan Effroni, Constantine Caramanis, and Shie Mannor. “RL for Latent MDPs: Regret Guarantees and a Lower Bound.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2021.</span></div>
-<button class="button0" onclick="toggleBibtexkwon2021rl()">Bibtex</button>
+<li><div class="text-justify"><span id="kwon2020minimax">Kwon, Jeongyeol, Nhat Ho, and Constantine Caramanis. “On the Minimax Optimality of the Em Algorithm for Learning Two-Component Mixed Linear Regression.” In <i>International Conference on Artificial Intelligence and Statistics (AISTATS)</i>. PMLR, 2021.</span></div>
+<button class="button0" onclick="toggleBibtexkwon2020minimax()">Bibtex</button>
  
 
-<button class="button0" onclick="toggleAbstractkwon2021rl()">Abstract</button>
+<button class="button0" onclick="toggleAbstractkwon2020minimax()">Abstract</button>
 
 
 
-    <a href="https://arxiv.org/pdf/2102.00321.pdf"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Bkwon2021rl" style="display: none;">
-<pre>@article{kwon2021rl,
-  title = {RL for Latent MDPs: Regret Guarantees and a Lower Bound},
-  author = {Kwon, Jeongyeol and Effroni, Yonathan and Caramanis, Constantine and Mannor, Shie},
-  journal = {Advances in Neural Information Processing Systems (NeurIPS)},
-  year = {2021},
-  group = {proceedings},
-  arxiv = {https://arxiv.org/pdf/2102.00321.pdf}
-}
-</pre>
-</div>
-
-<div id="akwon2021rl" style="display: none;">
-<pre>In this work, we consider the regret minimization problem for reinforcement learning in latent Markov Decision Processes (LMDP). In an LMDP, an MDP is randomly drawn from a set of M possible MDPs at the beginning of the interaction, but the identity of the chosen MDP is not revealed to the agent. We first show that a general instance of LMDPs requires at least Ω((SA)M) episodes to even approximate the optimal policy. Then, we consider sufficient assumptions under which learning good policies requires polynomial number of episodes. We show that the key link is a notion of separation between the MDP system dynamics. With sufficient separation, we provide an efficient algorithm with local guarantee, \it i.e., providing a sublinear regret guarantee when we are given a good initialization. Finally, if we are given standard statistical sufficiency assumptions common in the Predictive State Representation (PSR) literature (e.g., Boots et al.) and a reachability assumption, we show that the need for initialization can be removed.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCkwon2021rl(parameter) {
-    var x= document.getElementById('akwon2021rl');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexkwon2021rl(parameter) {
-    var x= document.getElementById('Bkwon2021rl');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractkwon2021rl(parameter) {
-    var x= document.getElementById('akwon2021rl');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="kwon2021rlb">———. “Reinforcement Learning in Reward-Mixing MDPs.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2021.</span></div>
-<button class="button0" onclick="toggleBibtexkwon2021rlb()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractkwon2021rlb()">Abstract</button>
-
-
-
-    <a href=""><input class="button4" type="button" value="ArXiv" /></a>
+    <a href="https://arxiv.org/pdf/2006.02601.pdf"><input class="button4" type="button" value="ArXiv" /></a>
 
  
 
 
-<div id="Bkwon2021rlb" style="display: none;">
-<pre>@article{kwon2021rlb,
-  title = {Reinforcement Learning in Reward-Mixing MDPs},
-  author = {Kwon, Jeongyeol and Effroni, Yonathan and Caramanis, Constantine and Mannor, Shie},
-  journal = {Advances in Neural Information Processing Systems (NeurIPS)},
-  year = {2021},
-  group = {proceedings},
-  arxiv = {}
-}
-</pre>
-</div>
-
-<div id="akwon2021rlb" style="display: none;">
-<pre>ILearning a near optimal policy in a partially observable system remains an elusive challenge in contemporary reinforcement learning. In this work, we consider episodic reinforcement learning in a reward-mixing Markov decision process (MDP). There, a reward function is drawn from one of multiple possible reward models at the beginning of every episode, but the identity of the chosen reward model is not revealed to the agent. Hence, the latent state space, for which the dynamics are Markovian, is not given to the agent. We study the problem of learning a near optimal policy for two reward-mixing MDPs. Unlike existing approaches that rely on strong assumptions on the dynamics, we make no assumptions and study the problem in full generality. Indeed, with no further assumptions, even for two switching reward-models, the problem requires several new ideas beyond existing algorithmic and analysis techniques for efficient exploration. We provide the first polynomial-time algorithm that finds an ε-optimal policy after exploring \tildeO(poly(H,ε^-1) ⋅S^2 A^2) episodes, where H is time-horizon and S, A are the number of states and actions respectively. This is the first efficient algorithm that does not require any assumptions in partially observed environments where the observation space is smaller than the latent state space.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCkwon2021rlb(parameter) {
-    var x= document.getElementById('akwon2021rlb');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexkwon2021rlb(parameter) {
-    var x= document.getElementById('Bkwon2021rlb');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractkwon2021rlb(parameter) {
-    var x= document.getElementById('akwon2021rlb');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="atsidakou2021combinatorial">Atsidakou, Alexia, Orestis Papadigenopoulos, Soumya Basu, Constantine Caramanis, and Sanjay Shakkottai. “Combinatorial Blocking Bandits with Stochastic Delays.” In <i>International Conference on Machine Learning (ICML)</i>. PMLR, 2021.</span></div>
-<button class="button0" onclick="toggleBibtexatsidakou2021combinatorial()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractatsidakou2021combinatorial()">Abstract</button>
-
-
-
-    <a href="https://arxiv.org/pdf/2105.10625.pdf"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Batsidakou2021combinatorial" style="display: none;">
-<pre>@inproceedings{atsidakou2021combinatorial,
-  title = {Combinatorial Blocking Bandits with Stochastic Delays},
-  author = {Atsidakou, Alexia and Papadigenopoulos, Orestis and Basu, Soumya and Caramanis, Constantine and Shakkottai, Sanjay},
-  booktitle = {International Conference on Machine Learning (ICML)},
+<div id="Bkwon2020minimax" style="display: none;">
+<pre>@inproceedings{kwon2020minimax,
+  title = {On the minimax optimality of the em algorithm for learning two-component mixed linear regression},
+  author = {Kwon, Jeongyeol and Ho, Nhat and Caramanis, Constantine},
+  booktitle = {International Conference on Artificial Intelligence and Statistics (AISTATS)},
+  pages = {},
   year = {2021},
   organization = {PMLR},
   group = {proceedings},
-  arxiv = {https://arxiv.org/pdf/2105.10625.pdf}
+  arxiv = {https://arxiv.org/pdf/2006.02601.pdf}
 }
 </pre>
 </div>
 
-<div id="aatsidakou2021combinatorial" style="display: none;">
-<pre>Recent work has considered natural variations of the \em multi-armed bandit problem, where the reward distribution of each arm is a special function of the time passed since its last pulling. In this direction, a simple (yet widely applicable) model is that of \em blocking bandits, where an arm becomes unavailable for a deterministic number of rounds after each play. In this work, we extend the above model in two directions: (i) We consider the general combinatorial setting where more than one arms can be played at each round, subject to feasibility constraints. (ii) We allow the blocking time of each arm to be stochastic. We first study the computational/unconditional hardness of the above setting and identify the necessary conditions for the problem to become tractable (even in an approximate sense). Based on these conditions, we provide a tight analysis of the approximation guarantee of a natural greedy heuristic that always plays the maximum expected reward feasible subset among the available (non-blocked) arms. When the arms’ expected rewards are unknown, we adapt the above heuristic into a bandit algorithm, based on UCB, for which we provide sublinear (approximate) regret guarantees, matching the theoretical lower bounds in the limiting case of absence of delays.</pre>
+<div id="akwon2020minimax" style="display: none;">
+<pre>We study the convergence rates of the EM algorithm for learning two-component mixed linear regression under all regimes of signal-to-noise ratio (SNR). We resolve a long-standing question that many recent results have attempted to tackle: we completely characterize the convergence behavior of EM, and show that the EM algorithm achieves minimax optimal sample complexity under all SNR regimes. In particular, when the SNR is sufficiently large, the EM updates converge to the true parameter θ^* at the standard parametric convergence rate \calo((d/n)^1/2) after \calo(\log(n/d)) iterations. In the regime where the SNR is above \calo((d/n)^1/4) and below some constant, the EM iterates converge to a \calo(\rm SNR^-1 (d/n)^1/2) neighborhood of the true parameter, when the number of iterations is of the order \calo(\rm SNR^-2 \log(n/d)). In the low SNR regime where the SNR is below \calo((d/n)^1/4), we show that EM converges to a \calo((d/n)^1/4) neighborhood of the true parameters, after \calo((n/d)^1/2) iterations. Notably, these results are achieved under mild conditions of either random initialization or an efficiently computable local initialization. By providing tight convergence guarantees of the EM algorithm in middle-to-low SNR regimes, we fill the remaining gap in the literature, and significantly, reveal that in low SNR, EM changes rate, matching the n^-1/4 rate of the MLE, a behavior that previous work had been unable to show. </pre>
 </div>
 
 
 <script>
-function toggleAbstractCCatsidakou2021combinatorial(parameter) {
-    var x= document.getElementById('aatsidakou2021combinatorial');
+function toggleAbstractCCkwon2020minimax(parameter) {
+    var x= document.getElementById('akwon2020minimax');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -1459,8 +1396,8 @@ function toggleAbstractCCatsidakou2021combinatorial(parameter) {
 </script>
 
 <script>
-function toggleBibtexatsidakou2021combinatorial(parameter) {
-    var x= document.getElementById('Batsidakou2021combinatorial');
+function toggleBibtexkwon2020minimax(parameter) {
+    var x= document.getElementById('Bkwon2020minimax');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -1470,8 +1407,8 @@ function toggleBibtexatsidakou2021combinatorial(parameter) {
 </script>
 
 <script>
-function toggleAbstractatsidakou2021combinatorial(parameter) {
-    var x= document.getElementById('aatsidakou2021combinatorial');
+function toggleAbstractkwon2020minimax(parameter) {
+    var x= document.getElementById('akwon2020minimax');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -1547,6 +1484,70 @@ function toggleAbstractbasu2020contextual(parameter) {
 }
 </script>
 </li>
+<li><div class="text-justify"><span id="atsidakou2021combinatorial">Atsidakou, Alexia, Orestis Papadigenopoulos, Soumya Basu, Constantine Caramanis, and Sanjay Shakkottai. “Combinatorial Blocking Bandits with Stochastic Delays.” In <i>International Conference on Machine Learning (ICML)</i>. PMLR, 2021.</span></div>
+<button class="button0" onclick="toggleBibtexatsidakou2021combinatorial()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractatsidakou2021combinatorial()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2105.10625.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Batsidakou2021combinatorial" style="display: none;">
+<pre>@inproceedings{atsidakou2021combinatorial,
+  title = {Combinatorial Blocking Bandits with Stochastic Delays},
+  author = {Atsidakou, Alexia and Papadigenopoulos, Orestis and Basu, Soumya and Caramanis, Constantine and Shakkottai, Sanjay},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  year = {2021},
+  organization = {PMLR},
+  group = {proceedings},
+  arxiv = {https://arxiv.org/pdf/2105.10625.pdf}
+}
+</pre>
+</div>
+
+<div id="aatsidakou2021combinatorial" style="display: none;">
+<pre>Recent work has considered natural variations of the \em multi-armed bandit problem, where the reward distribution of each arm is a special function of the time passed since its last pulling. In this direction, a simple (yet widely applicable) model is that of \em blocking bandits, where an arm becomes unavailable for a deterministic number of rounds after each play. In this work, we extend the above model in two directions: (i) We consider the general combinatorial setting where more than one arms can be played at each round, subject to feasibility constraints. (ii) We allow the blocking time of each arm to be stochastic. We first study the computational/unconditional hardness of the above setting and identify the necessary conditions for the problem to become tractable (even in an approximate sense). Based on these conditions, we provide a tight analysis of the approximation guarantee of a natural greedy heuristic that always plays the maximum expected reward feasible subset among the available (non-blocked) arms. When the arms’ expected rewards are unknown, we adapt the above heuristic into a bandit algorithm, based on UCB, for which we provide sublinear (approximate) regret guarantees, matching the theoretical lower bounds in the limiting case of absence of delays.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCatsidakou2021combinatorial(parameter) {
+    var x= document.getElementById('aatsidakou2021combinatorial');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexatsidakou2021combinatorial(parameter) {
+    var x= document.getElementById('Batsidakou2021combinatorial');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractatsidakou2021combinatorial(parameter) {
+    var x= document.getElementById('aatsidakou2021combinatorial');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
 <li><div class="text-justify"><span id="caramanis2021single">Caramanis, Constantine, Paul Duetting, Matthew Faw, Federico Fusco, Philip Lazo, Stefano Leonardi, Orestis Papadigenopoulos, Emmanouil Pountourakis, and Rebecca Reiffenhauser. “Single Sample Prophet Inequalities via Greedy-Ordered Selection.” <i>Symposium on Discrete Algorithms (SODA)</i>, 2021.</span></div>
 <button class="button0" onclick="toggleBibtexcaramanis2021single()">Bibtex</button>
  
@@ -1602,71 +1603,6 @@ function toggleBibtexcaramanis2021single(parameter) {
 <script>
 function toggleAbstractcaramanis2021single(parameter) {
     var x= document.getElementById('acaramanis2021single');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="kwon2020minimax">Kwon, Jeongyeol, Nhat Ho, and Constantine Caramanis. “On the Minimax Optimality of the Em Algorithm for Learning Two-Component Mixed Linear Regression.” In <i>International Conference on Artificial Intelligence and Statistics (AISTATS)</i>. PMLR, 2021.</span></div>
-<button class="button0" onclick="toggleBibtexkwon2020minimax()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractkwon2020minimax()">Abstract</button>
-
-
-
-    <a href="https://arxiv.org/pdf/2006.02601.pdf"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Bkwon2020minimax" style="display: none;">
-<pre>@inproceedings{kwon2020minimax,
-  title = {On the minimax optimality of the em algorithm for learning two-component mixed linear regression},
-  author = {Kwon, Jeongyeol and Ho, Nhat and Caramanis, Constantine},
-  booktitle = {International Conference on Artificial Intelligence and Statistics (AISTATS)},
-  pages = {},
-  year = {2021},
-  organization = {PMLR},
-  group = {proceedings},
-  arxiv = {https://arxiv.org/pdf/2006.02601.pdf}
-}
-</pre>
-</div>
-
-<div id="akwon2020minimax" style="display: none;">
-<pre>We study the convergence rates of the EM algorithm for learning two-component mixed linear regression under all regimes of signal-to-noise ratio (SNR). We resolve a long-standing question that many recent results have attempted to tackle: we completely characterize the convergence behavior of EM, and show that the EM algorithm achieves minimax optimal sample complexity under all SNR regimes. In particular, when the SNR is sufficiently large, the EM updates converge to the true parameter θ^* at the standard parametric convergence rate \calo((d/n)^1/2) after \calo(\log(n/d)) iterations. In the regime where the SNR is above \calo((d/n)^1/4) and below some constant, the EM iterates converge to a \calo(\rm SNR^-1 (d/n)^1/2) neighborhood of the true parameter, when the number of iterations is of the order \calo(\rm SNR^-2 \log(n/d)). In the low SNR regime where the SNR is below \calo((d/n)^1/4), we show that EM converges to a \calo((d/n)^1/4) neighborhood of the true parameters, after \calo((n/d)^1/2) iterations. Notably, these results are achieved under mild conditions of either random initialization or an efficiently computable local initialization. By providing tight convergence guarantees of the EM algorithm in middle-to-low SNR regimes, we fill the remaining gap in the literature, and significantly, reveal that in low SNR, EM changes rate, matching the n^-1/4 rate of the MLE, a behavior that previous work had been unable to show. </pre>
-</div>
-
-
-<script>
-function toggleAbstractCCkwon2020minimax(parameter) {
-    var x= document.getElementById('akwon2020minimax');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexkwon2020minimax(parameter) {
-    var x= document.getElementById('Bkwon2020minimax');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractkwon2020minimax(parameter) {
-    var x= document.getElementById('akwon2020minimax');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -1801,70 +1737,6 @@ function toggleAbstracthoffmann2019disentangling(parameter) {
 }
 </script>
 </li>
-<li><div class="text-justify"><span id="kocaoglu2020applications">Kocaoglu, Murat, Sanjay Shakkottai, Alexandros G Dimakis, Constantine Caramanis, and Sriram Vishwanath. “Applications of Common Entropy for Causal Inference.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i> 33 (2020).</span></div>
-<button class="button0" onclick="toggleBibtexkocaoglu2020applications()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractkocaoglu2020applications()">Abstract</button>
-
-
-
-    <a href="https://arxiv.org/pdf/1807.10399.pdf"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Bkocaoglu2020applications" style="display: none;">
-<pre>@article{kocaoglu2020applications,
-  title = {Applications of Common Entropy for Causal Inference},
-  author = {Kocaoglu, Murat and Shakkottai, Sanjay and Dimakis, Alexandros G and Caramanis, Constantine and Vishwanath, Sriram},
-  journal = {Advances in Neural Information Processing Systems (NeurIPS)},
-  volume = {33},
-  year = {2020},
-  group = {proceedings},
-  arxiv = {https://arxiv.org/pdf/1807.10399.pdf}
-}
-</pre>
-</div>
-
-<div id="akocaoglu2020applications" style="display: none;">
-<pre>We study the problem of discovering the simplest latent variable that can make two observed discrete variables conditionally independent. The minimum entropy required for such a latent is known as common entropy in information theory. We extend this notion to Renyi common entropy by minimizing the Renyi entropy of the latent variable. To efficiently compute common entropy, we propose an iterative algorithm that can be used to discover the trade-off between the entropy of the latent variable and the conditional mutual information of the observed variables. We show two applications of common entropy in causal inference: First, under the assumption that there are no low-entropy mediators, it can be used to distinguish causation from spurious correlation among almost all joint distributions on simple causal graphs with two observed variables. Second, common entropy can be used to improve constraint-based methods such as PC or FCI algorithms in the small-sample regime, where these methods are known to struggle. We propose a modification to these constraint-based methods to assess if a separating set found by these algorithms is valid using common entropy. We finally evaluate our algorithms on synthetic and real data to establish their performance.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCkocaoglu2020applications(parameter) {
-    var x= document.getElementById('akocaoglu2020applications');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexkocaoglu2020applications(parameter) {
-    var x= document.getElementById('Bkocaoglu2020applications');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractkocaoglu2020applications(parameter) {
-    var x= document.getElementById('akocaoglu2020applications');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
 <li><div class="text-justify"><span id="tziotis2020second">Tziotis, Isidoros, Constantine Caramanis, and Aryan Mokhtari. “Second Order Optimality in Decentralized Non-Convex Optimization via Perturbed Gradient Tracking.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i> 33 (2020).</span></div>
 <button class="button0" onclick="toggleBibtextziotis2020second()">Bibtex</button>
  
@@ -1985,6 +1857,70 @@ function toggleBibtexfaw2020mix(parameter) {
 <script>
 function toggleAbstractfaw2020mix(parameter) {
     var x= document.getElementById('afaw2020mix');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="kocaoglu2020applications">Kocaoglu, Murat, Sanjay Shakkottai, Alexandros G Dimakis, Constantine Caramanis, and Sriram Vishwanath. “Applications of Common Entropy for Causal Inference.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i> 33 (2020).</span></div>
+<button class="button0" onclick="toggleBibtexkocaoglu2020applications()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractkocaoglu2020applications()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/1807.10399.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Bkocaoglu2020applications" style="display: none;">
+<pre>@article{kocaoglu2020applications,
+  title = {Applications of Common Entropy for Causal Inference},
+  author = {Kocaoglu, Murat and Shakkottai, Sanjay and Dimakis, Alexandros G and Caramanis, Constantine and Vishwanath, Sriram},
+  journal = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume = {33},
+  year = {2020},
+  group = {proceedings},
+  arxiv = {https://arxiv.org/pdf/1807.10399.pdf}
+}
+</pre>
+</div>
+
+<div id="akocaoglu2020applications" style="display: none;">
+<pre>We study the problem of discovering the simplest latent variable that can make two observed discrete variables conditionally independent. The minimum entropy required for such a latent is known as common entropy in information theory. We extend this notion to Renyi common entropy by minimizing the Renyi entropy of the latent variable. To efficiently compute common entropy, we propose an iterative algorithm that can be used to discover the trade-off between the entropy of the latent variable and the conditional mutual information of the observed variables. We show two applications of common entropy in causal inference: First, under the assumption that there are no low-entropy mediators, it can be used to distinguish causation from spurious correlation among almost all joint distributions on simple causal graphs with two observed variables. Second, common entropy can be used to improve constraint-based methods such as PC or FCI algorithms in the small-sample regime, where these methods are known to struggle. We propose a modification to these constraint-based methods to assess if a separating set found by these algorithms is valid using common entropy. We finally evaluate our algorithms on synthetic and real data to establish their performance.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCkocaoglu2020applications(parameter) {
+    var x= document.getElementById('akocaoglu2020applications');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexkocaoglu2020applications(parameter) {
+    var x= document.getElementById('Bkocaoglu2020applications');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractkocaoglu2020applications(parameter) {
+    var x= document.getElementById('akocaoglu2020applications');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -6424,7 +6360,71 @@ function toggleAbstractbertsimas2002geometry(parameter) {
 
 <h2 id="journal-papers">Journal Papers</h2>
 
-<ol class="bibliography"><li><div class="text-justify"><span id="kyrillidis2018provable">Kyrillidis, Anastasios, Amir Kalev, Dohyung Park, Srinadh Bhojanapalli, Constantine Caramanis, and Sujay Sanghavi. “Provable Compressed Sensing Quantum State Tomography via Non-Convex Methods.” <i>Npj Quantum Information</i> 4, no. 1 (2018): 1–7.</span></div>
+<ol class="bibliography"><li><div class="text-justify"><span id="zhuoSlowMatrix2024">Zhuo, Jiacheng, Jeongyeol Kwon, Nhat Ho, and Constantine Caramanis. “On the Computational and Statistical Complexity of over-Parameterized Matrix Sensing.” <i>Journal of Machine Learning Research</i>, 2024.</span></div>
+<button class="button0" onclick="toggleBibtexzhuoSlowMatrix2024()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractzhuoSlowMatrix2024()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2102.02756.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="BzhuoSlowMatrix2024" style="display: none;">
+<pre>@article{zhuoSlowMatrix2024,
+  title = {On the computational and statistical complexity of over-parameterized matrix sensing},
+  author = {Zhuo, Jiacheng and Kwon, Jeongyeol and Ho, Nhat and Caramanis, Constantine},
+  journal = {Journal of Machine Learning Research},
+  year = {2024},
+  group = {journal},
+  arxiv = {https://arxiv.org/pdf/2102.02756.pdf}
+}
+</pre>
+</div>
+
+<div id="azhuoSlowMatrix2024" style="display: none;">
+<pre>We consider solving the low rank matrix sensing problem with Factorized Gradient Descend (FGD) method when the true rank is unknown and over-specified, which we refer to as over-parameterized matrix sensing.
+If the ground truth signal X^* ∈\mathbbR^d*d is of rank r, but we try to recover it using FF^⊤where F ∈\mathbbR^d*k and k&gt;r, the existing statistical analysis falls short, due to a flat local curvature of the loss function around the global maxima. By decomposing the factorized matrix \fitMat into separate column spaces to capture the effect of extra ranks, we show that ||F_t F_t - F||_F^2 converges to a statistical error of \tilde\mathcalO \parenthk d σ^2/n after \tilde\mathcalO(\frac\sigma_rσ\sqrt\fracnd) number of iterations where \fitMat_t is the output of FGD after t iterations, σ^2 is the variance of the observation noise, \sigma_r is the r-th largest eigenvalue of \trueMat, and n is the number of sample. Our results, therefore, offer a comprehensive picture of the statistical and computational complexity of FGD for the over-parameterized matrix sensing problem.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCzhuoSlowMatrix2024(parameter) {
+    var x= document.getElementById('azhuoSlowMatrix2024');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexzhuoSlowMatrix2024(parameter) {
+    var x= document.getElementById('BzhuoSlowMatrix2024');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractzhuoSlowMatrix2024(parameter) {
+    var x= document.getElementById('azhuoSlowMatrix2024');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="kyrillidis2018provable">Kyrillidis, Anastasios, Amir Kalev, Dohyung Park, Srinadh Bhojanapalli, Constantine Caramanis, and Sujay Sanghavi. “Provable Compressed Sensing Quantum State Tomography via Non-Convex Methods.” <i>Npj Quantum Information</i> 4, no. 1 (2018): 1–7.</span></div>
 <button class="button0" onclick="toggleBibtexkyrillidis2018provable()">Bibtex</button>
  
 

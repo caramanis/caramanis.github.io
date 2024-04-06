@@ -257,7 +257,134 @@ I am a Professor in the ECE department of The University of Texas at Austin. I r
 
 <hr />
 <h3 id="the-last-ten-publications-chronologically">The last ten publications, chronologically…</h3>
-<ol class="bibliography"><li><div class="text-justify"><span id="atsidakou24apandora">Atsidakou, Alexia, Constantine Caramanis, Evangelia Gergatsouli, Orestis Papadigenopoulos, and Christos Tzamos. “Contextual Pandora’s Box.” <i>Association for the Advancement of Artificial Intelligence (AAAI)</i>, 2024.</span></div>
+<ol class="bibliography"><li><div class="text-justify"><span id="rout2024secondorder">Rout, Litu, Yujia Chen, Abhishek Kumar, Constantine Caramanis, Sanjay Shakkottai, and Wen-Sheng Chu. “Beyond First-Order Tweedie: Solving Inverse Problems Using Latent Diffusion.” <i>Proceedings of the Conference on Computer Vision and Pattern Recognition</i>, 2024.</span></div>
+<button class="button0" onclick="toggleBibtexrout2024secondorder()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractrout2024secondorder()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2312.00852.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Brout2024secondorder" style="display: none;">
+<pre>@article{rout2024secondorder,
+  title = {Beyond First-Order Tweedie: Solving Inverse Problems using Latent Diffusion},
+  author = {Rout, Litu and Chen, Yujia and Kumar, Abhishek and Caramanis, Constantine and Shakkottai, Sanjay and Chu, Wen-Sheng},
+  journal = {Proceedings of the Conference on Computer Vision and Pattern Recognition},
+  year = {2024},
+  group = {proceedings},
+  arxiv = {https://arxiv.org/pdf/2312.00852.pdf}
+}
+</pre>
+</div>
+
+<div id="arout2024secondorder" style="display: none;">
+<pre>Sampling from the posterior distribution poses a major computational challenge in solving inverse problems using latent diffusion models. Common methods rely on Tweedie’s first-order moments, which are known to induce a quality-limiting bias. Existing second-order approximations are impractical due to prohibitive computational costs, making standard reverse diffusion processes intractable for posterior sampling. This paper introduces Second-order Tweedie sampler from Surrogate Loss (STSL), a novel sampler that offers efficiency comparable to first-order Tweedie with a tractable reverse process using second-order approximation. Our theoretical results reveal that the second-order approximation is lower bounded by our surrogate loss that only requires O(1) compute using the trace of the Hessian, and by the lower bound we derive a new drift term to make the reverse process tractable. Our method surpasses SoTA solvers PSLD and P2L, achieving 4X and 8X reduction in neural function evaluations, respectively, while notably enhancing sampling quality on FFHQ, ImageNet, and COCO benchmarks. In addition, we show STSL extends to text-guided image editing and addresses residual distortions present from corrupted images in leading text-guided image editing methods. To our best knowledge, this is the first work to offer an efficient second-order approximation in solving inverse problems using latent diffusion and editing real-world images with corruptions.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCrout2024secondorder(parameter) {
+    var x= document.getElementById('arout2024secondorder');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexrout2024secondorder(parameter) {
+    var x= document.getElementById('Brout2024secondorder');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractrout2024secondorder(parameter) {
+    var x= document.getElementById('arout2024secondorder');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="zhuoSlowMatrix2024">Zhuo, Jiacheng, Jeongyeol Kwon, Nhat Ho, and Constantine Caramanis. “On the Computational and Statistical Complexity of over-Parameterized Matrix Sensing.” <i>Journal of Machine Learning Research</i>, 2024.</span></div>
+<button class="button0" onclick="toggleBibtexzhuoSlowMatrix2024()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractzhuoSlowMatrix2024()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2102.02756.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="BzhuoSlowMatrix2024" style="display: none;">
+<pre>@article{zhuoSlowMatrix2024,
+  title = {On the computational and statistical complexity of over-parameterized matrix sensing},
+  author = {Zhuo, Jiacheng and Kwon, Jeongyeol and Ho, Nhat and Caramanis, Constantine},
+  journal = {Journal of Machine Learning Research},
+  year = {2024},
+  group = {journal},
+  arxiv = {https://arxiv.org/pdf/2102.02756.pdf}
+}
+</pre>
+</div>
+
+<div id="azhuoSlowMatrix2024" style="display: none;">
+<pre>We consider solving the low rank matrix sensing problem with Factorized Gradient Descend (FGD) method when the true rank is unknown and over-specified, which we refer to as over-parameterized matrix sensing.
+If the ground truth signal X^* ∈\mathbbR^d*d is of rank r, but we try to recover it using FF^⊤where F ∈\mathbbR^d*k and k&gt;r, the existing statistical analysis falls short, due to a flat local curvature of the loss function around the global maxima. By decomposing the factorized matrix \fitMat into separate column spaces to capture the effect of extra ranks, we show that ||F_t F_t - F||_F^2 converges to a statistical error of \tilde\mathcalO \parenthk d σ^2/n after \tilde\mathcalO(\frac\sigma_rσ\sqrt\fracnd) number of iterations where \fitMat_t is the output of FGD after t iterations, σ^2 is the variance of the observation noise, \sigma_r is the r-th largest eigenvalue of \trueMat, and n is the number of sample. Our results, therefore, offer a comprehensive picture of the statistical and computational complexity of FGD for the over-parameterized matrix sensing problem.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCzhuoSlowMatrix2024(parameter) {
+    var x= document.getElementById('azhuoSlowMatrix2024');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexzhuoSlowMatrix2024(parameter) {
+    var x= document.getElementById('BzhuoSlowMatrix2024');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractzhuoSlowMatrix2024(parameter) {
+    var x= document.getElementById('azhuoSlowMatrix2024');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="atsidakou24apandora">Atsidakou, Alexia, Constantine Caramanis, Evangelia Gergatsouli, Orestis Papadigenopoulos, and Christos Tzamos. “Contextual Pandora’s Box.” <i>Association for the Advancement of Artificial Intelligence (AAAI)</i>, 2024.</span></div>
 <button class="button0" onclick="toggleBibtexatsidakou24apandora()">Bibtex</button>
  
 
@@ -316,69 +443,6 @@ function toggleBibtexatsidakou24apandora(parameter) {
 <script>
 function toggleAbstractatsidakou24apandora(parameter) {
     var x= document.getElementById('aatsidakou24apandora');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="rout2023secondorder">Rout, Litu, Yujia Chen, Abhishek Kumar, Constantine Caramanis, Sanjay Shakkottai, and Wen-Sheng Chu. “Beyond First-Order Tweedie: Solving Inverse Problems Using Latent Diffusion.” <i>Preprint</i>, 2023.</span></div>
-<button class="button0" onclick="toggleBibtexrout2023secondorder()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractrout2023secondorder()">Abstract</button>
-
-
-
-    <a href="https://arxiv.org/pdf/2312.00852.pdf"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Brout2023secondorder" style="display: none;">
-<pre>@article{rout2023secondorder,
-  title = {Beyond First-Order Tweedie: Solving Inverse Problems using Latent Diffusion},
-  author = {Rout, Litu and Chen, Yujia and Kumar, Abhishek and Caramanis, Constantine and Shakkottai, Sanjay and Chu, Wen-Sheng},
-  journal = {preprint},
-  year = {2023},
-  group = {misc},
-  arxiv = {https://arxiv.org/pdf/2312.00852.pdf}
-}
-</pre>
-</div>
-
-<div id="arout2023secondorder" style="display: none;">
-<pre>Sampling from the posterior distribution poses a major computational challenge in solving inverse problems using latent diffusion models. Common methods rely on Tweedie’s first-order moments, which are known to induce a quality-limiting bias. Existing second-order approximations are impractical due to prohibitive computational costs, making standard reverse diffusion processes intractable for posterior sampling. This paper introduces Second-order Tweedie sampler from Surrogate Loss (STSL), a novel sampler that offers efficiency comparable to first-order Tweedie with a tractable reverse process using second-order approximation. Our theoretical results reveal that the second-order approximation is lower bounded by our surrogate loss that only requires O(1) compute using the trace of the Hessian, and by the lower bound we derive a new drift term to make the reverse process tractable. Our method surpasses SoTA solvers PSLD and P2L, achieving 4X and 8X reduction in neural function evaluations, respectively, while notably enhancing sampling quality on FFHQ, ImageNet, and COCO benchmarks. In addition, we show STSL extends to text-guided image editing and addresses residual distortions present from corrupted images in leading text-guided image editing methods. To our best knowledge, this is the first work to offer an efficient second-order approximation in solving inverse problems using latent diffusion and editing real-world images with corruptions.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCrout2023secondorder(parameter) {
-    var x= document.getElementById('arout2023secondorder');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexrout2023secondorder(parameter) {
-    var x= document.getElementById('Brout2023secondorder');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractrout2023secondorder(parameter) {
-    var x= document.getElementById('arout2023secondorder');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -579,69 +643,6 @@ function toggleAbstractatsidakou23abayes(parameter) {
 }
 </script>
 </li>
-<li><div class="text-justify"><span id="caramanis23samplers">Caramanis, Constantine, Dimitris Fotakis, Alkis Kalavasis, Vasilis Kontonis, and Christos Tzamos. “Optimizing Solution-Samplers for Combinatorial Problems: The Landscape of Policy-Gradient Methods.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2023.</span></div>
-<button class="button0" onclick="toggleBibtexcaramanis23samplers()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractcaramanis23samplers()">Abstract</button>
-
-
-
-    <a href="https://arxiv.org/pdf/2310.05309.pdf"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Bcaramanis23samplers" style="display: none;">
-<pre>@article{caramanis23samplers,
-  title = {Optimizing Solution-Samplers for Combinatorial Problems: The Landscape of Policy-Gradient Methods},
-  author = {Caramanis, Constantine and Fotakis, Dimitris and Kalavasis, Alkis and Kontonis, Vasilis and Tzamos, Christos},
-  journal = {Advances in Neural Information Processing Systems (NeurIPS)},
-  year = {2023},
-  group = {proceedings},
-  arxiv = {https://arxiv.org/pdf/2310.05309.pdf}
-}
-</pre>
-</div>
-
-<div id="acaramanis23samplers" style="display: none;">
-<pre>Deep Neural Networks and Reinforcement Learning methods have empirically shown great promise in tackling challenging combinatorial problems. In those methods a deep neural network is used as a solution generator which is then trained by gradient-based methods (e.g., policy gradient) to successively obtain better solution distributions. In this work we introduce a novel theoretical framework for analyzing the effectiveness of such methods. We ask whether there exist generative models that (i) are expressive enough to generate approximately optimal solutions; (ii) have a tractable, i.e, polynomial in the size of the input, number of parameters; (iii) their optimization landscape is benign in the sense that it does not contain sub-optimal stationary points. Our main contribution is a positive answer to this question. Our result holds for a broad class of combinatorial problems including Max- and Min-Cut, Max-k-CSP, Maximum-Weight-Bipartite-Matching, and the Traveling Salesman Problem. As a byproduct of our analysis we introduce a novel regularization process over vanilla gradient descent and provide theoretical and experimental evidence that it helps address vanishing-gradient issues and escape bad stationary points.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCcaramanis23samplers(parameter) {
-    var x= document.getElementById('acaramanis23samplers');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexcaramanis23samplers(parameter) {
-    var x= document.getElementById('Bcaramanis23samplers');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractcaramanis23samplers(parameter) {
-    var x= document.getElementById('acaramanis23samplers');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
 <li><div class="text-justify"><span id="rout23inverse">Rout, Litu, Negin Raoof, Giannis Daras, Constantine Caramanis, Alexandros Dimakis, and Sanjay Shakkottai. “Solving Linear Inverse Problems Provably via Posterior Sampling with Latent Diffusion Models.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2023.</span></div>
 <button class="button0" onclick="toggleBibtexrout23inverse()">Bibtex</button>
  
@@ -697,6 +698,69 @@ function toggleBibtexrout23inverse(parameter) {
 <script>
 function toggleAbstractrout23inverse(parameter) {
     var x= document.getElementById('arout23inverse');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="caramanis23samplers">Caramanis, Constantine, Dimitris Fotakis, Alkis Kalavasis, Vasilis Kontonis, and Christos Tzamos. “Optimizing Solution-Samplers for Combinatorial Problems: The Landscape of Policy-Gradient Methods.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2023.</span></div>
+<button class="button0" onclick="toggleBibtexcaramanis23samplers()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractcaramanis23samplers()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2310.05309.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Bcaramanis23samplers" style="display: none;">
+<pre>@article{caramanis23samplers,
+  title = {Optimizing Solution-Samplers for Combinatorial Problems: The Landscape of Policy-Gradient Methods},
+  author = {Caramanis, Constantine and Fotakis, Dimitris and Kalavasis, Alkis and Kontonis, Vasilis and Tzamos, Christos},
+  journal = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year = {2023},
+  group = {proceedings},
+  arxiv = {https://arxiv.org/pdf/2310.05309.pdf}
+}
+</pre>
+</div>
+
+<div id="acaramanis23samplers" style="display: none;">
+<pre>Deep Neural Networks and Reinforcement Learning methods have empirically shown great promise in tackling challenging combinatorial problems. In those methods a deep neural network is used as a solution generator which is then trained by gradient-based methods (e.g., policy gradient) to successively obtain better solution distributions. In this work we introduce a novel theoretical framework for analyzing the effectiveness of such methods. We ask whether there exist generative models that (i) are expressive enough to generate approximately optimal solutions; (ii) have a tractable, i.e, polynomial in the size of the input, number of parameters; (iii) their optimization landscape is benign in the sense that it does not contain sub-optimal stationary points. Our main contribution is a positive answer to this question. Our result holds for a broad class of combinatorial problems including Max- and Min-Cut, Max-k-CSP, Maximum-Weight-Bipartite-Matching, and the Traveling Salesman Problem. As a byproduct of our analysis we introduce a novel regularization process over vanilla gradient descent and provide theoretical and experimental evidence that it helps address vanishing-gradient issues and escape bad stationary points.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCcaramanis23samplers(parameter) {
+    var x= document.getElementById('acaramanis23samplers');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexcaramanis23samplers(parameter) {
+    var x= document.getElementById('Bcaramanis23samplers');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractcaramanis23samplers(parameter) {
+    var x= document.getElementById('acaramanis23samplers');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -825,69 +889,6 @@ function toggleBibtexfaw2022power(parameter) {
 <script>
 function toggleAbstractfaw2022power(parameter) {
     var x= document.getElementById('afaw2022power');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="kwon2022coordinated">Kwon, Jeongyeol, Yonathan Efroni, Constantine Caramanis, and Shie Mannor. “Coordinated Attacks against Contextual Bandits: Fundamental Limits and Defense Mechanisms.” <i>International Conference on Machine Learning (ICML)</i>, 2022.</span></div>
-<button class="button0" onclick="toggleBibtexkwon2022coordinated()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractkwon2022coordinated()">Abstract</button>
-
-
-
-    <a href="https://arxiv.org/pdf/2201.12700.pdf"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Bkwon2022coordinated" style="display: none;">
-<pre>@article{kwon2022coordinated,
-  title = {Coordinated Attacks against Contextual Bandits: Fundamental Limits and Defense Mechanisms},
-  author = {Kwon, Jeongyeol and Efroni, Yonathan and Caramanis, Constantine and Mannor, Shie},
-  journal = {International Conference on Machine Learning (ICML)},
-  year = {2022},
-  group = {proceedings},
-  arxiv = {https://arxiv.org/pdf/2201.12700.pdf}
-}
-</pre>
-</div>
-
-<div id="akwon2022coordinated" style="display: none;">
-<pre>Motivated by online recommendation systems, we propose the problem of finding the optimal policy in multitask contextual bandits when a small fraction alpha &lt; 1/2 of tasks (users) are arbitrary and adversarial. The remaining fraction of good users share the same instance of contextual bandits with S contexts and A actions (items). Naturally, whether a user is good or adversarial is not known in advance. The goal is to robustly learn the policy that maximizes rewards for good users with as few user interactions as possible. Without adversarial users, established results in collaborative filtering show that O(1/epsilon^2) per-user interactions suffice to learn a good policy, precisely because information can be shared across users. This parallelization gain is fundamentally altered by the presence of adversarial users: unless there are super-polynomial number of users, we show a lower bound of Omega(min(S,A)alpha^2/epsilon^2) \it per-user interactions to learn an epsilon-optimal policy for the good users. We then show we can achieve an O (min(S,A) alpha /epsilon^2) upper-bound, by employing efficient robust mean estimators for both uni-variate and high-dimensional random variables. We also show that this can be improved depending on the distributions of contexts.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCkwon2022coordinated(parameter) {
-    var x= document.getElementById('akwon2022coordinated');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexkwon2022coordinated(parameter) {
-    var x= document.getElementById('Bkwon2022coordinated');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractkwon2022coordinated(parameter) {
-    var x= document.getElementById('akwon2022coordinated');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
