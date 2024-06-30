@@ -55,8 +55,7 @@
       <a class="sidebar-nav-item" href="https://www.youtube.com/channel/UCSv1_NZITsPl-abaCWtRrJg" target="_blank">YouTube</a>
       <a class="sidebar-nav-item" href="https://ml.utexas.edu/ifml" target="_blank">IFML</a>
       <a class="sidebar-nav-item" href="https://wncg.org" target="_blank">WNCG</a>
-      <a class="sidebar-nav-item" href="https://www.utmlds.club/" target="_blank">MLDS</a>
-
+      <a class="sidebar-nav-item" href="https://archimedesai.gr/en/" target="_blank">Archimedes AI</a>
 
 
 
@@ -246,7 +245,133 @@ I am a Professor in the ECE department of The University of Texas at Austin. I r
 
 <hr />
 <h3 id="the-last-ten-publications-chronologically">The last ten publications, chronologically…</h3>
-<ol class="bibliography"><li><div class="text-justify"><span id="rout2024secondorder">Rout, Litu, Yujia Chen, Abhishek Kumar, Constantine Caramanis, Sanjay Shakkottai, and Wen-Sheng Chu. “Beyond First-Order Tweedie: Solving Inverse Problems Using Latent Diffusion.” <i>Proceedings of the Conference on Computer Vision and Pattern Recognition</i>, 2024.</span></div>
+<ol class="bibliography"><li><div class="text-justify"><span id="kwon24lmdp">Kwon, Jeongyeol, Yonathan Efroni, Shie Mannor, and Constantine Caramanis. “RL in Latent MDPs Is Tractable: Online Guarantees via Off-Policy Evaluation.” <i>Preprint</i>, 2024.</span></div>
+<button class="button0" onclick="toggleBibtexkwon24lmdp()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractkwon24lmdp()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2406.01389"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Bkwon24lmdp" style="display: none;">
+<pre>@article{kwon24lmdp,
+  title = {RL in Latent MDPs is Tractable: Online Guarantees via Off-Policy Evaluation},
+  author = {Kwon, Jeongyeol and Efroni, Yonathan and Mannor, Shie and Caramanis, Constantine},
+  journal = {preprint},
+  year = {2024},
+  group = {misc},
+  arxiv = {https://arxiv.org/pdf/2406.01389}
+}
+</pre>
+</div>
+
+<div id="akwon24lmdp" style="display: none;">
+<pre>In many real-world decision problems there is partially observed, hidden or latent information that remains fixed throughout an interaction. Such decision problems can be modeled as Latent Markov Decision Processes (LMDPs), where a latent variable is selected at the beginning of an interaction and is not disclosed to the agent. In the last decade, there has been significant progress in solving LMDPs under different structural assumptions. However, for general LMDPs, there is no known learning algorithm that provably matches the existing lower bound (Kwon et al., 2021). We introduce the first sample-efficient algorithm for LMDPs without any additional structural assumptions. Our result builds off a new perspective on the role of off-policy evaluation guarantees and coverage coefficients in LMDPs, a perspective, that has been overlooked in the context of exploration in partially observed environments. Specifically, we establish a novel off-policy evaluation lemma and introduce a new coverage coefficient for LMDPs. Then, we show how these can be used to derive near-optimal guarantees of an optimistic exploration algorithm. These results, we believe, can be valuable for a wide range of interactive learning problems beyond LMDPs, and especially, for partially observed environments.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCkwon24lmdp(parameter) {
+    var x= document.getElementById('akwon24lmdp');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexkwon24lmdp(parameter) {
+    var x= document.getElementById('Bkwon24lmdp');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractkwon24lmdp(parameter) {
+    var x= document.getElementById('akwon24lmdp');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="rout2024rb">Rout, Litu, Yujia Chen, Nataniel Ruiz, Abhishek Kumar, Constantine Caramanis, Sanjay Shakkottai, and Wen-Sheng Chu. “RB-Modulation: Training-Free Personalization of Diffusion Models Using Stochastic Optimal Control.” <i>Preprint</i>, 2024.</span></div>
+<button class="button0" onclick="toggleBibtexrout2024rb()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractrout2024rb()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2405.17401"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Brout2024rb" style="display: none;">
+<pre>@article{rout2024rb,
+  title = {RB-Modulation: Training-Free Personalization of Diffusion Models using Stochastic Optimal Control},
+  author = {Rout, Litu and Chen, Yujia and Ruiz, Nataniel and Kumar, Abhishek and Caramanis, Constantine and Shakkottai, Sanjay and Chu, Wen-Sheng},
+  journal = {preprint},
+  year = {2024},
+  group = {misc},
+  arxiv = {https://arxiv.org/pdf/2405.17401}
+}
+</pre>
+</div>
+
+<div id="arout2024rb" style="display: none;">
+<pre>We propose Reference-Based Modulation (RB-Modulation), a new plug-and-play solution for training-free personalization of diffusion models. Existing training-free approaches exhibit difficulties in (a) style extraction from reference images in the absence of additional style or content text descriptions, (b) unwanted content leakage from reference style images, and (c) effective composition of style and content. RB-Modulation is built on a novel stochastic optimal controller where a style descriptor encodes the desired attributes through a terminal cost. The resulting drift not only overcomes the difficulties above, but also ensures high fidelity to the reference style and adheres to the given text prompt. We also introduce a cross-attention-based feature aggregation scheme that allows RB-Modulation to decouple content and style from the reference image. With theoretical justification and empirical evidence, our framework demonstrates precise extraction and control of content and style in a training-free manner. Further, our method allows a seamless composition of content and style, which marks a departure from the dependency on external adapters or ControlNets.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCrout2024rb(parameter) {
+    var x= document.getElementById('arout2024rb');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexrout2024rb(parameter) {
+    var x= document.getElementById('Brout2024rb');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractrout2024rb(parameter) {
+    var x= document.getElementById('arout2024rb');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="rout2024secondorder">Rout, Litu, Yujia Chen, Abhishek Kumar, Constantine Caramanis, Sanjay Shakkottai, and Wen-Sheng Chu. “Beyond First-Order Tweedie: Solving Inverse Problems Using Latent Diffusion.” <i>Proceedings of the Conference on Computer Vision and Pattern Recognition</i>, 2024.</span></div>
 <button class="button0" onclick="toggleBibtexrout2024secondorder()">Bibtex</button>
  
 
@@ -432,6 +557,71 @@ function toggleBibtexatsidakou24apandora(parameter) {
 <script>
 function toggleAbstractatsidakou24apandora(parameter) {
     var x= document.getElementById('aatsidakou24apandora');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="kwon2024prospective">Kwon, Jeongyeol, Yonathan Efroni, Shie Mannor, and Constantine Caramanis. “Prospective Side Information for Latent MDPs.” In <i>International Conference on Machine Learning (ICML)</i>. PMLR, 2024.</span></div>
+<button class="button0" onclick="toggleBibtexkwon2024prospective()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractkwon2024prospective()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2310.07596"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Bkwon2024prospective" style="display: none;">
+<pre>@inproceedings{kwon2024prospective,
+  title = {Prospective side information for latent {MDP}s},
+  author = {Kwon, Jeongyeol and Efroni, Yonathan and Mannor, Shie and Caramanis, Constantine},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  pages = {},
+  year = {2024},
+  organization = {PMLR},
+  group = {proceedings},
+  arxiv = {https://arxiv.org/pdf/2310.07596}
+}
+</pre>
+</div>
+
+<div id="akwon2024prospective" style="display: none;">
+<pre>In many interactive decision-making settings, there is latent and unobserved information that remains fixed. Consider, for example, a dialogue system, where complete information about a user, such as the user’s preferences, is not given. In such an environment, the latent information remains fixed throughout each episode, since the identity of the user does not change during an interaction. This type of environment can be modeled as a Latent Markov Decision Process (LMDP), a special instance of Partially Observed Markov Decision Processes (POMDPs). Previous work established exponential lower bounds in the number of latent contexts for the LMDP class. This puts forward a question: under which natural assumptions a near-optimal policy of an LMDP can be efficiently learned? In this work, we study the class of LMDPs with prospective side information, when an agent receives additional, weakly revealing, information on the latent context at the beginning of each episode. We show that, surprisingly, this problem is not captured by contemporary settings and algorithms designed for partially observed environments. We then establish that any sample efficient algorithm must suffer at least Ω(K^2/3)-regret, as opposed to standard Ω(\sqrtK) lower bounds, and design an algorithm with a matching upper bound. </pre>
+</div>
+
+
+<script>
+function toggleAbstractCCkwon2024prospective(parameter) {
+    var x= document.getElementById('akwon2024prospective');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexkwon2024prospective(parameter) {
+    var x= document.getElementById('Bkwon2024prospective');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractkwon2024prospective(parameter) {
+    var x= document.getElementById('akwon2024prospective');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -687,197 +877,6 @@ function toggleBibtexrout23inverse(parameter) {
 <script>
 function toggleAbstractrout23inverse(parameter) {
     var x= document.getElementById('arout23inverse');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="caramanis23samplers">Caramanis, Constantine, Dimitris Fotakis, Alkis Kalavasis, Vasilis Kontonis, and Christos Tzamos. “Optimizing Solution-Samplers for Combinatorial Problems: The Landscape of Policy-Gradient Methods.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2023.</span></div>
-<button class="button0" onclick="toggleBibtexcaramanis23samplers()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractcaramanis23samplers()">Abstract</button>
-
-
-
-    <a href="https://arxiv.org/pdf/2310.05309.pdf"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Bcaramanis23samplers" style="display: none;">
-<pre>@article{caramanis23samplers,
-  title = {Optimizing Solution-Samplers for Combinatorial Problems: The Landscape of Policy-Gradient Methods},
-  author = {Caramanis, Constantine and Fotakis, Dimitris and Kalavasis, Alkis and Kontonis, Vasilis and Tzamos, Christos},
-  journal = {Advances in Neural Information Processing Systems (NeurIPS)},
-  year = {2023},
-  group = {proceedings},
-  arxiv = {https://arxiv.org/pdf/2310.05309.pdf}
-}
-</pre>
-</div>
-
-<div id="acaramanis23samplers" style="display: none;">
-<pre>Deep Neural Networks and Reinforcement Learning methods have empirically shown great promise in tackling challenging combinatorial problems. In those methods a deep neural network is used as a solution generator which is then trained by gradient-based methods (e.g., policy gradient) to successively obtain better solution distributions. In this work we introduce a novel theoretical framework for analyzing the effectiveness of such methods. We ask whether there exist generative models that (i) are expressive enough to generate approximately optimal solutions; (ii) have a tractable, i.e, polynomial in the size of the input, number of parameters; (iii) their optimization landscape is benign in the sense that it does not contain sub-optimal stationary points. Our main contribution is a positive answer to this question. Our result holds for a broad class of combinatorial problems including Max- and Min-Cut, Max-k-CSP, Maximum-Weight-Bipartite-Matching, and the Traveling Salesman Problem. As a byproduct of our analysis we introduce a novel regularization process over vanilla gradient descent and provide theoretical and experimental evidence that it helps address vanishing-gradient issues and escape bad stationary points.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCcaramanis23samplers(parameter) {
-    var x= document.getElementById('acaramanis23samplers');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexcaramanis23samplers(parameter) {
-    var x= document.getElementById('Bcaramanis23samplers');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractcaramanis23samplers(parameter) {
-    var x= document.getElementById('acaramanis23samplers');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="kwon2023reward">Kwon, Jeongyeol, Yonathan Efroni, Constantine Caramanis, and Shie Mannor. “Reward-Mixing MDPs with Few Latent Contexts Are Learnable.” In <i>International Conference on Machine Learning (ICML)</i>, 18057–82. PMLR, 2023.</span></div>
-<button class="button0" onclick="toggleBibtexkwon2023reward()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractkwon2023reward()">Abstract</button>
-
-
-
-    <a href="https://arxiv.org/pdf/2210.02594.pdf"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Bkwon2023reward" style="display: none;">
-<pre>@inproceedings{kwon2023reward,
-  title = {Reward-Mixing MDPs with Few Latent Contexts are Learnable},
-  author = {Kwon, Jeongyeol and Efroni, Yonathan and Caramanis, Constantine and Mannor, Shie},
-  booktitle = {International Conference on Machine Learning (ICML)},
-  pages = {18057--18082},
-  year = {2023},
-  organization = {PMLR},
-  group = {proceedings},
-  arxiv = {https://arxiv.org/pdf/2210.02594.pdf}
-}
-</pre>
-</div>
-
-<div id="akwon2023reward" style="display: none;">
-<pre>We consider episodic reinforcement learning in reward-mixing Markov decision processes (RMMDPs): at the beginning of every episode nature randomly picks a latent reward model among M candidates and an agent interacts with the MDP throughout the episode for H time steps. Our goal is to learn a near-optimal policy that nearly maximizes the H time-step cumulative rewards in such a model. Prior work (Kwon et al., ’21) established an upper bound for RMMDPs with M=2. In this work, we resolve several open questions for the general RMMDP setting. We consider an arbitrary M\ge2 and provide a sample-efficient algorithm that outputs an ε-optimal policy using O \left(ε^-2 ⋅S^d A^d ⋅\poly(H, Z)^d \right) episodes, where S, A are the number of states and actions respectively, H is the time-horizon, Z is the support size of reward distributions and d=O(\min(M,H)). We also provide a (SA)^Ω(\sqrtM) / ε^2 lower bound, supporting that super-polynomial sample complexity in M is necessary. </pre>
-</div>
-
-
-<script>
-function toggleAbstractCCkwon2023reward(parameter) {
-    var x= document.getElementById('akwon2023reward');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexkwon2023reward(parameter) {
-    var x= document.getElementById('Bkwon2023reward');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractkwon2023reward(parameter) {
-    var x= document.getElementById('akwon2023reward');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="faw2022power">Faw, Matthew, Isidoros Tziotis, Constantine Caramanis, Aryan Mokhtari, Sanjay Shakkottai, and Rachel Ward. “The Power of Adaptivity in SGD: Self-Tuning Step Sizes with Unbounded Gradients and Affine Variance.” <i>The Conference on Learning Theory (COLT)</i>, 2022.</span></div>
-<button class="button0" onclick="toggleBibtexfaw2022power()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractfaw2022power()">Abstract</button>
-
-
-
-    <a href="https://arxiv.org/pdf/2202.05791"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Bfaw2022power" style="display: none;">
-<pre>@article{faw2022power,
-  title = {The Power of Adaptivity in SGD: Self-Tuning Step Sizes with Unbounded Gradients and Affine Variance},
-  author = {Faw, Matthew and Tziotis, Isidoros and Caramanis, Constantine and Mokhtari, Aryan and Shakkottai, Sanjay and Ward, Rachel},
-  journal = {The Conference on Learning Theory (COLT)},
-  year = {2022},
-  group = {proceedings},
-  arxiv = {https://arxiv.org/pdf/2202.05791}
-}
-</pre>
-</div>
-
-<div id="afaw2022power" style="display: none;">
-<pre>We study convergence rates of AdaGrad-Norm as an exemplar of adaptive stochastic gradient methods (SGD), where the step sizes change based on observed stochastic gradients, for minimizing non-convex, smooth objectives. Despite their popularity, the analysis of adaptive SGD lags behind that of non adaptive methods in this setting. Specifically, all prior works rely on some subset of the following assumptions: (i) uniformly-bounded gradient norms, (ii) uniformly-bounded stochastic gradient variance (or even noise support), (iii) conditional independence between the step size and stochastic gradient. In this work, we show that AdaGrad-Norm exhibits an order optimal convergence rate of O(polylog(T)/\sqrtT)  after T iterations under the same assumptions as optimally-tuned non adaptive SGD (unbounded gradient norms and affine noise variance scaling), and crucially, without needing any tuning parameters. We thus establish that adaptive gradient methods exhibit order-optimal convergence in much broader regimes than previously understood.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCfaw2022power(parameter) {
-    var x= document.getElementById('afaw2022power');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexfaw2022power(parameter) {
-    var x= document.getElementById('Bfaw2022power');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractfaw2022power(parameter) {
-    var x= document.getElementById('afaw2022power');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {

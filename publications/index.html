@@ -55,8 +55,7 @@
       <a class="sidebar-nav-item" href="https://www.youtube.com/channel/UCSv1_NZITsPl-abaCWtRrJg" target="_blank">YouTube</a>
       <a class="sidebar-nav-item" href="https://ml.utexas.edu/ifml" target="_blank">IFML</a>
       <a class="sidebar-nav-item" href="https://wncg.org" target="_blank">WNCG</a>
-      <a class="sidebar-nav-item" href="https://www.utmlds.club/" target="_blank">MLDS</a>
-
+      <a class="sidebar-nav-item" href="https://archimedesai.gr/en/" target="_blank">Archimedes AI</a>
 
 
 
@@ -76,7 +75,133 @@
 
 <h2 id="pre-prints">Pre-prints</h2>
 
-<ol class="bibliography"><li><div class="text-justify"><span id="rout23theoretical">Rout, Litu, Advait Parulekar, Constantine Caramanis, and Sanjay Shakkottai. “A Theoretical Justification for Image Inpainting Using Denoising Diffusion Probabilistic Models.” <i>Preprint</i>, 2023.</span></div>
+<ol class="bibliography"><li><div class="text-justify"><span id="rout2024rb">Rout, Litu, Yujia Chen, Nataniel Ruiz, Abhishek Kumar, Constantine Caramanis, Sanjay Shakkottai, and Wen-Sheng Chu. “RB-Modulation: Training-Free Personalization of Diffusion Models Using Stochastic Optimal Control.” <i>Preprint</i>, 2024.</span></div>
+<button class="button0" onclick="toggleBibtexrout2024rb()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractrout2024rb()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2405.17401"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Brout2024rb" style="display: none;">
+<pre>@article{rout2024rb,
+  title = {RB-Modulation: Training-Free Personalization of Diffusion Models using Stochastic Optimal Control},
+  author = {Rout, Litu and Chen, Yujia and Ruiz, Nataniel and Kumar, Abhishek and Caramanis, Constantine and Shakkottai, Sanjay and Chu, Wen-Sheng},
+  journal = {preprint},
+  year = {2024},
+  group = {misc},
+  arxiv = {https://arxiv.org/pdf/2405.17401}
+}
+</pre>
+</div>
+
+<div id="arout2024rb" style="display: none;">
+<pre>We propose Reference-Based Modulation (RB-Modulation), a new plug-and-play solution for training-free personalization of diffusion models. Existing training-free approaches exhibit difficulties in (a) style extraction from reference images in the absence of additional style or content text descriptions, (b) unwanted content leakage from reference style images, and (c) effective composition of style and content. RB-Modulation is built on a novel stochastic optimal controller where a style descriptor encodes the desired attributes through a terminal cost. The resulting drift not only overcomes the difficulties above, but also ensures high fidelity to the reference style and adheres to the given text prompt. We also introduce a cross-attention-based feature aggregation scheme that allows RB-Modulation to decouple content and style from the reference image. With theoretical justification and empirical evidence, our framework demonstrates precise extraction and control of content and style in a training-free manner. Further, our method allows a seamless composition of content and style, which marks a departure from the dependency on external adapters or ControlNets.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCrout2024rb(parameter) {
+    var x= document.getElementById('arout2024rb');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexrout2024rb(parameter) {
+    var x= document.getElementById('Brout2024rb');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractrout2024rb(parameter) {
+    var x= document.getElementById('arout2024rb');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="kwon24lmdp">Kwon, Jeongyeol, Yonathan Efroni, Shie Mannor, and Constantine Caramanis. “RL in Latent MDPs Is Tractable: Online Guarantees via Off-Policy Evaluation.” <i>Preprint</i>, 2024.</span></div>
+<button class="button0" onclick="toggleBibtexkwon24lmdp()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractkwon24lmdp()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2406.01389"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Bkwon24lmdp" style="display: none;">
+<pre>@article{kwon24lmdp,
+  title = {RL in Latent MDPs is Tractable: Online Guarantees via Off-Policy Evaluation},
+  author = {Kwon, Jeongyeol and Efroni, Yonathan and Mannor, Shie and Caramanis, Constantine},
+  journal = {preprint},
+  year = {2024},
+  group = {misc},
+  arxiv = {https://arxiv.org/pdf/2406.01389}
+}
+</pre>
+</div>
+
+<div id="akwon24lmdp" style="display: none;">
+<pre>In many real-world decision problems there is partially observed, hidden or latent information that remains fixed throughout an interaction. Such decision problems can be modeled as Latent Markov Decision Processes (LMDPs), where a latent variable is selected at the beginning of an interaction and is not disclosed to the agent. In the last decade, there has been significant progress in solving LMDPs under different structural assumptions. However, for general LMDPs, there is no known learning algorithm that provably matches the existing lower bound (Kwon et al., 2021). We introduce the first sample-efficient algorithm for LMDPs without any additional structural assumptions. Our result builds off a new perspective on the role of off-policy evaluation guarantees and coverage coefficients in LMDPs, a perspective, that has been overlooked in the context of exploration in partially observed environments. Specifically, we establish a novel off-policy evaluation lemma and introduce a new coverage coefficient for LMDPs. Then, we show how these can be used to derive near-optimal guarantees of an optimistic exploration algorithm. These results, we believe, can be valuable for a wide range of interactive learning problems beyond LMDPs, and especially, for partially observed environments.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCkwon24lmdp(parameter) {
+    var x= document.getElementById('akwon24lmdp');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexkwon24lmdp(parameter) {
+    var x= document.getElementById('Bkwon24lmdp');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractkwon24lmdp(parameter) {
+    var x= document.getElementById('akwon24lmdp');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="rout23theoretical">Rout, Litu, Advait Parulekar, Constantine Caramanis, and Sanjay Shakkottai. “A Theoretical Justification for Image Inpainting Using Denoising Diffusion Probabilistic Models.” <i>Preprint</i>, 2023.</span></div>
 <button class="button0" onclick="toggleBibtexrout23theoretical()">Bibtex</button>
  
 
@@ -453,6 +578,71 @@ function toggleBibtexatsidakou24apandora(parameter) {
 <script>
 function toggleAbstractatsidakou24apandora(parameter) {
     var x= document.getElementById('aatsidakou24apandora');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="kwon2024prospective">Kwon, Jeongyeol, Yonathan Efroni, Shie Mannor, and Constantine Caramanis. “Prospective Side Information for Latent MDPs.” In <i>International Conference on Machine Learning (ICML)</i>. PMLR, 2024.</span></div>
+<button class="button0" onclick="toggleBibtexkwon2024prospective()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractkwon2024prospective()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2310.07596"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Bkwon2024prospective" style="display: none;">
+<pre>@inproceedings{kwon2024prospective,
+  title = {Prospective side information for latent {MDP}s},
+  author = {Kwon, Jeongyeol and Efroni, Yonathan and Mannor, Shie and Caramanis, Constantine},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  pages = {},
+  year = {2024},
+  organization = {PMLR},
+  group = {proceedings},
+  arxiv = {https://arxiv.org/pdf/2310.07596}
+}
+</pre>
+</div>
+
+<div id="akwon2024prospective" style="display: none;">
+<pre>In many interactive decision-making settings, there is latent and unobserved information that remains fixed. Consider, for example, a dialogue system, where complete information about a user, such as the user’s preferences, is not given. In such an environment, the latent information remains fixed throughout each episode, since the identity of the user does not change during an interaction. This type of environment can be modeled as a Latent Markov Decision Process (LMDP), a special instance of Partially Observed Markov Decision Processes (POMDPs). Previous work established exponential lower bounds in the number of latent contexts for the LMDP class. This puts forward a question: under which natural assumptions a near-optimal policy of an LMDP can be efficiently learned? In this work, we study the class of LMDPs with prospective side information, when an agent receives additional, weakly revealing, information on the latent context at the beginning of each episode. We show that, surprisingly, this problem is not captured by contemporary settings and algorithms designed for partially observed environments. We then establish that any sample efficient algorithm must suffer at least Ω(K^2/3)-regret, as opposed to standard Ω(\sqrtK) lower bounds, and design an algorithm with a matching upper bound. </pre>
+</div>
+
+
+<script>
+function toggleAbstractCCkwon2024prospective(parameter) {
+    var x= document.getElementById('akwon2024prospective');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexkwon2024prospective(parameter) {
+    var x= document.getElementById('Bkwon2024prospective');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractkwon2024prospective(parameter) {
+    var x= document.getElementById('akwon2024prospective');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -844,6 +1034,69 @@ function toggleAbstractfaw2022power(parameter) {
 }
 </script>
 </li>
+<li><div class="text-justify"><span id="kwon2022coordinated">Kwon, Jeongyeol, Yonathan Efroni, Constantine Caramanis, and Shie Mannor. “Coordinated Attacks against Contextual Bandits: Fundamental Limits and Defense Mechanisms.” <i>International Conference on Machine Learning (ICML)</i>, 2022.</span></div>
+<button class="button0" onclick="toggleBibtexkwon2022coordinated()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractkwon2022coordinated()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2201.12700.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Bkwon2022coordinated" style="display: none;">
+<pre>@article{kwon2022coordinated,
+  title = {Coordinated Attacks against Contextual Bandits: Fundamental Limits and Defense Mechanisms},
+  author = {Kwon, Jeongyeol and Efroni, Yonathan and Caramanis, Constantine and Mannor, Shie},
+  journal = {International Conference on Machine Learning (ICML)},
+  year = {2022},
+  group = {proceedings},
+  arxiv = {https://arxiv.org/pdf/2201.12700.pdf}
+}
+</pre>
+</div>
+
+<div id="akwon2022coordinated" style="display: none;">
+<pre>Motivated by online recommendation systems, we propose the problem of finding the optimal policy in multitask contextual bandits when a small fraction alpha &lt; 1/2 of tasks (users) are arbitrary and adversarial. The remaining fraction of good users share the same instance of contextual bandits with S contexts and A actions (items). Naturally, whether a user is good or adversarial is not known in advance. The goal is to robustly learn the policy that maximizes rewards for good users with as few user interactions as possible. Without adversarial users, established results in collaborative filtering show that O(1/epsilon^2) per-user interactions suffice to learn a good policy, precisely because information can be shared across users. This parallelization gain is fundamentally altered by the presence of adversarial users: unless there are super-polynomial number of users, we show a lower bound of Omega(min(S,A)alpha^2/epsilon^2) \it per-user interactions to learn an epsilon-optimal policy for the good users. We then show we can achieve an O (min(S,A) alpha /epsilon^2) upper-bound, by employing efficient robust mean estimators for both uni-variate and high-dimensional random variables. We also show that this can be improved depending on the distributions of contexts.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCkwon2022coordinated(parameter) {
+    var x= document.getElementById('akwon2022coordinated');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexkwon2022coordinated(parameter) {
+    var x= document.getElementById('Bkwon2022coordinated');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractkwon2022coordinated(parameter) {
+    var x= document.getElementById('akwon2022coordinated');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
 <li><div class="text-justify"><span id="atsidakou202asymptotically">Atsidakou, Alexia, Orestis Papadigenopoulos, Constantine Caramanis, Sujay Sanghavi, and Sanjay Shakkottai. “Asymptotically-Optimal Gaussian Bandits with Side Observations.” In <i>International Conference on Machine Learning (ICML)</i>. PMLR, 2022.</span></div>
 <button class="button0" onclick="toggleBibtexatsidakou202asymptotically()">Bibtex</button>
  
@@ -908,39 +1161,39 @@ function toggleAbstractatsidakou202asymptotically(parameter) {
 }
 </script>
 </li>
-<li><div class="text-justify"><span id="kwon2022coordinated">Kwon, Jeongyeol, Yonathan Efroni, Constantine Caramanis, and Shie Mannor. “Coordinated Attacks against Contextual Bandits: Fundamental Limits and Defense Mechanisms.” <i>International Conference on Machine Learning (ICML)</i>, 2022.</span></div>
-<button class="button0" onclick="toggleBibtexkwon2022coordinated()">Bibtex</button>
+<li><div class="text-justify"><span id="papadigenopoulos2022non">Papadigenopoulos, Orestis, Constantine Caramanis, and Sanjay Shakkottai. “Non-Stationary Bandits under Recharging Payoffs: Improved Planning with Sublinear Regret.” In <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2022.</span></div>
+<button class="button0" onclick="toggleBibtexpapadigenopoulos2022non()">Bibtex</button>
  
 
-<button class="button0" onclick="toggleAbstractkwon2022coordinated()">Abstract</button>
+<button class="button0" onclick="toggleAbstractpapadigenopoulos2022non()">Abstract</button>
 
 
 
-    <a href="https://arxiv.org/pdf/2201.12700.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+    <a href="https://arxiv.org/pdf/2205.14790.pdf"><input class="button4" type="button" value="ArXiv" /></a>
 
  
 
 
-<div id="Bkwon2022coordinated" style="display: none;">
-<pre>@article{kwon2022coordinated,
-  title = {Coordinated Attacks against Contextual Bandits: Fundamental Limits and Defense Mechanisms},
-  author = {Kwon, Jeongyeol and Efroni, Yonathan and Caramanis, Constantine and Mannor, Shie},
-  journal = {International Conference on Machine Learning (ICML)},
+<div id="Bpapadigenopoulos2022non" style="display: none;">
+<pre>@inproceedings{papadigenopoulos2022non,
+  title = {Non-Stationary Bandits under Recharging Payoffs: Improved Planning with Sublinear Regret},
+  author = {Papadigenopoulos, Orestis and Caramanis, Constantine and Shakkottai, Sanjay},
+  journal = {Advances in Neural Information Processing Systems (NeurIPS)},
   year = {2022},
   group = {proceedings},
-  arxiv = {https://arxiv.org/pdf/2201.12700.pdf}
+  arxiv = {https://arxiv.org/pdf/2205.14790.pdf}
 }
 </pre>
 </div>
 
-<div id="akwon2022coordinated" style="display: none;">
-<pre>Motivated by online recommendation systems, we propose the problem of finding the optimal policy in multitask contextual bandits when a small fraction alpha &lt; 1/2 of tasks (users) are arbitrary and adversarial. The remaining fraction of good users share the same instance of contextual bandits with S contexts and A actions (items). Naturally, whether a user is good or adversarial is not known in advance. The goal is to robustly learn the policy that maximizes rewards for good users with as few user interactions as possible. Without adversarial users, established results in collaborative filtering show that O(1/epsilon^2) per-user interactions suffice to learn a good policy, precisely because information can be shared across users. This parallelization gain is fundamentally altered by the presence of adversarial users: unless there are super-polynomial number of users, we show a lower bound of Omega(min(S,A)alpha^2/epsilon^2) \it per-user interactions to learn an epsilon-optimal policy for the good users. We then show we can achieve an O (min(S,A) alpha /epsilon^2) upper-bound, by employing efficient robust mean estimators for both uni-variate and high-dimensional random variables. We also show that this can be improved depending on the distributions of contexts.</pre>
+<div id="apapadigenopoulos2022non" style="display: none;">
+<pre>The stochastic multi-armed bandit setting has been recently studied in the non-stationary regime, where the mean payoff of each action is a non-decreasing function of the number of rounds passed since it was last played. This model captures natural behavioral aspects of the users which crucially determine the performance of recommendation platforms, ad placement systems, and more. Even assuming prior knowledge of the mean payoff functions, computing an optimal planning in the above model is NP-hard, while the state-of-the-art is a 1/4-approximation algorithm for the case where at most one arm can be played per round. We first focus on the setting where the mean payoff functions are known. In this setting, we significantly improve the best-known guarantees for the planning problem by developing a polynomial-time (1?1/e)-approximation algorithm (asymptotically and in expectation), based on a novel combination of randomized LP rounding and a time-correlated (interleaved) scheduling method. Furthermore, our algorithm achieves improved guarantees – compared to prior work – for the case where more than one arm can be played at each round. Moving to the bandit setting, when the mean payoff functions are initially unknown, we show how our algorithm can be transformed into a bandit algorithm with sublinear regret.</pre>
 </div>
 
 
 <script>
-function toggleAbstractCCkwon2022coordinated(parameter) {
-    var x= document.getElementById('akwon2022coordinated');
+function toggleAbstractCCpapadigenopoulos2022non(parameter) {
+    var x= document.getElementById('apapadigenopoulos2022non');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -950,8 +1203,8 @@ function toggleAbstractCCkwon2022coordinated(parameter) {
 </script>
 
 <script>
-function toggleBibtexkwon2022coordinated(parameter) {
-    var x= document.getElementById('Bkwon2022coordinated');
+function toggleBibtexpapadigenopoulos2022non(parameter) {
+    var x= document.getElementById('Bpapadigenopoulos2022non');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -961,8 +1214,8 @@ function toggleBibtexkwon2022coordinated(parameter) {
 </script>
 
 <script>
-function toggleAbstractkwon2022coordinated(parameter) {
-    var x= document.getElementById('akwon2022coordinated');
+function toggleAbstractpapadigenopoulos2022non(parameter) {
+    var x= document.getElementById('apapadigenopoulos2022non');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -971,7 +1224,7 @@ function toggleAbstractkwon2022coordinated(parameter) {
 }
 </script>
 </li>
-<li><div class="text-justify"><span id="kwon2022tractable">———. “Tractable Optimality in Episodic Latent MABs.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2022.</span></div>
+<li><div class="text-justify"><span id="kwon2022tractable">Kwon, Jeongyeol, Yonathan Efroni, Constantine Caramanis, and Shie Mannor. “Tractable Optimality in Episodic Latent MABs.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2022.</span></div>
 <button class="button0" onclick="toggleBibtexkwon2022tractable()">Bibtex</button>
  
 
@@ -1028,69 +1281,6 @@ function toggleBibtexkwon2022tractable(parameter) {
 <script>
 function toggleAbstractkwon2022tractable(parameter) {
     var x= document.getElementById('akwon2022tractable');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="papadigenopoulos2022non">Papadigenopoulos, Orestis, Constantine Caramanis, and Sanjay Shakkottai. “Non-Stationary Bandits under Recharging Payoffs: Improved Planning with Sublinear Regret.” In <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2022.</span></div>
-<button class="button0" onclick="toggleBibtexpapadigenopoulos2022non()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractpapadigenopoulos2022non()">Abstract</button>
-
-
-
-    <a href="https://arxiv.org/pdf/2205.14790.pdf"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Bpapadigenopoulos2022non" style="display: none;">
-<pre>@inproceedings{papadigenopoulos2022non,
-  title = {Non-Stationary Bandits under Recharging Payoffs: Improved Planning with Sublinear Regret},
-  author = {Papadigenopoulos, Orestis and Caramanis, Constantine and Shakkottai, Sanjay},
-  journal = {Advances in Neural Information Processing Systems (NeurIPS)},
-  year = {2022},
-  group = {proceedings},
-  arxiv = {https://arxiv.org/pdf/2205.14790.pdf}
-}
-</pre>
-</div>
-
-<div id="apapadigenopoulos2022non" style="display: none;">
-<pre>The stochastic multi-armed bandit setting has been recently studied in the non-stationary regime, where the mean payoff of each action is a non-decreasing function of the number of rounds passed since it was last played. This model captures natural behavioral aspects of the users which crucially determine the performance of recommendation platforms, ad placement systems, and more. Even assuming prior knowledge of the mean payoff functions, computing an optimal planning in the above model is NP-hard, while the state-of-the-art is a 1/4-approximation algorithm for the case where at most one arm can be played per round. We first focus on the setting where the mean payoff functions are known. In this setting, we significantly improve the best-known guarantees for the planning problem by developing a polynomial-time (1?1/e)-approximation algorithm (asymptotically and in expectation), based on a novel combination of randomized LP rounding and a time-correlated (interleaved) scheduling method. Furthermore, our algorithm achieves improved guarantees – compared to prior work – for the case where more than one arm can be played at each round. Moving to the bandit setting, when the mean payoff functions are initially unknown, we show how our algorithm can be transformed into a bandit algorithm with sublinear regret.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCpapadigenopoulos2022non(parameter) {
-    var x= document.getElementById('apapadigenopoulos2022non');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexpapadigenopoulos2022non(parameter) {
-    var x= document.getElementById('Bpapadigenopoulos2022non');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractpapadigenopoulos2022non(parameter) {
-    var x= document.getElementById('apapadigenopoulos2022non');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -1163,39 +1353,39 @@ function toggleAbstractkatiyarRobustMRF2021(parameter) {
 }
 </script>
 </li>
-<li><div class="text-justify"><span id="kwon2021rlb">Kwon, Jeongyeol, Yonathan Effroni, Constantine Caramanis, and Shie Mannor. “Reinforcement Learning in Reward-Mixing MDPs.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2021.</span></div>
-<button class="button0" onclick="toggleBibtexkwon2021rlb()">Bibtex</button>
+<li><div class="text-justify"><span id="papadig2021recurrent">Papadigenopoulos, Orestis, and Constantine Caramanis. “Recurrent Submodular Welfare and Matroid Blocking Bandits.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2021.</span></div>
+<button class="button0" onclick="toggleBibtexpapadig2021recurrent()">Bibtex</button>
  
 
-<button class="button0" onclick="toggleAbstractkwon2021rlb()">Abstract</button>
+<button class="button0" onclick="toggleAbstractpapadig2021recurrent()">Abstract</button>
 
 
 
-    <a href=""><input class="button4" type="button" value="ArXiv" /></a>
+    <a href="https://arxiv.org/pdf/2102.00321.pdf"><input class="button4" type="button" value="ArXiv" /></a>
 
  
 
 
-<div id="Bkwon2021rlb" style="display: none;">
-<pre>@article{kwon2021rlb,
-  title = {Reinforcement Learning in Reward-Mixing MDPs},
-  author = {Kwon, Jeongyeol and Effroni, Yonathan and Caramanis, Constantine and Mannor, Shie},
+<div id="Bpapadig2021recurrent" style="display: none;">
+<pre>@article{papadig2021recurrent,
+  title = {Recurrent Submodular Welfare and Matroid Blocking Bandits},
+  author = {Papadigenopoulos, Orestis and Caramanis, Constantine},
   journal = {Advances in Neural Information Processing Systems (NeurIPS)},
   year = {2021},
   group = {proceedings},
-  arxiv = {}
+  arxiv = {https://arxiv.org/pdf/2102.00321.pdf}
 }
 </pre>
 </div>
 
-<div id="akwon2021rlb" style="display: none;">
-<pre>ILearning a near optimal policy in a partially observable system remains an elusive challenge in contemporary reinforcement learning. In this work, we consider episodic reinforcement learning in a reward-mixing Markov decision process (MDP). There, a reward function is drawn from one of multiple possible reward models at the beginning of every episode, but the identity of the chosen reward model is not revealed to the agent. Hence, the latent state space, for which the dynamics are Markovian, is not given to the agent. We study the problem of learning a near optimal policy for two reward-mixing MDPs. Unlike existing approaches that rely on strong assumptions on the dynamics, we make no assumptions and study the problem in full generality. Indeed, with no further assumptions, even for two switching reward-models, the problem requires several new ideas beyond existing algorithmic and analysis techniques for efficient exploration. We provide the first polynomial-time algorithm that finds an ε-optimal policy after exploring \tildeO(poly(H,ε^-1) ⋅S^2 A^2) episodes, where H is time-horizon and S, A are the number of states and actions respectively. This is the first efficient algorithm that does not require any assumptions in partially observed environments where the observation space is smaller than the latent state space.</pre>
+<div id="apapadig2021recurrent" style="display: none;">
+<pre>A recent line of research focuses on the study of the stochastic multi-armed bandits problem (MAB), in the case where temporal correlations of specific structure are imposed between the player’s actions and the reward distributions of the arms (Kleinberg and Immorlica [FOCS18], Basu et al. [NIPS19]). As opposed to the standard MAB setting, where the optimal solution in hindsight can be trivially characterized, these correlations lead to (sub-)optimal solutions that exhibit interesting dynamical patterns – a phenomenon that yields new challenges both from an algorithmic as well as a learning perspective. In this work, we extend the above direction to a combinatorial bandit setting and study a variant of stochastic MAB, where arms are subject to matroid constraints and each arm becomes unavailable (blocked) for a fixed number of rounds after each play. A natural common generalization of the state-of-the-art for blocking bandits, and that for matroid bandits, yields a (1−1/e)-approximation for partition matroids, yet it only guarantees a 1/2-approximation for general matroids. In this paper we develop new algorithmic ideas that allow us to obtain a polynomial-time (1−1/e)-approximation algorithm (asymptotically and in expectation) for any matroid, and thus allow us to control the (1−1/e)-approximate regret. A key ingredient is the technique of correlated (interleaved) scheduling. Along the way, we discover an interesting connection to a variant of Submodular Welfare Maximization, for which we provide (asymptotically) matching upper and lower approximability bounds.</pre>
 </div>
 
 
 <script>
-function toggleAbstractCCkwon2021rlb(parameter) {
-    var x= document.getElementById('akwon2021rlb');
+function toggleAbstractCCpapadig2021recurrent(parameter) {
+    var x= document.getElementById('apapadig2021recurrent');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -1205,8 +1395,8 @@ function toggleAbstractCCkwon2021rlb(parameter) {
 </script>
 
 <script>
-function toggleBibtexkwon2021rlb(parameter) {
-    var x= document.getElementById('Bkwon2021rlb');
+function toggleBibtexpapadig2021recurrent(parameter) {
+    var x= document.getElementById('Bpapadig2021recurrent');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -1216,8 +1406,8 @@ function toggleBibtexkwon2021rlb(parameter) {
 </script>
 
 <script>
-function toggleAbstractkwon2021rlb(parameter) {
-    var x= document.getElementById('akwon2021rlb');
+function toggleAbstractpapadig2021recurrent(parameter) {
+    var x= document.getElementById('apapadig2021recurrent');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -1226,7 +1416,7 @@ function toggleAbstractkwon2021rlb(parameter) {
 }
 </script>
 </li>
-<li><div class="text-justify"><span id="kwon2021rl">———. “RL for Latent MDPs: Regret Guarantees and a Lower Bound.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2021.</span></div>
+<li><div class="text-justify"><span id="kwon2021rl">Kwon, Jeongyeol, Yonathan Effroni, Constantine Caramanis, and Shie Mannor. “RL for Latent MDPs: Regret Guarantees and a Lower Bound.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2021.</span></div>
 <button class="button0" onclick="toggleBibtexkwon2021rl()">Bibtex</button>
  
 
@@ -1289,39 +1479,39 @@ function toggleAbstractkwon2021rl(parameter) {
 }
 </script>
 </li>
-<li><div class="text-justify"><span id="papadig2021recurrent">Papadigenopoulos, Orestis, and Constantine Caramanis. “Recurrent Submodular Welfare and Matroid Blocking Bandits.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2021.</span></div>
-<button class="button0" onclick="toggleBibtexpapadig2021recurrent()">Bibtex</button>
+<li><div class="text-justify"><span id="kwon2021rlb">———. “Reinforcement Learning in Reward-Mixing MDPs.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2021.</span></div>
+<button class="button0" onclick="toggleBibtexkwon2021rlb()">Bibtex</button>
  
 
-<button class="button0" onclick="toggleAbstractpapadig2021recurrent()">Abstract</button>
+<button class="button0" onclick="toggleAbstractkwon2021rlb()">Abstract</button>
 
 
 
-    <a href="https://arxiv.org/pdf/2102.00321.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+    <a href=""><input class="button4" type="button" value="ArXiv" /></a>
 
  
 
 
-<div id="Bpapadig2021recurrent" style="display: none;">
-<pre>@article{papadig2021recurrent,
-  title = {Recurrent Submodular Welfare and Matroid Blocking Bandits},
-  author = {Papadigenopoulos, Orestis and Caramanis, Constantine},
+<div id="Bkwon2021rlb" style="display: none;">
+<pre>@article{kwon2021rlb,
+  title = {Reinforcement Learning in Reward-Mixing MDPs},
+  author = {Kwon, Jeongyeol and Effroni, Yonathan and Caramanis, Constantine and Mannor, Shie},
   journal = {Advances in Neural Information Processing Systems (NeurIPS)},
   year = {2021},
   group = {proceedings},
-  arxiv = {https://arxiv.org/pdf/2102.00321.pdf}
+  arxiv = {}
 }
 </pre>
 </div>
 
-<div id="apapadig2021recurrent" style="display: none;">
-<pre>A recent line of research focuses on the study of the stochastic multi-armed bandits problem (MAB), in the case where temporal correlations of specific structure are imposed between the player’s actions and the reward distributions of the arms (Kleinberg and Immorlica [FOCS18], Basu et al. [NIPS19]). As opposed to the standard MAB setting, where the optimal solution in hindsight can be trivially characterized, these correlations lead to (sub-)optimal solutions that exhibit interesting dynamical patterns – a phenomenon that yields new challenges both from an algorithmic as well as a learning perspective. In this work, we extend the above direction to a combinatorial bandit setting and study a variant of stochastic MAB, where arms are subject to matroid constraints and each arm becomes unavailable (blocked) for a fixed number of rounds after each play. A natural common generalization of the state-of-the-art for blocking bandits, and that for matroid bandits, yields a (1−1/e)-approximation for partition matroids, yet it only guarantees a 1/2-approximation for general matroids. In this paper we develop new algorithmic ideas that allow us to obtain a polynomial-time (1−1/e)-approximation algorithm (asymptotically and in expectation) for any matroid, and thus allow us to control the (1−1/e)-approximate regret. A key ingredient is the technique of correlated (interleaved) scheduling. Along the way, we discover an interesting connection to a variant of Submodular Welfare Maximization, for which we provide (asymptotically) matching upper and lower approximability bounds.</pre>
+<div id="akwon2021rlb" style="display: none;">
+<pre>ILearning a near optimal policy in a partially observable system remains an elusive challenge in contemporary reinforcement learning. In this work, we consider episodic reinforcement learning in a reward-mixing Markov decision process (MDP). There, a reward function is drawn from one of multiple possible reward models at the beginning of every episode, but the identity of the chosen reward model is not revealed to the agent. Hence, the latent state space, for which the dynamics are Markovian, is not given to the agent. We study the problem of learning a near optimal policy for two reward-mixing MDPs. Unlike existing approaches that rely on strong assumptions on the dynamics, we make no assumptions and study the problem in full generality. Indeed, with no further assumptions, even for two switching reward-models, the problem requires several new ideas beyond existing algorithmic and analysis techniques for efficient exploration. We provide the first polynomial-time algorithm that finds an ε-optimal policy after exploring \tildeO(poly(H,ε^-1) ⋅S^2 A^2) episodes, where H is time-horizon and S, A are the number of states and actions respectively. This is the first efficient algorithm that does not require any assumptions in partially observed environments where the observation space is smaller than the latent state space.</pre>
 </div>
 
 
 <script>
-function toggleAbstractCCpapadig2021recurrent(parameter) {
-    var x= document.getElementById('apapadig2021recurrent');
+function toggleAbstractCCkwon2021rlb(parameter) {
+    var x= document.getElementById('akwon2021rlb');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -1331,8 +1521,8 @@ function toggleAbstractCCpapadig2021recurrent(parameter) {
 </script>
 
 <script>
-function toggleBibtexpapadig2021recurrent(parameter) {
-    var x= document.getElementById('Bpapadig2021recurrent');
+function toggleBibtexkwon2021rlb(parameter) {
+    var x= document.getElementById('Bkwon2021rlb');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -1342,8 +1532,135 @@ function toggleBibtexpapadig2021recurrent(parameter) {
 </script>
 
 <script>
-function toggleAbstractpapadig2021recurrent(parameter) {
-    var x= document.getElementById('apapadig2021recurrent');
+function toggleAbstractkwon2021rlb(parameter) {
+    var x= document.getElementById('akwon2021rlb');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="caramanis2021single">Caramanis, Constantine, Paul Duetting, Matthew Faw, Federico Fusco, Philip Lazo, Stefano Leonardi, Orestis Papadigenopoulos, Emmanouil Pountourakis, and Rebecca Reiffenhauser. “Single Sample Prophet Inequalities via Greedy-Ordered Selection.” <i>Symposium on Discrete Algorithms (SODA)</i>, 2021.</span></div>
+<button class="button0" onclick="toggleBibtexcaramanis2021single()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractcaramanis2021single()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2103.13089.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Bcaramanis2021single" style="display: none;">
+<pre>@article{caramanis2021single,
+  title = {Single Sample Prophet Inequalities via Greedy-Ordered Selection},
+  author = {Caramanis, Constantine and Duetting, Paul and Faw, Matthew and Fusco, Federico and Lazo, Philip and Leonardi, Stefano and Papadigenopoulos, Orestis and Pountourakis, Emmanouil and Reiffenhauser, Rebecca},
+  booktitle = {Symposium on Discrete Algorithms (SODA)},
+  year = {2021},
+  group = {proceedings},
+  arxiv = {https://arxiv.org/pdf/2103.13089.pdf}
+}
+</pre>
+</div>
+
+<div id="acaramanis2021single" style="display: none;">
+<pre>We study <i>Single-Sample Prophet Inequalities</i> (SSPIs), i.e.,  prophet inequalities where only a single sample from each prior distribution is available. Besides a direct, and optimal, SSPI for the basic single choice problem [Rubinstein et al., ITCS’20], most existing SSPI results were obtained via an elegant, but inherently lossy reduction to Order Oblivious Secretary (OOS) policies [Azar et al., SODA’14]. Motivated by this discrepancy, we develop an intuitive and versatile greedy-based technique that yields SSPIs <i>directly</i> rather than through the reduction to OOS. Our results can be seen as generalizing and unifying a number of existing results in the area of prophet and secretary problems. Our algorithms significantly improve on the competitive guarantees for a number of interesting scenarios (including general matching with edge arrivals, bipartite matching with vertex arrivals and certain matroids), as well as capture new settings (e.g., budget additive valuations). Complementing our algorithmic results, we also consider mechanism design variants. Finally, we analyze the power and limitations of different SSPI approaches by providing a partial converse to the reduction from SSPI to OOS given by [Azar et al., SODA’14].  </pre>
+</div>
+
+
+<script>
+function toggleAbstractCCcaramanis2021single(parameter) {
+    var x= document.getElementById('acaramanis2021single');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexcaramanis2021single(parameter) {
+    var x= document.getElementById('Bcaramanis2021single');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractcaramanis2021single(parameter) {
+    var x= document.getElementById('acaramanis2021single');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="atsidakou2021combinatorial">Atsidakou, Alexia, Orestis Papadigenopoulos, Soumya Basu, Constantine Caramanis, and Sanjay Shakkottai. “Combinatorial Blocking Bandits with Stochastic Delays.” In <i>International Conference on Machine Learning (ICML)</i>. PMLR, 2021.</span></div>
+<button class="button0" onclick="toggleBibtexatsidakou2021combinatorial()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractatsidakou2021combinatorial()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2105.10625.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Batsidakou2021combinatorial" style="display: none;">
+<pre>@inproceedings{atsidakou2021combinatorial,
+  title = {Combinatorial Blocking Bandits with Stochastic Delays},
+  author = {Atsidakou, Alexia and Papadigenopoulos, Orestis and Basu, Soumya and Caramanis, Constantine and Shakkottai, Sanjay},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  year = {2021},
+  organization = {PMLR},
+  group = {proceedings},
+  arxiv = {https://arxiv.org/pdf/2105.10625.pdf}
+}
+</pre>
+</div>
+
+<div id="aatsidakou2021combinatorial" style="display: none;">
+<pre>Recent work has considered natural variations of the \em multi-armed bandit problem, where the reward distribution of each arm is a special function of the time passed since its last pulling. In this direction, a simple (yet widely applicable) model is that of \em blocking bandits, where an arm becomes unavailable for a deterministic number of rounds after each play. In this work, we extend the above model in two directions: (i) We consider the general combinatorial setting where more than one arms can be played at each round, subject to feasibility constraints. (ii) We allow the blocking time of each arm to be stochastic. We first study the computational/unconditional hardness of the above setting and identify the necessary conditions for the problem to become tractable (even in an approximate sense). Based on these conditions, we provide a tight analysis of the approximation guarantee of a natural greedy heuristic that always plays the maximum expected reward feasible subset among the available (non-blocked) arms. When the arms’ expected rewards are unknown, we adapt the above heuristic into a bandit algorithm, based on UCB, for which we provide sublinear (approximate) regret guarantees, matching the theoretical lower bounds in the limiting case of absence of delays.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCatsidakou2021combinatorial(parameter) {
+    var x= document.getElementById('aatsidakou2021combinatorial');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexatsidakou2021combinatorial(parameter) {
+    var x= document.getElementById('Batsidakou2021combinatorial');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractatsidakou2021combinatorial(parameter) {
+    var x= document.getElementById('aatsidakou2021combinatorial');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -1476,133 +1793,6 @@ function toggleBibtexbasu2020contextual(parameter) {
 <script>
 function toggleAbstractbasu2020contextual(parameter) {
     var x= document.getElementById('abasu2020contextual');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="atsidakou2021combinatorial">Atsidakou, Alexia, Orestis Papadigenopoulos, Soumya Basu, Constantine Caramanis, and Sanjay Shakkottai. “Combinatorial Blocking Bandits with Stochastic Delays.” In <i>International Conference on Machine Learning (ICML)</i>. PMLR, 2021.</span></div>
-<button class="button0" onclick="toggleBibtexatsidakou2021combinatorial()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractatsidakou2021combinatorial()">Abstract</button>
-
-
-
-    <a href="https://arxiv.org/pdf/2105.10625.pdf"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Batsidakou2021combinatorial" style="display: none;">
-<pre>@inproceedings{atsidakou2021combinatorial,
-  title = {Combinatorial Blocking Bandits with Stochastic Delays},
-  author = {Atsidakou, Alexia and Papadigenopoulos, Orestis and Basu, Soumya and Caramanis, Constantine and Shakkottai, Sanjay},
-  booktitle = {International Conference on Machine Learning (ICML)},
-  year = {2021},
-  organization = {PMLR},
-  group = {proceedings},
-  arxiv = {https://arxiv.org/pdf/2105.10625.pdf}
-}
-</pre>
-</div>
-
-<div id="aatsidakou2021combinatorial" style="display: none;">
-<pre>Recent work has considered natural variations of the \em multi-armed bandit problem, where the reward distribution of each arm is a special function of the time passed since its last pulling. In this direction, a simple (yet widely applicable) model is that of \em blocking bandits, where an arm becomes unavailable for a deterministic number of rounds after each play. In this work, we extend the above model in two directions: (i) We consider the general combinatorial setting where more than one arms can be played at each round, subject to feasibility constraints. (ii) We allow the blocking time of each arm to be stochastic. We first study the computational/unconditional hardness of the above setting and identify the necessary conditions for the problem to become tractable (even in an approximate sense). Based on these conditions, we provide a tight analysis of the approximation guarantee of a natural greedy heuristic that always plays the maximum expected reward feasible subset among the available (non-blocked) arms. When the arms’ expected rewards are unknown, we adapt the above heuristic into a bandit algorithm, based on UCB, for which we provide sublinear (approximate) regret guarantees, matching the theoretical lower bounds in the limiting case of absence of delays.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCatsidakou2021combinatorial(parameter) {
-    var x= document.getElementById('aatsidakou2021combinatorial');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexatsidakou2021combinatorial(parameter) {
-    var x= document.getElementById('Batsidakou2021combinatorial');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractatsidakou2021combinatorial(parameter) {
-    var x= document.getElementById('aatsidakou2021combinatorial');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="caramanis2021single">Caramanis, Constantine, Paul Duetting, Matthew Faw, Federico Fusco, Philip Lazo, Stefano Leonardi, Orestis Papadigenopoulos, Emmanouil Pountourakis, and Rebecca Reiffenhauser. “Single Sample Prophet Inequalities via Greedy-Ordered Selection.” <i>Symposium on Discrete Algorithms (SODA)</i>, 2021.</span></div>
-<button class="button0" onclick="toggleBibtexcaramanis2021single()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractcaramanis2021single()">Abstract</button>
-
-
-
-    <a href="https://arxiv.org/pdf/2103.13089.pdf"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Bcaramanis2021single" style="display: none;">
-<pre>@article{caramanis2021single,
-  title = {Single Sample Prophet Inequalities via Greedy-Ordered Selection},
-  author = {Caramanis, Constantine and Duetting, Paul and Faw, Matthew and Fusco, Federico and Lazo, Philip and Leonardi, Stefano and Papadigenopoulos, Orestis and Pountourakis, Emmanouil and Reiffenhauser, Rebecca},
-  booktitle = {Symposium on Discrete Algorithms (SODA)},
-  year = {2021},
-  group = {proceedings},
-  arxiv = {https://arxiv.org/pdf/2103.13089.pdf}
-}
-</pre>
-</div>
-
-<div id="acaramanis2021single" style="display: none;">
-<pre>We study <i>Single-Sample Prophet Inequalities</i> (SSPIs), i.e.,  prophet inequalities where only a single sample from each prior distribution is available. Besides a direct, and optimal, SSPI for the basic single choice problem [Rubinstein et al., ITCS’20], most existing SSPI results were obtained via an elegant, but inherently lossy reduction to Order Oblivious Secretary (OOS) policies [Azar et al., SODA’14]. Motivated by this discrepancy, we develop an intuitive and versatile greedy-based technique that yields SSPIs <i>directly</i> rather than through the reduction to OOS. Our results can be seen as generalizing and unifying a number of existing results in the area of prophet and secretary problems. Our algorithms significantly improve on the competitive guarantees for a number of interesting scenarios (including general matching with edge arrivals, bipartite matching with vertex arrivals and certain matroids), as well as capture new settings (e.g., budget additive valuations). Complementing our algorithmic results, we also consider mechanism design variants. Finally, we analyze the power and limitations of different SSPI approaches by providing a partial converse to the reduction from SSPI to OOS given by [Azar et al., SODA’14].  </pre>
-</div>
-
-
-<script>
-function toggleAbstractCCcaramanis2021single(parameter) {
-    var x= document.getElementById('acaramanis2021single');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexcaramanis2021single(parameter) {
-    var x= document.getElementById('Bcaramanis2021single');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractcaramanis2021single(parameter) {
-    var x= document.getElementById('acaramanis2021single');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -1929,75 +2119,6 @@ function toggleAbstractkocaoglu2020applications(parameter) {
 }
 </script>
 </li>
-<li><div class="text-justify"><span id="jalal2020robust">Jalal, Ajil, Liu Liu, Alexandros G Dimakis, and Constantine Caramanis. “Robust Compressed Sensing of Generative Models.” In <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, Vol. 33, 2020.</span></div>
-<button class="button0" onclick="toggleBibtexjalal2020robust()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractjalal2020robust()">Abstract</button>
-
-
-
-    <a href="https://arxiv.org/pdf/2006.09461.pdf"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-    <a href="https://github.com/ajiljalal/csgm-robust-neurips"><input class="button3" type="button" value="code" /></a>
-
-
-<div id="Bjalal2020robust" style="display: none;">
-<pre>@inproceedings{jalal2020robust,
-  title = {Robust compressed sensing of generative models},
-  author = {Jalal, Ajil and Liu, Liu and Dimakis, Alexandros G and Caramanis, Constantine},
-  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
-  pages = {},
-  year = {2020},
-  volume = {33},
-  organization = {},
-  group = {proceedings},
-  arxiv = {https://arxiv.org/pdf/2006.09461.pdf},
-  code = {https://github.com/ajiljalal/csgm-robust-neurips}
-}
-</pre>
-</div>
-
-<div id="ajalal2020robust" style="display: none;">
-<pre>The goal of compressed sensing is to estimate a high dimensional vector from an underdetermined system of noisy linear equations. In analogy to classical compressed sensing, here we assume a generative model as a prior, that is, we assume the  vector is represented by a deep generative model G: \R^k →\R^n. Classical recovery approaches such as empirical risk minimization (ERM) are guaranteed to succeed when the  measurement matrix is sub-Gaussian. However, when the measurement matrix and measurements are heavy tailed or have outliers, recovery may fail dramatically. In this paper we propose an algorithm inspired by the Median of Means (MOM). Our algorithm guarantees recovery for heavy tailed data, even in the presence of outliers. Theoretically, our results show our novel MOM-based algorithm enjoys the same sample complexity guarantees as ERM under sub-Gaussian assumptions. Our experiments validate both aspects of our claims: other algorithms are indeed fragile and fail under heavy tailed and/or corrupted data, while our approach exhibits the predicted robustness.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCjalal2020robust(parameter) {
-    var x= document.getElementById('ajalal2020robust');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexjalal2020robust(parameter) {
-    var x= document.getElementById('Bjalal2020robust');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractjalal2020robust(parameter) {
-    var x= document.getElementById('ajalal2020robust');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
 <li><div class="text-justify"><span id="kwon2020converges">Kwon, Jeongyeol, and Constantine Caramanis. “EM Converges for a Mixture of Many Linear Regressions.” In <i>International Conference on Artificial Intelligence and Statistics (AISTATS)</i>, 1727–36. PMLR, 2020.</span></div>
 <button class="button0" onclick="toggleBibtexkwon2020converges()">Bibtex</button>
  
@@ -2185,6 +2306,75 @@ function toggleBibtexzhuo2020communication(parameter) {
 <script>
 function toggleAbstractzhuo2020communication(parameter) {
     var x= document.getElementById('azhuo2020communication');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="jalal2020robust">Jalal, Ajil, Liu Liu, Alexandros G Dimakis, and Constantine Caramanis. “Robust Compressed Sensing of Generative Models.” In <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, Vol. 33, 2020.</span></div>
+<button class="button0" onclick="toggleBibtexjalal2020robust()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractjalal2020robust()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2006.09461.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+    <a href="https://github.com/ajiljalal/csgm-robust-neurips"><input class="button3" type="button" value="code" /></a>
+
+
+<div id="Bjalal2020robust" style="display: none;">
+<pre>@inproceedings{jalal2020robust,
+  title = {Robust compressed sensing of generative models},
+  author = {Jalal, Ajil and Liu, Liu and Dimakis, Alexandros G and Caramanis, Constantine},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  pages = {},
+  year = {2020},
+  volume = {33},
+  organization = {},
+  group = {proceedings},
+  arxiv = {https://arxiv.org/pdf/2006.09461.pdf},
+  code = {https://github.com/ajiljalal/csgm-robust-neurips}
+}
+</pre>
+</div>
+
+<div id="ajalal2020robust" style="display: none;">
+<pre>The goal of compressed sensing is to estimate a high dimensional vector from an underdetermined system of noisy linear equations. In analogy to classical compressed sensing, here we assume a generative model as a prior, that is, we assume the  vector is represented by a deep generative model G: \R^k →\R^n. Classical recovery approaches such as empirical risk minimization (ERM) are guaranteed to succeed when the  measurement matrix is sub-Gaussian. However, when the measurement matrix and measurements are heavy tailed or have outliers, recovery may fail dramatically. In this paper we propose an algorithm inspired by the Median of Means (MOM). Our algorithm guarantees recovery for heavy tailed data, even in the presence of outliers. Theoretically, our results show our novel MOM-based algorithm enjoys the same sample complexity guarantees as ERM under sub-Gaussian assumptions. Our experiments validate both aspects of our claims: other algorithms are indeed fragile and fail under heavy tailed and/or corrupted data, while our approach exhibits the predicted robustness.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCjalal2020robust(parameter) {
+    var x= document.getElementById('ajalal2020robust');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexjalal2020robust(parameter) {
+    var x= document.getElementById('Bjalal2020robust');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractjalal2020robust(parameter) {
+    var x= document.getElementById('ajalal2020robust');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -2650,6 +2840,68 @@ function toggleAbstractli2018statistical(parameter) {
 }
 </script>
 </li>
+<li><div class="text-justify"><span id="li2017minimax">Li, Tianyang, Xinyang Yi, Constantine Carmanis, and Pradeep Ravikumar. “Minimax Gaussian Classification &amp; Clustering.” In <i>International Conference on Artificial Intelligence and Statistics (AISTATS)</i>, 1–9. PMLR, 2017.</span></div>
+<button class="button0" onclick="toggleBibtexli2017minimax()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractli2017minimax()">Abstract</button>
+
+
+
+ 
+
+
+<div id="Bli2017minimax" style="display: none;">
+<pre>@inproceedings{li2017minimax,
+  title = {Minimax gaussian classification \&amp; clustering},
+  author = {Li, Tianyang and Yi, Xinyang and Carmanis, Constantine and Ravikumar, Pradeep},
+  booktitle = {International Conference on Artificial Intelligence and Statistics (AISTATS)},
+  pages = {1--9},
+  year = {2017},
+  organization = {PMLR},
+  group = {proceedings}
+}
+</pre>
+</div>
+
+<div id="ali2017minimax" style="display: none;">
+<pre>We present minimax bounds for classification and clustering error in the setting where covariates are drawn from a mixture of two isotropic Gaussian distributions. Here, we define clustering error in a discriminative fashion, demonstrating fundamental connections between classification (supervised) and clustering (unsupervised). For both classification and clustering, our lower bounds show that without enough samples, the best any classifier or clustering rule can do is close to random guessing. For classification, as part of our upper bound analysis, we show that Fisher?s linear discriminant achieves a fast minimax rate ?(1/n) with enough samples n. For clustering, as part of our upper bound analysis, we show that a clustering rule constructed using principal component analysis achieves the minimax rate with enough samples. We also provide lower and upper bounds for the high-dimensional sparse setting where the dimensionality of the covariates p is potentially larger than the number of samples n, but where the difference between the Gaussian means is sparse.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCli2017minimax(parameter) {
+    var x= document.getElementById('ali2017minimax');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexli2017minimax(parameter) {
+    var x= document.getElementById('Bli2017minimax');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractli2017minimax(parameter) {
+    var x= document.getElementById('ali2017minimax');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
 <li><div class="text-justify"><span id="park2017non">Park, Dohyung, Anastasios Kyrillidis, Constantine Carmanis, and Sujay Sanghavi. “Non-Square Matrix Sensing without Spurious Local Minima via the Burer-Monteiro Approach.” In <i>International Conference on Artificial Intelligence and Statistics (AISTATS)</i>, 65–74. PMLR, 2017.</span></div>
 <button class="button0" onclick="toggleBibtexpark2017non()">Bibtex</button>
  
@@ -2707,68 +2959,6 @@ function toggleBibtexpark2017non(parameter) {
 <script>
 function toggleAbstractpark2017non(parameter) {
     var x= document.getElementById('apark2017non');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="li2017minimax">Li, Tianyang, Xinyang Yi, Constantine Carmanis, and Pradeep Ravikumar. “Minimax Gaussian Classification &amp; Clustering.” In <i>International Conference on Artificial Intelligence and Statistics (AISTATS)</i>, 1–9. PMLR, 2017.</span></div>
-<button class="button0" onclick="toggleBibtexli2017minimax()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractli2017minimax()">Abstract</button>
-
-
-
- 
-
-
-<div id="Bli2017minimax" style="display: none;">
-<pre>@inproceedings{li2017minimax,
-  title = {Minimax gaussian classification \&amp; clustering},
-  author = {Li, Tianyang and Yi, Xinyang and Carmanis, Constantine and Ravikumar, Pradeep},
-  booktitle = {International Conference on Artificial Intelligence and Statistics (AISTATS)},
-  pages = {1--9},
-  year = {2017},
-  organization = {PMLR},
-  group = {proceedings}
-}
-</pre>
-</div>
-
-<div id="ali2017minimax" style="display: none;">
-<pre>We present minimax bounds for classification and clustering error in the setting where covariates are drawn from a mixture of two isotropic Gaussian distributions. Here, we define clustering error in a discriminative fashion, demonstrating fundamental connections between classification (supervised) and clustering (unsupervised). For both classification and clustering, our lower bounds show that without enough samples, the best any classifier or clustering rule can do is close to random guessing. For classification, as part of our upper bound analysis, we show that Fisher?s linear discriminant achieves a fast minimax rate ?(1/n) with enough samples n. For clustering, as part of our upper bound analysis, we show that a clustering rule constructed using principal component analysis achieves the minimax rate with enough samples. We also provide lower and upper bounds for the high-dimensional sparse setting where the dimensionality of the covariates p is potentially larger than the number of samples n, but where the difference between the Gaussian means is sparse.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCli2017minimax(parameter) {
-    var x= document.getElementById('ali2017minimax');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexli2017minimax(parameter) {
-    var x= document.getElementById('Bli2017minimax');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractli2017minimax(parameter) {
-    var x= document.getElementById('ali2017minimax');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -3483,6 +3673,72 @@ function toggleAbstractpark2014greedy(parameter) {
 }
 </script>
 </li>
+<li><div class="text-justify"><span id="yi2014alternating">Yi, Xinyang, Constantine Caramanis, and Sujay Sanghavi. “Alternating Minimization for Mixed Linear Regression.” In <i>International Conference on Machine Learning (ICML)</i>, 613–21. PMLR, 2014.</span></div>
+<button class="button0" onclick="toggleBibtexyi2014alternating()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractyi2014alternating()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/abs/1310.3745.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Byi2014alternating" style="display: none;">
+<pre>@inproceedings{yi2014alternating,
+  title = {Alternating minimization for mixed linear regression},
+  author = {Yi, Xinyang and Caramanis, Constantine and Sanghavi, Sujay},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  pages = {613--621},
+  year = {2014},
+  organization = {PMLR},
+  group = {proceedings},
+  arxiv = {https://arxiv.org/abs/1310.3745.pdf}
+}
+</pre>
+</div>
+
+<div id="ayi2014alternating" style="display: none;">
+<pre>Mixed linear regression involves the recovery of two (or more) unknown vectors from unlabeled linear measurements; that is, where each sample comes from exactly one of the vectors, but we do not know which one. It is a classic problem, and the natural and empirically most popular approach to its solution has been the EM algorithm. As in other settings, this is prone to bad local minima; however, each iteration is very fast (alternating between guessing labels, and solving with those labels).
+In this paper we provide a new initialization procedure for EM, based on finding the leading two eigenvectors of an appropriate matrix. We then show that with this, a re-sampled version of the EM algorithm provably converges to the correct vectors, under natural assumptions on the sampling distribution, and with nearly optimal (unimprovable) sample complexity. This provides not only the first characterization of EM’s performance, but also much lower sample complexity as compared to both standard (randomly initialized) EM, and other methods for this problem.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCyi2014alternating(parameter) {
+    var x= document.getElementById('ayi2014alternating');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexyi2014alternating(parameter) {
+    var x= document.getElementById('Byi2014alternating');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractyi2014alternating(parameter) {
+    var x= document.getElementById('ayi2014alternating');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
 <li><div class="text-justify"><span id="chen2014convex">Chen, Yudong, Xinyang Yi, and Constantine Caramanis. “A Convex Formulation for Mixed Regression with Two Components: Minimax Optimal Rates.” In <i>Conference on Learning Theory (COLT)</i>, 560–604. PMLR, 2014.</span></div>
 <button class="button0" onclick="toggleBibtexchen2014convex()">Bibtex</button>
  
@@ -3679,72 +3935,6 @@ function toggleAbstractpapailiopoulos2014finding(parameter) {
 }
 </script>
 </li>
-<li><div class="text-justify"><span id="yi2014alternating">Yi, Xinyang, Constantine Caramanis, and Sujay Sanghavi. “Alternating Minimization for Mixed Linear Regression.” In <i>International Conference on Machine Learning (ICML)</i>, 613–21. PMLR, 2014.</span></div>
-<button class="button0" onclick="toggleBibtexyi2014alternating()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractyi2014alternating()">Abstract</button>
-
-
-
-    <a href="https://arxiv.org/abs/1310.3745.pdf"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Byi2014alternating" style="display: none;">
-<pre>@inproceedings{yi2014alternating,
-  title = {Alternating minimization for mixed linear regression},
-  author = {Yi, Xinyang and Caramanis, Constantine and Sanghavi, Sujay},
-  booktitle = {International Conference on Machine Learning (ICML)},
-  pages = {613--621},
-  year = {2014},
-  organization = {PMLR},
-  group = {proceedings},
-  arxiv = {https://arxiv.org/abs/1310.3745.pdf}
-}
-</pre>
-</div>
-
-<div id="ayi2014alternating" style="display: none;">
-<pre>Mixed linear regression involves the recovery of two (or more) unknown vectors from unlabeled linear measurements; that is, where each sample comes from exactly one of the vectors, but we do not know which one. It is a classic problem, and the natural and empirically most popular approach to its solution has been the EM algorithm. As in other settings, this is prone to bad local minima; however, each iteration is very fast (alternating between guessing labels, and solving with those labels).
-In this paper we provide a new initialization procedure for EM, based on finding the leading two eigenvectors of an appropriate matrix. We then show that with this, a re-sampled version of the EM algorithm provably converges to the correct vectors, under natural assumptions on the sampling distribution, and with nearly optimal (unimprovable) sample complexity. This provides not only the first characterization of EM’s performance, but also much lower sample complexity as compared to both standard (randomly initialized) EM, and other methods for this problem.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCyi2014alternating(parameter) {
-    var x= document.getElementById('ayi2014alternating');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexyi2014alternating(parameter) {
-    var x= document.getElementById('Byi2014alternating');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractyi2014alternating(parameter) {
-    var x= document.getElementById('ayi2014alternating');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
 <li><div class="text-justify"><span id="mitliagkas2013memory">Mitliagkas, Ioannis, Constantine Caramanis, and Prateek Jain. “Memory Limited, Streaming PCA.” In <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, Vol. 26. NIH Public Access, 2013. https://papers.nips.cc/paper/2013/file/76cf99d3614e23eabab16fb27e944bf9-Paper.pdf.</span></div>
 <button class="button0" onclick="toggleBibtexmitliagkas2013memory()">Bibtex</button>
  
@@ -3803,6 +3993,126 @@ function toggleBibtexmitliagkas2013memory(parameter) {
 <script>
 function toggleAbstractmitliagkas2013memory(parameter) {
     var x= document.getElementById('amitliagkas2013memory');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="ye2013device">Ye, Qiaoyang, Mazin Al-Shalash, Constantine Caramanis, and Jeffrey G Andrews. “Device-to-Device Modeling and Analysis with a Modified Matern Hardcore BS Location Model.” In <i>2013 IEEE Global Communications Conference (GLOBECOM)</i>, 1825–30. IEEE, 2013.</span></div>
+<button class="button0" onclick="toggleBibtexye2013device()">Bibtex</button>
+ 
+
+
+
+ 
+
+
+<div id="Bye2013device" style="display: none;">
+<pre>@inproceedings{ye2013device,
+  title = {Device-to-device modeling and analysis with a modified Matern hardcore BS location model},
+  author = {Ye, Qiaoyang and Al-Shalash, Mazin and Caramanis, Constantine and Andrews, Jeffrey G},
+  booktitle = {2013 IEEE Global Communications Conference (GLOBECOM)},
+  pages = {1825--1830},
+  year = {2013},
+  organization = {IEEE},
+  group = {proceedings}
+}
+</pre>
+</div>
+
+<div id="aye2013device" style="display: none;">
+<pre></pre>
+</div>
+
+
+<script>
+function toggleAbstractCCye2013device(parameter) {
+    var x= document.getElementById('aye2013device');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexye2013device(parameter) {
+    var x= document.getElementById('Bye2013device');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractye2013device(parameter) {
+    var x= document.getElementById('aye2013device');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="ye2013off">———. “On/off Macrocells and Load Balancing in Heterogeneous Cellular Networks.” In <i>2013 IEEE Global Communications Conference (GLOBECOM)</i>, 3814–19. IEEE, 2013.</span></div>
+<button class="button0" onclick="toggleBibtexye2013off()">Bibtex</button>
+ 
+
+
+
+ 
+
+
+<div id="Bye2013off" style="display: none;">
+<pre>@inproceedings{ye2013off,
+  title = {On/off macrocells and load balancing in heterogeneous cellular networks},
+  author = {Ye, Qiaoyang and Al-Shalash, Mazin and Caramanis, Constantine and Andrews, Jeffrey G},
+  booktitle = {2013 IEEE global communications conference (GLOBECOM)},
+  pages = {3814--3819},
+  year = {2013},
+  organization = {IEEE},
+  group = {proceedings}
+}
+</pre>
+</div>
+
+<div id="aye2013off" style="display: none;">
+<pre></pre>
+</div>
+
+
+<script>
+function toggleAbstractCCye2013off(parameter) {
+    var x= document.getElementById('aye2013off');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexye2013off(parameter) {
+    var x= document.getElementById('Bye2013off');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractye2013off(parameter) {
+    var x= document.getElementById('aye2013off');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -4057,126 +4367,6 @@ function toggleAbstractchen2013noisy(parameter) {
 }
 </script>
 </li>
-<li><div class="text-justify"><span id="ye2013off">Ye, Qiaoyang, Mazin Al-Shalash, Constantine Caramanis, and Jeffrey G Andrews. “On/off Macrocells and Load Balancing in Heterogeneous Cellular Networks.” In <i>2013 IEEE Global Communications Conference (GLOBECOM)</i>, 3814–19. IEEE, 2013.</span></div>
-<button class="button0" onclick="toggleBibtexye2013off()">Bibtex</button>
- 
-
-
-
- 
-
-
-<div id="Bye2013off" style="display: none;">
-<pre>@inproceedings{ye2013off,
-  title = {On/off macrocells and load balancing in heterogeneous cellular networks},
-  author = {Ye, Qiaoyang and Al-Shalash, Mazin and Caramanis, Constantine and Andrews, Jeffrey G},
-  booktitle = {2013 IEEE global communications conference (GLOBECOM)},
-  pages = {3814--3819},
-  year = {2013},
-  organization = {IEEE},
-  group = {proceedings}
-}
-</pre>
-</div>
-
-<div id="aye2013off" style="display: none;">
-<pre></pre>
-</div>
-
-
-<script>
-function toggleAbstractCCye2013off(parameter) {
-    var x= document.getElementById('aye2013off');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexye2013off(parameter) {
-    var x= document.getElementById('Bye2013off');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractye2013off(parameter) {
-    var x= document.getElementById('aye2013off');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="ye2013device">———. “Device-to-Device Modeling and Analysis with a Modified Matern Hardcore BS Location Model.” In <i>2013 IEEE Global Communications Conference (GLOBECOM)</i>, 1825–30. IEEE, 2013.</span></div>
-<button class="button0" onclick="toggleBibtexye2013device()">Bibtex</button>
- 
-
-
-
- 
-
-
-<div id="Bye2013device" style="display: none;">
-<pre>@inproceedings{ye2013device,
-  title = {Device-to-device modeling and analysis with a modified Matern hardcore BS location model},
-  author = {Ye, Qiaoyang and Al-Shalash, Mazin and Caramanis, Constantine and Andrews, Jeffrey G},
-  booktitle = {2013 IEEE Global Communications Conference (GLOBECOM)},
-  pages = {1825--1830},
-  year = {2013},
-  organization = {IEEE},
-  group = {proceedings}
-}
-</pre>
-</div>
-
-<div id="aye2013device" style="display: none;">
-<pre></pre>
-</div>
-
-
-<script>
-function toggleAbstractCCye2013device(parameter) {
-    var x= document.getElementById('aye2013device');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexye2013device(parameter) {
-    var x= document.getElementById('Bye2013device');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractye2013device(parameter) {
-    var x= document.getElementById('aye2013device');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
 <li><div class="text-justify"><span id="milling2012network">Milling, Chris, Constantine Caramanis, Shie Mannor, and Sanjay Shakkottai. “Network Forensics: Random Infection vs Spreading Epidemic.” <i>ACM SIGMETRICS Performance Evaluation Review</i> 40, no. 1 (2012): 223–34.</span></div>
 <button class="button0" onclick="toggleBibtexmilling2012network()">Bibtex</button>
  
@@ -4233,6 +4423,66 @@ function toggleBibtexmilling2012network(parameter) {
 <script>
 function toggleAbstractmilling2012network(parameter) {
     var x= document.getElementById('amilling2012network');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="milling2012identifying">———. “On Identifying the Causative Network of an Epidemic.” In <i>2012 50th Annual Allerton Conference on Communication, Control, and Computing (Allerton)</i>, 909–14. IEEE, 2012.</span></div>
+<button class="button0" onclick="toggleBibtexmilling2012identifying()">Bibtex</button>
+ 
+
+
+
+ 
+
+
+<div id="Bmilling2012identifying" style="display: none;">
+<pre>@inproceedings{milling2012identifying,
+  title = {On identifying the causative network of an epidemic},
+  author = {Milling, Chris and Caramanis, Constantine and Mannor, Shie and Shakkottai, Sanjay},
+  booktitle = {2012 50th Annual Allerton Conference on Communication, Control, and Computing (Allerton)},
+  pages = {909--914},
+  year = {2012},
+  organization = {IEEE},
+  group = {proceedings}
+}
+</pre>
+</div>
+
+<div id="amilling2012identifying" style="display: none;">
+<pre></pre>
+</div>
+
+
+<script>
+function toggleAbstractCCmilling2012identifying(parameter) {
+    var x= document.getElementById('amilling2012identifying');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexmilling2012identifying(parameter) {
+    var x= document.getElementById('Bmilling2012identifying');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractmilling2012identifying(parameter) {
+    var x= document.getElementById('amilling2012identifying');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -4417,66 +4667,6 @@ function toggleBibtexganapathy2012queue(parameter) {
 <script>
 function toggleAbstractganapathy2012queue(parameter) {
     var x= document.getElementById('aganapathy2012queue');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="milling2012identifying">Milling, Chris, Constantine Caramanis, Shie Mannor, and Sanjay Shakkottai. “On Identifying the Causative Network of an Epidemic.” In <i>2012 50th Annual Allerton Conference on Communication, Control, and Computing (Allerton)</i>, 909–14. IEEE, 2012.</span></div>
-<button class="button0" onclick="toggleBibtexmilling2012identifying()">Bibtex</button>
- 
-
-
-
- 
-
-
-<div id="Bmilling2012identifying" style="display: none;">
-<pre>@inproceedings{milling2012identifying,
-  title = {On identifying the causative network of an epidemic},
-  author = {Milling, Chris and Caramanis, Constantine and Mannor, Shie and Shakkottai, Sanjay},
-  booktitle = {2012 50th Annual Allerton Conference on Communication, Control, and Computing (Allerton)},
-  pages = {909--914},
-  year = {2012},
-  organization = {IEEE},
-  group = {proceedings}
-}
-</pre>
-</div>
-
-<div id="amilling2012identifying" style="display: none;">
-<pre></pre>
-</div>
-
-
-<script>
-function toggleAbstractCCmilling2012identifying(parameter) {
-    var x= document.getElementById('amilling2012identifying');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexmilling2012identifying(parameter) {
-    var x= document.getElementById('Bmilling2012identifying');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractmilling2012identifying(parameter) {
-    var x= document.getElementById('amilling2012identifying');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -4915,66 +5105,6 @@ function toggleAbstractxu2010robust(parameter) {
 }
 </script>
 </li>
-<li><div class="text-justify"><span id="xu2010distributional">Xu, Huan, Constantine Caramanis, and Shie Mannor. “A Distributional Interpretation of Robust Optimization.” In <i>2010 48th Annual Allerton Conference on Communication, Control, and Computing (Allerton)</i>, 552–56. IEEE, 2010.</span></div>
-<button class="button0" onclick="toggleBibtexxu2010distributional()">Bibtex</button>
- 
-
-
-
- 
-
-
-<div id="Bxu2010distributional" style="display: none;">
-<pre>@inproceedings{xu2010distributional,
-  title = {A distributional interpretation of robust optimization},
-  author = {Xu, Huan and Caramanis, Constantine and Mannor, Shie},
-  booktitle = {2010 48th Annual Allerton Conference on Communication, Control, and Computing (Allerton)},
-  pages = {552--556},
-  year = {2010},
-  organization = {IEEE},
-  group = {proceedings}
-}
-</pre>
-</div>
-
-<div id="axu2010distributional" style="display: none;">
-<pre></pre>
-</div>
-
-
-<script>
-function toggleAbstractCCxu2010distributional(parameter) {
-    var x= document.getElementById('axu2010distributional');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexxu2010distributional(parameter) {
-    var x= document.getElementById('Bxu2010distributional');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractxu2010distributional(parameter) {
-    var x= document.getElementById('axu2010distributional');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
 <li><div class="text-justify"><span id="ganapathy2010dynamic">Ganapathy, Harish, and Constantine Caramanis. “Dynamic Feedback Allocation Algorithms for Interference Management in MIMO Uplink.” In <i>2010 IEEE Global Telecommunications Conference GLOBECOM 2010</i>, 1–5. IEEE, 2010.</span></div>
 <button class="button0" onclick="toggleBibtexganapathy2010dynamic()">Bibtex</button>
  
@@ -5335,8 +5465,8 @@ function toggleAbstractganapathy2010limited(parameter) {
 }
 </script>
 </li>
-<li><div class="text-justify"><span id="ganapathy2009optimal">Ganapathy, Harish, Siddhartha Banerjee, Nedialko Dimitrov, and Constantine Caramanis. “Optimal Feedback Allocation Algorithms for Multi-User Uplink.” In <i>2009 47th Annual Allerton Conference on Communication, Control, and Computing (Allerton)</i>, 947–54. IEEE, 2009.</span></div>
-<button class="button0" onclick="toggleBibtexganapathy2009optimal()">Bibtex</button>
+<li><div class="text-justify"><span id="xu2010distributional">Xu, Huan, Constantine Caramanis, and Shie Mannor. “A Distributional Interpretation of Robust Optimization.” In <i>2010 48th Annual Allerton Conference on Communication, Control, and Computing (Allerton)</i>, 552–56. IEEE, 2010.</span></div>
+<button class="button0" onclick="toggleBibtexxu2010distributional()">Bibtex</button>
  
 
 
@@ -5344,27 +5474,27 @@ function toggleAbstractganapathy2010limited(parameter) {
  
 
 
-<div id="Bganapathy2009optimal" style="display: none;">
-<pre>@inproceedings{ganapathy2009optimal,
-  title = {Optimal feedback allocation algorithms for multi-user uplink},
-  author = {Ganapathy, Harish and Banerjee, Siddhartha and Dimitrov, Nedialko and Caramanis, Constantine},
-  booktitle = {2009 47th Annual Allerton Conference on Communication, Control, and Computing (Allerton)},
-  pages = {947--954},
-  year = {2009},
+<div id="Bxu2010distributional" style="display: none;">
+<pre>@inproceedings{xu2010distributional,
+  title = {A distributional interpretation of robust optimization},
+  author = {Xu, Huan and Caramanis, Constantine and Mannor, Shie},
+  booktitle = {2010 48th Annual Allerton Conference on Communication, Control, and Computing (Allerton)},
+  pages = {552--556},
+  year = {2010},
   organization = {IEEE},
   group = {proceedings}
 }
 </pre>
 </div>
 
-<div id="aganapathy2009optimal" style="display: none;">
+<div id="axu2010distributional" style="display: none;">
 <pre></pre>
 </div>
 
 
 <script>
-function toggleAbstractCCganapathy2009optimal(parameter) {
-    var x= document.getElementById('aganapathy2009optimal');
+function toggleAbstractCCxu2010distributional(parameter) {
+    var x= document.getElementById('axu2010distributional');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -5374,8 +5504,8 @@ function toggleAbstractCCganapathy2009optimal(parameter) {
 </script>
 
 <script>
-function toggleBibtexganapathy2009optimal(parameter) {
-    var x= document.getElementById('Bganapathy2009optimal');
+function toggleBibtexxu2010distributional(parameter) {
+    var x= document.getElementById('Bxu2010distributional');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -5385,68 +5515,8 @@ function toggleBibtexganapathy2009optimal(parameter) {
 </script>
 
 <script>
-function toggleAbstractganapathy2009optimal(parameter) {
-    var x= document.getElementById('aganapathy2009optimal');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="yun2009multiclass">Yun, Sungho, and Constantine Caramanis. “Multiclass Support Vector Machines for Adaptation in MIMO-OFDM Wireless Systems.” In <i>2009 47th Annual Allerton Conference on Communication, Control, and Computing (Allerton)</i>, 1145–52. IEEE, 2009.</span></div>
-<button class="button0" onclick="toggleBibtexyun2009multiclass()">Bibtex</button>
- 
-
-
-
- 
-
-
-<div id="Byun2009multiclass" style="display: none;">
-<pre>@inproceedings{yun2009multiclass,
-  title = {Multiclass support vector machines for adaptation in MIMO-OFDM wireless systems},
-  author = {Yun, Sungho and Caramanis, Constantine},
-  booktitle = {2009 47th Annual Allerton Conference on Communication, Control, and Computing (Allerton)},
-  pages = {1145--1152},
-  year = {2009},
-  organization = {IEEE},
-  group = {proceedings}
-}
-</pre>
-</div>
-
-<div id="ayun2009multiclass" style="display: none;">
-<pre></pre>
-</div>
-
-
-<script>
-function toggleAbstractCCyun2009multiclass(parameter) {
-    var x= document.getElementById('ayun2009multiclass');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexyun2009multiclass(parameter) {
-    var x= document.getElementById('Byun2009multiclass');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractyun2009multiclass(parameter) {
-    var x= document.getElementById('ayun2009multiclass');
+function toggleAbstractxu2010distributional(parameter) {
+    var x= document.getElementById('axu2010distributional');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -5577,6 +5647,126 @@ function toggleAbstractsingh2009mitigation(parameter) {
 }
 </script>
 </li>
+<li><div class="text-justify"><span id="ganapathy2009optimal">Ganapathy, Harish, Siddhartha Banerjee, Nedialko Dimitrov, and Constantine Caramanis. “Optimal Feedback Allocation Algorithms for Multi-User Uplink.” In <i>2009 47th Annual Allerton Conference on Communication, Control, and Computing (Allerton)</i>, 947–54. IEEE, 2009.</span></div>
+<button class="button0" onclick="toggleBibtexganapathy2009optimal()">Bibtex</button>
+ 
+
+
+
+ 
+
+
+<div id="Bganapathy2009optimal" style="display: none;">
+<pre>@inproceedings{ganapathy2009optimal,
+  title = {Optimal feedback allocation algorithms for multi-user uplink},
+  author = {Ganapathy, Harish and Banerjee, Siddhartha and Dimitrov, Nedialko and Caramanis, Constantine},
+  booktitle = {2009 47th Annual Allerton Conference on Communication, Control, and Computing (Allerton)},
+  pages = {947--954},
+  year = {2009},
+  organization = {IEEE},
+  group = {proceedings}
+}
+</pre>
+</div>
+
+<div id="aganapathy2009optimal" style="display: none;">
+<pre></pre>
+</div>
+
+
+<script>
+function toggleAbstractCCganapathy2009optimal(parameter) {
+    var x= document.getElementById('aganapathy2009optimal');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexganapathy2009optimal(parameter) {
+    var x= document.getElementById('Bganapathy2009optimal');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractganapathy2009optimal(parameter) {
+    var x= document.getElementById('aganapathy2009optimal');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="yun2009multiclass">Yun, Sungho, and Constantine Caramanis. “Multiclass Support Vector Machines for Adaptation in MIMO-OFDM Wireless Systems.” In <i>2009 47th Annual Allerton Conference on Communication, Control, and Computing (Allerton)</i>, 1145–52. IEEE, 2009.</span></div>
+<button class="button0" onclick="toggleBibtexyun2009multiclass()">Bibtex</button>
+ 
+
+
+
+ 
+
+
+<div id="Byun2009multiclass" style="display: none;">
+<pre>@inproceedings{yun2009multiclass,
+  title = {Multiclass support vector machines for adaptation in MIMO-OFDM wireless systems},
+  author = {Yun, Sungho and Caramanis, Constantine},
+  booktitle = {2009 47th Annual Allerton Conference on Communication, Control, and Computing (Allerton)},
+  pages = {1145--1152},
+  year = {2009},
+  organization = {IEEE},
+  group = {proceedings}
+}
+</pre>
+</div>
+
+<div id="ayun2009multiclass" style="display: none;">
+<pre></pre>
+</div>
+
+
+<script>
+function toggleAbstractCCyun2009multiclass(parameter) {
+    var x= document.getElementById('ayun2009multiclass');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexyun2009multiclass(parameter) {
+    var x= document.getElementById('Byun2009multiclass');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractyun2009multiclass(parameter) {
+    var x= document.getElementById('ayun2009multiclass');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
 <li><div class="text-justify"><span id="xu2008robust">Xu, Huan, Constantine Caramanis, and Shie Mannor. “Robust Regression and Lasso.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i> 21 (2008).</span></div>
 <button class="button0" onclick="toggleBibtexxu2008robust()">Bibtex</button>
  
@@ -5634,125 +5824,6 @@ function toggleBibtexxu2008robust(parameter) {
 <script>
 function toggleAbstractxu2008robust(parameter) {
     var x= document.getElementById('axu2008robust');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="caramanis2008learning">Caramanis, Constantine, and Shie Mannor. “Learning in the Limit with Adversarial Disturbances.” In <i>The Conference on Learning Theory (COLT)</i>, 467–78, 2008.</span></div>
-<button class="button0" onclick="toggleBibtexcaramanis2008learning()">Bibtex</button>
- 
-
-
-
- 
-
-
-<div id="Bcaramanis2008learning" style="display: none;">
-<pre>@inproceedings{caramanis2008learning,
-  title = {Learning in the Limit with Adversarial Disturbances.},
-  author = {Caramanis, Constantine and Mannor, Shie},
-  booktitle = {The Conference on Learning Theory (COLT)},
-  pages = {467--478},
-  year = {2008},
-  group = {proceedings}
-}
-</pre>
-</div>
-
-<div id="acaramanis2008learning" style="display: none;">
-<pre></pre>
-</div>
-
-
-<script>
-function toggleAbstractCCcaramanis2008learning(parameter) {
-    var x= document.getElementById('acaramanis2008learning');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexcaramanis2008learning(parameter) {
-    var x= document.getElementById('Bcaramanis2008learning');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractcaramanis2008learning(parameter) {
-    var x= document.getElementById('acaramanis2008learning');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="yun2008system">Yun, Sungho, and Constantine Caramanis. “System Level Optimization in Wireless Networks with Uncertain Customer Arrival Rates.” In <i>2008 46th Annual Allerton Conference on Communication, Control, and Computing</i>, 1022–29. IEEE, 2008.</span></div>
-<button class="button0" onclick="toggleBibtexyun2008system()">Bibtex</button>
- 
-
-
-
- 
-
-
-<div id="Byun2008system" style="display: none;">
-<pre>@inproceedings{yun2008system,
-  title = {System level optimization in wireless networks with uncertain customer arrival rates},
-  author = {Yun, Sungho and Caramanis, Constantine},
-  booktitle = {2008 46th Annual Allerton Conference on Communication, Control, and Computing},
-  pages = {1022--1029},
-  year = {2008},
-  organization = {IEEE},
-  group = {proceedings}
-}
-</pre>
-</div>
-
-<div id="ayun2008system" style="display: none;">
-<pre></pre>
-</div>
-
-
-<script>
-function toggleAbstractCCyun2008system(parameter) {
-    var x= document.getElementById('ayun2008system');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexyun2008system(parameter) {
-    var x= document.getElementById('Byun2008system');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractyun2008system(parameter) {
-    var x= document.getElementById('ayun2008system');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -5941,6 +6012,66 @@ function toggleAbstractchannappayya2008ssim(parameter) {
 }
 </script>
 </li>
+<li><div class="text-justify"><span id="yun2008system">Yun, Sungho, and Constantine Caramanis. “System Level Optimization in Wireless Networks with Uncertain Customer Arrival Rates.” In <i>2008 46th Annual Allerton Conference on Communication, Control, and Computing</i>, 1022–29. IEEE, 2008.</span></div>
+<button class="button0" onclick="toggleBibtexyun2008system()">Bibtex</button>
+ 
+
+
+
+ 
+
+
+<div id="Byun2008system" style="display: none;">
+<pre>@inproceedings{yun2008system,
+  title = {System level optimization in wireless networks with uncertain customer arrival rates},
+  author = {Yun, Sungho and Caramanis, Constantine},
+  booktitle = {2008 46th Annual Allerton Conference on Communication, Control, and Computing},
+  pages = {1022--1029},
+  year = {2008},
+  organization = {IEEE},
+  group = {proceedings}
+}
+</pre>
+</div>
+
+<div id="ayun2008system" style="display: none;">
+<pre></pre>
+</div>
+
+
+<script>
+function toggleAbstractCCyun2008system(parameter) {
+    var x= document.getElementById('ayun2008system');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexyun2008system(parameter) {
+    var x= document.getElementById('Byun2008system');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractyun2008system(parameter) {
+    var x= document.getElementById('ayun2008system');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
 <li><div class="text-justify"><span id="meka2008rank">Meka, Raghu, Prateek Jain, Constantine Caramanis, and Inderjit S Dhillon. “Rank Minimization via Online Learning.” In <i>Proceedings of the 25th International Conference on Machine Learning (ICML)</i>, 656–63, 2008.</span></div>
 <button class="button0" onclick="toggleBibtexmeka2008rank()">Bibtex</button>
  
@@ -5994,6 +6125,65 @@ function toggleBibtexmeka2008rank(parameter) {
 <script>
 function toggleAbstractmeka2008rank(parameter) {
     var x= document.getElementById('ameka2008rank');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="caramanis2008learning">Caramanis, Constantine, and Shie Mannor. “Learning in the Limit with Adversarial Disturbances.” In <i>The Conference on Learning Theory (COLT)</i>, 467–78, 2008.</span></div>
+<button class="button0" onclick="toggleBibtexcaramanis2008learning()">Bibtex</button>
+ 
+
+
+
+ 
+
+
+<div id="Bcaramanis2008learning" style="display: none;">
+<pre>@inproceedings{caramanis2008learning,
+  title = {Learning in the Limit with Adversarial Disturbances.},
+  author = {Caramanis, Constantine and Mannor, Shie},
+  booktitle = {The Conference on Learning Theory (COLT)},
+  pages = {467--478},
+  year = {2008},
+  group = {proceedings}
+}
+</pre>
+</div>
+
+<div id="acaramanis2008learning" style="display: none;">
+<pre></pre>
+</div>
+
+
+<script>
+function toggleAbstractCCcaramanis2008learning(parameter) {
+    var x= document.getElementById('acaramanis2008learning');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexcaramanis2008learning(parameter) {
+    var x= document.getElementById('Bcaramanis2008learning');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractcaramanis2008learning(parameter) {
+    var x= document.getElementById('acaramanis2008learning');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
