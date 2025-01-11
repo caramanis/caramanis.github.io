@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://localhost:4000/MachineLearningClass/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/finalproject/</loc>
 </url>
 <url>
@@ -37,9 +40,25 @@
 <loc>http://localhost:4000/researchprojects/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/vendor/teaching/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/teaching/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/vendor/teaching/</loc>
+<loc>http://localhost:4000/pdfs/mlclass/L01.pdf</loc>
+<lastmod>2025-01-10T07:50:29-06:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/pdfs/mlclass/L02.pdf</loc>
+<lastmod>2025-01-10T08:08:15-06:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/pdfs/mlclass/L03.pdf</loc>
+<lastmod>2025-01-10T08:08:37-06:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/pdfs/mlclass/L06.pdf</loc>
+<lastmod>2025-01-10T10:15:23-06:00</lastmod>
 </url>
 </urlset>
