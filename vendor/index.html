@@ -246,39 +246,41 @@ I am a Professor in the ECE department of The University of Texas at Austin. I r
 
 <hr />
 <h3 id="the-last-ten-publications-chronologically">The last ten publications, chronologically…</h3>
-<ol class="bibliography"><li><div class="text-justify"><span id="kwon24lmdp">Kwon, Jeongyeol, Yonathan Efroni, Shie Mannor, and Constantine Caramanis. “RL in Latent MDPs Is Tractable: Online Guarantees via Off-Policy Evaluation.” <i>Preprint</i>, 2024.</span></div>
-<button class="button0" onclick="toggleBibtexkwon24lmdp()">Bibtex</button>
+<ol class="bibliography"><li><div class="text-justify"><span id="rout2024semantic">Rout, Litu, Yujia Chen, Nataniel Ruiz, Constantine Caramanis, Sanjay Shakkottai, and Wen-Sheng Chu. “Semantic Image Inversion and Editing Using Rectified Stochastic Differential Equations.” <i>Proceedings of the International Conference on Learning Representations (ICLR)</i>, 2025.</span></div>
+<button class="button0" onclick="toggleBibtexrout2024semantic()">Bibtex</button>
  
 
-<button class="button0" onclick="toggleAbstractkwon24lmdp()">Abstract</button>
+<button class="button0" onclick="toggleAbstractrout2024semantic()">Abstract</button>
 
 
 
-    <a href="https://arxiv.org/pdf/2406.01389"><input class="button4" type="button" value="ArXiv" /></a>
+    <a href="https://arxiv.org/pdf/2410.10792"><input class="button4" type="button" value="ArXiv" /></a>
 
  
 
 
-<div id="Bkwon24lmdp" style="display: none;">
-<pre>@article{kwon24lmdp,
-  title = {RL in Latent MDPs is Tractable: Online Guarantees via Off-Policy Evaluation},
-  author = {Kwon, Jeongyeol and Efroni, Yonathan and Mannor, Shie and Caramanis, Constantine},
-  journal = {preprint},
-  year = {2024},
-  group = {misc},
-  arxiv = {https://arxiv.org/pdf/2406.01389}
+<div id="Brout2024semantic" style="display: none;">
+<pre>@article{rout2024semantic,
+  title = {Semantic image inversion and editing using rectified stochastic differential equations},
+  author = {Rout, Litu and Chen, Yujia and Ruiz, Nataniel and Caramanis, Constantine and Shakkottai, Sanjay and Chu, Wen-Sheng},
+  journal = {Proceedings of the International Conference on Learning Representations (ICLR)},
+  arxiv = {https://arxiv.org/pdf/2410.10792},
+  year = {2025}
 }
 </pre>
 </div>
 
-<div id="akwon24lmdp" style="display: none;">
-<pre>In many real-world decision problems there is partially observed, hidden or latent information that remains fixed throughout an interaction. Such decision problems can be modeled as Latent Markov Decision Processes (LMDPs), where a latent variable is selected at the beginning of an interaction and is not disclosed to the agent. In the last decade, there has been significant progress in solving LMDPs under different structural assumptions. However, for general LMDPs, there is no known learning algorithm that provably matches the existing lower bound (Kwon et al., 2021). We introduce the first sample-efficient algorithm for LMDPs without any additional structural assumptions. Our result builds off a new perspective on the role of off-policy evaluation guarantees and coverage coefficients in LMDPs, a perspective, that has been overlooked in the context of exploration in partially observed environments. Specifically, we establish a novel off-policy evaluation lemma and introduce a new coverage coefficient for LMDPs. Then, we show how these can be used to derive near-optimal guarantees of an optimistic exploration algorithm. These results, we believe, can be valuable for a wide range of interactive learning problems beyond LMDPs, and especially, for partially observed environments.</pre>
+<div id="arout2024semantic" style="display: none;">
+<pre>Generative models transform random noise into images, while their inversion aims to reconstruct structured noise for recovery and editing. This paper addresses two key tasks: (i) inversion and (ii) editing of real images using stochastic equivalents of rectified flow models (e.g., Flux). While Diffusion Models (DMs) dominate the field of generative modeling for images, their inversion suffers from faithfulness and editability challenges due to nonlinear drift and diffusion. Existing DM inversion methods require costly training of additional parameters or test-time optimization of latent variables. Rectified Flows (RFs) offer a promising alternative to DMs, yet their inversion remains underexplored. 
+We propose RF inversion using dynamic optimal control derived via a linear quadratic regulator, and prove that the resulting vector field is equivalent to a rectified stochastic differential equation. 
+We further extend our framework to design a stochastic sampler for Flux.
+Our method achieves state-of-the-art performance in zero-shot inversion and editing, surpassing prior works in stroke-to-image synthesis and semantic image editing, with large-scale human evaluations confirming user preference. See our project page https://rf-inversion.github.io/ for code and demo.</pre>
 </div>
 
 
 <script>
-function toggleAbstractCCkwon24lmdp(parameter) {
-    var x= document.getElementById('akwon24lmdp');
+function toggleAbstractCCrout2024semantic(parameter) {
+    var x= document.getElementById('arout2024semantic');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -288,8 +290,8 @@ function toggleAbstractCCkwon24lmdp(parameter) {
 </script>
 
 <script>
-function toggleBibtexkwon24lmdp(parameter) {
-    var x= document.getElementById('Bkwon24lmdp');
+function toggleBibtexrout2024semantic(parameter) {
+    var x= document.getElementById('Brout2024semantic');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -299,8 +301,8 @@ function toggleBibtexkwon24lmdp(parameter) {
 </script>
 
 <script>
-function toggleAbstractkwon24lmdp(parameter) {
-    var x= document.getElementById('akwon24lmdp');
+function toggleAbstractrout2024semantic(parameter) {
+    var x= document.getElementById('arout2024semantic');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -309,7 +311,70 @@ function toggleAbstractkwon24lmdp(parameter) {
 }
 </script>
 </li>
-<li><div class="text-justify"><span id="rout2024rb">Rout, Litu, Yujia Chen, Nataniel Ruiz, Abhishek Kumar, Constantine Caramanis, Sanjay Shakkottai, and Wen-Sheng Chu. “RB-Modulation: Training-Free Personalization of Diffusion Models Using Stochastic Optimal Control.” <i>Preprint</i>, 2024.</span></div>
+<li><div class="text-justify"><span id="raoofinfilling">Raoof, Negin, Litu Rout, Giannis Daras, Sujay Sanghavi, Constantine Caramanis, Sanjay Shakkottai, and Alex Dimakis. “Infilling Score: A Pretraining Data Detection Algorithm for Large Language Models.” <i>Proceedings of the International Conference on Learning Representations (ICLR)</i>, 2025.</span></div>
+<button class="button0" onclick="toggleBibtexraoofinfilling()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractraoofinfilling()">Abstract</button>
+
+
+
+    <a href="https://openreview.net/pdf?id=9QPH1YQCMn"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Braoofinfilling" style="display: none;">
+<pre>@article{raoofinfilling,
+  title = {Infilling Score: A Pretraining Data Detection Algorithm for Large Language Models},
+  author = {Raoof, Negin and Rout, Litu and Daras, Giannis and Sanghavi, Sujay and Caramanis, Constantine and Shakkottai, Sanjay and Dimakis, Alex},
+  journal = {Proceedings of the International Conference on Learning Representations (ICLR)},
+  year = {2025},
+  group = {proceedings},
+  arxiv = {https://openreview.net/pdf?id=9QPH1YQCMn}
+}
+</pre>
+</div>
+
+<div id="araoofinfilling" style="display: none;">
+<pre>In pretraining data detection, the goal is to detect whether a given sentence is in the dataset used for training a Large Language Model LLM). Recent methods (such as Min-K % and Min-K%++) reveal that most training corpora are likely contaminated with both sensitive content and evaluation benchmarks, leading to inflated test set performance. These methods sometimes fail to detect samples from the pretraining data, primarily because they depend on statistics composed of causal token likelihoods. We introduce Infilling Score, a new test-statistic based on non-causal token likelihoods. Infilling Score can be computed for autoregressive models without re-training using Bayes rule. A naive application of Bayes rule scales linearly with the vocabulary size. However, we propose a ratio test-statistic whose computation is invariant to vocabulary size. Empirically, our method achieves a significant accuracy gain over state-of-the-art methods including Min-K%, and Min-K%++ on the WikiMIA benchmark across seven models with different parameter sizes. Further, we achieve higher AUC compared to reference-free methods on the challenging MIMIR benchmark. Finally, we create a benchmark dataset consisting of recent data sources published after the release of Llama-3; this benchmark provides a statistical baseline to indicate potential corpora used for Llama-3 training.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCraoofinfilling(parameter) {
+    var x= document.getElementById('araoofinfilling');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexraoofinfilling(parameter) {
+    var x= document.getElementById('Braoofinfilling');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractraoofinfilling(parameter) {
+    var x= document.getElementById('araoofinfilling');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="rout2024rb">Rout, Litu, Yujia Chen, Nataniel Ruiz, Abhishek Kumar, Constantine Caramanis, Sanjay Shakkottai, and Wen-Sheng Chu. “RB-Modulation: Training-Free Personalization of Diffusion Models Using Stochastic Optimal Control.” <i>Proceedings of the International Conference on Learning Representations (ICLR)</i>, 2025.</span></div>
 <button class="button0" onclick="toggleBibtexrout2024rb()">Bibtex</button>
  
 
@@ -326,16 +391,17 @@ function toggleAbstractkwon24lmdp(parameter) {
 <pre>@article{rout2024rb,
   title = {RB-Modulation: Training-Free Personalization of Diffusion Models using Stochastic Optimal Control},
   author = {Rout, Litu and Chen, Yujia and Ruiz, Nataniel and Kumar, Abhishek and Caramanis, Constantine and Shakkottai, Sanjay and Chu, Wen-Sheng},
-  journal = {preprint},
-  year = {2024},
-  group = {misc},
+  journal = {Proceedings of the International Conference on Learning Representations (ICLR)},
+  year = {2025},
+  group = {proceedings},
   arxiv = {https://arxiv.org/pdf/2405.17401}
 }
 </pre>
 </div>
 
 <div id="arout2024rb" style="display: none;">
-<pre>We propose Reference-Based Modulation (RB-Modulation), a new plug-and-play solution for training-free personalization of diffusion models. Existing training-free approaches exhibit difficulties in (a) style extraction from reference images in the absence of additional style or content text descriptions, (b) unwanted content leakage from reference style images, and (c) effective composition of style and content. RB-Modulation is built on a novel stochastic optimal controller where a style descriptor encodes the desired attributes through a terminal cost. The resulting drift not only overcomes the difficulties above, but also ensures high fidelity to the reference style and adheres to the given text prompt. We also introduce a cross-attention-based feature aggregation scheme that allows RB-Modulation to decouple content and style from the reference image. With theoretical justification and empirical evidence, our framework demonstrates precise extraction and control of content and style in a training-free manner. Further, our method allows a seamless composition of content and style, which marks a departure from the dependency on external adapters or ControlNets.</pre>
+<pre>We propose Reference-Based Modulation (RB-Modulation), a new plug-and-play solution for training-free personalization of diffusion models. Existing training-free approaches exhibit difficulties in (a) style extraction from reference images in the absence of additional style or content text descriptions, (b) unwanted content leakage from reference style images, and (c) effective composition of style and content. 
+RB-Modulation is built on a novel stochastic optimal controller where a style descriptor encodes the desired attributes through a terminal cost. The resulting drift not only overcomes the difficulties above, but also ensures high fidelity to the reference style and adheres to the given text prompt. We also introduce a cross-attention-based feature aggregation scheme that allows RB-Modulation to decouple content and style from the reference image. With theoretical justification and empirical evidence, our test-time optimization framework demonstrates precise extraction and control of content and style in a training-free manner. Further, our method allows a seamless composition of content and style, which marks a departure from the dependency on external adapters or ControlNets. See project page (https://rb-modulation.github.io/) for code and further details.</pre>
 </div>
 
 
@@ -372,7 +438,7 @@ function toggleAbstractrout2024rb(parameter) {
 }
 </script>
 </li>
-<li><div class="text-justify"><span id="rout2024secondorder">Rout, Litu, Yujia Chen, Abhishek Kumar, Constantine Caramanis, Sanjay Shakkottai, and Wen-Sheng Chu. “Beyond First-Order Tweedie: Solving Inverse Problems Using Latent Diffusion.” <i>Proceedings of the Conference on Computer Vision and Pattern Recognition</i>, 2024.</span></div>
+<li><div class="text-justify"><span id="rout2024secondorder">Rout, Litu, Yujia Chen, Abhishek Kumar, Constantine Caramanis, Sanjay Shakkottai, and Wen-Sheng Chu. “Beyond First-Order Tweedie: Solving Inverse Problems Using Latent Diffusion.” <i>Proceedings of the Conference on Computer Vision and Pattern Recognition (CVPR)</i>, 2024.</span></div>
 <button class="button0" onclick="toggleBibtexrout2024secondorder()">Bibtex</button>
  
 
@@ -389,7 +455,7 @@ function toggleAbstractrout2024rb(parameter) {
 <pre>@article{rout2024secondorder,
   title = {Beyond First-Order Tweedie: Solving Inverse Problems using Latent Diffusion},
   author = {Rout, Litu and Chen, Yujia and Kumar, Abhishek and Caramanis, Constantine and Shakkottai, Sanjay and Chu, Wen-Sheng},
-  journal = {Proceedings of the Conference on Computer Vision and Pattern Recognition},
+  journal = {Proceedings of the Conference on Computer Vision and Pattern Recognition (CVPR)},
   year = {2024},
   group = {proceedings},
   arxiv = {https://arxiv.org/pdf/2312.00852.pdf}
@@ -566,7 +632,135 @@ function toggleAbstractatsidakou24apandora(parameter) {
 }
 </script>
 </li>
-<li><div class="text-justify"><span id="kwon2024prospective">Kwon, Jeongyeol, Yonathan Efroni, Shie Mannor, and Constantine Caramanis. “Prospective Side Information for Latent MDPs.” In <i>International Conference on Machine Learning (ICML)</i>. PMLR, 2024.</span></div>
+<li><div class="text-justify"><span id="tsikouras2024optimization">Tsikouras, Nikos, Constantine Caramanis, and Christos Tzamos. “Optimization Can Learn Johnson Lindenstrauss Embeddings.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2024.</span></div>
+<button class="button0" onclick="toggleBibtextsikouras2024optimization()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstracttsikouras2024optimization()">Abstract</button>
+
+
+
+    <a href="arXiv preprint arXiv:2412.07242"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Btsikouras2024optimization" style="display: none;">
+<pre>@article{tsikouras2024optimization,
+  title = {Optimization Can Learn Johnson Lindenstrauss Embeddings},
+  author = {Tsikouras, Nikos and Caramanis, Constantine and Tzamos, Christos},
+  journal = {Advances in Neural Information Processing Systems (NeurIPS)},
+  group = {proceedings},
+  arxiv = {arXiv preprint arXiv:2412.07242},
+  year = {2024}
+}
+</pre>
+</div>
+
+<div id="atsikouras2024optimization" style="display: none;">
+<pre>Embeddings play a pivotal role across various disciplines, offering compact representations of complex data structures. Randomized methods like Johnson-Lindenstrauss (JL) provide state-of-the-art and essentially unimprovable theoretical guarantees for achieving such representations. These guarantees are worst-case and in particular, neither the analysis, nor the algorithm, takes into account any potential structural information of the data. The natural question is: must we randomize? Could we instead use an optimization-based approach, working directly with the data? A first answer is no: as we show, the distance-preserving objective of JL has a non-convex landscape over the space of projection matrices, with many bad stationary points. But this is not the final answer.
+We present a novel method motivated by diffusion models, that circumvents this fundamental challenge: rather than performing optimization directly over the space of projection matrices, we use optimization over the larger space of random solution samplers, gradually reducing the variance of the sampler. We show that by moving through this larger space, our objective converges to a deterministic (zero variance) solution, avoiding bad stationary points.
+This method can also be seen as an optimization-based derandomization approach and is an idea and method that we believe can be applied to many other problems.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCtsikouras2024optimization(parameter) {
+    var x= document.getElementById('atsikouras2024optimization');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtextsikouras2024optimization(parameter) {
+    var x= document.getElementById('Btsikouras2024optimization');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstracttsikouras2024optimization(parameter) {
+    var x= document.getElementById('atsikouras2024optimization');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="kwon24lmdp">Kwon, Jeongyeol, Yonathan Efroni, Shie Mannor, and Constantine Caramanis. “RL in Latent MDPs Is Tractable: Online Guarantees via Off-Policy Evaluation.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2024.</span></div>
+<button class="button0" onclick="toggleBibtexkwon24lmdp()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractkwon24lmdp()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2406.01389"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Bkwon24lmdp" style="display: none;">
+<pre>@article{kwon24lmdp,
+  title = {RL in Latent MDPs is Tractable: Online Guarantees via Off-Policy Evaluation},
+  author = {Kwon, Jeongyeol and Efroni, Yonathan and Mannor, Shie and Caramanis, Constantine},
+  journal = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year = {2024},
+  group = {proceedings},
+  arxiv = {https://arxiv.org/pdf/2406.01389}
+}
+</pre>
+</div>
+
+<div id="akwon24lmdp" style="display: none;">
+<pre>In many real-world decision problems there is partially observed, hidden or latent information that remains fixed throughout an interaction. Such decision problems can be modeled as Latent Markov Decision Processes (LMDPs), where a latent variable is selected at the beginning of an interaction and is not disclosed to the agent. In the last decade, there has been significant progress in solving LMDPs under different structural assumptions. However, for general LMDPs, there is no known learning algorithm that provably matches the existing lower bound (Kwon et al., 2021). We introduce the first sample-efficient algorithm for LMDPs without any additional structural assumptions. Our result builds off a new perspective on the role of off-policy evaluation guarantees and coverage coefficients in LMDPs, a perspective, that has been overlooked in the context of exploration in partially observed environments. Specifically, we establish a novel off-policy evaluation lemma and introduce a new coverage coefficient for LMDPs. Then, we show how these can be used to derive near-optimal guarantees of an optimistic exploration algorithm. These results, we believe, can be valuable for a wide range of interactive learning problems beyond LMDPs, and especially, for partially observed environments.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCkwon24lmdp(parameter) {
+    var x= document.getElementById('akwon24lmdp');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexkwon24lmdp(parameter) {
+    var x= document.getElementById('Bkwon24lmdp');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractkwon24lmdp(parameter) {
+    var x= document.getElementById('akwon24lmdp');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="kwon2024prospective">———. “Prospective Side Information for Latent MDPs.” In <i>International Conference on Machine Learning (ICML)</i>. PMLR, 2024.</span></div>
 <button class="button0" onclick="toggleBibtexkwon2024prospective()">Bibtex</button>
  
 
@@ -686,198 +880,6 @@ function toggleBibtexrout23theoretical(parameter) {
 <script>
 function toggleAbstractrout23theoretical(parameter) {
     var x= document.getElementById('arout23theoretical');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="faw23beyond">Faw, Matthew, Litu Rout, Constantine Caramanis, and Sanjay Shakkottai. “Beyond Uniform Smoothness: A Stopped Analysis of Adaptive SGD.” <i>Conference on Learning Theory (COLT)</i>, 2023.</span></div>
-<button class="button0" onclick="toggleBibtexfaw23beyond()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractfaw23beyond()">Abstract</button>
-
-
-
-    <a href="https://arxiv.org/pdf/2302.06570.pdf"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Bfaw23beyond" style="display: none;">
-<pre>@article{faw23beyond,
-  title = {Beyond Uniform Smoothness: A Stopped Analysis of Adaptive SGD},
-  author = {Faw, Matthew and Rout, Litu and Caramanis, Constantine and Shakkottai, Sanjay},
-  journal = {Conference on Learning Theory (COLT)},
-  year = {2023},
-  group = {proceedings},
-  arxiv = {https://arxiv.org/pdf/2302.06570.pdf}
-}
-</pre>
-</div>
-
-<div id="afaw23beyond" style="display: none;">
-<pre>This work considers the problem of finding a first-order stationary point of a non-convex function with potentially unbounded smoothness constant using a stochastic gradient oracle. We focus on the class of (L_0,L_1)-smooth functions
-proposed by Zhang et al. (ICLR’20). Empirical evidence suggests that these functions more closely captures practical machine learning problems as compared to the pervasive L_0-smoothness. This class is rich enough to include highly non-smooth functions, such as \exp(L_1 x) which is (0,O(L_1))-smooth. Despite the richness,  an emerging line of works achieves the O(\nicefrac1\sqrtT) rate of convergence when the noise of the stochastic gradients is deterministically and uniformly bounded. This noise restriction is not required in the L_0-smooth setting, and in many practical settings is either not satisfied, or results in weaker convergence rates with respect to the noise scaling of the convergence rate.
-
-We develop a technique that allows us to prove O(\nicefrac\mathrmpoly\log(T)\sqrtT) convergence rates for (L_0,L_1)-smooth functions without assuming uniform bounds on the noise support. The key innovation behind our results is a carefully constructed stopping time τwhich is simultaneously “large” on average, yet also allows us to treat the adaptive step sizes before τas (roughly) independent of the gradients. For general (L_0,L_1)-smooth functions, our analysis requires the mild restriction that the multiplicative noise parameter \sigma_1 &lt; 1. For a broad subclass of (L_0,L_1)-smooth functions, our convergence rate continues to hold when \sigma_1 ≥1. By contrast, we prove that many algorithms analyzed by prior works on (L_0,L_1)-smooth optimization diverge with constant probability even for smooth and strongly-convex functions when \sigma_1 &gt; 1.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCfaw23beyond(parameter) {
-    var x= document.getElementById('afaw23beyond');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexfaw23beyond(parameter) {
-    var x= document.getElementById('Bfaw23beyond');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractfaw23beyond(parameter) {
-    var x= document.getElementById('afaw23beyond');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="atsidakou23abayes">Atsidakou, Alexia, Branislav Kveton, Sumeet Katariya, Constantine Caramanis, and Sujay Sanghavi. “Logarithmic Bayes Regret Bounds.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2023.</span></div>
-<button class="button0" onclick="toggleBibtexatsidakou23abayes()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractatsidakou23abayes()">Abstract</button>
-
-
-
-    <a href=""><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Batsidakou23abayes" style="display: none;">
-<pre>@article{atsidakou23abayes,
-  title = {Logarithmic Bayes Regret Bounds},
-  author = {Atsidakou, Alexia and Kveton, Branislav and Katariya, Sumeet and Caramanis, Constantine and Sanghavi, Sujay},
-  journal = {Advances in Neural Information Processing Systems (NeurIPS)},
-  year = {2023},
-  group = {proceedings},
-  arxiv = {}
-}
-</pre>
-</div>
-
-<div id="aatsidakou23abayes" style="display: none;">
-<pre>We derive the first finite-time logarithmic regret bounds for Bayesian bandits. For Gaussian bandits, we obtain a O(c_h \log^2 n) bound, where c_h is a prior-dependent constant. This matches the asymptotic lower bound of Lai (1987). Our proofs mark a technical departure from prior works, and are simple and general. To show generality, we apply our technique to linear bandits. Our bounds shed light on the value of the prior in the Bayesian setting, both in the objective and as a side information given to the learner. They significantly improve the \tildeO(\sqrtn) bounds, that despite the existing lower bounds, have become standard in the literature.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCatsidakou23abayes(parameter) {
-    var x= document.getElementById('aatsidakou23abayes');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexatsidakou23abayes(parameter) {
-    var x= document.getElementById('Batsidakou23abayes');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractatsidakou23abayes(parameter) {
-    var x= document.getElementById('aatsidakou23abayes');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="rout23inverse">Rout, Litu, Negin Raoof, Giannis Daras, Constantine Caramanis, Alexandros Dimakis, and Sanjay Shakkottai. “Solving Linear Inverse Problems Provably via Posterior Sampling with Latent Diffusion Models.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2023.</span></div>
-<button class="button0" onclick="toggleBibtexrout23inverse()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractrout23inverse()">Abstract</button>
-
-
-
-    <a href="https://arxiv.org/pdf/2307.00619.pdf"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Brout23inverse" style="display: none;">
-<pre>@article{rout23inverse,
-  title = {Solving Linear Inverse Problems Provably via Posterior Sampling with Latent Diffusion Models},
-  author = {Rout, Litu and Raoof, Negin and Daras, Giannis and Caramanis, Constantine and Dimakis, Alexandros and Shakkottai, Sanjay},
-  journal = {Advances in Neural Information Processing Systems (NeurIPS)},
-  year = {2023},
-  group = {proceedings},
-  arxiv = {https://arxiv.org/pdf/2307.00619.pdf}
-}
-</pre>
-</div>
-
-<div id="arout23inverse" style="display: none;">
-<pre>We present the first framework to solve linear inverse problems leveraging pre-trained latent diffusion models. Previously proposed algorithms (such as DPS and DDRM) only apply to pixel-space diffusion models. We theoretically analyze our algorithm showing provable sample recovery in a linear model setting. The algorithmic insight obtained from our analysis extends to more general settings often considered in practice. Experimentally, we outperform previously proposed posterior sampling algorithms in a wide variety of problems including random inpainting, block inpainting, denoising, deblurring, destriping, and super-resolution.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCrout23inverse(parameter) {
-    var x= document.getElementById('arout23inverse');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexrout23inverse(parameter) {
-    var x= document.getElementById('Brout23inverse');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractrout23inverse(parameter) {
-    var x= document.getElementById('arout23inverse');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
