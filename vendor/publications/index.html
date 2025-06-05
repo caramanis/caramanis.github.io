@@ -75,7 +75,70 @@
 
 <h2 id="pre-prints">Pre-prints</h2>
 
-<ol class="bibliography"><li><div class="text-justify"><span id="rout23theoretical">Rout, Litu, Advait Parulekar, Constantine Caramanis, and Sanjay Shakkottai. “A Theoretical Justification for Image Inpainting Using Denoising Diffusion Probabilistic Models.” <i>Preprint</i>, 2023.</span></div>
+<ol class="bibliography"><li><div class="text-justify"><span id="rout2025anchored">Rout, Litu, Constantine Caramanis, and Sanjay Shakkottai. “Anchored Diffusion Language Model.” <i>Preprint</i>, 2025.</span></div>
+<button class="button0" onclick="toggleBibtexrout2025anchored()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractrout2025anchored()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2505.18456"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Brout2025anchored" style="display: none;">
+<pre>@article{rout2025anchored,
+  title = {Anchored Diffusion Language Model},
+  author = {Rout, Litu and Caramanis, Constantine and Shakkottai, Sanjay},
+  journal = {preprint},
+  year = {2025},
+  group = {misc},
+  arxiv = {https://arxiv.org/pdf/2505.18456}
+}
+</pre>
+</div>
+
+<div id="arout2025anchored" style="display: none;">
+<pre>Diffusion Language Models (DLMs) promise parallel generation and bidirectional context, yet they underperform autoregressive (AR) models in both likelihood modeling and generated text quality. We identify that this performance gap arises when important tokens (e.g., key words or low-frequency words that anchor a sentence) are masked early in the forward process, limiting contextual information for accurate reconstruction. To address this, we introduce the Anchored Diffusion Language Model (ADLM), a novel two-stage framework that first predicts distributions over important tokens via an anchor network, and then predicts the likelihoods of missing tokens conditioned on the anchored predictions. ADLM significantly improves test perplexity on LM1B and OpenWebText, achieving up to 25.4% gains over prior DLMs, and narrows the gap with strong AR baselines. It also achieves state-of-the-art performance in zero-shot generalization across seven benchmarks and surpasses AR models in MAUVE score, which marks the first time a DLM generates better human-like text than an AR model. Theoretically, we derive an Anchored Negative Evidence Lower Bound (ANELBO) objective and show that anchoring improves sample complexity and likelihood modeling. Beyond diffusion, anchoring boosts performance in AR models and enhances reasoning in math and logic tasks, outperforming existing chain-of-thought approaches.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCrout2025anchored(parameter) {
+    var x= document.getElementById('arout2025anchored');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexrout2025anchored(parameter) {
+    var x= document.getElementById('Brout2025anchored');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractrout2025anchored(parameter) {
+    var x= document.getElementById('arout2025anchored');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="rout23theoretical">Rout, Litu, Advait Parulekar, Constantine Caramanis, and Sanjay Shakkottai. “A Theoretical Justification for Image Inpainting Using Denoising Diffusion Probabilistic Models.” <i>Preprint</i>, 2023.</span></div>
 <button class="button0" onclick="toggleBibtexrout23theoretical()">Bibtex</button>
  
 
