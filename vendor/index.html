@@ -63,7 +63,7 @@
       <!--<span class="sidebar-nav-item">Jekyll Hyde, Currently v2.1.0</span>-->
     </nav>
 
-    <p>&copy; 2025. All rights reserved.</p> 
+    <p>&copy; 2026. All rights reserved.</p> 
   </div>
 </div>
 
@@ -246,7 +246,70 @@ I am a Professor in the ECE department of The University of Texas at Austin. I r
 
 <hr />
 <h3 id="the-last-ten-publications-chronologically">The last ten publications, chronologically…</h3>
-<ol class="bibliography"><li><div class="text-justify"><span id="rout2025anchored">Rout, Litu, Constantine Caramanis, and Sanjay Shakkottai. “Anchored Diffusion Language Model.” <i>To Appear in Advances in Neural Information Processing Systems (NeurIPS)</i>, 2025.</span></div>
+<ol class="bibliography"><li><div class="text-justify"><span id="jain2026search">Jain, Prateek, Shabari Nair, Ritesh Goru, Prakhar Agarwal, Ajay Yadav, Yoga Sri Varshan Varadharajan, and Constantine Caramanis. “Succeeding at Scale: Automated Multi-Retriever Fusion and Query-Side Adaptation for Multi-Tenant Search.” <i>Preprint</i>, 2026.</span></div>
+<button class="button0" onclick="toggleBibtexjain2026search()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstractjain2026search()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2601.04646.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Bjain2026search" style="display: none;">
+<pre>@article{jain2026search,
+  title = {Succeeding at Scale: Automated Multi-Retriever Fusion and Query-Side Adaptation for Multi-Tenant Search},
+  author = {Jain, Prateek and Nair, Shabari and Goru, Ritesh and Agarwal, Prakhar and Yadav, Ajay and Sri Varshan Varadharajan, Yoga and Caramanis, Constantine},
+  journal = {preprint},
+  year = {2026},
+  group = {misc},
+  arxiv = {https://arxiv.org/pdf/2601.04646.pdf}
+}
+</pre>
+</div>
+
+<div id="ajain2026search" style="display: none;">
+<pre>Large-scale multi-tenant retrieval systems amass vast user query logs yet critically lack the curated relevance labels required for effective domain adaptation. This "dark data" problem is exacerbated by the operational cost of model updates: jointly fine-tuning query and document encoders requires re-indexing the entire corpus, which is prohibitive in multi-tenant environments with thousands of isolated indices. To address these dual challenges, we introduce \textbfDevRev Search, a passage retrieval benchmark for technical customer support constructed through a fully automatic pipeline. We employ a \textbffusion-based candidate generation strategy, pooling results from diverse sparse and dense retrievers, and utilize an LLM-as-a-Judge to perform rigorous \textbfconsistency filtering and relevance assignment. We further propose a practical \textbfIndex-Preserving Adaptation strategy: by fine-tuning only the query encoder via Low-Rank Adaptation (LoRA), we achieve competitive performance improvements while keeping the document index frozen. Our experiments on DevRev Search and SciFact demonstrate that targeting specific transformer layers in the query encoder yields optimal quality-efficiency trade-offs, offering a scalable path for personalized enterprise search.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCjain2026search(parameter) {
+    var x= document.getElementById('ajain2026search');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtexjain2026search(parameter) {
+    var x= document.getElementById('Bjain2026search');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstractjain2026search(parameter) {
+    var x= document.getElementById('ajain2026search');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="rout2025anchored">Rout, Litu, Constantine Caramanis, and Sanjay Shakkottai. “Anchored Diffusion Language Model.” <i>To Appear in Advances in Neural Information Processing Systems (NeurIPS)</i>, 2025.</span></div>
 <button class="button0" onclick="toggleBibtexrout2025anchored()">Bibtex</button>
  
 
@@ -309,40 +372,39 @@ function toggleAbstractrout2025anchored(parameter) {
 }
 </script>
 </li>
-<li><div class="text-justify"><span id="rout2024rb">Rout, Litu, Yujia Chen, Nataniel Ruiz, Abhishek Kumar, Constantine Caramanis, Sanjay Shakkottai, and Wen-Sheng Chu. “RB-Modulation: Training-Free Personalization of Diffusion Models Using Stochastic Optimal Control.” <i>Proceedings of the International Conference on Learning Representations (ICLR)</i>, 2025.</span></div>
-<button class="button0" onclick="toggleBibtexrout2024rb()">Bibtex</button>
+<li><div class="text-justify"><span id="raoofinfilling">Raoof, Negin, Litu Rout, Giannis Daras, Sujay Sanghavi, Constantine Caramanis, Sanjay Shakkottai, and Alex Dimakis. “Infilling Score: A Pretraining Data Detection Algorithm for Large Language Models.” <i>Proceedings of the International Conference on Learning Representations (ICLR)</i>, 2025.</span></div>
+<button class="button0" onclick="toggleBibtexraoofinfilling()">Bibtex</button>
  
 
-<button class="button0" onclick="toggleAbstractrout2024rb()">Abstract</button>
+<button class="button0" onclick="toggleAbstractraoofinfilling()">Abstract</button>
 
 
 
-    <a href="https://arxiv.org/pdf/2405.17401"><input class="button4" type="button" value="ArXiv" /></a>
+    <a href="https://openreview.net/pdf?id=9QPH1YQCMn"><input class="button4" type="button" value="ArXiv" /></a>
 
  
 
 
-<div id="Brout2024rb" style="display: none;">
-<pre>@article{rout2024rb,
-  title = {RB-Modulation: Training-Free Personalization of Diffusion Models using Stochastic Optimal Control},
-  author = {Rout, Litu and Chen, Yujia and Ruiz, Nataniel and Kumar, Abhishek and Caramanis, Constantine and Shakkottai, Sanjay and Chu, Wen-Sheng},
+<div id="Braoofinfilling" style="display: none;">
+<pre>@article{raoofinfilling,
+  title = {Infilling Score: A Pretraining Data Detection Algorithm for Large Language Models},
+  author = {Raoof, Negin and Rout, Litu and Daras, Giannis and Sanghavi, Sujay and Caramanis, Constantine and Shakkottai, Sanjay and Dimakis, Alex},
   journal = {Proceedings of the International Conference on Learning Representations (ICLR)},
   year = {2025},
   group = {proceedings},
-  arxiv = {https://arxiv.org/pdf/2405.17401}
+  arxiv = {https://openreview.net/pdf?id=9QPH1YQCMn}
 }
 </pre>
 </div>
 
-<div id="arout2024rb" style="display: none;">
-<pre>We propose Reference-Based Modulation (RB-Modulation), a new plug-and-play solution for training-free personalization of diffusion models. Existing training-free approaches exhibit difficulties in (a) style extraction from reference images in the absence of additional style or content text descriptions, (b) unwanted content leakage from reference style images, and (c) effective composition of style and content. 
-RB-Modulation is built on a novel stochastic optimal controller where a style descriptor encodes the desired attributes through a terminal cost. The resulting drift not only overcomes the difficulties above, but also ensures high fidelity to the reference style and adheres to the given text prompt. We also introduce a cross-attention-based feature aggregation scheme that allows RB-Modulation to decouple content and style from the reference image. With theoretical justification and empirical evidence, our test-time optimization framework demonstrates precise extraction and control of content and style in a training-free manner. Further, our method allows a seamless composition of content and style, which marks a departure from the dependency on external adapters or ControlNets. See project page (https://rb-modulation.github.io/) for code and further details.</pre>
+<div id="araoofinfilling" style="display: none;">
+<pre>In pretraining data detection, the goal is to detect whether a given sentence is in the dataset used for training a Large Language Model LLM). Recent methods (such as Min-K % and Min-K%++) reveal that most training corpora are likely contaminated with both sensitive content and evaluation benchmarks, leading to inflated test set performance. These methods sometimes fail to detect samples from the pretraining data, primarily because they depend on statistics composed of causal token likelihoods. We introduce Infilling Score, a new test-statistic based on non-causal token likelihoods. Infilling Score can be computed for autoregressive models without re-training using Bayes rule. A naive application of Bayes rule scales linearly with the vocabulary size. However, we propose a ratio test-statistic whose computation is invariant to vocabulary size. Empirically, our method achieves a significant accuracy gain over state-of-the-art methods including Min-K%, and Min-K%++ on the WikiMIA benchmark across seven models with different parameter sizes. Further, we achieve higher AUC compared to reference-free methods on the challenging MIMIR benchmark. Finally, we create a benchmark dataset consisting of recent data sources published after the release of Llama-3; this benchmark provides a statistical baseline to indicate potential corpora used for Llama-3 training.</pre>
 </div>
 
 
 <script>
-function toggleAbstractCCrout2024rb(parameter) {
-    var x= document.getElementById('arout2024rb');
+function toggleAbstractCCraoofinfilling(parameter) {
+    var x= document.getElementById('araoofinfilling');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -352,8 +414,8 @@ function toggleAbstractCCrout2024rb(parameter) {
 </script>
 
 <script>
-function toggleBibtexrout2024rb(parameter) {
-    var x= document.getElementById('Brout2024rb');
+function toggleBibtexraoofinfilling(parameter) {
+    var x= document.getElementById('Braoofinfilling');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -363,8 +425,8 @@ function toggleBibtexrout2024rb(parameter) {
 </script>
 
 <script>
-function toggleAbstractrout2024rb(parameter) {
-    var x= document.getElementById('arout2024rb');
+function toggleAbstractraoofinfilling(parameter) {
+    var x= document.getElementById('araoofinfilling');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -439,39 +501,40 @@ function toggleAbstractrout2025semantic(parameter) {
 }
 </script>
 </li>
-<li><div class="text-justify"><span id="raoofinfilling">Raoof, Negin, Litu Rout, Giannis Daras, Sujay Sanghavi, Constantine Caramanis, Sanjay Shakkottai, and Alex Dimakis. “Infilling Score: A Pretraining Data Detection Algorithm for Large Language Models.” <i>Proceedings of the International Conference on Learning Representations (ICLR)</i>, 2025.</span></div>
-<button class="button0" onclick="toggleBibtexraoofinfilling()">Bibtex</button>
+<li><div class="text-justify"><span id="rout2024rb">Rout, Litu, Yujia Chen, Nataniel Ruiz, Abhishek Kumar, Constantine Caramanis, Sanjay Shakkottai, and Wen-Sheng Chu. “RB-Modulation: Training-Free Personalization of Diffusion Models Using Stochastic Optimal Control.” <i>Proceedings of the International Conference on Learning Representations (ICLR)</i>, 2025.</span></div>
+<button class="button0" onclick="toggleBibtexrout2024rb()">Bibtex</button>
  
 
-<button class="button0" onclick="toggleAbstractraoofinfilling()">Abstract</button>
+<button class="button0" onclick="toggleAbstractrout2024rb()">Abstract</button>
 
 
 
-    <a href="https://openreview.net/pdf?id=9QPH1YQCMn"><input class="button4" type="button" value="ArXiv" /></a>
+    <a href="https://arxiv.org/pdf/2405.17401"><input class="button4" type="button" value="ArXiv" /></a>
 
  
 
 
-<div id="Braoofinfilling" style="display: none;">
-<pre>@article{raoofinfilling,
-  title = {Infilling Score: A Pretraining Data Detection Algorithm for Large Language Models},
-  author = {Raoof, Negin and Rout, Litu and Daras, Giannis and Sanghavi, Sujay and Caramanis, Constantine and Shakkottai, Sanjay and Dimakis, Alex},
+<div id="Brout2024rb" style="display: none;">
+<pre>@article{rout2024rb,
+  title = {RB-Modulation: Training-Free Personalization of Diffusion Models using Stochastic Optimal Control},
+  author = {Rout, Litu and Chen, Yujia and Ruiz, Nataniel and Kumar, Abhishek and Caramanis, Constantine and Shakkottai, Sanjay and Chu, Wen-Sheng},
   journal = {Proceedings of the International Conference on Learning Representations (ICLR)},
   year = {2025},
   group = {proceedings},
-  arxiv = {https://openreview.net/pdf?id=9QPH1YQCMn}
+  arxiv = {https://arxiv.org/pdf/2405.17401}
 }
 </pre>
 </div>
 
-<div id="araoofinfilling" style="display: none;">
-<pre>In pretraining data detection, the goal is to detect whether a given sentence is in the dataset used for training a Large Language Model LLM). Recent methods (such as Min-K % and Min-K%++) reveal that most training corpora are likely contaminated with both sensitive content and evaluation benchmarks, leading to inflated test set performance. These methods sometimes fail to detect samples from the pretraining data, primarily because they depend on statistics composed of causal token likelihoods. We introduce Infilling Score, a new test-statistic based on non-causal token likelihoods. Infilling Score can be computed for autoregressive models without re-training using Bayes rule. A naive application of Bayes rule scales linearly with the vocabulary size. However, we propose a ratio test-statistic whose computation is invariant to vocabulary size. Empirically, our method achieves a significant accuracy gain over state-of-the-art methods including Min-K%, and Min-K%++ on the WikiMIA benchmark across seven models with different parameter sizes. Further, we achieve higher AUC compared to reference-free methods on the challenging MIMIR benchmark. Finally, we create a benchmark dataset consisting of recent data sources published after the release of Llama-3; this benchmark provides a statistical baseline to indicate potential corpora used for Llama-3 training.</pre>
+<div id="arout2024rb" style="display: none;">
+<pre>We propose Reference-Based Modulation (RB-Modulation), a new plug-and-play solution for training-free personalization of diffusion models. Existing training-free approaches exhibit difficulties in (a) style extraction from reference images in the absence of additional style or content text descriptions, (b) unwanted content leakage from reference style images, and (c) effective composition of style and content. 
+RB-Modulation is built on a novel stochastic optimal controller where a style descriptor encodes the desired attributes through a terminal cost. The resulting drift not only overcomes the difficulties above, but also ensures high fidelity to the reference style and adheres to the given text prompt. We also introduce a cross-attention-based feature aggregation scheme that allows RB-Modulation to decouple content and style from the reference image. With theoretical justification and empirical evidence, our test-time optimization framework demonstrates precise extraction and control of content and style in a training-free manner. Further, our method allows a seamless composition of content and style, which marks a departure from the dependency on external adapters or ControlNets. See project page (https://rb-modulation.github.io/) for code and further details.</pre>
 </div>
 
 
 <script>
-function toggleAbstractCCraoofinfilling(parameter) {
-    var x= document.getElementById('araoofinfilling');
+function toggleAbstractCCrout2024rb(parameter) {
+    var x= document.getElementById('arout2024rb');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -481,8 +544,8 @@ function toggleAbstractCCraoofinfilling(parameter) {
 </script>
 
 <script>
-function toggleBibtexraoofinfilling(parameter) {
-    var x= document.getElementById('Braoofinfilling');
+function toggleBibtexrout2024rb(parameter) {
+    var x= document.getElementById('Brout2024rb');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -492,8 +555,8 @@ function toggleBibtexraoofinfilling(parameter) {
 </script>
 
 <script>
-function toggleAbstractraoofinfilling(parameter) {
-    var x= document.getElementById('araoofinfilling');
+function toggleAbstractrout2024rb(parameter) {
+    var x= document.getElementById('arout2024rb');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
@@ -831,69 +894,6 @@ function toggleBibtexatsidakou24apandora(parameter) {
 <script>
 function toggleAbstractatsidakou24apandora(parameter) {
     var x= document.getElementById('aatsidakou24apandora');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-</li>
-<li><div class="text-justify"><span id="kwon24lmdp">Kwon, Jeongyeol, Yonathan Efroni, Shie Mannor, and Constantine Caramanis. “RL in Latent MDPs Is Tractable: Online Guarantees via Off-Policy Evaluation.” <i>Advances in Neural Information Processing Systems (NeurIPS)</i>, 2024.</span></div>
-<button class="button0" onclick="toggleBibtexkwon24lmdp()">Bibtex</button>
- 
-
-<button class="button0" onclick="toggleAbstractkwon24lmdp()">Abstract</button>
-
-
-
-    <a href="https://arxiv.org/pdf/2406.01389"><input class="button4" type="button" value="ArXiv" /></a>
-
- 
-
-
-<div id="Bkwon24lmdp" style="display: none;">
-<pre>@article{kwon24lmdp,
-  title = {RL in Latent MDPs is Tractable: Online Guarantees via Off-Policy Evaluation},
-  author = {Kwon, Jeongyeol and Efroni, Yonathan and Mannor, Shie and Caramanis, Constantine},
-  journal = {Advances in Neural Information Processing Systems (NeurIPS)},
-  year = {2024},
-  group = {proceedings},
-  arxiv = {https://arxiv.org/pdf/2406.01389}
-}
-</pre>
-</div>
-
-<div id="akwon24lmdp" style="display: none;">
-<pre>In many real-world decision problems there is partially observed, hidden or latent information that remains fixed throughout an interaction. Such decision problems can be modeled as Latent Markov Decision Processes (LMDPs), where a latent variable is selected at the beginning of an interaction and is not disclosed to the agent. In the last decade, there has been significant progress in solving LMDPs under different structural assumptions. However, for general LMDPs, there is no known learning algorithm that provably matches the existing lower bound (Kwon et al., 2021). We introduce the first sample-efficient algorithm for LMDPs without any additional structural assumptions. Our result builds off a new perspective on the role of off-policy evaluation guarantees and coverage coefficients in LMDPs, a perspective, that has been overlooked in the context of exploration in partially observed environments. Specifically, we establish a novel off-policy evaluation lemma and introduce a new coverage coefficient for LMDPs. Then, we show how these can be used to derive near-optimal guarantees of an optimistic exploration algorithm. These results, we believe, can be valuable for a wide range of interactive learning problems beyond LMDPs, and especially, for partially observed environments.</pre>
-</div>
-
-
-<script>
-function toggleAbstractCCkwon24lmdp(parameter) {
-    var x= document.getElementById('akwon24lmdp');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleBibtexkwon24lmdp(parameter) {
-    var x= document.getElementById('Bkwon24lmdp');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
-
-<script>
-function toggleAbstractkwon24lmdp(parameter) {
-    var x= document.getElementById('akwon24lmdp');
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
