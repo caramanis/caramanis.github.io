@@ -75,7 +75,70 @@
 
 <h2 id="pre-prints">Pre-prints</h2>
 
-<ol class="bibliography"><li><div class="text-justify"><span id="kouridakis2026truncation">Kouridakis, Alexandros, Anay Mehrotra, Alkis Kalavasis, and Constantine Caramanis. “Linear Regression with Unknown Truncation Beyond Gaussian Features.” <i>Preprint</i>, 2026.</span></div>
+<ol class="bibliography"><li><div class="text-justify"><span id="tejaswi2026entropy">Tejaswi, Atula, Litu Rout, Constantine Caramanis, Sanjay Shakkottai, and Sanjay Sanghavi. “EntRGi: Entropy Aware Reward Guidance for Diffusion Language Models.” <i>Preprint</i>, 2026.</span></div>
+<button class="button0" onclick="toggleBibtextejaswi2026entropy()">Bibtex</button>
+ 
+
+<button class="button0" onclick="toggleAbstracttejaswi2026entropy()">Abstract</button>
+
+
+
+    <a href="https://arxiv.org/pdf/2602.05000.pdf"><input class="button4" type="button" value="ArXiv" /></a>
+
+ 
+
+
+<div id="Btejaswi2026entropy" style="display: none;">
+<pre>@article{tejaswi2026entropy,
+  title = {EntRGi: Entropy Aware Reward Guidance for Diffusion Language Models},
+  author = {Tejaswi, Atula and Rout, Litu and Caramanis, Constantine and Shakkottai, Sanjay and Sanghavi, Sanjay},
+  journal = {preprint},
+  year = {2026},
+  group = {misc},
+  arxiv = {https://arxiv.org/pdf/2602.05000.pdf}
+}
+</pre>
+</div>
+
+<div id="atejaswi2026entropy" style="display: none;">
+<pre>Reward guidance has been applied to great success in the test-time adaptation of continuous diffusion models; it updates each denoising step using the gradients from a downstream reward model. We study reward guidance for discrete diffusion language models, where one cannot differentiate through the natural outputs of the model because they are discrete tokens. Existing approaches either replace these discrete tokens with continuous relaxations, or employ techniques like the straight-through estimator. In this work, we show the downsides of both these methods. The former degrades gradient feedback because the reward model has never been trained with continuous inputs. The latter involves incorrect optimization because the gradient evaluated at discrete tokens is used to update continuous logits. Our key innovation is to go beyond this tradeoff by introducing a novel mechanism called EntRGi: Entropy aware Reward Guidance that dynamically regulates the gradients from the reward model. By modulating the continuous relaxation using the model’s confidence, our approach substantially improves reward guidance while providing reliable inputs to the reward model. We empirically validate our approach on a 7B-parameter diffusion language model across 3 diverse reward models and 3 multi-skill benchmarks, showing consistent improvements over state-of-the-art methods.</pre>
+</div>
+
+
+<script>
+function toggleAbstractCCtejaswi2026entropy(parameter) {
+    var x= document.getElementById('atejaswi2026entropy');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleBibtextejaswi2026entropy(parameter) {
+    var x= document.getElementById('Btejaswi2026entropy');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+<script>
+function toggleAbstracttejaswi2026entropy(parameter) {
+    var x= document.getElementById('atejaswi2026entropy');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+</li>
+<li><div class="text-justify"><span id="kouridakis2026truncation">Kouridakis, Alexandros, Anay Mehrotra, Alkis Kalavasis, and Constantine Caramanis. “Linear Regression with Unknown Truncation Beyond Gaussian Features.” <i>Preprint</i>, 2026.</span></div>
 <button class="button0" onclick="toggleBibtexkouridakis2026truncation()">Bibtex</button>
  
 
