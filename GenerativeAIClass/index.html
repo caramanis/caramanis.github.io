@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Παραγωγική Τεχνητή Νοημοσύνη (Generative AI) &middot; Constantine Caramanis
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h2>
+        Constantine Caramanis
+      </h2>
+      <p class="lead"></p>
+    </div>
+
+    <nav class="sidebar-nav">
+
+
+      
+
+      <a class="sidebar-nav-item" href="/">Home</a>
+      <a class="sidebar-nav-item" href="/teaching/">Teaching</a>
+      <a class="sidebar-nav-item" href="/publications/">Publications</a>
+      <a class="sidebar-nav-item" href="/researchgroup/">Research Group</a>
+      <a class="sidebar-nav-item" href="/researchprojects/">Research Projects</a>
+      <a class="sidebar-nav-item" href="https://scholar.google.com/citations?user=47YTUrEAAAAJ&hl=en&oi=ao" target="_blank">Google Scholar</a>
+      <a class="sidebar-nav-item" href="https://www.youtube.com/@constantine.caramanis" target="_blank">YouTube</a>
+      <a class="sidebar-nav-item" href="https://ml.utexas.edu/ifml" target="_blank">IFML</a>
+      <a class="sidebar-nav-item" href="https://wncg.org" target="_blank">WNCG</a>
+      <a class="sidebar-nav-item" href="https://archimedesai.gr/en/" target="_blank">Archimedes AI</a>
+
+
+
+
+      <!--<span class="sidebar-nav-item">Jekyll Hyde, Currently v2.1.0</span>-->
+    </nav>
+
+    <p>&copy; 2026. All rights reserved.</p> 
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+  <img src="/images/mlclass/logo_archimedes_arc.jpg" alt="Left Logo" style="height: 50px;" />
+  <img src="/images/mlclass/for_site_logo_en.jpg" alt="Right Logo" style="height: 50px;" />
+</div>
+
+<h1 id="παραγωγική-τεχνητή-νοημοσύνη-generative-ai">Παραγωγική Τεχνητή Νοημοσύνη (Generative AI)</h1>
+
+<hr />
+
+<p><span style="font-size: 16px;">Καλωσορίσατε στο <strong>δεύτερο μάθημα</strong> Τεχνητής Nοημοσύνης και Μηχανικής Μάθησης (Machine Learning).  <a href="https://caramanis.github.io/MachineLearningClass/" target="_blank" rel="noopener noreferrer" style="font-size: 16px;"><b>Την πρώτη σειρά μπορείτε να την βρείτε εδώ.</b></a>  Σε αυτήν την δεύτερη σειρά διαλέξεων, στρέφουμε την προσοχή μας στις ιδέες, στις τεχνικές και στις εφαρμογές που συνολικά συντελούν αυτό που αποκαλείται <strong>Παραγωγική Τεχνητή Νοημοσύνη</strong> (Generative AI). 
+<br /><br />
+Θα αρχίσουμε εκεί όπου κατέληξε η πρώτη σειρά διαλέξεων, και θα προχωρίσουμε στην ανάπτυξη τόσο των βασικών ιδεών, όσο και την υλοποίησή τους στην Python και Pytorch, <strong>χτίζοντας, εκπαιδεύοντας, και χρησιμοποιώντας</strong> βαθιά νευρωνικά δίκτυα, και μεγάλα γλωσσικά μοντέλα (LLM) που παράγουν εικόνες και φυσική γλώσσα (κείμενο). Εν συντομία, σκοπός μας είναι να αναπτύξουμε μια “λειτουργική” κατανόηση των βασικών ιδεών πίσω από την παραγωγική τεχνητή νοημοσύνη, και τα συστήματα που την χρησιμοποιούν. Αυτά, όπως τα μοντέλα της OpenAI (GPT, Dalle, κ.α.), της Anthropic (Claude), της Google (Gemini, nano-banana, κ.α.) αλλάζουν ριζικά πολλές πτυχές της καθημερινής μας ζωής. 
+<br /><br />
+Οι διαλέξεις έχουν ως αφετηρία την βασική ερώτηση “Τι είναι η παραγωγική τεχνητή νοημοσύνη.” Κάτα πρώτη όψη, ο στόχος της παραγωγικής τεχνητής νοημοσύνης είναι, όπως το λέει και το όνομα, η <strong>παραγωγή</strong> – παραγωγή κειμένου, παραγωγή εικόνων, κώδικα, βίντεο, ή ενδεχομένως οτιδήποτε άλλο μας ενδιαφέρει. Η βασική της χρήση, όμως, αγγίζει πολύ μεγαλύτερο εύρος εφαρμογών. Όπως θα δούμε σε αυτήν την σειρά διαλέξεων, η πραγματική ουσία της παραγωγικής τεχνητής νοημοσύνης είναι ο τρόπος με τον οποίο αναπτύσσει μια (τεχνητή) αντίληψη του “σύμπαντος” στο οποίο αναφέρεται (εικόνων, κειμένων, κ.ο.κ.).  Η ιδέα αυτή – η ανάπτυξη τεχνητής αντίληψης – είναι πιο αφηρημένη από τους συγκεκριμένους στόχους που σηματοδότησαν την πορεία μας στο πρώτο μάθημα, όπου χτίζαμε εργαλεία για να πετύχουμε καλή ακρίβεια σε προβλήματα παλινδρόμησης και ταξινόμησης. Ωστόσο, θα βρούμε την αρχή του νήματος στις τελευταίες διαλέξεις της πρώτης σειράς, όπου αναπτύξαμε την ιδέα του Transfer Learning. 
+<br /><br />
+Από το transfer learning, μπαίνουμε κατευθείαν στην ουσία: Σημασιολογικές Ενσωματώσεις (semantic embeddings). Οι ενσωματώσεις είναι η γέφυρα από τις ιδέες της τεχνητής νοημοσύνης που συζητήσαμε στο πρώτο μάθημα, στην παραγωγική τεχνητή νοημοσύνη. Στην πορεία μας θα συναντήσουμε – και θα μπούμε σε λεπτομέρειες και βάθος – διάφορες εφαρμογές. Από τις σημαντικότερες, είναι η αναζήτηση σε βάση γνώσης, που θα μας οδηγήσει στις αρχές πάνω στις οποίες βασίζονται τα συστήματα RAG (Retrieval-Augmented Generation), που επιτρέπουν τα μεγάλα γλωσσικά μοντέλα να αλλιλεπιδρούν με εξηδικευμένα κείμενα πάνω στα οποία δεν έχουν εκπαιδευτεί. 
+<br /><br />
+Οι διαλέξεις αυτής της σειράς είναι πιο απαιτητικές από αυτές της πρώτης σειράς. Παίρνουμε ως δεδομένη μια γνώση και εξοικείωση με τις ιδέες και την υλοποίηση και εκπαίδευσή τους στην Python/Pytorch, των βαθιών νευρωνικών δικτύων και συνελικτικών δικτύων για προβλήματα ταξινόμησης στην μηχανική όραση, και επίσης την βασική υλοποίηση της τεχνικής του transfer learning για αυτά τα προβλήματα. Αναγκαστικά, θα χρειαστούμε και κάποιες σημαντικές ιδέες και έννοιες από τα μαθηματικά, όπως την γεωμετρία του εσωτερικού γινομένου. Όπως και με την πρώτη σειρά, ο στόχος μας εδώ είναι να εισάγουμε ένα πυρήνα επιλεγμένων βασικών ιδεών που μπορεί να επεκταθεί εύκολα, αλλά και να χρησιμοποιηθεί άμεσα. Ωστόσο, την ανάπτυξη μαθηματικών ιδεών που ενδεχομένως εμπλουτίζουν/εμβαθύνουν την κατανόηση, αλλά δεν είναι αυστηρά απαραίτητα, την αφήνουμε για μια <a href="https://caramanis.github.io/MachineLearningMath/" target="_blank" rel="noopener noreferrer" style="font-size: 16px;"><b>συμπληρωματική σειρά διαλέξεων πάνω στο μαθηματικό υπόβαθρο της τεχνητής νοημοσύνης.</b></a> 
+<br /><br />
+Οι διαλέξεις αντλούν από την διδασκαλία μου στο Πανεπιστήμιο του Τέξας στο Ώστιν (UT Austin) και έχουν σχεδιαστεί για μαθητές του λυκείου (και για οποιονδήποτε άλλο διαθέτει το κατάλληλο υπόβαθρο) που έχουν παρακολοθήσει την πρώτη σειρά διαλέξεων. <br />
+<br />
+Θα βρείτε παρακάτω σύνδεσμους (links) σε διαλέξεις οργανωμένες θεματικά σε “Modules”. Η δομή των διαλέξεων είναι παρόμοια με αυτήν της πρώτης σειράς: χρησιμοποιούμε διαφάνειες όταν πρωτοεισάγουμε και εξηγούμε μία καινούργια ιδέα, και στις επόμενες διαλέξεις, αναπτύσσουμε και υλοποιούμε αυτές τις ιδέες στην Python, επιλύοντας χαρακτηριστικά προβλήματα που βασίζονται κατά περίπτωση σε πραγματικά ή αληθοφανή τεχνητά δεδομένα.<br />
+<br />
+Python και Colab: θα χρησιμοποιήσουμε την γλώσσα προγραμματισμού Python. Δεν καλύπτουμε τις αρχές της Python από μηδενική βάση. Ωστόσο, στις διαλέξεις εξηγούμε τις βασικές εντολές, και δίνουμε πληροφορίες για τις βιβλιοθήκες όπου οι εντολές αυτές είναι διαθέσιμες. Επίσης, σε διάφορα σημεία του κώδικα, προτείνονται σύνδεσμοι (links) που περιέχουν περισσότερες λεπτομέρειες για τις συγκεκριμένες εντολές ή βιβλιοθήκες, τους οποίους μπορείτε να ακολουθήσετε ώστε να εμβαθύνετε τις γνώσεις σας. Ο προγραμματισμός γίνεται στο <strong>Colab</strong>. Το Colab είναι ένα δωρεάν, βασισμένο στο cloud εργαλείο από την Google, το οποίο επιτρέπει τη συγγραφή και την εκτέλεση κώδικα Python σε περιβάλλον Jupyter Notebook. Δουλεύει εξ ολοκλήρου στον browser, χωρίς να απαιτείται εγκατάσταση λογισμικού ή ρύθμιση περιβάλλοντος, οπότε η χρήση του εξασφαλίζει σε όλους πρόσβαση στο ίδιο υπολογιστικό περιβάλλον. <em>Θα χρειαστείτε όμως λογαριασμό</em> <strong>gmail</strong>.<br />
+<br />
+Πως μπορείτε να χρησιμοποιήσετε την ύλη του μαθήματος:  </span>
+<br />
+<br /></p>
+<div style="font-size: 16px;">
+1. Οι διαλέξεις είναι σχεδιασμένες για να τις παρακολουθήσετε με την σειρά, μαζί με το υλικό, δηλαδή, τις διαφάνειες ή τα Colab Notebook.  
+<br />
+2. Όποιος ενδιαφέρεται για μία γρήγορη επισκόπηση του μαθήματος, μπορεί να παρακολουθήσει μόνο τις διαλέξεις με διαφάνειες. Οι λοιπές διαλέξεις όπου υλοποιούμε αλγορίθμους σε Python έχουν στον τίτλο την επισήμανση "(Python / Colab)".  
+<br />
+3. Εάν έχετε ήδη εμπειρία χρησιμοποιώντας την Python και έχετε κάποια επαφή με τις ιδέες και τους αλγορίθμους της παραγωγικής τεχνητής νοημοσύνης που συζητάμε, μπορείτε απλά να πάτε κατευθείαν στα Colab Notebooks που σας ενδιαφέρουν.  
+<br />
+4. Τα μαθήματα/διαλέξεις που συμπεριλαμβάνονται στην ιστοσελίδα αποτελούν έναν αρχικό αλλά εξελισσόμενο βασικό κορμό ή πυρήνα. Πρόσθετες διαλέξεις θα είναι διαθέσιμες στην ιστοσελίδα στο εγγύς μέλλον.
+</div>
+
+<hr />
+
+<h3 id="εδώ-θα-βρείτε-λινκς-για-την-πλήρη-ύλη-του-μαθήματος"><strong>Εδώ θα βρείτε λινκς για την πλήρη ύλη του μαθήματος</strong>:</h3>
+
+<ol>
+  <li><a href="https://www.youtube.com/playlist?list=PLXsmhnDvpjOSYdEt3QjLeFSQPoZrR3XJg" target="_blank" rel="noopener noreferrer" style="font-size: 16px;"><b>Βιντεοσκοπημένα μαθήματα</b></a>
+<br /></li>
+  <li><a href="/pdfs/mlclass/LectureSlides.zip" style="font-size: 16px;" download=""><b>Διαφάνειες</b></a> 
+<br /></li>
+  <li><a href="https://colab.research.google.com/drive/12fEpyjWshpdqG4XaPKSpO9EYqtag4-zy?usp=sharing" target="_blank" rel="noopener noreferrer" style="font-size: 16px;"><b>Colab Notebooks σε Python</b></a></li>
+</ol>
+
+<hr />
+
+<p>`</p>
+<h3 id="module-1-εισαγωγή-στο-μάθημα-και-στην-παραγωγική-τεχνητή-νοημοσύνη">Module 1: Εισαγωγή στο Μάθημα και στην Παραγωγική Τεχνητή Νοημοσύνη</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 1: <a href="https://youtu.be/KxUD5Rc149Y" target="_blank" rel="noopener noreferrer">Τι είναι η Παραγωγική Τεχνητή Νοημοσύνη; Τι θα καλύψει αυτό το μάθημα;</a></strong>
+<img src="/images/genaiclass/L01.png" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>Σε αυτήν την διάλεξη δίνουμε κάποια πρώτα παραδείγματα, και ύστερα περιγράφουμε συνοπτικά όλο το μάθημα, την δομή των διαλέξεων, την σχέση με την πρώτη σειρά διαλέξεων πάνω στην Μηχανική Μάθηση και Τεχνητή Νοημοσύνη, και τις προαπαιτούμενες γνώσεις για να παρακολουθήσετε τα μαθήματα.</em></p>
+
+    <p><a href="/pdfs/genaiclass/L01.pdf" target="_blank" rel="noopener noreferrer">Διαφάνειες</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 2: <a href="https://youtu.be/lvTMKTXzjwk" target="_blank" rel="noopener noreferrer">Από την Τεχνητή Νοημοσύνη στην Παραγωγή</a></strong>
+<img src="/images/genaiclass/L02.png" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>Σε αυτήν την διάλεξη συνεχίζουμε την εισαγωγική μας συζήτηση για την παραγωγική τεχνητή νοημοσύνη και τις εφαρμογές τις. Η διάλεξη συνοψίζει, χρησιμοποιώντας συγκεκριμένα παραδείγματα από την μηχανική όραση, την σχέση αλλά και τις ουσιαστικές διαφορές της παραγωγικής τεχνητής νοημοσύνης από όλα όσα καλύψαμε στην πρώτη σειρά διαλέξεων. Συζητάμε επίσης, εφαρμογές από την επεξεργασία φυσικής γλώσσας, και από την ιατρική απεικόνιση.</em></p>
+
+    <p><a href="/pdfs/genaiclass/L02.pdf" target="_blank" rel="noopener noreferrer">Διαφάνειες</a></p>
+  </li>
+</ul>
+
+<p>`</p>
+<h3 id="module-2-η-λογιστική-παλινδρόμηση-και-η-γεωμετρία-του-εσωτερικού-γινομένου">Module 2: Η Λογιστική Παλινδρόμηση και η Γεωμετρία του Εσωτερικού Γινομένου</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 3: <a href="https://youtu.be/R-05LXetsFw" target="_blank" rel="noopener noreferrer">Λογιστική Παλινδρόμηση και Νευρωνικά Δίκτυα</a></strong>
+<img src="/images/genaiclass/L03.png" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>Σε αυτήν την διάλεξη επιστρέφουμε στην λογιστική παλινδρόμηση, για να καταλάβουμε με μεγαλύτερη λεπτομέρεια πως λειτουργεί, και τα χαρακτηριστικά των λύσεων που παράγει. Αρχίζουμε με την υλοποίηση με βιβλιοθήκες της sklearn, και μετά περνάμε στην υλοποίηση ως ένα απλό νευρωνικό δίκτυο. Βλέπουμε παραδείγματα ταξινόμησης με 2 και 3 κατηγορίες.</em></p>
+
+    <p><a href="/pdfs/genaiclass/L03.pdf" target="_blank" rel="noopener noreferrer">Διαφάνειες</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 4: <a href="https://youtu.be/tiEXSzf1Jcs" target="_blank" rel="noopener noreferrer">Λογιστική Παλινδρόμιση και το Εσωτερικό Γινόμενο</a></strong>
+<img src="/images/genaiclass/L04.png" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>Σε αυτήν την διάλεξη επιστρέφουμε άλλη μια φορά στην λογιστική παλινδρόμιση, και εστιάζουμε στον ρόλο που παίζει το εσωτερικό γινόμενο. Με αυτήν την αφορμή, μελετάμε τις γεωμετρικές ιδιότητες του εσωτερικού γινομένου, στο πλαίσιο της ταξινόμησης. Εδώ αναπτύσσουμε τις βασικές ιδέες που θα μας οδηγήσουν στις σημασιολογικές ενσωματώσεις, στις επόμενες διαλέξεις.</em></p>
+
+    <p><a href="/pdfs/genaiclass/L04.pdf" target="_blank" rel="noopener noreferrer">Διαφάνειες</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 5: <a href="https://youtu.be/0VJXJOOMrhQ" target="_blank" rel="noopener noreferrer">Η Λογιστική Παλινδρόμηση στην sklearn 1/2 (Python / Colab)</a></strong>
+<img src="/images/genaiclass/L05.png" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>Σε αυτήν την διάλεξη χρησιμοποιούμε την Python και τις βιβλιοθήκες της sklearn, για να μελετήσουμε την λογιστική παλινδρόμηση. Συνδέουμε τις ιδέες για την γεωμετρία του εσωτερικού γινομένου που συζητήσαμε στις προηγούμενες διαλέξεις, με την πράξη, χρησιμοποιώντας παραδείγματα και πειράματα με τεχνητά δεδομένα.</em></p>
+
+    <p><a href="https://colab.research.google.com/drive/162hNnEDlmoAzcNFhEMQFmMXFQeVPHgHr?usp=sharing" target="_blank" rel="noopener noreferrer">Colab Notebook</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 6: <a href="https://youtu.be/0VJXJOOMrhQ" target="_blank" rel="noopener noreferrer">Η Λογιστική Παλινδρόμηση στην Pytorch 2/2 (Python / Colab)</a></strong>
+<img src="/images/genaiclass/L06.png" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>Σε αυτήν την διάλεξη χρησιμοποιούμε την Python και τις βιβλιοθήκες της Pytorch, για να μελετήσουμε την λογιστική παλινδρόμηση, και το εσωτερικό γινόμενο. Επίσης έχουμε την ευκαιρία να παίξουμε με διαφορετικές συναρτήσεις απώλειας, και βλέπουμε πως αλλάζοντας την συνάρτηση απώλειας στην εκπαίδευση, αλλάζουμε και την λύση.</em></p>
+
+    <p><a href="https://colab.research.google.com/drive/162hNnEDlmoAzcNFhEMQFmMXFQeVPHgHr?usp=sharing" target="_blank" rel="noopener noreferrer">Colab Notebook</a></p>
+  </li>
+</ul>
+
+<p>`</p>
+<h3 id="module-3-σημασιολογικές-ενσωματώσεις">Module 3: Σημασιολογικές Ενσωματώσεις</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 7: <a href="https://youtu.be/hsNyHqZkKbg" target="_blank" rel="noopener noreferrer">Σημασιολογικές Ενσωματώσεις: Η Γέφυρα προς την Παραγωγική Τεχνητή Νοημοσύνη</a></strong>
+<img src="/images/genaiclass/L07.png" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>Σε αυτήν την διάλεξη περνάμε από την λογιστική παλινδρόμιση και το εσωτερικό γινόμενο, στις σημασιολογικές ενσωματώσεις (semantic embeddings). Έτσι περιγράφουμε πως η ιδέα του Transfer Learning είναι η γέφυρα από την τεχνητή νοημοσύνη, όπως την συζητήσαμε στην πρώτη σειρά διαλέξεων, και την παραγωγική τεχνητή νοημοσύνη. Τα πρώτα παραδείγματα που δίνουμε είναι από την μηχανική όραση, μια που με την Resnet, χτίσαμε (χωρίς καν να το ξέρουμε) ένα νευρωνικό δικτυο που μας παρέχει καλές σημασιολογικές ενσωματώσεις εικόνων.</em></p>
+
+    <p><a href="/pdfs/genaiclass/L07.pdf" target="_blank" rel="noopener noreferrer">Διαφάνειες</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 8: <a href="https://youtu.be/7xRt4mJ8vmU" target="_blank" rel="noopener noreferrer">Σημασιολογικές Ενσωματώσεις Εικόνων 1/2 (Python / Colab)</a></strong>
+<img src="/images/genaiclass/L08.png" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>Επιστρέφουμε στην Python για να δούμε τις ιδέες που έχουμε αναπτύξει στην πράξη. Δείχνουμε πως η Resnet18 που εκπαιδεύσαμε για να λύσουμε το πρόβλημα της ταξινόμησης στις εικόνες της CIFAR-10, μας δίνει επίσης σημασιολογικές ενσωματώσεις. Υλοποιούμε διάφορα παραδείγματα ώστε να καταλάβουμε καλύτερα πως λειτουργούν οι ενσωματώσεις.</em></p>
+
+    <p><a href="https://colab.research.google.com/drive/1WZ4ho2InMZksR-2GINRJfxiAKMnk1ryT?usp=drive_link" target="_blank" rel="noopener noreferrer">Colab Notebook</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 9: <a href="https://youtu.be/7xRt4mJ8vmU" target="_blank" rel="noopener noreferrer">Σημασιολογικές Ενσωματώσεις Εικόνων 2/2 (Python / Colab)</a></strong>
+<img src="/images/genaiclass/L09.png" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>Συνεχίζουμε την μελέτη μας των ενσωματώσεων μέσω της Resnet18, αυτήν τη φορά χρησιμοποιώντας το προεκπαιδευμένο δίκτυο χωρίς καμία παραπάνω εκπαίδευση στα δικά μας τα δεδομένα. Κατεβάζουμε εικόνες βατραχόψαρων, καρχαρίων γκόμπλιν, και ένα πολυσυζητημένο ηλεκτρικό όχημα για το οποίο οι αισθητικές γνώμες διήστανται. Βλέπουμε πως στο πίξελ space (</em></p>
+
+    <p><a href="https://colab.research.google.com/drive/1WZ4ho2InMZksR-2GINRJfxiAKMnk1ryT?usp=drive_link" target="_blank" rel="noopener noreferrer">Colab Notebook</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 10: <a href="https://youtu.be/hsNyHqZkKbg" target="_blank" rel="noopener noreferrer">Σημασιολογικές Ενσωματώσεις: Word2Vec</a></strong>
+<img src="/images/genaiclass/L09.png" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>Σε αυτήν την διάλεξη περνάμε για πρώτη φορά σε εφαρμογές στην φυσσική γλώσσα. Εξηγούμε την βασική ιδέα του Word2Vec – μιά σημασιολογική ενσωμάτωση 30.000+ λέξεων. Με την Word2Vec η ουσία δεν είναι τόσο οι εφαρμογές (και χρήση της Word2Vec) που προκύπτουν, αλλά η υλοποίηση της ιδέας που αποκαλείται Self-Supervision. Η ιδέα του self-supervision είναι το κλειδί για οποιαδήποτε εφαρμογή απαιτεί την εκπαίδευση μεγάλων γλωσσικών μοντέλων, και θα την ξαναδούμε στις ακόλουθες διαλέξεις.</em></p>
+
+    <p><a href="/pdfs/genaiclass/L09.pdf" target="_blank" rel="noopener noreferrer">Διαφάνειες</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 11: <a href="https://youtu.be/XmD9Zxs9JBE" target="_blank" rel="noopener noreferrer">Σημασιολογικές Ενσωματώσεις: Word2Vec (Python / Colab)</a></strong>
+<img src="/images/genclass/L10.png" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>Εδώ φορτώνουμε το μοντέλο Word2Vec στης Python, και βλέπουμε πως δουλεύει στην πράξη.</em></p>
+
+    <p><a href="https://colab.research.google.com/drive/1qv3oE3adlxBuLl6H2jHzj4UvLKw96qPf?usp=drive_link" target="_blank" rel="noopener noreferrer">Colab Notebook</a></p>
+  </li>
+</ul>
+
+<p>`</p>
+<h3 id="module-4-αναζήτηση-σε-βάση-γνώσης">Module 4: Αναζήτηση σε Βάση Γνώσης</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 12: <a href="https://youtu.be/yrDRb_nLoFc" target="_blank" rel="noopener noreferrer">Το Πρόβλημα της Αναζήτησης σε Βάση Γνώσης</a></strong>
+<img src="/images/genaiclass/L11.png" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>Σε αυτήν την διάλεξη αρχίζουμε την συζήτησή μας για το πρόβλημα της αναζήτησης σε μια βάση γνώσης. Θα μας απασχολήσει για αρκετές διαλέξεις, και θα λειτουργήσει ως το κατώφλι, από όπου αρχίζει η μελέτη μας για τα μεγάλα γλωσσικά μοντέλα. Το ζήτημα της αναζήτησης αποτελεί αυτό καθαυτό ένα σημαντικό και σύνθετο πρόβλημα, με πλήθος και ποικιλία εφαρμογών. Περιγράφουμε το βασικό πρόβλημα, και εισάγουμε τα βασικά μέτρα αξιολόγησης: NDCG και Recall.</em></p>
+
+    <p><a href="/pdfs/genaiclass/L11.pdf" target="_blank" rel="noopener noreferrer">Διαφάνειες</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 13: <a href="https://youtu.be/M9766Zd4Okg" target="_blank" rel="noopener noreferrer">Κλασσική Αναζήτηση: Bag-of-Words και TF.IDF</a></strong>
+<img src="/images/genaiclass/L12.png" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>Αυτή η διάλεξη περιγράφει τις κλασσικές μεθόδους αναζήτησης, συγκεκριμένα, το TF.IDF. Προς θεμελίωση της τεχνικής του TF.IDF, εξετάζουμε πρώτα το Bag-of-Words. Χρησιμοποιούμε ένα μικρό παράδειγμα αναζήτησης, στο οποίο επιστρέφουμε στην επόμενη διάλεξη, χρησιμοποιώντας τα εργαλεία της Python.</em></p>
+
+    <p><a href="/pdfs/genaiclass/L12.pdf" target="_blank" rel="noopener noreferrer">Διαφάνειες</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 14: <a href="https://youtu.be/ItNmhomedKo" target="_blank" rel="noopener noreferrer">Bag-of-Words και TF.IDF σε Python (Python / Colab)</a></strong>
+<img src="/images/genaiclass/L13.png" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>Υλοποιούμε τις δύο μεθόδους, Bag-of-Words και TF.IDF. στην Python, και σε μικρά και μεσαίου μεγέθους προβλήματα, βλέποντας διαισθητικά πως λειτουργουν, αλλά επίσης αξιολογόντας την απόδοσή τους χρησιμοποιώντας το NDCG και το Recall. Είναι επισης αφορμή να μάθουμε για χρήσιμες βιβλιοθήκες της Python για την επεξεργασία κειμένου, όπως την NLTK.</em></p>
+
+    <p><a href="/pdfs/genaiclass/L13.pdf" target="_blank" rel="noopener noreferrer">Διαφάνειες</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 15: <a href="https://youtu.be/oNXzaGlpdRU" target="_blank" rel="noopener noreferrer">Αναζήτηση με Σημασιολογικές Ενσωματώσεις Κειμένου και RAG</a></strong>
+<img src="/images/genaiclass/L14.png" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>Σε αυτήν την διάλεξη περνάμε στις μοντέρνες τεχηνικές της αναζήτησης, που χρισομοποιούν σημασιολογικές ενσωματώσεις κειμένου. Εξηγούμε την βασική μεθοδολογία, χωρίς να μπούμε ακόμα στις λεπτομέρειες για το πως χτίζονται οι ενσωματώσεις. Μιλάμε όμως λεπτομερώς για το πως χτίζουμε ένα σύστημα RAG – Retrieval Augmented Generation – με σημασιολογικές ενσωματώσεις. Ta RAG προσφέρουν την βασική ιδέα που επιτρέπει σε ένα ήδη εκπαιδευμένο γλωσσικό μοντέλο (π.χ. ανοιχτό μόντέλο όπως το Llama ή το Qwen, ή και κλειστό μοντέλο όπως κάποιο GPT ή το Claude.</em></p>
+
+    <p><a href="/pdfs/genaiclass/L14.pdf" target="_blank" rel="noopener noreferrer">Διαφάνειες</a></p>
+  </li>
+</ul>
+
+<p>`</p>
+<h3 id="module-5-μεγάλα-γλωσσικά-μοντέλα">Module 5: Μεγάλα Γλωσσικά Μοντέλα</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 16: <a href="https://youtu.be/ylFgsqWn7ws" target="_blank" rel="noopener noreferrer">ΧΧΧΧΧ</a></strong>
+<img src="/images/genaiclass/L15.png" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>Σε αυτήν την διάλεξη περιγράφουμε πως αποθηκεύονται οι μαυρόασπρες και οι έγχρωμες εικόνες στον υπολογιστή, αρχίζοντας έτσι την συζήτησή μας για την Μηχανική Όραση (Computer Vision).</em></p>
+
+    <p><a href="/pdfs/genaiclass/L15.pdf" target="_blank" rel="noopener noreferrer">Διαφάνειες</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 17: <a href="https://youtu.be/7xVFFdGkAYw" target="_blank" rel="noopener noreferrer">ΧΧΧΧΧ</a></strong>
+<img src="/images/genaiclass/L16.png" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>Συνεχίζουμε την συζήτησή μας για την Μηχανική Όραση (Computer Vision) και εξηγούμε λεπτομερώς τι είναι, γιατί τα χρειαζόμαστε, και πως χρησιμοποιούνται τα συνελικτικά επίπεδα και νευρωνικά δίκτυα (Convolutional Neural Networks).</em></p>
+
+    <p><a href="/pdfs/genaiclass/L16.pdf" target="_blank" rel="noopener noreferrer">Διαφάνειες</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 18: <a href="https://youtu.be/vLtPZvbRY_w" target="_blank" rel="noopener noreferrer">ΧΧΧΧΧ)</a></strong>
+<img src="/images/genaiclass/L17.png" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>Σε αυτήν την διάλεξη υλοποιούμε με την Python &amp; Pytorch τις ιδέες που έχουμε δεί – συγκεκριμένα, τα συνελικτικά νευρωνικά δίκτυα (convolutional neural networks) – για την αυτόματη αναγνώριση χειρόγραφων ψηφίων. Χρησιμοποιούμε το σετ δεδομένων MNIST.</em></p>
+
+    <p><a href="https://colab.research.google.com/drive/1SHuJTmahC6w-KoMrcMm4IppIJ3Ycut5H?usp=sharing" target="_blank" rel="noopener noreferrer">Colab Notebook</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 19: <a href="https://youtu.be/Hcv0JuIoYcM" target="_blank" rel="noopener noreferrer">ΧΧΧΧΧ</a></strong>
+<img src="/images/genaiclass/L18.png" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>Σε αυτήν την διάλεξη επιστρέφουμε στο σετ δεδομένων του CIFAR-10. Με τα δέντρα αποφασης, είχαμε καταφέρει να πετύχουμε ακρίβεια (στα δεδομένα εκτίμησης) γύρω στο 23%-24%. Χρησιμοποιώντας βαθιά νευρωνικά δίκτυα με convolutional επίπεδα (CNNs), βελτιώνουμε πολύ την επίδοσή μας. Χτίζουμε τρία δίκτυα. Το μικρότερο έχει περίπου 2.500 παραμέτρους. Το μεσαίο περίπου 60.000. Και το μεγαλύτερο σχεδόν 6.000.000. Τα εκπαιδεύουμε όλα, και βλέπουμε την επίδοσή τους.</em></p>
+
+    <p><a href="https://colab.research.google.com/drive/1PMhVak3v8e5nCcvQEEGvBNdcLalYcCeW?usp=drive_link" target="_blank" rel="noopener noreferrer">Colab Notebook</a></p>
+  </li>
+</ul>
+
+<hr />
+
+
+    </div>
+    
+  </body>
+</html>
