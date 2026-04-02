@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://localhost:4000/Athens_College/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/GenerativeAIClass/</loc>
 </url>
 <url>
@@ -13,10 +16,10 @@
 <loc>http://localhost:4000/MachineLearningMath/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/finalproject/</loc>
+<loc>http://localhost:4000/vendor/finalproject/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/vendor/finalproject/</loc>
+<loc>http://localhost:4000/finalproject/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/vendor/</loc>
@@ -52,10 +55,10 @@
 <loc>http://localhost:4000/researchprojects/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/vendor/teaching/</loc>
+<loc>http://localhost:4000/teaching/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/teaching/</loc>
+<loc>http://localhost:4000/vendor/teaching/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/pdfs/genaiclass/L01.pdf</loc>
