@@ -124,6 +124,92 @@ input[type=range]::-webkit-slider-thumb {
   border-left:3px solid #f0883e;
 }
 
+/* ── Explain button ── */
+.btn-explain {
+  padding: 6px 18px; border-radius: 6px;
+  font-family: 'Courier New', monospace; font-size: 0.82em;
+  cursor: pointer; font-weight: bold; transition: all .15s;
+  background: #0d2a45; border: 2px solid #79c0ff; color: #79c0ff;
+}
+.btn-explain:hover { background: #1a3a5c; box-shadow: 0 0 10px #79c0ff44; }
+
+/* ── Explainer overlay ── */
+#explainerOverlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: #0d1117;
+  z-index: 9999;
+  overflow-y: auto;
+  padding: 28px 20px 48px;
+}
+.exp-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  font-family: 'Courier New', monospace;
+  color: #cdd9e5;
+}
+.exp-close {
+  display: block; margin-left: auto; margin-bottom: 24px;
+  padding: 8px 24px; border-radius: 8px;
+  background: #161b22; border: 1px solid #30363d; color: #8b949e;
+  font-family: 'Courier New', monospace; font-size: 0.9em;
+  cursor: pointer; font-weight: bold; transition: all .15s;
+}
+.exp-close:hover { background: #30363d; color: #cdd9e5; }
+.exp-h1 {
+  text-align: center; font-size: 1.8em; color: #79c0ff;
+  letter-spacing: 2px; margin-bottom: 6px;
+}
+.exp-sub {
+  text-align: center; color: #6e7681; font-size: 0.85em; margin-bottom: 32px;
+}
+.exp-section {
+  background: #161b22; border: 1px solid #30363d;
+  border-radius: 10px; padding: 20px 24px; margin-bottom: 18px;
+}
+.exp-section h2 {
+  font-size: 1.1em; margin-bottom: 14px; letter-spacing: 1px;
+}
+.exp-section p { line-height: 1.75; color: #8b949e; margin-bottom: 10px; }
+.exp-section p:last-child { margin-bottom: 0; }
+.exp-section strong { color: #cdd9e5; }
+.exp-hl  { color: #f0883e; font-weight: bold; }  /* orange highlight */
+.exp-blu { color: #79c0ff; font-weight: bold; }  /* blue highlight  */
+.exp-grn { color: #56d364; font-weight: bold; }  /* green           */
+.exp-red { color: #ff7b72; font-weight: bold; }  /* red             */
+.exp-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.88em; margin: 12px 0;
+}
+.exp-table th {
+  color: #79c0ff; text-align: left;
+  border-bottom: 1px solid #30363d; padding: 5px 10px 5px 0;
+  font-weight: bold;
+}
+.exp-table td {
+  padding: 5px 10px 5px 0; border-bottom: 1px solid #21262d; color: #8b949e;
+}
+.exp-table td:first-child { color: #f0883e; font-weight: bold; }
+.exp-callout {
+  background: #0d2a45; border-left: 3px solid #79c0ff;
+  border-radius: 0 6px 6px 0; padding: 12px 16px; margin: 12px 0;
+  color: #cdd9e5; line-height: 1.7; font-size: 0.9em;
+}
+.exp-callout.orange { background: #2d1a06; border-color: #f0883e; }
+.exp-callout.green  { background: #0d2a18; border-color: #56d364; }
+.exp-try-list { list-style: none; padding: 0; margin: 0; }
+.exp-try-list li {
+  padding: 8px 0 8px 28px; border-bottom: 1px solid #21262d;
+  position: relative; color: #8b949e; line-height: 1.65;
+  font-size: 0.9em;
+}
+.exp-try-list li:last-child { border-bottom: none; }
+.exp-try-list li::before {
+  content: attr(data-n);
+  position: absolute; left: 0;
+  color: #f0883e; font-weight: bold;
+}
+
 /* ── Bottom row ── */
 .bottom-row {
   margin-top: 13px;
@@ -182,6 +268,7 @@ input[type=range]::-webkit-slider-thumb {
     <div class="btn-row">
       <button class="btn-ff"    id="btnFF">⚡ Fast forward</button>
       <button class="btn-reset" id="btnReset">↺ Reset</button>
+      <button class="btn-explain" id="btnExplain">📖 How it works</button>
       <span id="ffNote" style="display:none">2000× speed — hold for ~3 sec to reach ρ=0.99 steady state</span>
     </div>
     <div id="highRhoNote">
@@ -197,6 +284,138 @@ input[type=range]::-webkit-slider-thumb {
   </div>
 
 </div>
+
+<!-- ================================================================
+     EXPLAINER OVERLAY
+     ================================================================ -->
+<div id="explainerOverlay">
+<div class="exp-inner">
+  <button class="exp-close" id="btnCloseExplain">✕ Close — back to simulation</button>
+
+  <h1 class="exp-h1">🚦 How This Simulation Works</h1>
+  <p class="exp-sub">A quick guide for curious people of all ages</p>
+
+  <!-- Section 1: What is ρ -->
+  <div class="exp-section">
+    <h2>What is <span class="exp-blu">ρ</span> (the Greek letter "rho")?</h2>
+    <p>
+      Imagine a single toll booth on a highway.  Cars arrive at random, and
+      the booth worker takes a random amount of time to serve each car.
+      <strong class="exp-hl">ρ</strong> measures how <em>busy</em> the booth is:
+    </p>
+    <div class="exp-callout">
+      ρ = (average arrivals per second) ÷ (average cars served per second)
+    </div>
+    <p>
+      In this simulation the booth serves <strong>1 car per second on average</strong>,
+      so ρ is simply the average number of cars arriving every second.
+    </p>
+    <table class="exp-table">
+      <thead><tr><th>Slider value</th><th>Cars arriving / sec</th><th>Booth busy…</th></tr></thead>
+      <tbody>
+        <tr><td>ρ = 0.50</td><td>0.5 / sec</td><td>50 % of the time</td></tr>
+        <tr><td>ρ = 0.80</td><td>0.8 / sec</td><td>80 % of the time</td></tr>
+        <tr><td>ρ = 0.95</td><td>0.95 / sec</td><td>95 % of the time</td></tr>
+        <tr><td>ρ = 0.99</td><td>0.99 / sec</td><td>99 % of the time</td></tr>
+      </tbody>
+    </table>
+    <p>
+      If ρ ≥ 1, cars arrive <em>faster</em> than the booth can serve them — the line
+      grows forever!  That's why the slider stops just below 1.
+    </p>
+  </div>
+
+  <!-- Section 2: Why does the line get so long? -->
+  <div class="exp-section">
+    <h2>Why does the line get so long near ρ = 1?</h2>
+    <p>
+      Think of the booth like a bathtub with a drain.
+      Water pours in (arrivals) and drains out (departures).
+    </p>
+    <ul class="exp-try-list">
+      <li>When ρ is small, the drain is much faster than the tap — the tub stays
+          nearly empty.</li>
+      <li>As ρ approaches 1, the tap and drain are almost perfectly balanced.
+          Any random <em>burst</em> of arrivals fills the tub quickly, and it takes
+          a very long time to drain back down.</li>
+      <li>Because both arrivals <em>and</em> service times are random, bursts happen
+          all the time — so the average water level (queue length) explodes.</li>
+    </ul>
+  </div>
+
+  <!-- Section 3: The formula -->
+  <div class="exp-section">
+    <h2>The formula: average wait time <span class="exp-grn">W = 1 ÷ (1 − ρ)</span></h2>
+    <p>
+      Mathematicians proved that for this kind of random queue the average time
+      a car spends from arrival to departure is:
+    </p>
+    <div class="exp-callout">
+      W = 1 ÷ (1 − ρ)
+    </div>
+    <table class="exp-table">
+      <thead><tr><th>ρ</th><th>1 − ρ</th><th>Average wait W</th><th>Compared to ρ = 0</th></tr></thead>
+      <tbody>
+        <tr><td>0.0</td><td>1.00</td><td class="exp-grn">1 sec</td><td>1×</td></tr>
+        <tr><td>0.5</td><td>0.50</td><td class="exp-grn">2 sec</td><td>2×</td></tr>
+        <tr><td>0.8</td><td>0.20</td><td>5 sec</td><td>5×</td></tr>
+        <tr><td>0.9</td><td>0.10</td><td>10 sec</td><td>10×</td></tr>
+        <tr><td>0.95</td><td>0.05</td><td class="exp-red">20 sec</td><td>20×</td></tr>
+        <tr><td>0.99</td><td>0.01</td><td class="exp-red">100 sec</td><td>100×</td></tr>
+      </tbody>
+    </table>
+    <p>
+      The orange curve on the left graph shows this formula.
+      The <span class="exp-red">red dot</span> is the simulation's measured average — watch it
+      chase the curve as more cars pass through!
+    </p>
+  </div>
+
+  <!-- Section 4: Spread / variance -->
+  <div class="exp-section">
+    <h2>The spread: why wait times vary so much</h2>
+    <p>
+      Even when the <em>average</em> wait is W, individual cars can wait
+      much shorter <em>or</em> much longer.  The histogram on the right shows
+      this spread for the last 200 cars.
+    </p>
+    <p>
+      For this queue, the <strong>standard deviation</strong> (the typical distance
+      from the average) equals the average itself — <strong>σ = W</strong>.  That means:
+    </p>
+    <ul class="exp-try-list">
+      <li>At ρ = 0.5, W ≈ 2 sec and the typical spread is also about 2 sec.</li>
+      <li>At ρ = 0.95, W ≈ 20 sec and the spread is also about 20 sec — some cars
+          sail through in 1 sec while others wait a minute or more.</li>
+      <li>At ρ = 0.99, W ≈ 100 sec and the spread is 100 sec — huge!</li>
+    </ul>
+    <p>
+      The <span class="exp-blu">σ bracket</span> below the histogram x-axis shows this spread.
+      Notice how it gets bigger and bigger as you increase ρ.
+    </p>
+  </div>
+
+  <!-- Section 5: Things to try -->
+  <div class="exp-section">
+    <h2>Things to try 🎯</h2>
+    <ul class="exp-try-list">
+      <li><strong>Slide ρ slowly from 0.5 to 0.95</strong> and watch the orange
+          curve on the left graph get steeper.  How fast does the wait time grow?</li>
+      <li><strong>Set ρ = 0.99, hit ⚡ Fast forward</strong> for 3–4 seconds,
+          then release.  Count how many cars are in the line!</li>
+      <li><strong>Compare the histogram shape</strong> at ρ = 0.5 vs ρ = 0.9 —
+          does it get wider (more spread out) as ρ increases?</li>
+      <li><strong>Watch the red dot</strong> on the left graph.  At low ρ it settles
+          down quickly.  At high ρ it bounces around a lot — why?</li>
+      <li><strong>Reset and set ρ = 0.5</strong>, then slowly drag to 0.99.  You can
+          see the dot trace a path up the curve — like a record of your experiment!</li>
+    </ul>
+  </div>
+
+  <button class="exp-close" id="btnCloseExplain2">✕ Close — back to simulation</button>
+</div>
+</div>
+
 <script>
 // ================================================================
 //  CONFIG
@@ -941,6 +1160,21 @@ function loop(t) {
   updateUI();
   requestAnimationFrame(loop);
 }
+
+// ================================================================
+//  EXPLAINER OVERLAY
+// ================================================================
+document.getElementById('btnExplain').addEventListener('click', () => {
+  document.getElementById('explainerOverlay').style.display = 'block';
+});
+['btnCloseExplain', 'btnCloseExplain2'].forEach(id => {
+  document.getElementById(id).addEventListener('click', () => {
+    document.getElementById('explainerOverlay').style.display = 'none';
+  });
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.getElementById('explainerOverlay').style.display = 'none';
+});
 
 // ================================================================
 //  BOOT
