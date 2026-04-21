@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blood Pressure Tracker</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f0f4f8; color: #333; padding: 20px; }
+h1 { font-size: 1.35em; color: #1a3c6e; margin-bottom: 3px; }
+.subtitle { color: #666; font-size: 0.82em; margin-bottom: 16px; }
+.subtitle code { background:#e8edf2; padding:1px 5px; border-radius:3px; font-size:0.95em; }
+.layout { display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start; }
+.panel { background: white; border-radius: 10px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.left { width: 290px; flex-shrink: 0; }
+.right { flex: 1; min-width: 460px; }
+label.section { display: block; font-size: 0.78em; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 5px; }
+textarea {
+  width: 100%; height: 170px; font-family: monospace; font-size: 11px;
+  border: 1px solid #dde; border-radius: 6px; padding: 8px; resize: vertical;
+  line-height: 1.6;
+}
+button {
+  background: #1a3c6e; color: white; border: none; padding: 8px 16px;
+  border-radius: 6px; cursor: pointer; font-size: 0.88em; margin-top: 8px; width: 100%;
+  transition: background 0.15s;
+}
+button:hover { background: #2952a3; }
+.ctrl { margin-top: 14px; }
+.filter-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size:0.85em; }
+.filter-row input[type=checkbox] { width:15px; height:15px; cursor:pointer; }
+input[type=range] { width: 100%; accent-color: #1a3c6e; }
+.time-display { font-size: 0.85em; color: #1a3c6e; font-weight: 700; text-align: center; margin-top: 3px; }
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 6px; }
+.stat-box { background: #f7f9fc; border-radius: 6px; padding: 7px 10px; }
+.stat-val { font-size: 1.1em; font-weight: 700; color: #1a3c6e; }
+.stat-lbl { font-size: 0.72em; color: #888; margin-top: 1px; }
+.cat-bar { margin-top: 8px; }
+.cat-strip { display: flex; height: 12px; border-radius: 4px; overflow: hidden; margin-top: 3px; }
+.cat-seg { height: 100%; transition: width 0.3s; }
+.cat-labels { display: flex; justify-content: space-between; font-size:0.68em; color:#888; margin-top:2px; }
+.legend-wrap { margin-top: 14px; }
+.leg-canvas { display:block; width:100%; height:14px; border-radius:4px; }
+.leg-ticks { display: flex; justify-content: space-between; font-size: 0.7em; color:#888; margin-top:2px; }
+.zone-key { margin-top: 10px; font-size: 0.74em; line-height: 2; }
+.zone-row { display:flex; align-items:center; gap:6px; }
+.zone-sq { width:11px; height:11px; border-radius:2px; flex-shrink:0; }
+.chart-title { font-size:0.9em; font-weight:700; color:#1a3c6e; margin-bottom:8px; }
+.ts-wrap { margin-top:14px; }
+#tooltip {
+  position: fixed; background: rgba(20,30,50,0.88); color: #fff;
+  padding: 8px 12px; border-radius: 7px; font-size: 12px;
+  pointer-events: none; opacity: 0; transition: opacity 0.1s;
+  z-index: 999; line-height: 1.65; white-space: nowrap;
+}
+.empty-msg { color:#aaa; font-size:0.82em; padding: 20px 0; text-align:center; }
+</style>
+</head>
+<body>
+
+<h1>🫀 Blood Pressure Tracker</h1>
+<p class="subtitle">Paste readings — one per line — in the format: <code>4/13/26 6:30 pm; 130/86</code></p>
+
+<div class="layout">
+
+  <!-- ── LEFT PANEL ─────────────────────────────────── -->
+  <div class="panel left">
+
+    <label class="section">Readings</label>
+    <textarea id="dataInput"></textarea>
+    <button onclick="parseAndDraw()">↻ Update Charts</button>
+
+    <!-- Time filter -->
+    <div class="ctrl">
+      <label class="section">Time-of-Day Filter</label>
+      <div class="filter-row">
+        <input type="checkbox" id="filterEnabled" onchange="redraw()">
+        <span>Show only ± 2 hrs around:</span>
+      </div>
+      <input type="range" id="timeSlider" min="0" max="23.75" step="0.25" value="8" oninput="redraw()">
+      <div class="time-display" id="timeDisplay">—</div>
+    </div>
+
+    <!-- Color legend -->
+    <div class="legend-wrap">
+      <label class="section">Time-of-Day Color</label>
+      <canvas id="legCanvas" class="leg-canvas" width="260" height="14"></canvas>
+      <div class="leg-ticks">
+        <span>12 am</span><span>6 am</span><span>12 pm</span><span>6 pm</span><span>12 am</span>
+      </div>
+    </div>
+
+    <!-- Zone key -->
+    <div class="zone-key">
+      <label class="section">BP Classification (AHA)</label>
+      <div class="zone-row"><div class="zone-sq" style="background:#c8e6c9"></div>Normal &lt;120 / &lt;80</div>
+      <div class="zone-row"><div class="zone-sq" style="background:#fff9c4"></div>Elevated 120–129 / &lt;80</div>
+      <div class="zone-row"><div class="zone-sq" style="background:#ffe0b2"></div>Stage 1 HTN 130–139 / 80–89</div>
+      <div class="zone-row"><div class="zone-sq" style="background:#ffcdd2"></div>Stage 2 HTN ≥140 / ≥90</div>
+      <div class="zone-row"><div class="zone-sq" style="background:#ef9a9a"></div>Crisis &gt;180 / &gt;120</div>
+    </div>
+
+    <!-- Stats -->
+    <div class="ctrl">
+      <label class="section">Statistics</label>
+      <div id="statsPanel"><p class="empty-msg">No data yet.</p></div>
+    </div>
+
+  </div>
+
+  <!-- ── RIGHT PANEL ────────────────────────────────── -->
+  <div class="panel right">
+    <div class="chart-title">Systolic vs. Diastolic — 2D Scatter</div>
+    <div id="scatter"></div>
+    <div class="ts-wrap">
+      <div class="chart-title">Blood Pressure Over Time</div>
+      <div id="timeseries"></div>
+    </div>
+  </div>
+
+</div>
+
+<div id="tooltip"></div>
+
+<script>
+// ═══════════════════════════════════════════════════
+//  Color scale  (sinebow shifted so 6 am = warm orange)
+// ═══════════════════════════════════════════════════
+function tColor(h) {
+  return d3.interpolateSinebow(((h - 6 + 24) % 24) / 24);
+}
+
+// Draw legend canvas
+(function() {
+  const cv = document.getElementById('legCanvas');
+  const ctx = cv.getContext('2d');
+  for (let i = 0; i < cv.width; i++) {
+    ctx.fillStyle = tColor((i / cv.width) * 24);
+    ctx.fillRect(i, 0, 1, cv.height);
+  }
+})();
+
+// ═══════════════════════════════════════════════════
+//  Parsing
+// ═══════════════════════════════════════════════════
+function parseData(txt) {
+  const out = [];
+  for (const raw of txt.split('\n')) {
+    const line = raw.trim();
+    if (!line) continue;
+    const m = line.match(/(\d{1,2})\/(\d{1,2})\/(\d{2,4})\s+(\d{1,2}):(\d{2})\s*(am|pm);\s*(\d{2,3})\/(\d{2,3})/i);
+    if (!m) continue;
+    let [, mo, dy, yr, hh, mm, ap, sys, dia] = m;
+    hh = +hh; mm = +mm;
+    if (ap.toLowerCase() === 'pm' && hh !== 12) hh += 12;
+    if (ap.toLowerCase() === 'am' && hh === 12) hh = 0;
+    const yrFull = +yr < 100 ? 2000 + +yr : +yr;
+    const date = new Date(yrFull, +mo - 1, +dy, hh, mm);
+    const timeH = hh + mm / 60;
+    const dateLabel = date.toLocaleDateString('en-US', { month:'short', day:'numeric' });
+    const timeLabel = date.toLocaleTimeString('en-US', { hour:'numeric', minute:'2-digit' });
+    out.push({ date, dateLabel, timeLabel, timeH, sys: +sys, dia: +dia, raw: line });
+  }
+  return out.sort((a, b) => a.date - b.date);
+}
+
+// ═══════════════════════════════════════════════════
+//  State
+// ═══════════════════════════════════════════════════
+let ALL = [];
+
+function filtered() {
+  const en = document.getElementById('filterEnabled').checked;
+  if (!en) return ALL;
+  const t = +document.getElementById('timeSlider').value;
+  return ALL.filter(d => {
+    let diff = Math.abs(d.timeH - t);
+    if (diff > 12) diff = 24 - diff;
+    return diff <= 2;
+  });
+}
+
+// ═══════════════════════════════════════════════════
+//  Covariance ellipse (computed in screen coords)
+// ═══════════════════════════════════════════════════
+function covEllipse(pts) {
+  if (pts.length < 3) return null;
+  const mx = d3.mean(pts, p => p[0]), my = d3.mean(pts, p => p[1]);
+  let vx = 0, vy = 0, vxy = 0;
+  pts.forEach(([x, y]) => { vx += (x-mx)**2; vy += (y-my)**2; vxy += (x-mx)*(y-my); });
+  const n1 = pts.length - 1;
+  vx /= n1; vy /= n1; vxy /= n1;
+  const tr = vx + vy;
+  const disc = Math.sqrt(Math.max(0, (tr/2)**2 - (vx*vy - vxy**2)));
+  const l1 = tr/2 + disc, l2 = tr/2 - disc;
+  const ang = 0.5 * Math.atan2(2 * vxy, vx - vy) * 180 / Math.PI;
+  return { cx: mx, cy: my, a: Math.sqrt(Math.max(0, l1)), b: Math.sqrt(Math.max(0, l2)), ang };
+}
+
+// ═══════════════════════════════════════════════════
+//  Linear regression helper
+// ═══════════════════════════════════════════════════
+function linReg(xs, ys) {
+  const n = xs.length;
+  if (n < 2) return null;
+  const mx = d3.mean(xs), my = d3.mean(ys);
+  let num = 0, den = 0;
+  xs.forEach((x, i) => { num += (x - mx) * (ys[i] - my); den += (x - mx) ** 2; });
+  const slope = den ? num / den : 0;
+  return x => slope * (x - mx) + my;
+}
+
+// ═══════════════════════════════════════════════════
+//  BP Zone background rectangles
+//  (dia on x, sys on y — no overlaps)
+// ═══════════════════════════════════════════════════
+const ZONES = [
+  // [dia0, dia1, sys0, sys1, fill]
+  [55,  80,  85, 120, '#c8e6c9'],  // Normal
+  [55,  80, 120, 130, '#fff9c4'],  // Elevated
+  [55,  80, 130, 140, '#ffe0b2'],  // Stage 1 (sys-based)
+  [80,  90,  85, 140, '#ffe0b2'],  // Stage 1 (dia-based)
+  [55,  90, 140, 180, '#ffcdd2'],  // Stage 2 (sys-based, dia<90)
+  [90, 120,  85, 180, '#ffcdd2'],  // Stage 2 (dia-based)
+  [55, 130, 180, 195, '#ef9a9a'],  // Crisis (high sys)
+  [120,130,  85, 180, '#ef9a9a'],  // Crisis (high dia)
+];
+
+// ═══════════════════════════════════════════════════
+//  SCATTER CHART
+// ═══════════════════════════════════════════════════
+function drawScatter(data) {
+  const wrap = document.getElementById('scatter');
+  wrap.innerHTML = '';
+  const mar = { t: 16, r: 24, b: 48, l: 54 };
+  const W0 = Math.max(380, wrap.clientWidth || 520);
+  const W = W0 - mar.l - mar.r;
+  const H = Math.min(W * 0.82, 400);
+
+  const diaLo = Math.min(54, data.length ? d3.min(data, d => d.dia) - 6 : 54);
+  const diaHi = Math.max(126, data.length ? d3.max(data, d => d.dia) + 6 : 126);
+  const sysLo = Math.min(84, data.length ? d3.min(data, d => d.sys) - 6 : 84);
+  const sysHi = Math.max(186, data.length ? d3.max(data, d => d.sys) + 6 : 186);
+
+  const x = d3.scaleLinear().domain([diaLo, diaHi]).range([0, W]);
+  const y = d3.scaleLinear().domain([sysLo, sysHi]).range([H, 0]);
+
+  const svg = d3.select(wrap).append('svg')
+    .attr('width', W + mar.l + mar.r)
+    .attr('height', H + mar.t + mar.b)
+    .append('g').attr('transform', `translate(${mar.l},${mar.t})`);
+
+  // Zones
+  ZONES.forEach(([d0, d1, s0, s1, fill]) => {
+    svg.append('rect')
+      .attr('x', x(Math.max(d0, diaLo))).attr('y', y(Math.min(s1, sysHi)))
+      .attr('width', Math.max(0, x(Math.min(d1, diaHi)) - x(Math.max(d0, diaLo))))
+      .attr('height', Math.max(0, y(Math.max(s0, sysLo)) - y(Math.min(s1, sysHi))))
+      .attr('fill', fill);
+  });
+
+  // Threshold reference lines
+  [120, 130, 140, 180].forEach(v => {
+    if (v < sysHi && v > sysLo)
+      svg.append('line').attr('x1',0).attr('x2',W).attr('y1',y(v)).attr('y2',y(v))
+        .attr('stroke','#bbb').attr('stroke-width',0.7).attr('stroke-dasharray','4,3');
+  });
+  [80, 90, 120].forEach(v => {
+    if (v < diaHi && v > diaLo)
+      svg.append('line').attr('x1',x(v)).attr('x2',x(v)).attr('y1',0).attr('y2',H)
+        .attr('stroke','#bbb').attr('stroke-width',0.7).attr('stroke-dasharray','4,3');
+  });
+
+  // Axes
+  svg.append('g').attr('transform',`translate(0,${H})`).call(d3.axisBottom(x).ticks(7).tickSize(4));
+  svg.append('g').call(d3.axisLeft(y).ticks(8).tickSize(4));
+
+  // Axis labels
+  svg.append('text').attr('x', W/2).attr('y', H+40).attr('text-anchor','middle')
+    .attr('font-size','12').attr('fill','#555').text('Diastolic (mmHg)');
+  svg.append('text').attr('transform','rotate(-90)').attr('x',-H/2).attr('y',-42)
+    .attr('text-anchor','middle').attr('font-size','12').attr('fill','#555').text('Systolic (mmHg)');
+
+  if (!data.length) {
+    svg.append('text').attr('x',W/2).attr('y',H/2).attr('text-anchor','middle')
+      .attr('fill','#bbb').attr('font-size','14').text('Paste data and click Update');
+    return;
+  }
+
+  // Covariance ellipses (in screen space)
+  const pts = data.map(d => [x(d.dia), y(d.sys)]);
+  const ell = covEllipse(pts);
+  if (ell) {
+    [2, 1].forEach(k => {
+      svg.append('ellipse')
+        .attr('cx', ell.cx).attr('cy', ell.cy)
+        .attr('rx', k * ell.a).attr('ry', k * ell.b)
+        .attr('transform', `rotate(${ell.ang},${ell.cx},${ell.cy})`)
+        .attr('fill', 'none').attr('stroke', '#444')
+        .attr('stroke-width', k === 1 ? 1.5 : 1)
+        .attr('stroke-dasharray', k === 1 ? '5,3' : '2,3')
+        .attr('opacity', 0.55);
+    });
+    // Ellipse labels
+    ['1σ','2σ'].forEach((lbl, i) => {
+      const k = i + 1;
+      svg.append('text')
+        .attr('x', ell.cx + k * ell.a + 4)
+        .attr('y', ell.cy)
+        .attr('font-size', 10).attr('fill','#666').attr('dominant-baseline','middle')
+        .text(lbl);
+    });
+  }
+
+  // Mean crosshair
+  const mDia = d3.mean(data, d => d.dia);
+  const mSys = d3.mean(data, d => d.sys);
+  const cx = x(mDia), cy = y(mSys);
+  const cs = 9;
+  svg.append('line').attr('x1',cx-cs).attr('x2',cx+cs).attr('y1',cy).attr('y2',cy)
+    .attr('stroke','#1a3c6e').attr('stroke-width',2.5);
+  svg.append('line').attr('x1',cx).attr('x2',cx).attr('y1',cy-cs).attr('y2',cy+cs)
+    .attr('stroke','#1a3c6e').attr('stroke-width',2.5);
+  svg.append('circle').attr('cx',cx).attr('cy',cy).attr('r',4.5)
+    .attr('fill','#1a3c6e').attr('stroke','white').attr('stroke-width',1.5);
+  svg.append('text').attr('x',cx+7).attr('y',cy-7).attr('font-size',10).attr('fill','#1a3c6e')
+    .text(`mean ${mSys.toFixed(0)}/${mDia.toFixed(0)}`);
+
+  // Points
+  const tip = document.getElementById('tooltip');
+  svg.selectAll('circle.pt').data(data).enter().append('circle')
+    .attr('class','pt')
+    .attr('cx', d => x(d.dia)).attr('cy', d => y(d.sys))
+    .attr('r', 6).attr('fill', d => tColor(d.timeH))
+    .attr('stroke','white').attr('stroke-width',1.5).attr('opacity',0.92)
+    .style('cursor','pointer')
+    .on('mousemove', (ev, d) => {
+      tip.style.opacity = 1;
+      tip.style.left = (ev.clientX + 14) + 'px';
+      tip.style.top  = (ev.clientY - 8)  + 'px';
+      tip.innerHTML =
+        `<b>${d.dateLabel} ${d.timeLabel}</b><br>` +
+        `Systolic: <b>${d.sys}</b> mmHg<br>` +
+        `Diastolic: <b>${d.dia}</b> mmHg<br>` +
+        `Pulse pressure: ${d.sys - d.dia} mmHg<br>` +
+        `MAP: ${((d.sys + 2*d.dia)/3).toFixed(0)} mmHg`;
+    })
+    .on('mouseleave', () => { tip.style.opacity = 0; });
+}
+
+// ═══════════════════════════════════════════════════
+//  TIME SERIES CHART
+// ═══════════════════════════════════════════════════
+function drawTS(data) {
+  const wrap = document.getElementById('timeseries');
+  wrap.innerHTML = '';
+  if (!data.length) return;
+
+  const mar = { t: 10, r: 24, b: 48, l: 54 };
+  const W0 = Math.max(380, wrap.clientWidth || 520);
+  const W = W0 - mar.l - mar.r;
+  const H = 170;
+
+  const svg = d3.select(wrap).append('svg')
+    .attr('width', W + mar.l + mar.r)
+    .attr('height', H + mar.t + mar.b)
+    .append('g').attr('transform', `translate(${mar.l},${mar.t})`);
+
+  const x = d3.scaleTime().domain(d3.extent(data, d => d.date)).range([0, W]).nice();
+  const yLo = Math.min(55, d3.min(data, d => d.dia) - 8);
+  const yHi = Math.max(155, d3.max(data, d => d.sys) + 8);
+  const y = d3.scaleLinear().domain([yLo, yHi]).range([H, 0]);
+
+  // Ref lines
+  [120, 130, 140].forEach(v => {
+    svg.append('line').attr('x1',0).attr('x2',W).attr('y1',y(v)).attr('y2',y(v))
+      .attr('stroke','#ddd').attr('stroke-width',1);
+  });
+  [80, 90].forEach(v => {
+    svg.append('line').attr('x1',0).attr('x2',W).attr('y1',y(v)).attr('y2',y(v))
+      .attr('stroke','#ddd').attr('stroke-width',1);
+  });
+
+  // Trend lines
+  const xs = data.map(d => d.date.getTime());
+  const regSys = linReg(xs, data.map(d => d.sys));
+  const regDia = linReg(xs, data.map(d => d.dia));
+  if (regSys && xs.length >= 2) {
+    const x0 = xs[0], x1 = xs[xs.length - 1];
+    svg.append('line')
+      .attr('x1', x(new Date(x0))).attr('x2', x(new Date(x1)))
+      .attr('y1', y(regSys(x0))).attr('y2', y(regSys(x1)))
+      .attr('stroke','#c62828').attr('stroke-width',1.5).attr('opacity',0.45).attr('stroke-dasharray','6,3');
+    svg.append('line')
+      .attr('x1', x(new Date(x0))).attr('x2', x(new Date(x1)))
+      .attr('y1', y(regDia(x0))).attr('y2', y(regDia(x1)))
+      .attr('stroke','#1565c0').attr('stroke-width',1.5).attr('opacity',0.45).attr('stroke-dasharray','6,3');
+  }
+
+  // Span bars (pulse pressure)
+  svg.selectAll('line.span').data(data).enter().append('line')
+    .attr('x1', d => x(d.date)).attr('x2', d => x(d.date))
+    .attr('y1', d => y(d.sys)).attr('y2', d => y(d.dia))
+    .attr('stroke', d => tColor(d.timeH)).attr('stroke-width', 2).attr('opacity', 0.35);
+
+  const tip = document.getElementById('tooltip');
+  const tipHandler = (ev, d) => {
+    tip.style.opacity = 1;
+    tip.style.left = (ev.clientX + 14) + 'px';
+    tip.style.top  = (ev.clientY - 8)  + 'px';
+    tip.innerHTML  =
+      `<b>${d.dateLabel} ${d.timeLabel}</b><br>${d.sys}/${d.dia} mmHg  · PP ${d.sys-d.dia}`;
+  };
+
+  // Sys dots (larger)
+  svg.selectAll('circle.sys').data(data).enter().append('circle')
+    .attr('cx', d => x(d.date)).attr('cy', d => y(d.sys)).attr('r', 5.5)
+    .attr('fill', d => tColor(d.timeH)).attr('stroke','white').attr('stroke-width',1.4)
+    .style('cursor','pointer')
+    .on('mousemove', tipHandler).on('mouseleave', () => tip.style.opacity = 0);
+
+  // Dia dots (smaller)
+  svg.selectAll('circle.dia').data(data).enter().append('circle')
+    .attr('cx', d => x(d.date)).attr('cy', d => y(d.dia)).attr('r', 3.5)
+    .attr('fill', d => tColor(d.timeH)).attr('stroke','white').attr('stroke-width',1.2)
+    .style('cursor','pointer')
+    .on('mousemove', tipHandler).on('mouseleave', () => tip.style.opacity = 0);
+
+  svg.append('g').attr('transform',`translate(0,${H})`)
+    .call(d3.axisBottom(x).ticks(6).tickFormat(d3.timeFormat('%b %d')));
+  svg.append('g').call(d3.axisLeft(y).ticks(6));
+  svg.append('text').attr('x',W/2).attr('y',H+40).attr('text-anchor','middle')
+    .attr('font-size','12').attr('fill','#555').text('Date');
+  svg.append('text').attr('transform','rotate(-90)').attr('x',-H/2).attr('y',-42)
+    .attr('text-anchor','middle').attr('font-size','12').attr('fill','#555').text('mmHg');
+
+  // Legend
+  const leg = svg.append('g').attr('transform',`translate(${W-90},6)`);
+  leg.append('circle').attr('cx',4).attr('cy',4).attr('r',5.5).attr('fill','#888').attr('stroke','white').attr('stroke-width',1.2);
+  leg.append('text').attr('x',14).attr('y',8).attr('font-size',10).attr('fill','#555').text('Systolic (top)');
+  leg.append('circle').attr('cx',4).attr('cy',20).attr('r',3.5).attr('fill','#888').attr('stroke','white').attr('stroke-width',1.2);
+  leg.append('text').attr('x',14).attr('y',24).attr('font-size',10).attr('fill','#555').text('Diastolic (bot)');
+}
+
+// ═══════════════════════════════════════════════════
+//  STATS PANEL
+// ═══════════════════════════════════════════════════
+function bpClass(sys, dia) {
+  if (sys > 180 || dia > 120) return 'crisis';
+  if (sys >= 140 || dia >= 90) return 'stage2';
+  if (sys >= 130 || dia >= 80) return 'stage1';
+  if (sys >= 120 && dia < 80)  return 'elevated';
+  return 'normal';
+}
+const catColor = { normal:'#66bb6a', elevated:'#fff176', stage1:'#ffa726', stage2:'#ef5350', crisis:'#b71c1c' };
+const catLabel = { normal:'Normal', elevated:'Elev.', stage1:'Stage 1', stage2:'Stage 2', crisis:'Crisis' };
+
+function updateStats(data) {
+  const el = document.getElementById('statsPanel');
+  if (!data.length) { el.innerHTML = '<p class="empty-msg">No data.</p>'; return; }
+
+  const sys = data.map(d => d.sys), dia = data.map(d => d.dia);
+  const pp  = data.map(d => d.sys - d.dia);
+  const map = data.map(d => (d.sys + 2*d.dia)/3);
+  const mSys = d3.mean(sys), sdSys = d3.deviation(sys) || 0;
+  const mDia = d3.mean(dia), sdDia = d3.deviation(dia) || 0;
+  const cats = { normal:0, elevated:0, stage1:0, stage2:0, crisis:0 };
+  data.forEach(d => cats[bpClass(d.sys, d.dia)]++);
+  const n = data.length;
+
+  const sd = v => v !== undefined ? `±${v.toFixed(1)}` : '';
+  el.innerHTML = `
+    <div class="stats-grid">
+      <div class="stat-box">
+        <div class="stat-val">${mSys.toFixed(1)}<span style="font-size:0.65em;font-weight:400"> ${sd(sdSys)}</span></div>
+        <div class="stat-lbl">Mean Systolic</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val">${mDia.toFixed(1)}<span style="font-size:0.65em;font-weight:400"> ${sd(sdDia)}</span></div>
+        <div class="stat-lbl">Mean Diastolic</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val">${d3.mean(pp).toFixed(1)}</div>
+        <div class="stat-lbl">Mean Pulse Pressure</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val">${d3.mean(map).toFixed(1)}</div>
+        <div class="stat-lbl">Mean MAP</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val">${d3.min(sys)}–${d3.max(sys)}</div>
+        <div class="stat-lbl">Systolic Range</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val">${d3.min(dia)}–${d3.max(dia)}</div>
+        <div class="stat-lbl">Diastolic Range</div>
+      </div>
+    </div>
+    <div class="cat-bar" style="margin-top:10px">
+      <div style="font-size:0.72em;color:#888;margin-bottom:3px">Distribution (${n} readings)</div>
+      <div class="cat-strip">
+        ${Object.entries(cats).map(([k,v]) =>
+          v > 0 ? `<div class="cat-seg" title="${catLabel[k]}: ${v}" style="width:${(v/n*100).toFixed(1)}%;background:${catColor[k]}"></div>` : ''
+        ).join('')}
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:5px;font-size:0.7em">
+        ${Object.entries(cats).filter(([,v])=>v>0).map(([k,v])=>
+          `<span style="color:${catColor[k]};font-weight:700">${catLabel[k]}: ${v}</span>`
+        ).join(' · ')}
+      </div>
+    </div>
+  `;
+}
+
+// ═══════════════════════════════════════════════════
+//  Orchestration
+// ═══════════════════════════════════════════════════
+function redraw() {
+  // Update slider label
+  const t = +document.getElementById('timeSlider').value;
+  const h = Math.floor(t), m = Math.round((t - h) * 60);
+  const ap = h < 12 ? 'AM' : 'PM';
+  const h12 = h === 0 ? 12 : h > 12 ? h - 12 : h;
+  const en = document.getElementById('filterEnabled').checked;
+  document.getElementById('timeDisplay').textContent =
+    `${h12}:${String(m).padStart(2,'0')} ${ap} ± 2 hrs` + (en ? '' : '  (filter off)');
+
+  const vis = filtered();
+  drawScatter(vis);
+  drawTS(vis);
+  updateStats(vis);
+}
+
+function parseAndDraw() {
+  ALL = parseData(document.getElementById('dataInput').value);
+  redraw();
+}
+
+// ═══════════════════════════════════════════════════
+//  Sample data on load
+// ═══════════════════════════════════════════════════
+document.getElementById('dataInput').value = `4/1/26 7:00 am; 128/82
+1/6/26 3 pm: 132/85
+4/5/26 4 pm; 146/89
+4/6/26 6:30 am; 127/91
+4/6/26 7:30 pm; 134/91
+4/7/26 7:00 am; 132/89
+4/10/26 12:10 pm; 128/87
+4/12/26 8:40 am; 135/85
+4/13/26 6:30 pm; 130/86
+4/14/26 7:30 pm; 117/82
+4/15/26 5:30 pm; 128/83
+4/16/26 6:30 pm; 131/82
+4/18/26 8:00 pm; 136/97
+4/18/26 8:05 pm; 124/91
+4/19/26 12:05 pm; 136/99
+4/19/26 12:15 pm; 131/99
+4/20/26 9:30 pm; 132/93
+4/21/26 6:30 am; 136/90`.trim();
+
+parseAndDraw();
+</script>
+</body>
+</html>
