@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Optimization Algorithms &middot; Constantine Caramanis
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h2>
+        Constantine Caramanis
+      </h2>
+      <p class="lead"></p>
+    </div>
+
+    <nav class="sidebar-nav">
+
+
+      
+
+      <a class="sidebar-nav-item" href="/">Home</a>
+      <a class="sidebar-nav-item" href="/teaching/">Teaching</a>
+      <a class="sidebar-nav-item" href="/publications/">Publications</a>
+      <a class="sidebar-nav-item" href="/researchgroup/">Research Group</a>
+      <a class="sidebar-nav-item" href="/researchprojects/">Research Projects</a>
+      <a class="sidebar-nav-item" href="https://scholar.google.com/citations?user=47YTUrEAAAAJ&hl=en&oi=ao" target="_blank">Google Scholar</a>
+      <a class="sidebar-nav-item" href="https://www.youtube.com/@constantine.caramanis" target="_blank">YouTube</a>
+      <a class="sidebar-nav-item" href="https://ml.utexas.edu/ifml" target="_blank">IFML</a>
+      <a class="sidebar-nav-item" href="https://wncg.org" target="_blank">WNCG</a>
+      <a class="sidebar-nav-item" href="https://archimedesai.gr/en/" target="_blank">Archimedes AI</a>
+
+
+
+
+      <!--<span class="sidebar-nav-item">Jekyll Hyde, Currently v2.1.0</span>-->
+    </nav>
+
+    <p>&copy; 2026. All rights reserved.</p> 
+  </div>
+</div>
+
+
+    <div class="content container">
+      <h1 id="optimization-algorithms">Optimization Algorithms</h1>
+
+<hr />
+
+<p><span style="font-size: 16px;">Welcome to this lecture series on <strong>Algorithms for Convex Optimization</strong> — a second graduate course in optimization recorded from material taught at The University of Texas at Austin (Spring 2020).
+<br /><br />
+This course covers the theory and analysis of the main optimization algorithms used in modern machine learning, signal processing, and data science. The emphasis is on rigorous convergence analysis: we prove convergence rates, understand the mathematical structure that enables efficient algorithms, and develop the theoretical tools — oracle lower bounds, Fenchel duality, monotone operator theory — needed to reason about algorithm design.
+<br /><br />
+<strong>Prerequisites:</strong> A first course in convex optimization (covering convexity, LP/QP duality, basic KKT theory) and mathematical maturity at the graduate level. Familiarity with linear algebra and real analysis is assumed throughout.
+<br /><br />
+<strong>What this course covers:</strong> We begin with convex sets, functions, and optimality conditions, then develop first-order methods (gradient descent, subgradient methods, accelerated methods, proximal gradient, mirror descent, Frank-Wolfe, SGD and variance reduction). We then cover second-order methods (Newton’s method, quasi-Newton, interior point methods), and conclude with the duality-based framework for algorithm design: Fenchel duality, dual decomposition, the Augmented Lagrangian Method, and ADMM derived via Douglas-Rachford splitting.
+<br /><br />
+<strong>How to use this material:</strong>
+</span>
+<br /></p>
+<div style="font-size: 16px;">
+1. Lectures are designed to be watched in order. Each module builds on previous ones, and the convergence analyses often reuse tools introduced earlier.
+<br /><br />
+2. Lecture slides (PDF) are linked below each video. The lectures are blackboard-style, so the slides capture the key definitions, theorems, and proofs.
+<br /><br />
+3. The course is self-contained as a second course in optimization. Students looking for a first course in convex optimization may want to consult Boyd &amp; Vandenberghe's <em>Convex Optimization</em> (freely available online) as background reading.
+<br /><br />
+4. Additional references: Nesterov's <em>Lectures on Convex Optimization</em>, Nocedal &amp; Wright's <em>Numerical Optimization</em>, and Bauschke &amp; Combettes' <em>Convex Analysis and Monotone Operator Theory in Hilbert Spaces</em> are useful companions for various parts of the course.
+</div>
+
+<hr />
+
+<h3 id="course-materials"><strong>Course materials:</strong></h3>
+
+<ol>
+  <li><a href="https://www.youtube.com/playlist?list=PLXsmhnDvpjORzPelSDs0LSDrfJcqyLlZc" target="_blank" rel="noopener noreferrer" style="font-size: 16px;"><b>Full YouTube Playlist (58 lectures)</b></a>
+<br /></li>
+  <li>
+    <h2 id="lecture-slides-pdf-all-modules"><a href="https://www.dropbox.com/scl/fi/efpbm1wkhpdayzgwb02kn/PDF_Notes_From_Opt_Alg_Class_Caramanis.zip?rlkey=vqcarr6dp8thb8zc744pum7bu&amp;dl=1" target="_blank" rel="noopener noreferrer" style="font-size: 16px;"><b>Lecture Slides (PDF, all modules)</b></a></h2>
+  </li>
+</ol>
+
+<h3 id="module-1-introduction">Module 1: Introduction</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 1.1: <a href="https://youtu.be/ee-HYD6kKqM" target="_blank" rel="noopener noreferrer">Introduction to Optimization and to Me</a></strong>
+<img src="https://img.youtube.com/vi/ee-HYD6kKqM/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We open the course with an introduction to Professor Caramanis and his research at UT Austin, covering decision-making in large-scale complex systems spanning machine learning, optimization, statistical learning, large-scale networks, and algorithms. We preview his group’s research themes: robustness to corrupted or missing data, optimization with resource constraints (limited computation and memory), and learning on graphs from noisy measurements, grounding the course in real problems.</em></p>
+
+    <p><a href="/pdfs/optclass/1.1.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 1.2: <a href="https://youtu.be/QcZJBkL7rhk" target="_blank" rel="noopener noreferrer">What these Lectures do and do not cover</a></strong>
+<img src="https://img.youtube.com/vi/QcZJBkL7rhk/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We frame the course around two central questions: what problems can convex optimization model, and when can we solve them efficiently? We illustrate through a set of motivating examples — maximum margin classification (SVM), image denoising, image in-painting (recovering 90% deleted pixels), and matrix completion / collaborative filtering — showing how each is cast as minimizing an objective f(x) over x ∈ X.</em></p>
+
+    <p><a href="/pdfs/optclass/1.2.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 1.3: <a href="https://youtu.be/p7BZKqXL0ak" target="_blank" rel="noopener noreferrer">Some First Examples</a></strong>
+<img src="https://img.youtube.com/vi/p7BZKqXL0ak/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We survey the class of M-estimators as canonical examples of convex optimization problems: Least Squares, Ridge (L2-regularized), Lasso (L1-regularized), and Logistic Regression. We then work through Ridge Regression in detail — writing the objective min (1/n)‖Xβ−y‖² + λ‖β‖², setting up both the gradient descent update β</em>{t+1} = β_t − η∇f(β_t) and the Newton update β_{t+1} = β_t − (∇²f)⁻¹∇f — and compare their convergence behavior visually for small and large step sizes._</p>
+
+    <p><a href="/pdfs/optclass/1.3.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 1.4: <a href="https://youtu.be/FTzZff0uq9U" target="_blank" rel="noopener noreferrer">Basics of Linear Algebra and Calculus We Need</a></strong>
+<img src="https://img.youtube.com/vi/FTzZff0uq9U/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We cover the required linear algebra background for the course. We review vectors, linear independence, span and basis, inner products (dot product, Cauchy-Schwarz), angles and projection — both onto a vector and onto a subspace via an orthonormal basis. We then cover L-p norms (ℓ₂, ℓ_p, ℓ</em>∞) and the triangle inequality, and matrix fundamentals: rank, null space, and range._</p>
+
+    <p><a href="/pdfs/optclass/1.4.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+</ul>
+
+<h3 id="module-2-convex-sets-and-functions">Module 2: Convex Sets and Functions</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 2.1: <a href="https://youtu.be/hNRtGmrgr2g" target="_blank" rel="noopener noreferrer">Convex Sets: Definitions</a></strong>
+<img src="https://img.youtube.com/vi/hNRtGmrgr2g/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We introduce convex sets (C is convex if λx₁ + (1−λ)x₂ ∈ C for all x₁,x₂ ∈ C and λ ∈ [0,1]) and build the geometric vocabulary we will need throughout the course. We define subspaces and affine spaces (hyperplanes as null spaces), halfspaces H⁺ and H⁻ defined by s^Tx ≥ b or ≤ b, cones (closed under nonneg combinations) and polar cones K° = {z : ⟨z,x⟩ ≤ 0 ∀x ∈ K}, and the tangent cone and normal cone at a boundary point — which will be used to characterize optimality.</em></p>
+
+    <p><a href="/pdfs/optclass/2.1.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 2.2: <a href="https://youtu.be/7JHr0eL7YCY" target="_blank" rel="noopener noreferrer">Convex Sets – Examples</a></strong>
+<img src="https://img.youtube.com/vi/7JHr0eL7YCY/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We work through the key examples of convex sets that appear throughout the course. We study the positive orthant ℝⁿ₊ and prove the separating hyperplane theorem for it directly, the probability simplex {x : Σxᵢ = 1, xᵢ ≥ 0}, and the set of moments of probability distributions with given support (convexity follows from the linearity of expectation). We then prove that the positive semidefinite cone S^n₊ is convex, construct a separating hyperplane for any non-PSD matrix via its negative eigenvector, and introduce copositive matrices as an example of a convex set that is computationally intractable.</em></p>
+
+    <p><a href="/pdfs/optclass/2.2.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 2.3: <a href="https://youtu.be/FNiJJL-1xVw" target="_blank" rel="noopener noreferrer">Convex Functions</a></strong>
+<img src="https://img.youtube.com/vi/FNiJJL-1xVw/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We introduce convex functions via three definitions: Definition 1 (convex combination: f(λx₁+(1−λ)x₂) ≤ λf(x₁)+(1−λ)f(x₂)), Definition 2 (first-order: f(y) ≥ f(x)+⟨∇f(x),y−x⟩), and Definition 3 (Hessian: ∇²f(x) ≽ 0). We extend Definition 2 to non-smooth functions via the subgradient: g is a subgradient of f at x if f(y) ≥ f(x)+⟨g,y−x⟩ ∀y, and the subdifferential ∂f(x) is the set of all such g. We verify all three definitions on the example f(x) = x^TQx with Q ≽ 0.</em></p>
+
+    <p><a href="/pdfs/optclass/2.3.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 2.4: <a href="https://youtu.be/2c5UyW9M4g0" target="_blank" rel="noopener noreferrer">Equivalence of Convex Function Definitions</a></strong>
+<img src="https://img.youtube.com/vi/2c5UyW9M4g0/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We prove that the three definitions of convexity from Lecture 2.3 are equivalent. Definition 3 implies Definition 2 because ∇²f ≽ 0 implies the gradient is monotone (⟨∇f(x)−∇f(y),x−y⟩ ≥ 0), which combined with the fundamental theorem of calculus gives the first-order inequality. Definition 2 implies Definition 1 by an integration argument using the monotonicity of the subgradient.</em></p>
+
+    <p><a href="/pdfs/optclass/2.3.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 2.5: <a href="https://youtu.be/oS4kCcFOJGg" target="_blank" rel="noopener noreferrer">Optimality Conditions for Convex Optimization</a></strong>
+<img src="https://img.youtube.com/vi/oS4kCcFOJGg/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We apply convexity to derive optimality conditions. For smooth unconstrained problems, ∇f(x̂) = 0 is necessary and sufficient; we verify this on sum-of-squares (solution is the mean) and Ordinary Least Squares (solution is β̂ = (X^TX)^{-1}X^Ty). For non-smooth problems, the condition is 0 ∈ ∂f(x̂); we apply this to sum of absolute values (solution is the median) and Lasso (giving the soft-thresholding KKT condition). For constrained problems, x̂ is optimal iff 0 ∈ ∂f(x̂) + N_X(x̂).</em></p>
+
+    <p><a href="/pdfs/optclass/2.4.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 2.6: <a href="https://youtu.be/mg0l36wI_Ek" target="_blank" rel="noopener noreferrer">Optimality Conditions and Projection</a></strong>
+<img src="https://img.youtube.com/vi/mg0l36wI_Ek/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We apply the constrained optimality condition to the projection problem P_X(y) = argmin</em>{x ∈ X} ½‖x−y‖², deriving the geometric characterization: x̂ = P_X(y) iff ⟨y−x̂, x−x̂⟩ ≤ 0 for all x ∈ X (i.e., y−x̂ ∈ N_X(x̂)). As a consequence, the direction (y−x̂) is the normal to a separating hyperplane between y and X. We then prove that projection is non-expansive: ‖P_X(y₁)−P_X(y₂)‖ ≤ ‖y₁−y₂‖, a property that is foundational for projected gradient methods._</p>
+
+    <p><a href="/pdfs/optclass/2.5.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+</ul>
+
+<h3 id="module-3-gradient-and-subgradient-descent">Module 3: Gradient and Subgradient Descent</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 3.1: <a href="https://youtu.be/ejIgu3UZM9c" target="_blank" rel="noopener noreferrer">Intro to Gradient and Subgradient Descent</a></strong>
+<img src="https://img.youtube.com/vi/ejIgu3UZM9c/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We derive gradient descent by minimizing a first-order Taylor approximation of f plus a proximal penalty, yielding the iteration x</em>{t+1} = x_t − η∇f(x_t). We work through a detailed example on f(x) = 3x²+4x−2, showing the iterates converge linearly to x* = −2/3 at rate (1−6η)^t when |1−6η| &lt; 1. We then introduce the subgradient method x_{t+1} = x_t − η·g_t for non-smooth f and contrast the two: gradient descent is a descent algorithm with a self-tuning step size, while the subgradient method is not._</p>
+
+    <p><a href="/pdfs/optclass/3.1.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 3.2: <a href="https://youtu.be/Clw24Fajnqg" target="_blank" rel="noopener noreferrer">Smooth and Strongly Convex Functions</a></strong>
+<img src="https://img.youtube.com/vi/Clw24Fajnqg/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We formalize the three properties that distinguish gradient descent from the subgradient method. We define β-smoothness (‖∇f(x)−∇f(y)‖ ≤ β‖x−y‖) and prove it implies the quadratic upper bound f(y) ≤ f(x)+⟨∇f(x),y−x⟩+(β/2)‖y−x‖², equivalent for twice-differentiable f to ∇²f(x) ≼ βI. We define α-strong convexity (f(x)−(α/2)‖x‖² is convex) and derive the quadratic lower bound f(y) ≥ f(x)+⟨∇f(x),y−x⟩+(α/2)‖y−x‖², equivalent to ∇²f(x) ≽ αI. Examples: absolute value is not smooth; f(x) = x^TQx is β-smooth with β = 2λ_max(Q) and α-strongly convex with α = 2λ_min(Q).</em></p>
+
+    <p><a href="/pdfs/optclass/3.2.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 3.3: <a href="https://youtu.be/BQyHULGB4fY" target="_blank" rel="noopener noreferrer">Properties of Smooth and Strongly Convex Functions</a></strong>
+<img src="https://img.youtube.com/vi/BQyHULGB4fY/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We derive the key inequalities used in every convergence proof in this course. For β-smooth functions, we prove the descent lemma (f(x’) ≤ f(x) − (1/2β)‖∇f(x)‖² for the gradient step) and co-coercivity: ⟨∇f(x)−∇f(y), x−y⟩ ≥ (1/β)‖∇f(x)−∇f(y)‖². Both imply the suboptimality bound (1/β)‖∇f(x)‖² ≤ f(x) − f(x*) ≤ (β/2)‖x − x*‖². For α-strongly convex functions, we derive the quadratic lower bound and prove f(x) − f(x*) ≤ (1/2α)‖∇f(x)‖².</em></p>
+
+    <p><a href="/pdfs/optclass/3.3.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 3.4: <a href="https://youtu.be/R8kL8CKyz5I" target="_blank" rel="noopener noreferrer">Convergence Rates</a></strong>
+<img src="https://img.youtube.com/vi/R8kL8CKyz5I/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We establish convergence rates for three progressively stronger function classes. For convex Lipschitz functions, the subgradient method with best step size η ~ 1/√T achieves error O(R²G²/T)^{1/2} ~ 1/√T, requiring O(1/ε²) iterations — dimension-free, but slow. For β-smooth convex functions, gradient descent with η = 1/β achieves f(x̄_T) − f(x*) ≤ (β/2T)‖x₀ − x*‖², an O(1/T) rate requiring O(1/ε) steps, with the self-tuning step size as a key bonus. For β-smooth and α-strongly convex functions, we prove linear (geometric) convergence via co-coercivity, identifying the condition number κ = β/α as the fundamental complexity parameter.</em></p>
+
+    <p><a href="/pdfs/optclass/3.4.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+</ul>
+
+<h3 id="module-4-oracle-lower-bounds-and-accelerated-gradient-descent">Module 4: Oracle Lower Bounds and Accelerated Gradient Descent</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 4.1: <a href="https://youtu.be/DL6i8BIZt0A" target="_blank" rel="noopener noreferrer">Oracle Lower Bounds</a></strong>
+<img src="https://img.youtube.com/vi/DL6i8BIZt0A/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We ask whether the convergence rates of 3.4 are optimal. We introduce the oracle model: the algorithm accesses f only through queries returning f(x), ∇f(x) or g ∈ ∂f(x), and we ask how many queries are needed in the worst case to guarantee error ε. The oracle lower bounds are: O(1/√T) for Lipschitz convex functions (so the subgradient method is unimprovable), O(1/T²) for smooth convex functions (so GD’s O(1/T) is suboptimal — can we do better?), and O((√κ−1)/(√κ+1))^T for smooth and strongly convex (better than GD’s (κ−1)/(κ+1))^T by using √κ instead of κ).</em></p>
+
+    <p><a href="/pdfs/optclass/4.1.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 4.2: <a href="https://youtu.be/D1TseaVu9Nc" target="_blank" rel="noopener noreferrer">Accelerated Gradient Descent</a></strong>
+<img src="https://img.youtube.com/vi/D1TseaVu9Nc/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We present Nesterov’s accelerated gradient descent, which achieves the optimal O(1/T²) convergence rate for smooth convex functions and the optimal O(√κ · log(1/ε)) rate for smooth and strongly convex functions — exactly matching the oracle lower bounds and improving over GD’s κ dependence to √κ. We describe the momentum-based update, compare AGD vs GD visually for varying condition numbers, and give the full convergence proof for the smooth convex case (due to Bubeck) via a telescoping argument with carefully chosen parameters λ_t.</em></p>
+
+    <p><a href="/pdfs/optclass/4.2.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+</ul>
+
+<h3 id="module-5-proximal-methods-mirror-descent-and-frank-wolfe">Module 5: Proximal Methods, Mirror Descent, and Frank-Wolfe</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 5.1: <a href="https://youtu.be/m73Fy_rHV0A" target="_blank" rel="noopener noreferrer">Proximal and Projected Gradient Descent</a></strong>
+<img src="https://img.youtube.com/vi/m73Fy_rHV0A/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We introduce projected gradient descent x</em>{t+1} = Proj_X(x_t − η∇f(x_t)) and prove O(1/√T) convergence for the projected subgradient method. We then generalize: constrained optimization min_{x ∈ X} f(x) is rewritten as min f(x) + I_X(x), and projection is a special case of the proximal operator prox_h(y) = argmin_x {h(x) + ½‖x−y‖²}. This motivates the proximal gradient algorithm for composite objectives min g(x)+h(x) (g smooth, h convex with easy prox): x_{t+1} = prox_{ηh}(x_t − η∇g(x_t)). We compute soft-thresholding as the prox for h = ‖·‖₁, and present Lasso as the key motivating example._</p>
+
+    <p><a href="/pdfs/optclass/5.1.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 5.2: <a href="https://youtu.be/ifK85fCxtcA" target="_blank" rel="noopener noreferrer">Proximal Gradient – Basic Properties</a></strong>
+<img src="https://img.youtube.com/vi/ifK85fCxtcA/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We prove firm non-expansiveness of the proximal operator: ⟨prox_h(x)−prox_h(y), x−y⟩ ≥ ‖prox_h(x)−prox_h(y)‖², using monotonicity of ∂h. We introduce the gradient mapping G_η(x) = (1/η)(x − prox</em>{ηh}(x−η∇g(x))), which gives x_{t+1} = x_t − ηG_η(x_t) and plays the role of the gradient for composite problems. We prove the fixed-point theorem: G_η(x̂) = 0 iff 0 ∈ ∇g(x̂) + ∂h(x̂), i.e., x̂ minimizes g+h. We establish the key descent lemma: f(x_{t+1}) ≤ f(x_t) − (η/2)‖G_η(x_t)‖², the analog of the smooth descent inequality._</p>
+
+    <p><a href="/pdfs/optclass/5.2.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 5.3: <a href="https://youtu.be/zWgzHQR8dh4" target="_blank" rel="noopener noreferrer">Prox Gradient – Rates of Convergence</a></strong>
+<img src="https://img.youtube.com/vi/zWgzHQR8dh4/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We derive convergence rates for proximal gradient descent on min g(x)+h(x) with g β-smooth and h convex. Using the key lemma from 5.2 in place of the smooth descent inequality, we prove O(1/T) convergence. When g is additionally α-strongly convex, the analysis gives linear convergence at rate (1−α/β) per step. The proximal step handles the non-smooth component h for free, and the rates exactly mirror the pure gradient descent analysis — confirming that composite structure adds no overhead.</em></p>
+
+    <p><a href="/pdfs/optclass/5.3.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 5.4: <a href="https://youtu.be/JRerBpNggN0" target="_blank" rel="noopener noreferrer">ISTA and FISTA</a></strong>
+<img src="https://img.youtube.com/vi/JRerBpNggN0/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We present ISTA (Iterative Shrinkage-Thresholding Algorithm) and FISTA (Fast ISTA with Nesterov acceleration) as canonical instantiations of proximal gradient descent and its accelerated variant for ℓ₁-regularized problems. We derive the soft-thresholding operator as the proximal step for the ℓ₁ norm and verify that ISTA achieves O(1/T) and FISTA achieves O(1/T²) convergence for the LASSO objective.</em></p>
+
+    <p><a href="/pdfs/optclass/5.4.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 5.5: <a href="https://youtu.be/m_SJafYedbQ" target="_blank" rel="noopener noreferrer">Mirror Descent, Part 1</a></strong>
+<img src="https://img.youtube.com/vi/m_SJafYedbQ/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We revisit the subgradient method, written as x</em>{t+1} = argmin_x ηgₜᵀx + ½‖x−xₜ‖₂², and ask whether the Euclidean proximal term ½‖x−xₜ‖₂² is always the right choice. We motivate this with a worked example f(x₁,x₂) = x₁²/100 + x₂²·100, whose elongated level sets cause the gradient to point nearly perpendicular to the direction toward x*, making each step wasteful. The proposed fix is to replace the Euclidean proximal term with one that is anisotropic, matched to the problem geometry. We observe that changing the proximal term changes both the update direction and the effective Lipschitz constant L — and that L together with the initial distance together govern the convergence rate, motivating us to choose them jointly._</p>
+
+    <p><a href="/pdfs/optclass/5.5.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 5.6: <a href="https://youtu.be/DTvDRHWWWGc" target="_blank" rel="noopener noreferrer">Mirror Descent, Part 2</a></strong>
+<img src="https://img.youtube.com/vi/DTvDRHWWWGc/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We examine the Lipschitz constant L more carefully, showing that the O(L·‖x₀−x*‖/√T) subgradient bound can hide large dimension dependence. The concrete example is robust regression min ‖Ax−b‖₁, which is 1-Lipschitz w.r.t. ‖·‖₁ but incurs a √n factor when converted to ‖·‖₂, yielding a bound of ‖x₀−x*‖₂·√(n/T). More generally, if ‖∇f(x)‖</em>∞ ≤ 1 then ‖∇f(x)‖₂ ≤ √n, showing the Euclidean Lipschitz constant can be far too large. We introduce the core idea of Mirror Descent: replace the Euclidean proximal term ½‖x−xₜ‖₂² with a different proximity function chosen to match the norm in which L is naturally small._</p>
+
+    <p><a href="/pdfs/optclass/5.6.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 5.7: <a href="https://youtu.be/UtoI5zsB3ZQ" target="_blank" rel="noopener noreferrer">Mirror Descent, Part 3</a></strong>
+<img src="https://img.youtube.com/vi/UtoI5zsB3ZQ/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We formally define the Bregman divergence D_φ(x,y) = φ(x) − φ(y) − ∇φ(y)ᵀ(x−y) induced by a convex mirror map φ, and verify that φ(x) = ½‖x‖₂² recovers D_φ(x,y) = ½‖x−y‖₂². We write down the Mirror Descent update x</em>{t+1} = argmin_{x∈X} ηgₜᵀx + D_φ(x,xₜ) and note that φ = ½‖·‖₂² recovers the projected subgradient method. We prove the Bregman three-point identity (∇φ(x)−∇φ(y))ᵀ(x−z) = D_φ(x,y) + D_φ(z,x) − D_φ(z,y). We then introduce dual norms ‖u‖<em>* = max{uᵀv : ‖v‖ ≤ 1}, show the Euclidean norm is self-dual and that (‖·‖₁)</em>* = ‖·‖<em>∞, and establish the key inequality uᵀv ≤ (1/2α)‖u‖² + (α/2)‖v‖</em>*², all of which feed into the convergence proof._</p>
+
+    <p><a href="/pdfs/optclass/5.7.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 5.8: <a href="https://youtu.be/Up-Ks0P5AoY" target="_blank" rel="noopener noreferrer">Mirror Descent, Part 4a</a></strong>
+<img src="https://img.youtube.com/vi/Up-Ks0P5AoY/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We generalize the notions of Lipschitz continuity, smoothness, and strong convexity to arbitrary norms. f is L-Lipschitz w.r.t. ‖·‖ if ‖∇f(x)‖</em>* ≤ L; β-smooth if ‖∇f(x)−∇f(y)‖<em>* ≤ β‖x−y‖, which implies f(y) ≤ f(x) + ∇f(x)ᵀ(y−x) + (β/2)‖x−y‖² (proved via FTC and Hölder); and α-strongly convex if f(y) ≥ f(x) + gᵀ(y−x) + (α/2)‖x−y‖². We then state and fully prove the Mirror Descent theorem: if φ is ρ-strongly convex w.r.t. ‖·‖ and R² = D_φ(x₁,x*), then with η = (R/L)√(2ρ/T) we obtain f(1/T Σxₜ) − f(x*) ≤ RL√(2/ρT). The proof splits into three terms: S₁ ≤ 0 from the MD optimality condition, S₂ bounded via the Bregman three-point identity, and S₃ via the Hölder-type inequality; these are summed and telescoped to give the final bound.</em></p>
+
+    <p><a href="/pdfs/optclass/5.8.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 5.9: <a href="https://youtu.be/ArTZybO1CGc" target="_blank" rel="noopener noreferrer">Mirror Descent, Part 4b</a></strong>
+<img src="https://img.youtube.com/vi/ArTZybO1CGc/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We work through the canonical Mirror Descent example: minimizing a 1-Lipschitz function over the simplex Δₙ w.r.t. ‖·‖₁. Subgradient descent converts to ‖·‖₂, incurring L = √n and a bound of ‖x₀−x*‖₂·√(n/T). Mirror Descent instead uses the negative entropy mirror map φ(x) = Σxᵢ log xᵢ, which is 1-strongly convex on Δ w.r.t. ‖·‖₁ (ρ=1), and has D_φ(x₁,x*) ≤ log n, giving a bound of √(2 log n/T) — an exponential improvement. We then unpack what MD is computing: the optimality condition 0 ∈ ηgₜ + ∇φ(x</em>{t+1}) − ∇φ(xₜ) + N_X(x_{t+1}) shows x_{t+1} is the Bregman projection of y_{t+1} (defined by ∇φ(y_{t+1}) = ∇φ(xₜ) − ηgₜ) onto the simplex. For the negative entropy map this yields y_{t+1}(i) = xₜ(i)·exp{−η(∇f(xₜ))ᵢ}, followed by ℓ₁ normalization — the exponentiated gradient (multiplicative weights) algorithm._</p>
+
+    <p><a href="/pdfs/optclass/5.9.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 5.10: <a href="https://youtu.be/wV3k4o92V1c" target="_blank" rel="noopener noreferrer">Mirror Descent, Part 5</a></strong>
+<img src="https://img.youtube.com/vi/wV3k4o92V1c/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We present an alternative primal-dual view of Mirror Descent. The mirror map ∇φ sends each iterate xₜ from primal space to dual space; MD then takes a gradient step in dual space — ∇φ(y</em>{t+1}) = ∇φ(xₜ) − ηgₜ — and maps back to the primal via a Bregman projection: x_{t+1} = argmin_{x∈X} D_φ(x, y_{t+1}). We develop this two-step (dual gradient step followed by Bregman re-projection) view with a diagram, making clear that Mirror Descent operates in a geometry shaped by φ rather than in the Euclidean geometry of projected gradient descent._</p>
+
+    <p><a href="/pdfs/optclass/5.10.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 5.11: <a href="https://youtu.be/BGDCqAvLoHw" target="_blank" rel="noopener noreferrer">Mirror Descent, Part 6</a></strong>
+<img src="https://img.youtube.com/vi/BGDCqAvLoHw/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We apply the primal-dual view of Mirror Descent to the simplex example with φ(x) = Σxᵢ log xᵢ. Using ∇φᵢ(x) = log xᵢ + 1, the dual gradient step ∇φ(y</em>{t+1}) = ∇φ(xₜ) − ηgₜ gives (y_{t+1})ᵢ = xₜ(i)·exp{−η(∇f(xₜ))ᵢ}, and the subsequent Bregman projection onto the simplex normalizes: x_{t+1} = y_{t+1}/‖y_{t+1}‖₁. This is exactly the exponentiated gradient (multiplicative weights) algorithm, here derived systematically from the Mirror Descent primal-dual framework._</p>
+
+    <p><a href="/pdfs/optclass/5.10.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 5.12: <a href="https://youtu.be/tIywqa-OgoI" target="_blank" rel="noopener noreferrer">Frank-Wolfe</a></strong>
+<img src="https://img.youtube.com/vi/tIywqa-OgoI/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We present the Frank-Wolfe (conditional gradient) algorithm, which replaces projection with a linear minimization oracle: yₜ ∈ argmin</em>{y∈X} ∇f(xₜ)ᵀy, then xₜ₊₁ = (1−γₜ)xₜ + γₜyₜ with γₜ = 2/(t+1). The main theorem assumes f is β-smooth w.r.t. any norm (‖∇f(x)−∇f(y)‖<em>* ≤ β‖x−y‖) and guarantees f(x_T) − f(x*) ≤ 2βR²/(T+1) — an O(1/T) rate where R = diam(X). We prove this bound by induction using the β-smooth quadratic upper bound and the FW linear oracle condition (∇f(xₜ)ᵀyₜ ≤ ∇f(xₜ)ᵀx*), and illustrate the algorithm on a worked example comparing GD and FW trajectories.</em></p>
+
+    <p><a href="/pdfs/optclass/5.11.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+</ul>
+
+<h3 id="module-6-stochastic-gradient-descent">Module 6: Stochastic Gradient Descent</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 6.1: <a href="https://youtu.be/Z_FW352X2IA" target="_blank" rel="noopener noreferrer">Stochastic Gradient Descent – Intro</a></strong>
+<img src="https://img.youtube.com/vi/Z_FW352X2IA/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We introduce the stochastic gradient setting via three motivating cases: (1) generic noisy gradients g̃ₓ = ∇f(x) + w with zero-mean noise; (2) stochastic optimization min_x E_ζ[f(x;ζ)], which in supervised learning with training data becomes empirical risk minimization min f(x) = (1/n)Σfᵢ(x); and (3) random coordinate descent. The unifying oracle model requires E[g̃ₓ] ∈ ∂f(x). For the finite-sum case we verify that ∇f_I(x) with I ~ uniform{1,…,n} satisfies this, justifying the SGD update x</em>{t+1} = xₜ − ηg̃ₓ as a cheap substitute for the full gradient. We illustrate pictorially why the variance of g̃ₓ does not vanish at the optimum — unlike the deterministic gradient — foreshadowing the barrier to linear convergence._</p>
+
+    <p><a href="/pdfs/optclass/6.1.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 6.2: <a href="https://youtu.be/9mUYxyTYaX4" target="_blank" rel="noopener noreferrer">SGD – Convergence Results</a></strong>
+<img src="https://img.youtube.com/vi/9mUYxyTYaX4/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We prove formal convergence theorems for SGD under the assumption E[‖g̃ₓ‖₂²] ≤ G². For general convex f, the fixed step size η = R/(G√T) gives E[f(1/T Σxₜ)] − f(x*) ≤ RG/√T — the same O(1/√T) rate as the deterministic subgradient method. For α-strongly convex f (not necessarily smooth), the diminishing step size ηₜ = 2/(α(t+1)) gives O(1/T) convergence. We give a complete three-part proof using unbiasedness, the law of total expectation, telescoping, and η optimization. We then explain the barrier to linear convergence: GD is ‘self-tuning’ because ∇f(x)→0 as x→x*, but SGD’s noise E[‖g̃‖₂²] does not vanish at the optimum — creating an irreducible variance floor and motivating variance reduction methods.</em></p>
+
+    <p><a href="/pdfs/optclass/6.2.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 6.3: <a href="https://youtu.be/fU7UFzKF4xg" target="_blank" rel="noopener noreferrer">SGD – Reducing Variance, Part 1</a></strong>
+<img src="https://img.youtube.com/vi/fU7UFzKF4xg/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We revisit the variance problem: SGD stalls when variance σ² = E[‖∇fᵢ(x*)‖²] &gt; 0 at the optimum, forcing a tradeoff between step size and accuracy. We introduce mini-batch SGD as a first variance-reduction strategy: at each step pick a random subset I of size B, form x</em>{t+1} = xₜ − (η/B)Σ_{j∈I}∇f_{Iⱼ}(xₜ). Mini-batching reduces variance by a factor of B (σ²/B), parallelizes naturally, and keeps gradient estimates unbiased. The drawback is that it costs B times as many component evaluations per step and still cannot eliminate variance at x* when σ² &gt; 0 — the same fundamental barrier as plain SGD._</p>
+
+    <p><a href="/pdfs/optclass/6.3.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 6.4: <a href="https://youtu.be/hwm2mr8PBhs" target="_blank" rel="noopener noreferrer">SGD and SVRG</a></strong>
+<img src="https://img.youtube.com/vi/hwm2mr8PBhs/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We focus on smooth and strongly convex finite-sum problems, where mini-batch SGD still fails to achieve linear convergence because σ² &gt; 0 at x*. The fix is recentering: for any anchor z with known full gradient ∇f(z), define g̃(x) = ∇fᵢ(x) − (∇fᵢ(z) − ∇f(z)), which is unbiased and has variance E[‖g̃(x)‖²] ≤ 4β(f(x)−f(x*)) — the variance reduction lemma proved here. This means variance vanishes as x → x*, enabling linear convergence. We then present SVRG: an outer loop computes ∇f(z) at snapshot zₖ; an inner loop runs m recentered SGD steps. We prove that SVRG achieves O((n + β/α)·log(1/ε)) total component gradient evaluations — combining the per-iteration cheapness of SGD with the linear convergence rate of full gradient descent.</em></p>
+
+    <p><a href="/pdfs/optclass/6.4.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 6.5: <a href="https://youtu.be/dhVRKzybsck" target="_blank" rel="noopener noreferrer">SGD – Comparisons</a></strong>
+<img src="https://img.youtube.com/vi/dhVRKzybsck/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We compare GD, SGD, and SVRG head-to-head in total component gradient evaluations for smooth strongly convex finite-sum problems. GD needs O(n · (β/α) · log(1/ε)) evaluations (n per step, β/α steps); SGD needs O(1/(αε)) which is polynomial in 1/ε and eventually worse; SVRG needs O((n + β/α) · log(1/ε)), beating both when β/α ≪ n. We also compare against GD with momentum (Nesterov), which requires O(n · √(β/α) · log(1/ε)) — better than plain GD but still O(n) per step. In the ERM setting the condition number satisfies β/α ≈ O(n), so SVRG’s complexity becomes O(n · log(1/ε)), an O(n) speedup over GD.</em></p>
+
+    <p><a href="/pdfs/optclass/6.5.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+</ul>
+
+<h3 id="module-7-newtons-method">Module 7: Newton’s Method</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 7.1: <a href="https://youtu.be/NanGIMVYH7c" target="_blank" rel="noopener noreferrer">Newton’s Method – A First View</a></strong>
+<img src="https://img.youtube.com/vi/NanGIMVYH7c/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We contrast gradient descent — which minimizes a linear approximation plus a quadratic proximal term — with Newton’s method, which minimizes a quadratic approximation f(x) + ∇f(x)ᵀd + ½dᵀ∇²f(x)d, yielding the Newton direction d_N = −(∇²f(x))⁻¹∇f(x). We discuss the computational cost: each Newton step requires forming and inverting an n×n Hessian, costing O(n²) and O(n³) respectively vs O(n) per GD step. Newton’s method has two phases: a damped phase (far from optimum) and a quadratically convergent undamped phase (near optimum), leading to an overall O(log log 1/ε) iteration count — doubly exponential improvement over the O(log 1/ε) of gradient descent for strongly convex problems.</em></p>
+
+    <p><a href="/pdfs/optclass/7.1.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 7.2: <a href="https://youtu.be/NIyIJYmCTcc" target="_blank" rel="noopener noreferrer">Newton’s Method and Affine Transformations</a></strong>
+<img src="https://img.youtube.com/vi/NIyIJYmCTcc/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We motivate affine invariance through the ill-conditioned quadratic example from Lecture 5.5, where GD requires O(κ) steps due to elongated level sets. The key insight is that Newton’s method is equivalent to GD with a locally optimal affine transformation at each step: it finds the A that makes the Hessian of f(Ax) equal to the identity, then takes a unit GD step. We prove this formally: the Newton update in y = Ax coordinates is y</em>{t+1} = yₜ − (∇²<em>y g)⁻¹∇_y g, and translating back gives exactly the Newton step in x. As a corollary, Newton is affine-invariant — applying it to f(x) and to g(y) = f(A⁻¹y) produces identical trajectories up to the change of variables — so ill-conditioning cannot slow it down.</em></p>
+
+    <p><a href="/pdfs/optclass/7.2.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 7.3: <a href="https://youtu.be/Bh3UWxsEoTc" target="_blank" rel="noopener noreferrer">Newton’s Method – Convergence Theorem</a></strong>
+<img src="https://img.youtube.com/vi/Bh3UWxsEoTc/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We write down the full two-phase Newton algorithm and state the main convergence theorem. Phase I uses a damped step x</em>{t+1} = x_t − η(∇²f(x_t))⁻¹∇f(x_t) where η is chosen by a backtracking line search (BTLS) with Armijo sufficient-decrease condition; Phase II uses the full unit step (η=1). The BTLS for Newton requires the extra Hessian Lipschitz assumption ‖∇²f(x)−∇²f(y)‖<em>op ≤ L‖x−y‖₂ (flagged as new). The theorem gives constants λ ≤ m/(2L) and γ = αβλ²m/M² such that: when ‖∇f(x)‖ ≥ λ (Phase I), each step decreases f by at least γ, so Phase I lasts only finitely many steps; when ‖∇f(x)‖ &lt; λ (Phase II), we can use step size η=1 and ‖x</em>{t+1}−x<em>‖ ≤ (L/m)‖x_t−x</em>‖². We work through the doubly exponential decay: after k Phase II steps, ‖x_{t+k}−x*‖ ≤ (1/2)^{2^k−1}·(m/2L), contrasting linear convergence (1/2)^t with quadratic (1/2)^{2^t}._</p>
+
+    <p><a href="/pdfs/optclass/7.3.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 7.4: <a href="https://youtu.be/ZPb7HXtIqDE" target="_blank" rel="noopener noreferrer">Newton’s Method – Proof</a></strong>
+<img src="https://img.youtube.com/vi/ZPb7HXtIqDE/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We prove quadratic convergence of Phase II: ‖x</em>{k+1}−x<em>‖ ≤ (L/m)‖x_k−x</em>‖². The proof applies the Fundamental Theorem of Calculus to write ∇f(x+d)−∇f(x) = ∫₀¹∇²f(x+td)d dt, then substitutes x←x_k, d←x_k−x* to expand x_{k+1}−x* = (∇²f(x_k))⁻¹∫₀¹<a href="x_k−x*">∇²f(x_k)−∇²f(x<em>+t(x_k−x</em>))</a>dt. Using ‖AB‖ ≤ ‖A‖·‖B‖ and ‖∫(·)‖ ≤ ∫‖·‖, plus the Hessian Lipschitz condition ‖∇²f(x)−∇²f(y)‖<em>op ≤ L‖x−y‖₂ to bound the integrand, gives ‖x</em>{k+1}−x<em>‖ ≤ ‖(∇²f(x_k))⁻¹‖·∫₀¹L(1−t)dt·‖x_k−x</em>‖². The integral evaluates to L/2; m-strong convexity implies λ_min(∇²f(x_k)) ≥ m/2, so ‖(∇²f(x_k))⁻¹‖ ≤ 2/m. Combining: ‖x_{k+1}−x<em>‖ ≤ (2/m)·(L/2)·‖x_k−x</em>‖² = (L/m)‖x_k−x*‖². The lecture closes with a summary: Newton requires twice-differentiability and ∇²f Lipschitz, costs O(n²)–O(n³) per step for Hessian formation and inversion, but achieves O(log log(1/ε)) iterations with error ~ (1/2)^{2^t}._</p>
+
+    <p><a href="/pdfs/optclass/7.4.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+</ul>
+
+<h3 id="module-8-quasi-newton-methods">Module 8: Quasi-Newton Methods</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 8.1: <a href="https://youtu.be/UvGQRAA8Yms" target="_blank" rel="noopener noreferrer">Quasi-Newton Methods</a></strong>
+<img src="https://img.youtube.com/vi/UvGQRAA8Yms/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We frame quasi-Newton methods as the family x</em>{t+1} = x_t − η·H_t·∇f(x_t), sitting between GD (H_t = I) and Newton (H_t = (∇²f(x_t))⁻¹), with the twin goals: H_t more useful than the identity, and H_t cheaper to compute than the true Hessian inverse. We motivate with an elongated-level-set picture: when elongation is aligned with coordinate axes, a diagonal rescaling H = diag(∂²f/∂xᵢ²)⁻¹ perfectly fixes the geometry at linear cost. Then we demonstrate the fundamental limitation: for the off-axis example ∇²f = [[1, 0.99],[0.99,1]] (condition number ≈ 200), the diagonal H reduces to the identity — and we recover plain GD, gaining nothing._</p>
+
+    <p><a href="/pdfs/optclass/8.1.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 8.2: <a href="https://youtu.be/QGFct_3HMzk" target="_blank" rel="noopener noreferrer">Quasi-Newton and BFGS</a></strong>
+<img src="https://img.youtube.com/vi/QGFct_3HMzk/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We derive the BFGS (Broyden-Fletcher-Goldfarb-Shanno) algorithm. Starting from the quadratic model f(x_k+d) ≈ m_k(d) = f(x_k) + ∇f(x_k)ᵀd + ½dᵀB_k d with direction d_k = −B_k⁻¹∇f(x_k), we derive the secant equation B</em>{k+1}s_k = y_k (where sₖ = xₖ₊₁−xₖ and yₖ = ∇f(xₖ₊₁)−∇f(xₖ)) by requiring m_{k+1} to match the gradient of f at the last two iterates. Rather than maintaining B_k, BFGS directly approximates the inverse Hessian H_k = B_k⁻¹ by solving argmin ‖H−H_k‖<em>W s.t. H=Hᵀ, Hy_k=s_k, using a weighted Frobenius norm. This yields the rank-2 update H</em>{k+1} = (I−ρ_k s_k y_kᵀ)H_k(I−ρ_k y_k s_kᵀ) + ρ_k s_k s_kᵀ with ρ_k = 1/(y_kᵀs_k). The BTLS for BFGS uses Wolfe conditions (sufficient decrease plus curvature condition). Finally, since H_{k+1} is a rank-2 update of H_k requiring only s_k and y_k, we can avoid storing the full n×n matrix — leading to L-BFGS, which reduces per-step storage from O(n²) to O(mn) by keeping only the last m vector pairs._</p>
+
+    <p><a href="/pdfs/optclass/8.2.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+</ul>
+
+<h3 id="module-9-interior-point-methods">Module 9: Interior Point Methods</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 9.1: <a href="https://youtu.be/q4iXHLM72FY" target="_blank" rel="noopener noreferrer">Interior Point Methods – Part I</a></strong>
+<img src="https://img.youtube.com/vi/q4iXHLM72FY/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We introduce constrained optimization, starting with LP (min c^Tx, st Ax≤b) and its applications in resource allocation, scheduling, routing, and combinatorial optimization. We discuss why LP is challenging: a polytope with m inequalities can have exponentially many corners (~exp(m)), so projected GD must pay a costly projection step and the simplex method searches corner-to-corner. The interior point idea is to avoid corners by adding the log-barrier F_t(x) = t·c^Tx − Σlog(bᵢ − aᵢᵀx): as aᵢᵀx → bᵢ the penalty → +∞, keeping the iterates strictly feasible, and as t → ∞ the minimizer x_t → x*. We then extend to Semidefinite Programming (min Tr(C^TX), st Tr(Aᵢ^TX) = bᵢ, X ≽ 0), introducing the PSD cone ordering, and showing that the SDP barrier is F_t(x) = t·c^Tx − log det(B − ΣAᵢxᵢ). The lecture closes with the three-step agenda for the full IPM analysis: (1) solve min F_t(x) quickly via Newton, (2) increase t geometrically t⁺ = q·t while maintaining the warm-start condition, and (3) show c^Tx_t − c^Tx* → 0 quickly.</em></p>
+
+    <p><a href="/pdfs/optclass/9.1.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 9.2: <a href="https://youtu.be/lQpOXOTKTw8" target="_blank" rel="noopener noreferrer">Interior Point Methods – Part II</a></strong>
+<img src="https://img.youtube.com/vi/lQpOXOTKTw8/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We ask whether Newton’s method can optimize the log-barrier F_t directly. The problem: Newton requires a Lipschitz Hessian ‖∇²F_t(x) − ∇²F_t(y)‖₂ ≤ L‖x−y‖₂, but for f(x) = −log x the Hessian is 1/x², and ‖1/x² − 1/y²‖ → ∞ as x → 0 — and LP optima lie on the boundary, so we cannot keep x away from 0. We then show the standard Hessian Lipschitz condition is not affine-invariant: ‖∇³f(x)[h,h,h]‖₂ ≤ L·‖h‖₂³ has ‖h‖₂³ on the right which changes under affine reparametrization. The fix is to replace ‖·‖₂ with the affine-invariant local norm ‖u‖²_x = u^T∇²f(x)u. Since f = F_t = tc^Tx + F₀(x) and t·c^Tx is linear, ∇²F_t = ∇²F₀ for all t, so the local norm depends only on the barrier. We define M-self-concordance: f is M-self-concordant if ‖∇³f(x)[h,h,h]‖ ≤ 2M·‖h‖³_x, and verify that −log x is 1-self-concordant by direct computation (∇³f(x)[h,h,h] = −2x⁻³h³ and ‖h‖²_x = h²/x²). We close by proving self-concordance is affine invariant: if g(y) = f(Ay) then ∇³g[u,u,u] = ∇³f[v,v,v] with v = Au, so g inherits M-self-concordance from f.</em></p>
+
+    <p><a href="/pdfs/optclass/9.2.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 9.3: <a href="https://youtu.be/U0cUcsGCS1A" target="_blank" rel="noopener noreferrer">Interior Point Methods – Part III</a></strong>
+<img src="https://img.youtube.com/vi/U0cUcsGCS1A/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We re-state the three-step IPM agenda and work through Step 1 in detail. The local norm ‖h‖²_x ≜ h^T∇²F₀(x)h (which equals ‖h‖²</em>{∇²F_t(x)} since ∇²F_t = ∇²F₀) is the central tool. The Newton decrement is defined as λ_f(x) ≜ ‖∇f(x)‖<em>_x — the dual local norm of the gradient — replacing the Euclidean ‖∇f(x)‖₂ used in the standard Newton analysis. Step 1 uses two results: (i) Lemma: if λ_f(x) &lt; 1 then ‖x − x</em>‖<em>x ≤ λ_f(x)/(1−λ_f(x)), bounding distance to optimum in local norm; (ii) Theorem: if λ_f(x) ≤ 1/4 then for the Newton step x^+ = x − (∇²f(x))⁻¹∇f(x), we get λ_f(x^+) ≤ 2λ_f(x)². Unrolling: if λ_f(x₁) ≤ 1/4 then λ_f(x</em>{k+1}) ≤ (1/2)^{2^k}, a doubly exponential decay. Steps 2 and 3 are previewed: increasing t geometrically while keeping x_t in the quadratic convergence regime, and bounding c^Tx_t − c^Tx* → 0._</p>
+
+    <p><a href="/pdfs/optclass/9.3.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 9.4: <a href="https://youtu.be/3pmAJOitNU4" target="_blank" rel="noopener noreferrer">Interior Point Methods – Part IV</a></strong>
+<img src="https://img.youtube.com/vi/3pmAJOitNU4/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We prove Step 2: after increasing t to t⁺, the current iterate x_t already satisfies λ</em>{F_{t+}}(x_t) ≤ 1/4, so Newton can resume without restarting. The calculation: since ∇F_t(x_t) = 0, we have λ_{F_{t+}}(x_t) = ‖(t⁺−t)c‖<em>_{x_t} = (t⁺−t)·‖c‖</em><em>{x_t}. We need ‖c‖*</em>{x_t} ~ O(1/t) to make this small when t⁺ = (1+α)t. The key concept is a ν-self-concordant barrier: an M-self-concordant F satisfying ∇²F(x) ≽ (1/ν)∇F(x)∇F(x)^T, which implies ‖∇F(x)‖<em>_x ≤ √ν. Using ∇F_t(x_t) = 0 ⟹ ‖c‖</em><em>{x_t} = (1/t)‖∇F₀(x_t)‖*</em>{x_t} ≤ √ν/t, so λ_{F_{t+}}(x_t) = α·t·‖c‖<em>_{x_t} ≤ α√ν ≤ 1/4 with α = 1/(4√ν). Both −log x and −log det X are shown to be self-concordant barriers. This gives t⁺ = (1 + 1/(4√ν))·t — a linear increase rate, so O(√ν·log(1/ε)) steps of t-increase are needed. For Step 3: c^Tx_t − c^Tx</em><em>LP ≤ ν/t, requiring O(log(1/ε)) iterations. With ν = m for LP, the total Newton step complexity is O(√m · log(m/ε)). The lecture closes with initialization: starting from any feasible point, one can reach the central path x_t = argmin F_t by instead minimizing −t(∇F₀(y))^Tx + F₀(x) and decreasing t from 1 to 0 geometrically.</em></p>
+
+    <p><a href="/pdfs/optclass/9.4.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+</ul>
+
+<h3 id="module-10-fenchel-duality">Module 10: Fenchel Duality</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 10.1: <a href="https://youtu.be/CwDcth9J_7U" target="_blank" rel="noopener noreferrer">Fenchel Duality – Part I</a></strong>
+<img src="https://img.youtube.com/vi/CwDcth9J_7U/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We motivate the Fenchel conjugate by asking: given the gradient map T = (I + λ∂f), can we invert it? For a strongly convex quadratic f(x) = ½x^TQx + q^Tx + c, the inverse is ∇f⁻¹(y) = Q⁻¹(y−q), and we notice this equals ∇f*(y) — suggesting f* encodes the inverse gradient. We define the Fenchel conjugate f*(y) = sup</em>{x∈dom f}{y^Tx − f(x)} and immediately establish Fenchel’s inequality f(x) + f<em>(y) ≥ y^Tx. We compute conjugates for a rich set of examples: strongly convex quadratics, f(x) = Σxᵢlog xᵢ → f</em>(y) = Σe^{yᵢ−1}, f(x) = −Σlog xᵢ → f<em>(y) = −Σlog(−yᵢ)−n, and f(x) = −log det x → f</em>(y) = −log det(−Y)−n. We introduce the support function S_X(y) = sup_{x∈X} y^Tx and show that the conjugate of f(x) = ‖x‖ is the indicator of the dual-norm unit ball I_{B_{‖·‖<em>}}. The lecture closes with a set of calculus rules: separability, scaling, shift, linear composition (f(Ax))</em> = f*(A^{−T}y), and infimal convolution._</p>
+
+    <p><a href="/pdfs/optclass/10.1.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 10.2: <a href="https://youtu.be/-4ux8xo9QWw" target="_blank" rel="noopener noreferrer">Fenchel Duality – Part II</a></strong>
+<img src="https://img.youtube.com/vi/-4ux8xo9QWw/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We introduce the epigraph epi(f) = {(x,z) : z ≥ f(x)} and show that f is convex if and only if epi(f) is a convex set. We then prove two fundamental structural properties of the conjugate. First, f* is always closed and convex, regardless of whether f itself is: it is a pointwise supremum of affine (hence convex) functions, and its epigraph is an intersection of closed half-spaces. Second, for any closed convex f, the biconjugate satisfies f** = f: since f** ≤ f always holds by Fenchel’s inequality, equality is proved by contradiction — if f<strong>(x₀) &lt; f(x₀) for some x₀, a separating hyperplane argument on epi(f) produces a contradictory affine lower bound, showing epi(f</strong>) = epi(f) and hence f** = f.</em></p>
+
+    <p><a href="/pdfs/optclass/10.2.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 10.3: <a href="https://youtu.be/Re8OZk7jO_0" target="_blank" rel="noopener noreferrer">Fenchel Duality – Part III</a></strong>
+<img src="https://img.youtube.com/vi/Re8OZk7jO_0/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We prove the sub-differential inverse theorem: y ∈ ∂f(x) if and only if x ∈ ∂f*(y), equivalently if and only if f(x) + f*(y) = x^Ty (Fenchel equality holds). The proof uses the definition of subdifferential and Fenchel’s inequality. We then derive the fundamental duality between smoothness and strong convexity: if f is α-strongly convex then f* is (1/α)-smooth, and if f is β-smooth then f* is (1/β)-strongly convex. The lecture closes with the Moreau decomposition: for any x and any closed convex f, x = prox_f(x) + prox</em>{f<em>}(x), proved by showing u = prox_f(x) ⟺ x−u ∈ ∂f(u) ⟺ x−u = prox_{f</em>}(x). The extended Moreau identity generalizes to x = prox_{λf}(x) + λ·prox_{f*/λ}(x/λ), providing a direct relationship between the proximal operators of a function and its conjugate._</p>
+
+    <p><a href="/pdfs/optclass/10.3.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 10.4: <a href="https://youtu.be/Rvx2vcJ1jXA" target="_blank" rel="noopener noreferrer">Fenchel Duality – Part IV</a></strong>
+<img src="https://img.youtube.com/vi/Rvx2vcJ1jXA/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We derive the Fenchel dual for the composite primal problem min f(x) + g(Ax), obtaining the dual max −f*(−A^Tz) − g*(z). We establish strong duality via Slater’s constraint qualification and derive optimality conditions (KKT) via the Lagrangian. We then work through a series of concrete examples showing how the dual changes with the choice of g: (A) equality constraint Ax = b gives g = I_C with g*(z) = b^Tz, recovering the standard Lagrange dual; (B) inequality ‖Ax−b‖ ≤ 1 gives g*(z) = b^Tz + I</em>{B_{‖·‖<em>}}(z), imposing a unit dual-norm ball constraint; (C) cone constraint Ax ≼_K b gives g</em>(z) = b^Tz + I_{K<em>}(z), restricting z to the dual cone K</em>. We also work out norm regularization min f(x) + ‖Ax−b‖, showing the dual simplifies to max_{‖z‖* ≤ 1} b^Tz − f*(−A^Tz)._</p>
+
+    <p><a href="/pdfs/optclass/10.4.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+</ul>
+
+<h3 id="module-11-dual-decomposition-and-augmented-lagrangian-methods">Module 11: Dual Decomposition and Augmented Lagrangian Methods</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 11.1: <a href="https://youtu.be/q4Eig1U72Ww" target="_blank" rel="noopener noreferrer">Dual Decomposition</a></strong>
+<img src="https://img.youtube.com/vi/q4Eig1U72Ww/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We motivate working in the Fenchel dual max −f*(−A^Tz) − g*(z) by identifying three advantages: the dual may involve simpler calculations (e.g., no constraints), it may be smoother than the primal, and separable structure may appear in the dual even when absent in the primal. We plan to use gradient ascent, PPA, and proximal gradient in the dual. We derive dual gradient ascent for two cases. For equality-constrained problems min f(x) s.t. Ax = b, gradient ascent on the dual gives z</em>{t+1} = z_t + λ(Ax̂ − b) where x̂ = argmin f(x) + z^TAx. For separable problems min f₁(x₁) + f₂(x₂) s.t. A₁x₁ + A₂x₂ ≤ b (a ‘coupling’ or ‘complicating’ constraint), the dual decouples into independent subproblems x̂₁ = argmin f₁(x₁) + z^TA₁x₁ and x̂₂ = argmin f₂(x₂) + z^TA₂x₂, with z_{t+1} = z_t + λ·Proj_{z≥0}(A₁x̂₁ + A₂x̂₂ − b). This price coordination pattern underpins distributed optimization: a coordinator broadcasts the price z, agents solve local subproblems in parallel, and the coordinator updates z from the residual. We work through a quadratic example and compare to naive primal complexity._</p>
+
+    <p><a href="/pdfs/optclass/11.1.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 11.2: <a href="https://youtu.be/pL_t2X72vek" target="_blank" rel="noopener noreferrer">Proximal Point Algorithm and Augmented Lagrangian</a></strong>
+<img src="https://img.youtube.com/vi/pL_t2X72vek/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We introduce the Proximal Point Algorithm (PPA): x</em>{t+1} = prox_{λf}(x_t) = (I + λ∂f)⁻¹(x_t). PPA is a meta-algorithm: applied to a linear approximation of f it recovers gradient descent x_{t+1} = x_t − λ∇f(x_t); applied to a second-order approximation it gives the Modified-Hessian Newton / Levenberg-Marquardt step x_{t+1} = x_t − (∇²f(x_t) + (1/λ)I)⁻¹∇f(x_t). The proximal operator equals the resolvent of the subdifferential: since ∂f is a monotone operator (⟨y₁−y₂, x₁−x₂⟩ ≥ 0 whenever yᵢ ∈ ∂f(xᵢ)), its resolvent (I + λ∂f)⁻¹ is always well-defined. PPA is the ‘backwards’ implicit version of GD (gradient evaluated at the new point x_{t+1}), while GD is ‘forward’ and explicit (gradient evaluated at x_t). For small λ, (I + λ∂f)⁻¹ ≈ I − λ∂f, so the two coincide. Applying PPA in the dual of min f(x) + g(Ax) produces an implicit dual update z_{t+1} = z_t + λ(Ax̂ − ŷ), where x̂ and ŷ are defined via optimality conditions at z_{t+1}. Rewriting these conditions in primal form yields the Augmented Lagrangian Method (ALM): (x̂, ŷ) = argmin f(x) + g(y) + z_t^T(Ax−y) + (λ/2)‖Ax−y‖²._</p>
+
+    <p><a href="/pdfs/optclass/11.2.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 11.3: <a href="https://youtu.be/dWCT8PnVA5Y" target="_blank" rel="noopener noreferrer">Interpretations of PPA and ALM</a></strong>
+<img src="https://img.youtube.com/vi/dWCT8PnVA5Y/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We develop two interpretations of PPA and ALM. First, Moreau-Yosida smoothing: the Moreau envelope f</em>{(λ)}(x) = inf_u{f(u) + (1/2λ)‖u−x‖²} is the infimal convolution of f with ‖·‖²/2λ, is always convex and smooth, and has conjugate (f_{(λ)})<em>(y) = f</em>(y) + (λ/2)‖y‖². Examples: indicator I_𝒳 → (1/2λ)·dist(x,𝒳)²; ‖x‖₁ → Σ h_λ(xᵢ) (Huber function h_λ(z) = z²/2λ for |z|≤λ, |z|−λ/2 otherwise). Its gradient is ∇f_{(λ)}(x) = (1/λ)(x − prox_{λf}(x)) = prox_{(1/λ)f*}(x/λ) (Moreau decomposition). GD on f_{(λ)} recovers PPA exactly: (A) PPA is GD on a smoothed version of f; (B) minimizers of f_{(λ)} coincide with minimizers of f. Second, ALM as GD on a smoothed dual: ALM = PPA in the dual = GD on a smoothed dual objective. Eliminating y from the primal gives x̂ = argmin f(x) + g_{(1/λ)}(Ax + z/λ), meaning the augmented penalty replaces g with its Moreau envelope — for example, ‖Ax−b‖₁ becomes a Huber loss h_{(1/λ)}(Ax − b + z/λ)._</p>
+
+    <p><a href="/pdfs/optclass/11.3.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 11.4: <a href="https://youtu.be/i5fs8caiTLU" target="_blank" rel="noopener noreferrer">Convergence of the Proximal Point Algorithm</a></strong>
+<img src="https://img.youtube.com/vi/i5fs8caiTLU/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We prove O(1/T) convergence of PPA and build the operator theory framework needed to analyze proximal gradient. For PPA, using G_λ(x_t) = (1/λ)(x_t − prox</em>{λf}(x_t)) as a gradient proxy gives the telescoping bound f(x_T) − f(x<em>) ≤ ‖x₀−x</em>‖²/(2Σλ_t) = O(1/T). An accelerated PPA (FISTA-like) with momentum parameter θ_t satisfying θ_t²/λ_t ≥ (1−θ_t)·θ_{t-1}²/λ_{t-1} achieves O(1/T²). We then develop operator theory: x̂ is a fixed point of prox_{λf} if and only if 0 ∈ ∂f(x̂), i.e., iff x̂ is optimal. A non-expansive operator satisfies ‖Tx−Ty‖ ≤ ‖x−y‖; a contraction has constant L &lt; 1 and converges to a unique fixed point (GD on a smooth strongly convex f is a contraction). T is α-averaged if T = (1−α)I + αT’ for some non-expansive T’. Lemma: T is α-averaged iff ‖Tx−Ty‖² ≤ ‖x−y‖² − (1−α)/α·‖Rx−Ry‖² where R = I−T. An α=1/2 averaged operator is called firmly non-expansive. Key facts: (A) GD, T = (I−λ∇f), is averaged for appropriate λ; (B) PPA, T = (I+λ∂f)⁻¹, is 1/2-averaged (firmly non-expansive). Compositions of αᵢ-averaged operators Tᵢ yield a k/(k−1+1/max αᵢ)-averaged composition. Combining (A) and (B): the proximal gradient operator T = (I+λ∂h)⁻¹∘(I−λ∇g) is averaged, proving proximal gradient converges._</p>
+
+    <p><a href="/pdfs/optclass/11.4.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 11.5: <a href="https://youtu.be/iEl-tS4CZWM" target="_blank" rel="noopener noreferrer">Proximal Gradient in the Dual</a></strong>
+<img src="https://img.youtube.com/vi/iEl-tS4CZWM/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We apply proximal gradient ascent to the Fenchel dual max −f*(−A^Tz) − g*(z), treating f*(−A^Tz) as smooth (requiring f to be strongly convex) and g*(z) as the non-smooth part handled by prox. Via the Moreau decomposition, the dual prox-grad step z</em>{t+1} = prox_{λg*}(z_t + ηAx̂) decomposes into three steps: (1) x̂ = argmin f(x) + z_t^TAx (partial Lagrangian minimization over x); (2) ŷ = prox_{(1/λ)g}(z_t/λ + Ax̂) = argmin g(y) + z_t^T(Ax̂−y) + (λ/2)‖Ax̂−y‖² (augmented Lagrangian step for y); (3) z_{t+1} = z_t + λ(Ax̂ − ŷ). Compared to PPA/ALM — which jointly minimizes over (x,y) with no assumptions on f — prox-grad in the dual requires f to be strongly convex but performs a cheaper partial minimization. For separable problems min f₁(x₁)+f₂(x₂)+g(A₁x₁+A₂x₂), both subproblems decouple, requiring f₁ and f₂ to be strongly convex. When only some fᵢ are strongly convex (smooth in the dual), a ‘Dual Prox Grad’ variant uses gradient steps for smooth terms and prox operators for non-smooth ones. FISTA acceleration applies directly in the dual._</p>
+
+    <p><a href="/pdfs/optclass/11.5.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 11.6: <a href="https://youtu.be/lks7kCNQNlg" target="_blank" rel="noopener noreferrer">Some Examples</a></strong>
+<img src="https://img.youtube.com/vi/lks7kCNQNlg/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We apply the dual prox-gradient framework to three families of structured problems. (1) Norm regularization min f(x) + ‖Ax−b‖: the dual is max −f*(−A^Tz) − b^Tz s.t. ‖z‖</em>* ≤ 1. With f strongly convex (f* smooth), the algorithm alternates x̂ = argmin f(x) + z_t^TAx and z_{t+1} = Proj_{‖z‖<em>*≤1}(z_t + λ(Ax̂ − b)). (2) Multiple norm regularization min f(x) + Σᵢ‖Bᵢx‖₂: introduces p dual variables zᵢ each constrained to the unit Euclidean ball; x̂ = argmin f(x) + (Σ Bᵢ^Tzᵢ)^Tx; z</em>{i,t+1} = Proj_{‖·‖₂≤1}(z_{i,t} + λBᵢx̂). (3) Projection onto an intersection of convex sets min f(x) s.t. x ∈ C₁∩…∩Cₚ: reformulated as g(Ax) by stacking p identity copies and taking g = I_{C₁}×…×I_{Cₚ}, so prox_{λI*<em>{Cᵢ}}(z) = z − λProj</em>{Cᵢ}(z/λ). The prox-grad dual iteration sets z̄ = Σzᵢ and updates z_{i,t+1} = zᵢ + λx̂ − λProj_{Cᵢ}(z_{i,t}/λ + x̂) where x̂ = argmin f(x) + z̄<em>t^Tx. The special case min ½‖x−y‖² s.t. x ∈ ∩Cᵢ yields a Dykstra-like iteration: x̂ = y − (1/p)Σwᵢ; w</em>{i,t+1} = wᵢ + x̂ − Proj_{Cᵢ}(wᵢ + x̂)._</p>
+
+    <p><a href="/pdfs/optclass/11.6.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+</ul>
+
+<h3 id="module-12-monotone-operators-operator-splitting-and-admm">Module 12: Monotone Operators, Operator Splitting, and ADMM</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 12.1: <a href="https://youtu.be/VsAUznfNe1o" target="_blank" rel="noopener noreferrer">Monotone Operators</a></strong>
+<img src="https://img.youtube.com/vi/VsAUznfNe1o/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We build the operator-theoretic foundation for splitting algorithms. Starting from relations (set-valued maps) R ⊆ ℝⁿ × ℝⁿ, we define inverse R⁻¹ = {(y,x):(x,y)∈R}, composition S∘R, and show how the resolvent R_λ = (I+λF)⁻¹ and Cayley operator C = 2R_λ−I arise from a relation F. A relation F is monotone if ⟨y₁−y₂, x₁−x₂⟩ ≥ 0 for all (x₁,y₁),(x₂,y₂)∈F, and maximally monotone if no proper extension is monotone. Common examples include subdifferentials ∂f (maximally monotone for closed convex f) and normal cones N_C. The resolvent of a monotone operator is single-valued and non-expansive (‖R_λx−R_λy‖ ≤ ‖x−y‖). We prove in two parts: (A) C is non-expansive: using the identity ‖Cx−Cy‖² + ‖(I−C)x−(I−C)y‖² = 4‖x−y‖² and monotonicity of F to show ⟨(I−C)x−(I−C)y, x−y⟩ ≥ 0, giving ‖Cx−Cy‖ ≤ ‖x−y‖; (B) R = ½I+½C is 1/2-averaged (firmly non-expansive). The lecture closes with a preview: the composition T = C_A∘C_B of two Cayley operators is non-expansive; taking α=½ gives Douglas-Rachford splitting, and applying DR in the dual of a separable problem gives ADMM.</em></p>
+
+    <p><a href="/pdfs/optclass/12.1.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 12.2: <a href="https://youtu.be/fn3uFc41R60" target="_blank" rel="noopener noreferrer">Operator Splitting – Douglas-Rachford</a></strong>
+<img src="https://img.youtube.com/vi/fn3uFc41R60/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We derive operator splitting algorithms for solving the generalized equation 0 ∈ A(x) + B(x) where A and B are maximally monotone. We first establish the key proposition: z* is a fixed point of T = C_A∘C_B if and only if x* = R_B(z*) solves 0 ∈ A(x*)+B(x*). The proof uses the definitions of R_B and C_A: R_B(z*)=x* means Bx*∋(z*−x*)/λ; C_A applied to 2x*−z* gives z* only if A(x*)∋(z*−x*)/λ; hence 0 ∈ A(x*)+B(x*). This motivates Peaceman-Rachford (PR) splitting: z</em>{t+1} = C_A∘C_B(z_t), which is non-expansive but requires strict monotonicity to converge. Douglas-Rachford (DR) averaging: z_{t+1} = (½I+½C_A∘C_B)z_t is ½-averaged (firmly non-expansive), guaranteeing convergence whenever a fixed point exists. Applying DR to min f(x)+g(x) (where A=∂f, B=∂g) gives two equivalent iteration forms. The ‘z’ form: u_{t+1}=prox_{λg}(z_t), x_{t+1}=prox_{λf}(2u_{t+1}−z_t), z_{t+1}=z_t+x_{t+1}−u_{t+1}. The ‘w’ (auxiliary variable) form: x_{t+1}=prox_{λf}(u_t−w_t), u_{t+1}=prox_{λg}(x_{t+1}+w_t), w_{t+1}=w_t+x_{t+1}−u_{t+1}. Both forms converge to a minimizer of f+g._</p>
+
+    <p><a href="/pdfs/optclass/12.2.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 12.3: <a href="https://youtu.be/255Ey2vkOg4" target="_blank" rel="noopener noreferrer">DR Examples, Part I</a></strong>
+<img src="https://img.youtube.com/vi/255Ey2vkOg4/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We recall the two DR iteration forms from 12.2 (‘z’ form and ‘w’ auxiliary-variable form) and apply them to a concrete structured example: sparse inverse covariance selection, min ⟨C,X⟩ − log det X + γΣᵢⱼ|Xᵢⱼ|, where f(X) = ⟨C,X⟩ − log det X and g(X) = γ‖X‖₁. Setting A = ∂f and B = ∂g, the two proximal operators are: prox</em>{λg}(Z) = soft-threshold(Z, λγ) applied entry-wise; prox_{λf}(Z) = argmin_{X≻0} ⟨C,X⟩ − log det X + (1/2λ)‖X−Z‖²<em>F, which requires the eigendecomposition Z − λC = VΛV^T and then setting X̂ = V·diag(μᵢ)·V^T where each μᵢ = (λᵢ + √(λᵢ² + 4λ))/2 solves the scalar optimality condition μᵢ − λ/μᵢ = λᵢ. The DR ‘w’ iteration then alternates: X</em>{t+1} = prox_{λf}(U_t − W_t), U_{t+1} = prox_{λg}(X_{t+1} + W_t), W_{t+1} = W_t + X_{t+1} − U_{t+1}, converging to the sparse inverse covariance estimate._</p>
+
+    <p><a href="/pdfs/optclass/12.3.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 12.4: <a href="https://youtu.be/n6zYFWoY8Uc" target="_blank" rel="noopener noreferrer">DR Examples, Part II</a></strong>
+<img src="https://img.youtube.com/vi/n6zYFWoY8Uc/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We continue with further DR examples, grouped into four families. (1) Subspace constraints: min f(x) s.t. x ∈ V recovers a prox-plus-projection iteration: x</em>{t+1} = prox_{λf}(u_t−w_t), u_{t+1} = Proj_V(x_{t+1}+w_t), w_{t+1} = w_t+x_{t+1}−u_{t+1}. (2) Separable problems: for min f₁(x₁)+f₂(x₂) s.t. A₁x₁+A₂x₂=b, both prox operators decouple across components and the subspace projection becomes a linear system solve. (3) Explicitly separable functions with dual prox-grad vs. DR: for min f(x)+g(Ax) the dual prox-grad method requires f to be strongly convex; DR avoids this by introducing a splitting variable z to rewrite the problem as min f(x)+g(z) s.t. Ax=z — adding a splitting variable makes both blocks separable in the DR sense, with prox_f unchanged and prox_g applied in z-space while the constraint is enforced through an auxiliary w variable. (4) Total variation denoising and deblurring: for min ‖Kx−b‖₁+γ‖Dx‖<em>TV, introducing A=[K;D] and g(·)=‖·‖₁, the DR iteration requires prox_f = (I + λA^TA)⁻¹(·+λA^Tb), solved efficiently by FFT when K and D are convolution operators; prox_g is entry-wise soft-thresholding.</em></p>
+
+    <p><a href="/pdfs/optclass/12.4.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 12.5: <a href="https://youtu.be/GVGxveZTgjw" target="_blank" rel="noopener noreferrer">ADMM – DR in the Dual</a></strong>
+<img src="https://img.youtube.com/vi/GVGxveZTgjw/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We derive ADMM as Douglas-Rachford splitting applied in the Fenchel dual. The canonical problem is min f₁(x₁)+f₂(x₂) s.t. A₁x₁+A₂x₂=b, with dual max −f₁*(−A₁^Tz)−f₂*(−A₂^Tz)−b^Tz. Applying DR in the dual with A=∂(f₁*(−A₁^T·)) and B=∂(f₂*(−A₂^T·)+b^T·), the three cases depend on the strong convexity of the primal blocks: (1) neither f₁ nor f₂ strongly convex — both dual prox steps require solving augmented Lagrangian subproblems jointly; (2) f₁ strongly convex but not f₂ — x₁-step becomes an explicit gradient step while x₂-step remains a prox; (3) both strongly convex — both become gradient steps (i.e., dual gradient ascent). In the general case, the DR dual iteration translates back to three explicit ADMM primal-dual steps: x₁^{t+1} = argmin f₁(x₁)+z_t^T A₁x₁+(ρ/2)‖A₁x₁+A₂x₂_t−b‖²; x₂^{t+1} = argmin f₂(x₂)+z_t^T A₂x₂+(ρ/2)‖A₁x₁^{t+1}+A₂x₂−b‖²; z</em>{t+1} = z_t+ρ(A₁x₁^{t+1}+A₂x₂^{t+1}−b). Extra splitting variables extend ADMM: introducing z=x₁ or z=A₁x₁+A₂x₂=b adds a block that may simplify each subproblem (e.g., making prox_f₁ separable in x₁ and z) at the cost of an additional variable. Compared to dual gradient ascent and prox-grad in the dual, ADMM requires no strong convexity and converges more robustly in practice._</p>
+
+    <p><a href="/pdfs/optclass/12.5.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+</ul>
+
+<hr />
+
+    </div>
+    
+  </body>
+</html>

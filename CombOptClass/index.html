@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Combinatorial Optimization &middot; Constantine Caramanis
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h2>
+        Constantine Caramanis
+      </h2>
+      <p class="lead"></p>
+    </div>
+
+    <nav class="sidebar-nav">
+
+
+      
+
+      <a class="sidebar-nav-item" href="/">Home</a>
+      <a class="sidebar-nav-item" href="/teaching/">Teaching</a>
+      <a class="sidebar-nav-item" href="/publications/">Publications</a>
+      <a class="sidebar-nav-item" href="/researchgroup/">Research Group</a>
+      <a class="sidebar-nav-item" href="/researchprojects/">Research Projects</a>
+      <a class="sidebar-nav-item" href="https://scholar.google.com/citations?user=47YTUrEAAAAJ&hl=en&oi=ao" target="_blank">Google Scholar</a>
+      <a class="sidebar-nav-item" href="https://www.youtube.com/@constantine.caramanis" target="_blank">YouTube</a>
+      <a class="sidebar-nav-item" href="https://ml.utexas.edu/ifml" target="_blank">IFML</a>
+      <a class="sidebar-nav-item" href="https://wncg.org" target="_blank">WNCG</a>
+      <a class="sidebar-nav-item" href="https://archimedesai.gr/en/" target="_blank">Archimedes AI</a>
+
+
+
+
+      <!--<span class="sidebar-nav-item">Jekyll Hyde, Currently v2.1.0</span>-->
+    </nav>
+
+    <p>&copy; 2026. All rights reserved.</p> 
+  </div>
+</div>
+
+
+    <div class="content container">
+      <h1 id="combinatorial-optimization">Combinatorial Optimization</h1>
+
+<hr />
+
+<p><span style="font-size: 16px;">Welcome to this lecture series on <strong>Combinatorial Optimization</strong> — an advanced graduate course recorded from material taught at The University of Texas at Austin.
+<br /><br />
+This course develops the algorithmic and polyhedral theory of combinatorial optimization. The central theme is the tight interplay between LP relaxations, integrality results, and combinatorial structure: we ask when LP relaxations are exact, build the tools to prove it (total unimodularity, total dual integrality, the ellipsoid method), and apply them to the most important problems in the field.
+<br /><br />
+<strong>Prerequisites:</strong> A graduate course in linear programming (LP duality, basic polyhedral theory, complementary slackness) and mathematical maturity at the PhD level. Familiarity with graph theory and linear algebra is assumed throughout.
+<br /><br />
+<strong>What this course covers:</strong> We begin with polytopes, the simplex method, LP duality, and the primal-dual algorithmic framework. We then cover network flows, the ellipsoid algorithm and oracle complexity, bipartite and non-bipartite matching (including the matching polytope and weighted matching), total unimodularity, total dual integrality, matroids and matroid intersection (including the independent set polytope and matroid intersection polytope), submodularity and the continuous greedy algorithm, and extended formulations with communication-complexity lower bounds on extension complexity.
+<br /><br />
+<strong>How to use this material:</strong>
+</span>
+<br /></p>
+<div style="font-size: 16px;">
+1. Lectures are designed to be watched in order. The course builds systematically: polyhedral tools developed early reappear throughout, and later modules (matroids, submodularity, extended formulations) rely heavily on the LP and duality foundations.
+<br /><br />
+2. Lecture slides (PDF) are linked below each video. The lectures are blackboard-style, so the slides capture all definitions, theorems, and proofs.
+<br /><br />
+3. Useful references: Schrijver's <em>Combinatorial Optimization: Polyhedra and Efficiency</em> (the definitive reference), Cook, Cunningham, Pulleyblank &amp; Schrijver's <em>Combinatorial Optimization</em>, and Lovász &amp; Plummer's <em>Matching Theory</em>.
+</div>
+
+<hr />
+
+<h3 id="course-materials"><strong>Course materials:</strong></h3>
+
+<ol>
+  <li><a href="https://www.youtube.com/playlist?list=PLXsmhnDvpjORcTRFMVF3aUgyYlHsxfhNL" target="_blank" rel="noopener noreferrer" style="font-size: 16px;"><b>Full YouTube Playlist (71 lectures)</b></a>
+<br /></li>
+  <li><a href="https://www.dropbox.com/scl/fi/ubu557leti6qw0mdr81ld/CombOptFiles.zip?rlkey=aw3w8l9gvnrtq91bcku36ope6&amp;dl=0 " target="_blank" rel="noopener noreferrer" style="font-size: 16px;"><b>Lecture Slides (PDF, all modules)</b></a></li>
+</ol>
+
+<hr />
+
+<h3 id="module-1-introduction">Module 1: Introduction</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 1.1: <a href="https://youtu.be/G27vjNQUoh4" target="_blank" rel="noopener noreferrer">Introduction</a></strong>
+<img src="https://img.youtube.com/vi/G27vjNQUoh4/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We introduce combinatorial optimization — the study of graphs, paths, cuts, subsets, assignments, and schedules — and explain the course’s central approach: Algorithms, Geometry, and Polyhedral Techniques. The key insight motivating the course is that LP (min c^Tx s.t. Ax≤b) is a subclass of convex optimization whose optimal solutions sit at extreme points (‘corners’) of the feasible polytope; these corners can encode combinatorial structure, so cleverly designed LP relaxations let us solve hard discrete problems efficiently. The course is organized in five parts: Part I (Linear Optimization) covers the geometry of polyhedra, LP duality, and algorithms (simplex, ellipsoid, primal-dual); Part II (Polyhedral Combinatorics) covers Total Unimodularity, Total Dual Integrality, bipartite and non-bipartite matching, and matroids with their polytopes; Part III (Submodularity) covers definitions, continuous extensions, and algorithms; Part IV covers Extended Formulations; Part V covers Randomized Rounding and other topics. Prerequisites are linear algebra, optimization and duality, and mathematical maturity.</em></p>
+
+    <p><a href="/pdfs/comboptclass/1.1.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+</ul>
+
+<h3 id="module-2-polytopes-and-the-simplex-method">Module 2: Polytopes and the Simplex Method</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 2.1: <a href="https://youtu.be/1AX0U8Jd-pA" target="_blank" rel="noopener noreferrer">Polytopes and Extreme Points</a></strong>
+<img src="https://img.youtube.com/vi/1AX0U8Jd-pA/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We develop the polyhedral framework that underlies the entire course. We define hyperplanes H={x∈ℝⁿ: a^Tx=b}, half-spaces H+={x∈ℝⁿ: a^Tx≥b}, and polyhedra P={x∈ℝⁿ: Ax≥b} — all convex sets — and note that a bounded polyhedron is a polytope. The main theorem gives three equivalent characterizations of extreme points of P: (1) x cannot be written as a convex combination λy+(1−λ)z for any distinct y,z∈P; (2) x is the unique minimizer of some linear objective c^Tx over P; (3) exactly n of the constraints are linearly independent and tight at x (Basic Feasible Solution / BFS). We specialize to standard-form polyhedra P={Ax=b, x≥0} (showing Ax≤b can always be put in standard form via slack variables), where a BFS corresponds to a basis B⊆[n] with |B|=m: the n−m non-basic variables are zero, and x_B = A_B^{-1}b. Two extreme points are adjacent if their bases share m−1 indices. We then prove: if P is bounded, P = conv(Ext P), and consequently, if a linear program over a bounded P is feasible, an optimal solution exists at some extreme point.</em></p>
+
+    <p><a href="/pdfs/comboptclass/2.1.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 2.2: <a href="https://youtu.be/LMxT7A-Cc5w" target="_blank" rel="noopener noreferrer">The Simplex Method, Part I</a></strong>
+<img src="https://img.youtube.com/vi/LMxT7A-Cc5w/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We develop the simplex method as a procedure for moving between adjacent extreme points of the standard-form polyhedron P={Ax=b, x≥0}. Starting at a BFS x=(x_B;0) with basis B, we pick an entering variable î∉B and compute the direction d: d_î=1, d_j=0 for j∉B∪{î}, and d_B = −A_B^{-1}A_î (so that A(x+θd)=b). The new point x_new = x+θd must remain non-negative, giving the ratio test θ = min</em>{j∈B, d_j&gt;0} x_j/d_j; the minimizing index j̃ leaves the basis, giving B_new = (B∖{j̃})∪{î}. We analyze all three cases for θ: (1) θ&gt;0 finite — we move to a strictly adjacent BFS; (2) θ=+∞ — all d_j≤0, meaning the LP is unbounded; (3) θ=0 — a degenerate step in which we change basis but stay at the same vertex. Degeneracy arises when multiple bases describe the same extreme point (x_j=0 for some j∈B). A worked example with m=3, n=7 illustrates a degenerate pivot where θ=0 is forced._</p>
+
+    <p><a href="/pdfs/comboptclass/2.2.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 2.3: <a href="https://youtu.be/gZWfH7GZ0As" target="_blank" rel="noopener noreferrer">The Simplex Method, Part II</a></strong>
+<img src="https://img.youtube.com/vi/gZWfH7GZ0As/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We introduce reduced costs as the key optimality certificate for simplex. After a step to x_new = x+θd, the change in objective is c^Tx_new − c^Tx = θ·c̄_î where c̄_î := c_î − (c_B^T A_B^{-1})A_î is the reduced cost of the entering variable î. Note c̄_î=0 for î∈B, c̄_î&lt;0 means adding î to the basis might improve the objective (if θ&gt;0), and if c̄≥0 for all non-basic variables then x is optimal. This yields the complete conceptual simplex algorithm: compute reduced costs c̄ = c − c_B^T A_B^{-1}A; if c̄≥0 then x is optimal; else pick any î with c̄_î&lt;0, compute d_B=−A_B^{-1}A_î, θ=min</em>{j:d_j&gt;0} x_j/d_j, and update B. We close with computational considerations: (A) naive simplex can cycle forever on degenerate problems; (B) a simple pivot rule (e.g., always choose smallest index) guarantees finite termination, though worst-case exponential steps are possible; (C) maintaining A_B^{-1} efficiently across pivots is the key implementation challenge (smoothed analysis explains the good practical behavior)._</p>
+
+    <p><a href="/pdfs/comboptclass/2.3.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 2.4: <a href="https://youtu.be/Bg6B6Xj8Bb0" target="_blank" rel="noopener noreferrer">The Simplex Method, Part III</a></strong>
+<img src="https://img.youtube.com/vi/Bg6B6Xj8Bb0/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We introduce the simplex tableau as the data structure that makes simplex practical. The key observation is that A_B^{-1}A = [I | A_B^{-1}A</em>{B^c}]: the m×n matrix obtained by premultiplying A by A_B^{-1} has an identity block on the B-columns and encodes d_B = −A_B^{-1}A_î for every possible entering variable î∉B in a single matrix. The full tableau is (m+1)×(n+1) with a 0th row tracking the objective: the top-left entry is −c_B^T A_B^{-1}b (negative of the current value), and the top row is c − c_B^T A_B^{-1}A (the vector of reduced costs). One simplex pivot is then three row operations: (1) divide the pivot row by the pivot element; (2) subtract multiples of the pivot row from all other rows to zero out the pivot column; (3) update the 0th row by adding a multiple of the pivot row to set c̄<em>î = 0. We prove that after this operation the 0th row correctly encodes the new reduced costs c − c</em>{B_new}^T A_{B_new}^{-1}A. A worked example runs the full simplex algorithm on a 3×5 system with slack variables, tracing two pivots (including a degenerate step with θ=0) through the tableau until c̄≥0 and optimality is certified._</p>
+
+    <p><a href="/pdfs/comboptclass/2.4.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+</ul>
+
+<h3 id="module-3-lp-duality-and-primal-dual-algorithms">Module 3: LP Duality and Primal-Dual Algorithms</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 3.1: <a href="https://youtu.be/t6-MpXo6aW4" target="_blank" rel="noopener noreferrer">LP Duality, Part I</a></strong>
+<img src="https://img.youtube.com/vi/t6-MpXo6aW4/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We build LP duality from two geometric foundations. First, a convex closed set C⊆ℝⁿ equals the intersection of all half-spaces containing it (C=∩</em>{H⊇C}H), and for any x∉C there exists a separating hyperplane. Second, for the general constrained problem min f(x) s.t. x∈𝒳, x̂ is optimal if and only if 0∈∂f(x̂)+N_𝒳(x̂) — the normal cone condition — and the pair (ĝ,n̂) satisfying 0=ĝ+n̂ are the dual variables (KKT conditions). We then derive LP duality via a min-max argument: for min c^Tx s.t. Ax≥b, introduce multipliers p≥0 to form the Lagrangian min_x max_{p≥0} [c^Tx+p^T(b-Ax)]; swapping min and max (valid by strong duality) gives max_{p≥0} min_x [p^Tb+(c-p^TA)x] = max p^Tb s.t. p^TA=c, p≥0. Weak duality (≥) holds by the swap inequality; strong duality (equality) is stated as a fact. We close with a general LP duality table as an exercise: primal equality constraints ↔ free dual variables; primal inequality constraints ↔ nonneg dual variables; primal nonneg variables ↔ dual ≤ constraints; primal free variables ↔ dual equality constraints._</p>
+
+    <p><a href="/pdfs/comboptclass/3.1.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 3.2: <a href="https://youtu.be/56wQKLLPynY" target="_blank" rel="noopener noreferrer">LP Duality, Part II</a></strong>
+<img src="https://img.youtube.com/vi/56wQKLLPynY/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We derive the dual of the standard-form LP (min c^Tx s.t. Ax=b, x≥0) via min-max: introducing free multipliers p yields the dual max p^Tb s.t. p^TA≤c, p free. Weak duality is immediate: for any feasible primal x and dual p, c^Tx≥p^Tb, because c^Tx−p^Tb = (c−p^TA)x+(p^TAx−p^Tb) = (c−p^TA)x≥0. We then prove strong duality using the simplex method: when simplex terminates at an optimal BFS x̂=(x_B;0), set p̂=c_B^T A_B^{-1}. Since c̄=c−p̂^TA≥0, p̂ is dual feasible; and p̂^Tb=c_B^T A_B^{-1}b=c_B^T x_B=c^Tx̂, so the duality gap is zero. The summary of strong duality has four parts: (A) if either primal or dual has an optimal solution, so does the other and optimal values are equal; (B) primal unbounded ⟹ dual infeasible; (C) the simplex algorithm simultaneously produces primal and dual optimal solutions; (D) complementary slackness. We prove complementary slackness: given a primal-dual feasible pair (x,p), they are jointly optimal iff p_i(a_i^Tx−b_i)=0 ∀i and (c_j−p^TAj)x_j=0 ∀j; the proof notes that Σu_i+Σv_j=c^Tx−p^Tb, so both sides zero iff the duality gap is zero.</em></p>
+
+    <p><a href="/pdfs/comboptclass/3.2.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 3.3: <a href="https://youtu.be/zD2wqlw4Nyw" target="_blank" rel="noopener noreferrer">LP Duality, Part III</a></strong>
+<img src="https://img.youtube.com/vi/zD2wqlw4Nyw/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We draw out the primal-dual symmetry hidden inside the simplex tableau. The tableau row c̄=c−c_B^T A_B^{-1}A is exactly c−p̂^TA where p̂=c_B^T A_B^{-1}: primal simplex maintains x_B=A_B^{-1}b≥0 (primal feasibility) and works toward c̄≥0, i.e., dual feasibility p̂^TA≤c. The dual simplex runs this in reverse: it maintains c̄≥0 (dual feasibility) while A_B^{-1}b is not necessarily ≥0 (not primal feasible), and pivots to restore primal feasibility. A basis B with A_B^{-1}b not componentwise ≥0 but c̄≥0 defines a Basic Solution (BS) that is dual-feasible but not a BFS. The dual simplex pivot rule: (1) choose the pivot row by selecting any i with x</em>{B_i}=（A_B^{-1}b)<em>i&lt;0 as the leaving variable; (2) choose the entering column ĵ = argmin</em>{i: v_i&lt;0} c̄<em>i/|v_i| where v is the corresponding row of A_B^{-1}A (the dual ratio test), which maintains c̄≥0 after the pivot. The dual simplex terminates when A_B^{-1}b≥0 (primal feasibility restored) or certifies primal infeasibility when all v_i≥0 for some negative-valued row.</em></p>
+
+    <p><a href="/pdfs/comboptclass/3.3.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 3.4: <a href="https://youtu.be/6XXYgGrRzVM" target="_blank" rel="noopener noreferrer">Primal-Dual Algorithm, Part I</a></strong>
+<img src="https://img.youtube.com/vi/6XXYgGrRzVM/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We introduce the primal-dual (PD) algorithmic framework. The main idea is that if (x,p) are primal-dual feasible and complementary slackness (CS) holds, they are optimal. The PD algorithm starts with a dual feasible p and tries to find x satisfying CS; if it cannot, it uses the failure to improve p. The key structure is the admissible set J={j: p^TAj=cj} (the columns for which CS could hold with x_j≥0). The Restricted Primal (RP) attempts to find a primal feasible x supported on J: min Σx^a_i s.t. AJx_J + x^a = b, x_J≥0, x^a≥0 (artificial variables; wlog b≥0). If RP=0 we have found x satisfying CS with p — stop with optimal solution. If RP&gt;0, we solve the Dual Restricted Primal (DRP): max p^Tb s.t. p^TAj≤0 for j∈J, p≤1, p free (note: c absent — DRP is about finding a direction to improve p^Tb without violating existing CS conditions). Let p̄ be the DRP solution. We update p_new = p+θp̄ where θ = min</em>{j∉J: p̄^TAj&gt;0} (cj−p^TAj)/(p̄^TAj), which is the largest step keeping p_new dual feasible. Each update strictly increases p_new^Tb = p^Tb+θ·p̄^Tb._</p>
+
+    <p><a href="/pdfs/comboptclass/3.4.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 3.5: <a href="https://youtu.be/3xtebuct9f0" target="_blank" rel="noopener noreferrer">Primal-Dual Algorithm, Part II</a></strong>
+<img src="https://img.youtube.com/vi/3xtebuct9f0/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We establish the correctness and finiteness of the primal-dual algorithm. Two theorems govern its behavior. Theorem 1 (infeasibility detection): if RP&gt;0 and p̄^TAj≤0 for all j, then the DRP is unbounded, which implies the primal is infeasible. Theorem 2 (admissible set growth): let B be the optimal basis for RP with B⊆J∪[m]; then B∩J⊆J_new — any admissible column that was in the RP’s optimal basis remains admissible after the dual update. The proof uses the fact that if j∈B∩J then in the RP its reduced cost is c̄_j = 0−p̄^TAj = 0, so (p+θp̄)^TAj = cj and j∈J_new. For finiteness: at the chosen θ, a new column j₀ enters J_new (by the minimizing ratio). In the next RP, j₀’s reduced cost is 0−p̄^TAj₀&lt;0, forcing a pivot that strictly reduces the RP objective — guaranteeing finite termination without degeneracy. With degeneracy an anticycling rule together with the finite number of BFS ensures termination. The lecture closes with a preview: the PD method ‘combinatorializes’ our LP — in the next module we apply it to network flow problems, where RP and DRP reduce to simple graph problems.</em></p>
+
+    <p><a href="/pdfs/comboptclass/3.5.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+</ul>
+
+<h3 id="module-4-network-flows">Module 4: Network Flows</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 4.1: <a href="https://youtu.be/dAF__hro7xA" target="_blank" rel="noopener noreferrer">Network Flow Problems</a></strong>
+<img src="https://img.youtube.com/vi/dAF__hro7xA/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We introduce network flow problems on a directed graph G=(V,E) with |V|=n nodes. The central data structure is the node-arc incidence matrix A (|V|×|E|): A_ie=+1 if arc e leaves node i, A_ie=−1 if arc e enters node i, and 0 otherwise. Flow conservation at node i is then simply a_i^T f=0. We work through an example showing a 4-node, 5-arc graph and its explicit incidence matrix. We then formulate two problems as LPs. Shortest path (unit flow of minimum cost from s to t): min c^Tf s.t. Af=[1,0,…,0]^T (source row; the t-row is redundant and can be omitted), f≥0. Max flow (maximize total flow from s to t subject to capacities b): max v s.t. Af+dv≤0 (d=−1 at s, +1 at t, 0 elsewhere), f≤b (capacity vector), f≥0. These LP formulations set up the primal-dual analyses in the lectures that follow.</em></p>
+
+    <p><a href="/pdfs/comboptclass/4.1.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 4.2: <a href="https://youtu.be/oORHVlR6kW0" target="_blank" rel="noopener noreferrer">Primal-Dual Applied to Shortest Path</a></strong>
+<img src="https://img.youtube.com/vi/oORHVlR6kW0/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We apply the primal-dual framework to the shortest path LP (min c^Tf, Af=[1,0,…,0]^T, f≥0) and derive its dual: max p_s s.t. p_i−p_j≤c_ij ∀(i,j)∈E, p_t=0, p free. The admissible arcs are J={(i,j)∈E: p_i−p_j=c_ij} (the tight dual constraints). The Restricted Primal (RP) sends a unit of artificial flow from s using only arcs in J; the Dual Restricted Primal (DRP) is max p_s s.t. p_i−p_j≤0 ∀(i,j)∈J, p_i≤1, p_t=0, p free. The DRP is a reachability problem: the optimal p̄ assigns p̄_i=1 to nodes reachable from s via arcs in J, p̄_i=0 to nodes from which t is reachable, and 1 to all others. The dual step-size is θ=min</em>{(i,j)∉J, p̄<em>i−p̄_j&gt;0}{c_ij−(p_i−p_j)}, and the minimizing arc becomes tight (enters J) for p_new=p+θp̄. A fully traced 6-step example builds J incrementally until an s-t path exists and the RP value reaches 0. In the closing discussion: defining W={i: t reachable from i using arcs in J}={i: p̄_i=0}, one can show that p_i is fixed once i∈W and equals the shortest-path value from i to t — recovering Dijkstra’s algorithm.</em></p>
+
+    <p><a href="/pdfs/comboptclass/4.2.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 4.3: <a href="https://youtu.be/cIaa7sT_-DM" target="_blank" rel="noopener noreferrer">Primal-Dual Applied to Max Flow</a></strong>
+<img src="https://img.youtube.com/vi/cIaa7sT_-DM/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We set up the max flow LP: max v s.t. Af+dv≤0 (d=−1 at s, +1 at t, 0 elsewhere), f≤b, f≥0. Because the capacities ‘b’ appear on the RHS, we want to ‘combinatorialize the RHS,’ so we treat max flow as the dual problem (with f playing the role of the dual variable). Given a dual-feasible f, the admissible set J is the index of tight dual constraints, and the Dual Restricted Primal (DRP) is: max v s.t. Af+dv≤0 (flow conservation), f≤0 for arcs where f=b in D (b is gone from the problem), −f≤0 for arcs where f=0 in D, f≤1, v≤1. Interpreting the DRP: if v=0 then f is optimal (stop). To achieve v=1 there must be an s-t path that uses saturated arcs (f_ij=b_ij) in backward direction (f̄≤0) and zero-flow arcs (f_ij=0) in forward direction (−f̄≤0), and other arcs freely in either direction. This is precisely an augmenting path: an undirected s-t path that uses arc (i,j) in the forward direction only if unsaturated (f_ij&lt;b_ij) and in the backward direction only if f_ij&gt;0; the improved flow is f_new=f+θf̄.</em></p>
+
+    <p><a href="/pdfs/comboptclass/4.3.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 4.4: <a href="https://youtu.be/DQ-Op5UFpwU" target="_blank" rel="noopener noreferrer">Ford-Fulkerson, Part I</a></strong>
+<img src="https://img.youtube.com/vi/DQ-Op5UFpwU/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We develop the LP duality theory for max flow and prove the max-flow min-cut theorem. We define an s-t cut as a subset W⊆V with s∈W and t∈W̄, and its capacity as c(W,W̄)=Σ</em>{(i,j): i∈W, j∈W̄} b_ij. The max flow LP dual is: min Σγ_ij b_ij s.t. p_i−p_j+γ_ij≥0 ∀(i,j)∈E, −p_s+p_t≥1, γ_ij≥0, p free. Given any s-t cut (W,W̄), setting γ_ij=1 if i∈W,j∈W̄ (else 0) and p_i=0 if i∈W (else 1) yields a dual feasible solution with value c(W,W̄); dual feasibility is easy to verify (key point: p_i−p_j+γ_ij is strict when i∈W̄,j∈W since 1−0+0&gt;0). Max-Flow = Min-Cut Theorem: the value of any s-t flow is upper bounded by c(W,W̄) for every s-t cut; moreover, a flow f and cut (W,W̄) are jointly optimal if and only if complementary slackness holds: f_ij=0 for all (i,j)∈E with i∈W̄,j∈W, and f_ij=b_ij for all (i,j)∈E with i∈W,j∈W̄._</p>
+
+    <p><a href="/pdfs/comboptclass/4.4.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 4.5: <a href="https://youtu.be/hcVEdoo5dqs" target="_blank" rel="noopener noreferrer">Ford-Fulkerson, Part II</a></strong>
+<img src="https://img.youtube.com/vi/hcVEdoo5dqs/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+_We give a precise definition of an augmenting path P (given a feasible flow f): a path from s to t in the undirected graph such that each arc (i,j) used in the forward direction satisfies f_ij<b_ij and="" each="" arc="" used="" in="" the="" backward="" direction="" satisfies="" f_ij="">0. The maximum augmentation along P is Δ=min_{(i,j)∈P}{b_ij−f_ij (forward) or f_ji (backward)}, and f_new=f+Δ. We then present the Ford-Fulkerson labeling algorithm: maintain a LIST of labeled-but-unscanned nodes; initialize with LIST={s} and L_2(s)=+∞. Each node i carries a two-part label (L_1(i), L_2(i)) where L_1 records the predecessor and L_2 records the maximum additional flow routable from s to i. Scanning node i: for each unsaturated forward arc (i,j) with f_ij&lt;b_ij, assign label (L_1(j),L_2(j))=(i, min{b_ij−f_ij, L_2(i)}); for each backward arc (j,i) with f_ji&gt;0, assign (L_1(j),L_2(j))=(−i, min{L_2(i), f_ji}); add newly labeled nodes to LIST and remove i. Stop when LIST=∅. Optimality theorem: if FF terminates with LIST=∅ and t unlabeled, then W=labeled nodes and W̄=unlabeled nodes form an s-t cut satisfying f_ij=b_ij ∀(i,j) with i∈W,j∈W̄ and f_ij=0 ∀(i,j) with i∈W̄,j∈W — precisely the CS conditions — so (W,W̄) is a min cut and f is optimal. Finiteness theorem: when b∈ℚ (rational capacities), FF terminates._</b_ij></p>
+
+    <p><a href="/pdfs/comboptclass/4.5.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 4.6: <a href="https://youtu.be/0l3sRJ4-q78" target="_blank" rel="noopener noreferrer">Arborescences</a></strong>
+<img src="https://img.youtube.com/vi/0l3sRJ4-q78/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We open with context: simplex (via tableau) and specialized algorithms like Ford-Fulkerson are ‘not enough’ when the LP has an exponential number of facets — motivating the ellipsoid algorithm. We then develop the r-arborescence problem on digraph D=(V,A) with root r. Definitions: A’⊆A is an r-arborescence if every node v≠r is the head of exactly one arc in A’. C⊆A is an r-cut if C=δ⁻(V’) for some ∅≠V’⊆V \ {r} (inclusion-wise minimal if no proper subset is an r-cut). Blocking theorem: r-arborescences are exactly the inclusion-wise minimal sets intersecting all r-cuts; and minimal r-cuts are the minimal sets intersecting all r-arborescences. The minimum-weight r-arborescence problem is formulated as an IP: min c^Tx s.t. x(δ⁻(W))≥1 ∀∅≠W⊆V \ {r}, x_a∈{0,1} ∀a∈A. Edmonds (1967): the LP relaxation (replacing {0,1} with [0,1]) is exact — its feasible set equals the convex hull of characteristic vectors of r-arborescences. The LP has an exponential number of rows (one per subset of V \ {r}). The separation problem — given y, does y(δ⁻(W))≥1 hold for all W? — reduces to |V|−1 minimum-cut computations (one min r-s cut per s∈V \ {r} treating y as arc capacities via FF). This polynomial separation oracle allows the ellipsoid algorithm (introduced next) to solve the LP in polynomial time.</em></p>
+
+    <p><a href="/pdfs/comboptclass/4.6.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+</ul>
+
+<h3 id="module-5-the-ellipsoid-algorithm">Module 5: The Ellipsoid Algorithm</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 5.1: <a href="https://youtu.be/ZFiJHuBulFc" target="_blank" rel="noopener noreferrer">The Ellipsoid Algorithm, Part I</a></strong>
+<img src="https://img.youtube.com/vi/ZFiJHuBulFc/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We set up the feasibility problem: given P={x∈ℝⁿ: a_i^Tx≤b_i, i=1,…,m}, assuming P is bounded and (if non-empty) full-dimensional, decide in time polynomial in n and the description lengths ⟨A⟩,⟨b⟩: (A) is P empty? (B) if not, find a point in P. The algorithm uses an oracle: given x, it either certifies x∈P or returns a violated constraint (a_0,b_0). Two initial bounds drive the termination argument: P⊆B(0,R) for R=√n·2^{⟨A,b⟩−n²}; and vol(P)≥2^{−(n+1)⟨A⟩+n³} if P is non-empty. The ellipsoid algorithm initializes E_0=B(0,R²)=E(R²I,0) and at each iteration k queries x_k (the center of E_k) to the oracle: if x_k∈P, stop; otherwise find E</em>{k+1}⊇E_k∩{x: â^Tx≤â^Tx_k}⊇P. A picture shows the ellipsoid being cut by the oracle’s hyperplane; the key requirement is a way to compute E_{k+1} whose volume shrinks quickly enough. We then introduce the Löwner-John ellipsoid: for K⊆ℝⁿ convex, there is a unique minimum-volume ellipsoid E⊇K satisfying K⊇(1/n)E (where (1/n)E is E shrunk by factor n about its center). For a general convex K the LJ ellipsoid may be hard to compute, but for K=E∩H₊ (an ellipsoid intersected with a half-space through its center) it is easy — this is derived in the next lecture._</p>
+
+    <p><a href="/pdfs/comboptclass/5.1.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 5.2: <a href="https://youtu.be/5bfllHzrgwA" target="_blank" rel="noopener noreferrer">The Ellipsoid Algorithm, Part II</a></strong>
+<img src="https://img.youtube.com/vi/5bfllHzrgwA/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We develop the explicit ellipsoid update formula. An ellipsoid E(A,c)={x∈ℝⁿ: (x−c)^T A^{-1}(x−c)≤1} = A^{1/2}S(0,1)+c has volume vol(E(A,c))=√detA·vol(S(0,1)) where vol(S(0,1))=π^{n/2}/Γ(n/2+1). Given 𝒳=E(A,c)∩{x: â^Tx≤â^Tc} (the half-ellipsoid cut through the center), the Löwner-John ellipsoid of 𝒳 is E(Â,ĉ) with: ĉ=c−(1/(n+1))·z, Â=(n²/(n²−1))(A−(2/(n+1))·zz^T), z=(1/√(â^TAâ))Aâ. Volume reduction theorem: vol(Ê)/vol(E) = ((n/(n+1))^{n+1}·(n/(n−1))^{n−1})^{1/2} &lt; e^{−1/(2n)} &lt; 1. The proof first handles the special case E=E(I,0) with a=(-1,0,…,0), giving Â=diag(n²/(n+1)²,n²/(n²−1),…,n²/(n²−1)) and verifying det(Â)=n^{2n}/((n+1)²(n²−1)^{n-1})&lt;exp(−1/n). The general case reduces to this via an invertible affine transformation T mapping E to E(I,0): since vol(T(E_1))/vol(T(E_2))=vol(E_1)/vol(E_2) for any two ellipsoids, the volume ratio is invariant and equals the special case.</em></p>
+
+    <p><a href="/pdfs/comboptclass/5.2.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 5.3: <a href="https://youtu.be/PiILEEAjKuc" target="_blank" rel="noopener noreferrer">The Ellipsoid Algorithm, Part III</a></strong>
+<img src="https://img.youtube.com/vi/PiILEEAjKuc/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We complete the complexity analysis and put all pieces together. Two lemmas establish the bounding parameters: (1) P={Ax≤b}⊆S(0,R) for R=√n·2^{⟨A,b⟩−n²}, so the initial ball B(0,R²) contains P; (2) if P is full-dimensional, vol(P)≥2^{−(n+1)⟨A⟩+n³}. Combining these with the per-step volume reduction by factor e^{−1/(2n)}: after N=2n((2n+1)⟨A⟩+n⟨b⟩−n³) steps the volume of the current ellipsoid falls below the minimum possible volume of a non-empty P, so we can safely declare P=∅ if no feasible point was found. The complete algorithm: E_0=E(R²I,0) with c_0=0; at each step query c_k to the oracle; if c_k∈P stop and return c_k; else use the oracle’s violated constraint â to compute E</em>{k+1}=(Â_{k+1},c_{k+1}); after k=N steps return ‘P=∅.’ The algorithm only needs the encoding lengths ⟨A⟩,⟨b⟩ to initialize and to set the stopping criterion; it only needs R (circumscribing radius) and r (contained-ball radius). The method as presented is called the ‘central cut’ ellipsoid; related variants include shallow cuts and deep cuts._</p>
+
+    <p><a href="/pdfs/comboptclass/5.3.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 5.4: <a href="https://youtu.be/j01pieT0XeA" target="_blank" rel="noopener noreferrer">Strong and Weak Oracles, Part I</a></strong>
+<img src="https://img.youtube.com/vi/j01pieT0XeA/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We introduce the oracle-based complexity framework. Computational complexity is measured as the number of calls to a given oracle plus basic arithmetic operations. For a convex set K⊆ℝⁿ we define: S(K,ε)={x∈ℝⁿ: ‖x−y‖≤ε for some y∈K} (ε-expansion) and S(K,−ε)={x∈K: S(x,ε)⊆K} (ε-deep interior). We then define four problem types in both strong and weak variants. For optimization: Strong Opt (SOPT) — given c∈ℝⁿ, find y∈K maximizing c^Tx over K or assert K=∅; Weak Opt (WOPT) — given c∈ℚⁿ and ε&gt;0, either find y∈ℚⁿ with y∈S(K,ε) and c^Tx≤c^Ty+ε for all x∈S(K,−ε), or assert S(K,−ε)=∅. The other three problem types (in strong and weak forms) are Violation, Validity, and Separation, and are also introduced on the slides. These definitions set up the equivalence results established in the next lecture.</em></p>
+
+    <p><a href="/pdfs/comboptclass/5.4.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 5.5: <a href="https://youtu.be/bHkkyVo0K1g" target="_blank" rel="noopener noreferrer">Strong and Weak Oracles, Part II</a></strong>
+<img src="https://img.youtube.com/vi/bHkkyVo0K1g/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We begin by recapping and formally defining all six oracle problem types for convex K⊆ℝⁿ from the prior lecture. SSEP (Strong Separation): given y∈ℝⁿ, decide if y∈K, and if not find c∈ℝⁿ s.t. c^Ty &gt; max{c^Tx: x∈K} (i.e., c^Ty &gt; c^Tx ∀x∈K). WSEP (Weak Separation): given y∈ℚⁿ, δ∈ℚ&gt;0, either (i) assert y∈S(K,δ) or (ii) find c∈ℚⁿ with ‖c‖∞=1 s.t. c^Ty ≥ c^Tx−δ ∀x∈S(K,−δ). WVIOL and SVAL/WVAL complete the picture. We then establish the relative strength hierarchy: SOPT→SVIOL→SVAL and WOPT ⇔R WVIOL→WVAL with WOPT→WSEP, where ‘R’ denotes side information that K⊆S(0,R) (a circumscribing ball). The bisection argument gives WVIOL →R WOPT: binary search on the objective using the violation oracle. The ellipsoid algorithm gives WSEP →R WVIOL. Combining: WOPT ⇔R WVIOL ⇔R WSEP — all four weak problems are mutually polynomially equivalent given the circumscribing ball radius. For the duality/polarity connection between SEP and OPT: the polar of P={x: Ax≤b} is P*={y: x^Ty≤1 ∀x∈P} (example: P=[-1,1]ⁿ gives P*={z: ‖z‖₁≤1}, the cross polytope). Theorem: solving an LP over P is equivalent to solving the separation problem over P*. Proof: the decision problem ‘is max{c^Tx: x∈P}≤1?’ is equivalent to ‘c∈P*?’; if ∃y∈P with c^Ty&gt;1 then c∉P* and y^Tc &gt; y^Tz ∀z∈P*, giving a separating hyperplane. Key construction for WSEP→WVIOL via ellipsoid: use WSEP_K to build a weak separation oracle for K̂=K∩{x: c^Tx≥γ}, then run the ellipsoid algorithm on K̂.</em></p>
+
+    <p><a href="/pdfs/comboptclass/5.5.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 5.6: <a href="https://youtu.be/lPg78kbLIsM" target="_blank" rel="noopener noreferrer">Rational Polyhedra</a></strong>
+<img src="https://img.youtube.com/vi/lPg78kbLIsM/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We work with rational polytopes P={Ax≤b} where A_ij, b_i∈ℚ. The punchline stated upfront: if we have upper bounds on the encoding lengths of individual facets or vertices of a polyhedron (as opposed to the full matrix ⟨A⟩,⟨b⟩), then solvability of weak oracle problems implies solvability of strong oracle problems — and we can drop assumptions on full dimensionality and boundedness. We define facet-complexity and vertex-complexity: P has facet-complexity φ if there exists a rational system describing P where each inequality has encoding length ≤φ; P has vertex-complexity υ if P=conv{V}+cone{E} where each vertex v and ray r∈E has encoding length ≤υ (with the convention φ≥n+1 if P=ℝⁿ, υ≥n if P=∅). A well-described polyhedron is a triplet (P,n,φ) where P has facet complexity ≤φ. Two key lemmas: (1) if P has facet-complexity φ then vertex complexity ≤4n²φ; conversely if vertex complexity υ then φ≤3n²υ; (2) if there is a description of P with facet complexity φ, a standard representation has facet complexity ≤35n²φ. We then connect these notions to the weak/strong oracle framework via four lemmas: if P⊆ℝⁿ is full-dimensional with vertex-complexity υ, all vertices lie in S(0,2^υ) (circumscribing ball); if P has facet complexity ≤φ, then P contains a ball of radius ≥2^{−7n³φ} (inscribed ball); if y∈ℚⁿ with common denominator ≤q and y∈S(P,(1/q)·2^{−2φ}) then y∈P; if a^Tx≤b is an integral inequality almost valid for P (i.e., a^Tx≤b+2^{−(υ+1)} ∀x∈P) then a^Tx≤b ∀x∈P. Summary for well-described polyhedra: (A) the 4 strong problems are equivalent; (B) weak oracles solve the strong problems.</em></p>
+
+    <p><a href="/pdfs/comboptclass/5.6.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+</ul>
+
+<h3 id="module-6-bipartite-matching">Module 6: Bipartite Matching</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 6.1: <a href="https://youtu.be/a2JNaHp88sA" target="_blank" rel="noopener noreferrer">Bipartite Matching, Part I</a></strong>
+<img src="https://img.youtube.com/vi/a2JNaHp88sA/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We set up the bipartite matching problem on G=(V,E) with V=V₁⊔V₂, E⊆V₁×V₂ (a graph is bipartite iff every cycle has even length). A matching M⊆E has no two edges incident on the same vertex (equivalently Σ</em>{e∈δ(v)} χ^M_e ≤ 1 ∀v∈V). The matching polytope is P_match(G) = conv{χ^M: M a matching} ⊆ ℝ^|E|. The LP relaxation is Q(G) = {x∈ℝ^|E|: 0≤x_e≤1, Σ_{e∈δ(v)} x_e ≤ 1 ∀v}, which satisfies Q(G)⊇P_match(G). Main theorem: if G is bipartite, Q(G) = P_match(G). Proof by induction on |F| where F=supp(x)={e: x_e&gt;0}: Case 1 — F contains a cycle: G bipartite forces the cycle to be even; let d∈{0,+1,−1}^E alternate ±1 along the cycle with supp(d)⊆F=supp(x); for ε small enough x±εd∈Q(G); take ε₁,ε₂ maximally so that x₁=x+ε₁d and x₂=x−ε₂d lie in Q(G) with |supp(x_i)|≤|F|−1; by induction x_i∈P_match(G), so x=λ₁x₁+λ₂x₂∈P_match(G). Case 2 — F has no cycles: F is a forest but not a matching, so there exists a path P̃ of maximal length ≥2 where 0&lt;x_e&lt;1 for e∈P̃ (the path endpoints cannot have a binding degree constraint); apply the same ±εd argument along P̃ to reduce support. Consequence: for bipartite G, solving max{Σx_e: x∈Q(G)} gives the value and a certificate of the maximum size matching._</p>
+
+    <p><a href="/pdfs/comboptclass/6.1.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 6.2: <a href="https://youtu.be/0aMcu7da8QM" target="_blank" rel="noopener noreferrer">Bipartite Matching, Part II</a></strong>
+<img src="https://img.youtube.com/vi/0aMcu7da8QM/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We define the perfect matching polytope P_pm(G) = conv{χ^M: M a perfect matching} where M is perfect if every vertex v is on M (Σ</em>{e∈δ(v)} x_e = 1 ∀v, x_e∈{0,1}). Q_pm(G) = {x≥0: Σ_{e∈δ(v)} x_e = 1 ∀v} ⊇ P_pm(G). Theorem: Q_pm(G) = P_pm(G) for bipartite G. Proof: any x∈Q_pm(G) ⊆ Q_match(G) = P_match(G) = Σα_M χ^M; if some α_M̂&gt;0 for M̂ not a perfect matching, let v̂ be a vertex not in M̂; then Σ_{e∈δ(v̂)} x_e = Σ_{M covering v̂} α_M = 1 − α_M̂ &lt; 1, contradicting the equality constraint — so only perfect matchings appear in the decomposition. We also prove: vertices of P_pm(G) are exactly {χ^M: M a p.m.}, meaning no perfect matching is a convex combination of other matchings. As a corollary we state the Birkhoff-von Neumann Theorem: a matrix X is doubly stochastic (X_{ij}≥0, Σ_i X_{ij}=1 ∀j, Σ_j X_{ij}=1 ∀i) if and only if it is a convex combination of permutation matrices — this is Q_pm=P_pm applied to the complete bipartite graph K_{n,n}. Finally, we prove König’s Theorem: for G=(V,E) bipartite, max matching cardinality = min vertex cover cardinality, where a vertex cover S⊆V has every edge e∈E incident to some vertex in S. Proof: the max matching LP (max Σx_e s.t. x_e≥0, Σ_{e∈δ(v)} x_e ≤ 1 ∀v) and the min vertex cover LP (min Σy_v s.t. y_{v₁}+y_{v₂}≥1 ∀(v₁,v₂)∈E, y≥0) are LP duals; by induction on |V|: if E≠∅ pick v̂ with y*<em>{v̂}&gt;0 from the LP optimal; complementary slackness forces Σ</em>{e∈δ(v̂)} x_e=1 for any optimal primal solution, so every maximal matching covers v̂; then max_match(G−{v̂})=max_match(G)−1 and the inductive bound gives min_vertex_cov(G)≤max_match(G); the reverse inequality follows from LP duality._</p>
+
+    <p><a href="/pdfs/comboptclass/6.2.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+</ul>
+
+<h3 id="module-7-total-unimodularity-and-total-dual-integrality">Module 7: Total Unimodularity and Total Dual Integrality</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 7.1: <a href="https://youtu.be/sKljREy6PFY" target="_blank" rel="noopener noreferrer">Total Unimodularity, Part I</a></strong>
+<img src="https://img.youtube.com/vi/sKljREy6PFY/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We define a matrix A to be totally unimodular (TU) if every square submatrix has determinant in {+1, 0, −1} (entries A</em>{ij}∈{−1,0,+1}; A need not be square). The fundamental integrality theorem: if A is TU (m×n) and b∈ℤᵐ, then P={x: Ax≤b} has integral extreme points. Proof via Cramer’s rule: an extreme point is determined by n tight inequalities (index set B, |B|=n), giving x=A_B^{-1}b_B; by Cramer, x_i = det(A_{Bi}, b_B)/det(A_B) = ±det(A_{Bi}, b_B) ∈ ℤ since TU forces det(A_B)=±1, and (A^{-1})<em>{ij} = det(A</em>{ji}^Δ)/det(A). Duality corollary: if A is TU and b,c are integral, then both the primal min{c^Tx: Ax=b, x≥0} and the dual max{p^Tb: A^Tp≤c} have integral optimal solutions. Key Lemma (T.F.A.E.): (1) A is TU; (2) A^T is TU; (3) [A; I] is TU (this one is circled as most important); (4) [I; A; −A] is TU. Proof of (1)→(3): by expansion by minors, any square submatrix of [A;I] reduces to a square submatrix  of A (which has det∈{0,+1,−1} by TU). The result on the previous slide follows from (3) applied to the first theorem. Converse theorem (Integrality implies TUM): if A has independent rows, P={x: Ax=b, x≥0} is integral ∀b integral iff A is TU. Proof strategy: enough to show A_B is TU; A_B TU ⟺ A_B^{-1} integral ⟺ A_B^{-1}v integral ∀ integral v; to verify, choose integral y with z=y+A_B^{-1}v≥0, form z̃=(z;0), show z̃ is an extreme point of an integral polyhedron, hence integral. Hoffman-Kruskal Corollary: A integral {−1,0,1} is TU iff ∀b integral P={x: Ax≤b, x≥0} is integral; proof uses the equivalence A TU ⟺ [A I] TU._</p>
+
+    <p><a href="/pdfs/comboptclass/7.1.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 7.2: <a href="https://youtu.be/FBny6I9QxwM" target="_blank" rel="noopener noreferrer">Total Unimodularity, Part II</a></strong>
+<img src="https://img.youtube.com/vi/FBny6I9QxwM/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We prove the bipartite graph / TUM equivalence. Theorem: for G=(V,E) with node-edge incidence matrix A (A</em>{v,e}=1 if e∈δ(v), else 0), A is TU if and only if G is bipartite. The forward direction (G bipartite ⟹ A TU) is proved by induction on the size k of square submatrices (1×1 is immediate): for a k×k submatrix Â three cases arise — (1) some column is all zeros (det Â=0 immediately); (2) some column has exactly one 1 (expand by minors along that column and apply the inductive hypothesis); (3) every column has exactly two 1’s (bipartiteness gives a row partition into two groups so each column has one 1 per group, hence Â(1;−1)=(0;0) and det Â=0). The lecture then gives a TU-based re-proof of König’s theorem: since A is TU (G bipartite), the Hoffman-Kruskal theorem implies the Min Vertex Cover LP (min 1^Ty s.t. y_{v1}+y_{v2}≥1 ∀(v1,v2)∈E, y≥0) is integral, and König’s theorem follows from TU and LP duality. A Generalized König theorem is also stated: for integral vectors b,c, a b-matching is x:E→Z≥0 with Σ_{e∈δ(v)} x_e≤b_v, and a c-vertex cover is y:V→Z≥0 with y_{v1}+y_{v2}≥c_{(v1,v2)}; for any bipartite graph with b,c integral, max c-weighted b-matching equals min b-weighted c-vertex cover. The lecture closes with the characterization: for M square, M is TUM if and only if M and M^{-1} have all entries in {−1,0,+1}._</p>
+
+    <p><a href="/pdfs/comboptclass/7.2.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 7.3: <a href="https://youtu.be/Lmc7NzGu30Y" target="_blank" rel="noopener noreferrer">Total Unimodularity, Part III</a></strong>
+<img src="https://img.youtube.com/vi/Lmc7NzGu30Y/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>This lecture develops TUM in the context of network flow and provides a complete characterization of TU matrices. The signed node-edge incidence matrix of a directed graph (A</em>{v1,e}=−1=−A_{v2,e} for arc (v1,v2)∈E, entries in {−1,0,+1}) is TU (exercise: the proof mimics the bipartite argument). Since the flow constraint matrix is TU, the max flow LP solution is integral whenever capacities are integral. The LP duality pairing of max flow with min cut (max w^Tx s.t. Ax=0, 0≤x≤c / dual min b^Tz+c^Ty s.t. A^Tz+Iy≥w, y≥0) together with integrality implies max flow = min cut. The lecture then presents 7 T.F.A.E. characterizations of TU for A with entries in {−1,0,+1}: (1) each square submatrix has det 0,±1; (2) P={x≥0: Ax≤b} is integral ∀b∈Z^m; (3) P={x: c≤x≤d, a≤Ax≤b} is integral for all integral a,b,c,d; (4) [highlighted] each collection of columns can be split into two parts so that the difference of their column-sums is a {0,1,−1}-vector; (5) every non-singular square submatrix has a row with an odd number of nonzero entries; (6) in any square submatrix, the sum of entries over rows with an even row-sum is divisible by 4; (7) no square submatrix has det ±2. Nine operations preserving TU are catalogued: (i) permute rows/columns; (ii) transpose; (iii) multiply a row/column by −1; (iv) pivot: [ε c; b D]→[−ε εc; εb D−εbc] with ε=±1; (v) add an all-zero row/column or a row/column with a single ±1 entry; (vi) repeat a row/column; (vii) 1-sum A⊕₁B=[A 0; 0 B]; (viii) 2-sum [A_a]⊕<em>e[b</em>; B]=[A ab; 0 B]; (ix) 3-sum yielding [A ab; Ac B]. The lecture closes with Seymour’s Decomposition Theorem: A is TU if and only if A arises from network matrices and two specific 5×5 matrices by applying operations i–ix (with operations vii–ix applied only when A and B are large enough: #rows+#cols≥4)._</p>
+
+    <p><a href="/pdfs/comboptclass/7.3.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 7.4: <a href="https://youtu.be/xDBQmrwrBA8" target="_blank" rel="noopener noreferrer">Total Dual Integrality, Part I</a></strong>
+<img src="https://img.youtube.com/vi/xDBQmrwrBA8/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>This lecture establishes that TU is a property of a matrix alone — in contrast to the TDI notion to come, TU guarantees {x: Ax≤b} is integral for every b, not just a fixed (A,b) pair. The bulk of the lecture develops the theory of faces and supporting hyperplanes needed to characterize integral polytopes. For P={x: Ax≤b}, a hyperplane H={x: s^Tx=β} is a supporting hyperplane if H∩P≠∅ and P is contained in one closed half-space (P⊆H₊ or P⊆H₋). A face of P is F={x∈P: A’x=b’} where (A’,b’) is a subset of rows of (A,b). A face F is a minimal face (inclusion-wise) if and only if F is an affine subspace F={x∈ℝⁿ: A’x=b’}. Main theorem (A,b rational): P={Ax≤b} is integral if and only if each rational supporting hyperplane contains an integral vector. The nontrivial direction (⟸) is proved by contradiction: wlog A,b integral; let F={x: A’x=b’} be a minimal face; if F contains no integral vector then ∃y&gt;0 with y^TA’ integral but y^Tb’ non-integral; setting c=y^TA’ and γ=y^Tb’, the hyperplane H={x: c^Tx=γ} is a rational supporting hyperplane containing no integral vectors — a contradiction (that F=P∩H is left as exercise).</em></p>
+
+    <p><a href="/pdfs/comboptclass/7.4.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 7.5: <a href="https://youtu.be/l8YdPRxqlXo" target="_blank" rel="noopener noreferrer">Total Dual Integrality, Part II</a></strong>
+<img src="https://img.youtube.com/vi/l8YdPRxqlXo/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>The lecture begins by restating the main result from 7.4: P={Ax≤b} with A,b∈Q is integral if and only if every rational supporting hyperplane contains an integral vector (⟹ obvious; ⟸ proved last lecture). Using this, the lecture proves a key consequence: if max{c^Tx: Ax≤b} has an integral optimal value for every integral c, then P is integral — because any rational supporting hyperplane H={x: c^Tx=δ} equals argmax{c^Tx: x∈P}, so if δ is integral and c∈Z^n with rel-prime entries then H must contain an integral solution. The TDI definition is then introduced: (A,b) is totally dual integral (TDI) if for every integral c for which max{c^Tx: Ax≤b} is finite, the dual min{b^Ty: y^TA=c, y≥0} has an integral optimal solution. If (A,b) is TDI and b is integral then {Ax≤b} is integral (the dual integral optimal value serves as the needed integral opt value for max, and the above argument applies). A crucial subtlety is emphasized: TDI is a property of the specific system (A,b), not of the underlying polytope — the same polytope can have both TDI and non-TDI descriptions. The lecture closes by stating A TU and b integral ⟹ (A,b) is TDI, and noting the converse need not hold.</em></p>
+
+    <p><a href="/pdfs/comboptclass/7.5.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 7.6: <a href="https://youtu.be/JfsHAqY3ONc" target="_blank" rel="noopener noreferrer">Total Dual Integrality, Part III</a></strong>
+<img src="https://img.youtube.com/vi/JfsHAqY3ONc/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>This lecture illustrates TDI through a worked pair of examples and introduces the Hilbert basis. Starting from the recap that (A,b) TDI with b∈Z^m ⟹ {Ax≤b} integral (but not conversely), two representations of the same integral polytope are compared. Example 1 (not TDI): P={x₁,x₂≥0, x₁+2x₂≤6, 2x₁+x₂≤6}, with constraint matrix A=(1 2; 2 1; −1 0; 0 −1) and b=(6,6,0,0)^T. For c=(1,1), max x₁+x₂=4 at x*=(2,2); the dual min 6y₁+6y₂ s.t. y₁+2y₂−y₃=1, 2y₁+y₂−y₄=1, y≥0 has optimal y*=(⅓,⅓,0,0) — non-integral, so this representation is not TDI. Example 2 (TDI): the same polytope with the redundant constraint x₁+x₂≤4 added: A=(1 2; 2 1; −1 0; 0 −1; 1 1), b=(6,6,0,0,4)^T. The dual for c=(1,1) is min 6y₁+6y₂+4y₅ s.t. y₁+2y₂−y₃+y₅=1, 2y₁+y₂−y₄+y₅=1, y≥0, which has integral optimal y*=(0,0,0,0,1), so this representation is TDI. The lecture closes by defining the Hilbert Basis (HB): a finite set {a₁,…,a_N} is a HB if every integral vector b∈cone{a₁,…,a_N} can be written as a nonneg integral combination of a₁,…,a_N. Example: cone{(2,1),(1,2)} is not a HB (the integral point (1,1) lies in the cone but requires fractional coefficients), while cone{(2,1),(1,1),(1,2)} is a HB.</em></p>
+
+    <p><a href="/pdfs/comboptclass/7.6.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 7.7: <a href="https://youtu.be/1kR6frn3uIg" target="_blank" rel="noopener noreferrer">Arborescences and TDI, Part I</a></strong>
+<img src="https://img.youtube.com/vi/1kR6frn3uIg/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We introduce the min r-arborescence problem and prove it equals a dual r-cut packing problem, via TDI. For directed G=(V,E) with root r∈V, an r-arborescence is a set of arcs such that every node v∈V \ {r} has exactly one incoming arc. An r-cut is defined by a nonempty subset U⊆V \ {r}: the set of arcs entering U. Theorem: the min total length of an r-arborescence equals the max number of r-cuts C₁,…,Cₜ such that no arc e appears in more than l(e) of them. The LP relaxation defines matrix C (rows=r-cuts, columns=arcs) and sets up the primal min l^Tx s.t. Cx≥1, x≥0 and dual max 1^Ty s.t. y^TC≤l^T, y≥0. Proving both have integral optimal solutions ∀l∈Z</em>+^E reduces to showing (C,1) is TDI. The key step: among all dual maximizers, choose the one that also maximizes the weighted size Σ_U y_U·|U|². Claim: the support F={U: y_U&gt;0} of this maximizer is a laminar family — any two sets in F are either nested (one contains the other) or disjoint. Laminarity is defined carefully, with the non-laminar (crossing) case illustrated. The lecture concludes by showing that the LP over C can be replaced by one over C’ (the rows of C indexed by F) without changing the dual optimal value, because the chosen y has zeros outside F._</p>
+
+    <p><a href="/pdfs/comboptclass/7.7.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 7.8: <a href="https://youtu.be/YsuxkNWFfJg" target="_blank" rel="noopener noreferrer">Arborescences and TDI, Part II</a></strong>
+<img src="https://img.youtube.com/vi/YsuxkNWFfJg/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>This lecture completes the proof that the arborescence LP is TDI. Recap from 7.7: C’ is the submatrix of C whose rows are indexed by the laminar family F={U: y_U&gt;0}, and the two dual programs (over C and over C’) achieve the same optimal value. Key Lemma: C’ is totally unimodular. Proof: choose any subset G⊆F of rows; define the height h(U)=#{T∈G: T⊇U} (number of sets in G that contain U); partition G into G_even={U∈G: h(U) even} and G_odd={U∈G: h(U) odd}. Claim: for any arc e, the number of sets in G_odd entered by e differs from the number in G_even entered by e by at most 1. This is because the rows correspond to r-cuts and G is laminar, so the sets entered by e form a chain under inclusion in G — their heights alternate, giving a difference of at most 1 for any column. By the T.F.A.E. characterization of TU (condition 4: any collection of columns splits into two parts whose column-sum difference has entries in {0,1,−1}), this proves C’ is TU. An important caveat: C itself need not be TU — only the laminar sub-matrix C’ is TU, which is why the laminarity argument is essential. Conclusion: C’ TU ⟹ max{1^Ty: y^TC’≤l^T, y≥0} has integral optimal solution ⟹ max{1^Ty: y^TC≤l^T, y≥0} has integral optimal solution (by Hoffman-Kruskal) ⟹ (C,1) is TDI ⟹ primal has integral optimal solution ∀l integral.</em></p>
+
+    <p><a href="/pdfs/comboptclass/7.8.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+</ul>
+
+<h3 id="module-8-non-bipartite-matching">Module 8: Non-Bipartite Matching</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 8.1: <a href="https://youtu.be/vD4R93U5_xs" target="_blank" rel="noopener noreferrer">Non-Bipartite Matching, Part I</a></strong>
+<img src="https://img.youtube.com/vi/vD4R93U5_xs/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We establish the foundational tools for matching on general graphs. An M-augmenting path is a path v₁,v₂,…,v</em>{2k} where edges alternate between non-matching and matching (starting and ending with non-matching edges, so both v₁ and v₂k are unmatched/exposed). Theorem (general graphs): M is a maximum-size matching if and only if no M-augmenting path exists. The proof of the non-trivial direction uses the symmetric-difference graph Ĝ=(V,M△M’): it has max degree 2, so it decomposes into paths and cycles; since |M’|&gt;|M|, at least one component is a path with more M’-edges, which is an M-augmenting path. The lecture then specializes to bipartite graphs: orient each edge (u,w) as u→w if not in M, and w→u if in M; an M-augmenting path exists iff there is a directed path from an exposed U-vertex to an exposed W-vertex, which can be found efficiently. The lecture closes by proving Hall’s theorem: a bipartite graph G=(U∪W,E) has a matching covering U iff |N(S)|≥|S| for all S⊆U (where N(S)⊆W is the neighborhood). The proof uses König’s theorem: every vertex cover C satisfies |C|=|C∩U|+|C∩W|≥|C∩U|+|N(U\C)|≥|C∩U|+|U\C|=|U|._</p>
+
+    <p><a href="/pdfs/comboptclass/8.1.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 8.2: <a href="https://youtu.be/vgkAcydk7gw" target="_blank" rel="noopener noreferrer">Non-Bipartite Matching, Part II</a></strong>
+<img src="https://img.youtube.com/vi/vgkAcydk7gw/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>The lecture proves the Tutte-Berge Theorem: ν(G)=min</em>{U⊆V} ½(|V|+|U|−o(G-U)), where ν(G) is the maximum matching size and o(G-U) is the number of odd-size connected components of G after removing U. Two corollaries are immediate: (1) for any matching M, if ∃Û⊆V with |M|=½(|V|+|Û|−o(G-Û)), then M is a maximum-size matching (Û serves as a certificate of optimality); (2) Tutte’s Theorem: G has a perfect matching iff ∀U⊆V, o(G\U)≤|U|. The proof of ≤ is a short calculation: ν(G)≤|U|+ν(G-U)≤|U|+½(|V\U|−o(G-U))=½(|V|+|U|−o(G-U)). The proof of ≥ proceeds by induction on |V|. If some vertex v̂ is covered by every maximum-size matching, apply the inductive hypothesis to G-v̂ (with ν(G-v̂)=ν(G)-1) and set U=U’∪{v̂} to conclude. Otherwise, no vertex is covered by all maximum matchings; assuming ν(G)&lt;½|V|, a careful choice of (M,u,v) minimizing the distance between two unmatched nodes leads to a contradiction by constructing a matching that misses a strictly closer pair — completing the induction._</p>
+
+    <p><a href="/pdfs/comboptclass/8.2.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 8.3: <a href="https://youtu.be/08r8sszFJ-Y" target="_blank" rel="noopener noreferrer">Non-Bipartite Matching, Part III</a></strong>
+<img src="https://img.youtube.com/vi/08r8sszFJ-Y/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>This lecture develops the algorithm for finding M-augmenting paths using M-alternating trees. Given matching M, let X⊆V be the set of exposed (unmatched) vertices. An M-alternating tree rooted at r∈X is a tree where every root-to-leaf path alternates between non-matching and matching edges. Vertices are labelled Even (E, at even depth from root — root is E) or Odd (O, at odd depth). Key observation: if the tree reaches a vertex v∈X{r}, the path from r to v is an M-augmenting path. A maximal M-alternating tree is one where no Even vertex has an edge to any vertex outside the tree. The 4-step algorithm for growing maximal trees: (1) choose root r∈X, label it E; (2) add all neighbors of E-vertices not yet in the tree, label them O — if any O-vertex is exposed (in X), stop, an M-augmenting path has been found; (3) for each new O-vertex, follow its matching edge and add the matched partner to the tree, labelled E; (4) repeat until no new E-vertices have unvisited neighbors, then remove all current tree nodes from G and restart with the next root in X. A Sufficient Condition Lemma is stated (proof in next lecture): if the algorithm terminates without finding an M-augmenting path AND there are no edges in G between two E-labelled vertices (no E-E edge), then M is already a maximum-size matching. This lemma reduces the problem entirely to the case where an E-E edge exists — the blossom situation addressed in subsequent lectures.</em></p>
+
+    <p><a href="/pdfs/comboptclass/8.3.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 8.4: <a href="https://youtu.be/lqRUeSQBDJA" target="_blank" rel="noopener noreferrer">Non-Bipartite Matching, Part IV</a></strong>
+<img src="https://img.youtube.com/vi/lqRUeSQBDJA/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>This lecture proves the Sufficient Condition Lemma stated in the previous lecture: if the maximal M-alternating tree algorithm terminates with no M-augmenting path found AND no E-E edges anywhere in G, then M is a maximum-size matching. The proof has two key steps: (A) any edge in G with an E-endpoint must go to an O-vertex — E-E edges are ruled out by assumption, and E-to-outside-tree edges are ruled out by maximality; (B) the count |Even| = |Odd| + |X| holds because no M-aug path was found, which forces all tree paths to end at E-vertices, and every E-vertex except the root r is matched to an O-vertex by a matching edge. As a corollary, for bipartite graphs the algorithm always terminates correctly without encountering E-E edges: if it builds a collection of maximal M-alternating trees without finding an M-aug path, then M is max size (exercise for details). The lecture then introduces blossoms: when an E-E edge is encountered, the two E-vertices and the paths back to their least common ancestor in the tree together with the E-E edge form an odd cycle — the blossom B. The portion of the alternating tree between the root and the blossom is called the stem. Key insight: contracting B to a single E-labelled node gives G/B, from which the tree can continue growing in new ways, enabling further search for an augmenting path.</em></p>
+
+    <p><a href="/pdfs/comboptclass/8.4.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 8.5: <a href="https://youtu.be/PQkma12JEr8" target="_blank" rel="noopener noreferrer">Non-Bipartite Matching, Part V</a></strong>
+<img src="https://img.youtube.com/vi/PQkma12JEr8/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>This lecture proves the Blossom Contraction Lemma and assembles Edmonds’s algorithm. The central lemma: letting G/B denote the graph with blossom B contracted to a single node and M/B the induced matching, an M-augmenting path exists in G if and only if an M/B-augmenting path exists in G/B. The proof is in three parts. (⇐) Given an M/B-aug path in G/B: if it avoids B the result is immediate; if it passes through B, follow the path until reaching B, then continue through the blossom in whichever of the two directions around the odd cycle maintains alternation — the result is a valid M-aug path in G. (⇒, equivalently M not max ⇒ M/B not max) Take M’=MΔS for an M-augmenting path S; the exposed vertex of M’ lies in B; since B is an odd cycle, the stem is odd length, so |M’|=|M|; in G/B, the entire blossom B corresponds to a single exposed vertex, giving an M’/B-aug path. Two cases for S: if Q avoids B the result is immediate; if Q touches B, since B is contracted to a single exposed vertex in G/B, Q^B (the projection of Q) is an M’/B-aug path in G/B. Edmonds’s Algorithm is then stated in full: (1) construct maximal M-alternating trees — if no E-E edge → M is maximum (Sufficient Condition Lemma); if E-E edge → contract blossom and continue; if aug path found in G/B₁/B₂/…/Bk → recover the aug path in G via repeated application of the lemma; (2) if no aug path and no more E-E edges → stop. Correctness Theorem: when the algorithm terminates, the current matching is maximum — because in the fully contracted graph no E-E edges remain, so by the Sufficient Condition Lemma no aug path exists there, and by the Blossom Lemma no aug path exists in G. The algorithm runs in polynomial time: building M-alternating trees is poly-time; at most |V| blossoms can be contracted before either terminating or finding an aug path; the matching can be augmented at most |V| times.</em></p>
+
+    <p><a href="/pdfs/comboptclass/8.5.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 8.6: <a href="https://youtu.be/NkHHXn8pfQs" target="_blank" rel="noopener noreferrer">The Matching Polytope, Part I</a></strong>
+<img src="https://img.youtube.com/vi/NkHHXn8pfQs/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>This lecture introduces the matching and perfect matching polytopes and proves Edmonds’s theorem Q_PM = P_PM. The polytopes P_PM = conv{χ^M : M perfect matching} and P_M = conv{χ^M : M matching} are defined. For bipartite graphs, x(δ(v))≤1 (resp. =1) suffices to describe P_M (resp. P_PM). For general graphs, additional odd-subset constraints are needed: the triangle example shows x(E[U])=½+½+½=3/2&gt;1, violating feasibility. The constraints are x(E[U])≤⌊½|U|⌋ for all U⊆V with |U| odd, where E[U] is the edge set induced by U. Edmonds’s theorems state Q_M={x(δ(v))≤1, x≥0, x(E[U])≤⌊½|U|⌋ ∀|U| odd}=P_M, and Q_PM={x≥0, x(δ(v))=1, x(δ(U))≥1 ∀U⊆V, |U| odd}=P_PM. The bulk of the lecture is a 5-step proof of Q_PM=P_PM by contradiction via a smallest counterexample: if Q_PM≠P_PM, take a vertex x of Q_PM not in P_PM in a minimal graph (minimizing |V|+|E|). First, 0&lt;x_e&lt;1 for all e (otherwise delete the zero-edge or contract the tight vertex to get a smaller counterexample). This implies deg(v)≥2 ∀v and |E|≥|V|. If |E|=|V|, every node has degree 2 and all cycles are even, so x is not a vertex — contradiction. So |E|&gt;|V|. Since x is a vertex, it satisfies |E| tight constraints; x(δ(v))=1 gives |V| independent ones; hence ∃ odd U with 3≤|U|≤|V|-3 and x(δ(U))=1. Construct G’=G/U and G’‘=G/Ū by contracting U and Ū to single nodes respectively. The restriction x’, x’’ of x to each contracted graph lies in Q’_PM=P_PM by minimality. Since x is rational, find k perfect matchings M’_i in G’ and M’‘_i in G’’ with x’=(1/k)Σχ^{M’_i}, x’’=(1/k)Σχ^{M’‘_i}. Since edges in δ(U) are shared, renumber so each M’_i and M’‘_i use the same edge in δ(U); then M_i=M’_i∪M’‘_i is a perfect matching in G and x=(1/k)Σχ^{M_i}∈P_PM — contradiction. The lecture closes noting that Q_M=P_M will be proved in the next lecture using this Q_PM result.</em></p>
+
+    <p><a href="/pdfs/comboptclass/8.6.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 8.7: <a href="https://youtu.be/vbzGfWQWizY" target="_blank" rel="noopener noreferrer">The Matching Polytope, Part II</a></strong>
+<img src="https://img.youtube.com/vi/vbzGfWQWizY/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>This lecture proves Edmonds’s theorem Q_M = P_M = conv{χ^M : M a matching}, using the Q_PM = P_PM result from the previous lecture. A Corollary is also derived: Q_PM = P_PM = {x≥0, x(δ(v))=1, x(E[U])≤⌊½|U|⌋, U⊆V, |U| odd}. The easy inclusion P_M⊆Q_M is immediate. For the reverse inclusion Q_M⊆P_M: take any x∈Q_M and construct a doubled graph G̃=(Ṽ,Ẽ) with Ṽ=V∪V’ (V’ a copy of V), Ẽ=E∪E’∪{(v,v’): v∈V} (bipartite crossing edges between each vertex and its copy). Extend x to x̃ by setting x̃_e = x̃</em>{e’} = x_e for e∈E, and x̃<em>{e</em>{v,v’}} = 1 - x(δ(v)) for each crossing edge. A key Lemma shows x̃∈Q_PM(G̃): x̃≥0 and x̃(δ̃(v))=1 hold by construction; for any Ũ=W∪Y’⊆Ṽ with |Ũ| odd (W⊆V, Y⊆V), one of |W\Y| or |Y\W| must be odd; WLOG |W\Y| odd; since x∈Q_M, x(E[W\Y])≤⌊½|W\Y|⌋=½|W\Y|-½; then x̃(δ̃(W\Y)) = Σ_{v∈W\Y} x̃(δ̃(v)) - 2x̃(E[W\Y]) ≥ |W\Y| - (|W\Y|-1) = 1, so x̃(δ̃(Ũ))≥1. By Q_PM(G̃) = P_PM(G̃), x̃∈P_PM(G̃), and a corollary (exercise) gives x∈P_M(G)._</p>
+
+    <p><a href="/pdfs/comboptclass/8.7.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 8.8: <a href="https://youtu.be/GBn06GuYjRI" target="_blank" rel="noopener noreferrer">The Matching Polytope, Part III</a></strong>
+<img src="https://img.youtube.com/vi/GBn06GuYjRI/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>This lecture formulates the max-weight matching LP, derives its dual, and proves the Cunningham-Marsh theorem. The primal LP over Q_M is: max Σw_e x_e s.t. x(δ(v))≤1 (dual variable y_v), x(E[U])≤⌊½|U|⌋ for all U⊆V with |U|≥3 odd (dual variable z_U), x≥0. Its dual is: min Σ_v y_v + Σ</em>{|U|≥3} z_U·⌊½|U|⌋ s.t. Σ_{v: e∈δ(v)} y_v + Σ_{U: e∈E[U]} z_U ≥ w_e ∀e, y,z≥0. Cunningham-Marsh Theorem: if w is integral, then (a) an optimal dual solution (y,z) can be taken to be integral; (b) z can be chosen so that Ω=supp(z)={U: z_U&gt;0} is a laminar family, meaning any U₁,U₂∈Ω satisfy U₁⊆U₂ or U₂⊆U₁ or U₁∩U₂=∅. Proof by induction on |E|+Σw_e (with w_e≥1 ∀e). Case 1: ∃ vertex v̂ present in every max-weight matching — apply inductive hypothesis (exercise). Case 2: every vertex is missed by some max-weight matching — complementary slackness then forces y≡0 in any optimal solution. Choose the optimal z maximizing Σz_U·⌊½|U|⌋²; the support Ω is laminar: if U,W∈Ω cross (U∩W≠∅, U⊄W, W⊄U), one can decrease z_U,z_W by δ=min{z_U,z_W} and increase z_{U∩W},z_{U∪W} by δ, leaving feasibility and optimality unchanged but increasing Σz_U·⌊½|U|⌋² — contradicting maximality. Integrality follows by a shifting argument using laminarity: take inclusion-maximal Û∈Ω with z_Û non-integral; let U₁,…,U_k be the inclusion-maximal subsets of Û in Ω; set z̃<em>Û←z_Û-α, z̃</em>{U_i}←z_{U_i}+α (α=fractional part of z_Û); feasibility is maintained by integrality of w even if k=0, and the objective Σz̃<em>U·⌊½|U|⌋ decreases by laminarity since U_i are disjoint. Three conclusions: (1) ∃ integral dual solution with laminar support; (2) the matching LP is TDI; (3) the Tutte-Berge formula can be recovered from this result (exercise).</em></p>
+
+    <p><a href="/pdfs/comboptclass/8.8.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 8.9: <a href="https://youtu.be/Z0eSQapcE6A" target="_blank" rel="noopener noreferrer">Weighted Matching, Part I</a></strong>
+<img src="https://img.youtube.com/vi/Z0eSQapcE6A/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We set up the framework for the max weight perfect matching algorithm using primal-dual methods. The primal LP maximizes Σw_e x_e subject to x(δ(v))=1 and x(δ(U))≥1 for all odd U with |U|≥3; the dual minimizes Σ_U y_U subject to Σ</em>{U: e∈δ(U)} y_U ≤ w_e, with a single family of variables y_U indexed over all odd sets U. The Cunningham-Marsh theorem (from 8.8) guarantees an optimal dual with laminar support, reducing the dual to O(|V|) variables. We define the invariants the algorithm will maintain: a dual-feasible y with laminar support Ω, the tight edge graph E_y = {e : w_e − Σ_{U: e∈δ(U)} y_U = 0}, the quotient graph G’ = G_y/Ω^max where Ω^max is the family of inclusion-maximal sets in Ω, and a Hamiltonian cycle C_U on G_y[U]/maximal subsets for each U ∈ Ω. The correctness chain w(M) ≥ Σ_{e∈M} Σ_{U: e∈δ(U)} y_U = Σ_U y_U·|M∩δ(U)| ≥ Σ_U y_U (with equality throughout when M is perfect and all CS conditions hold) shows that any feasible dual gives a lower bound, and equality certifies optimality. This lecture sets up the framework; the algorithm’s main loop is described in 8.10._</p>
+
+    <p><a href="/pdfs/comboptclass/8.9.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 8.10: <a href="https://youtu.be/JYiiw-9Ke14" target="_blank" rel="noopener noreferrer">Weighted Matching, Part II</a></strong>
+<img src="https://img.youtube.com/vi/JYiiw-9Ke14/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We present the weighted matching algorithm in full. The algorithm initializes with Ω = {{v} : v ∈ V} (all singletons), y ≡ 0, and M = ∅. Each iteration builds an M-alternating tree in the quotient graph G’ = G_y/Ω^max, labelling nodes E (even) or O (odd), and proceeds by one of three cases. Case 1: an augmenting path is found in G’; augment M along it and start a new iteration. Case 2: an E-E edge is found in G’; the corresponding odd cycle is a blossom — add the new odd set U to Ω (shrink), update G’, and continue building the tree. Case 3: neither Case 1 nor Case 2 applies; perform a dual update y ← y + θd where d_U = +1 for E-labelled sets U and d_U = −1 for O-labelled sets U, and θ is the largest value keeping dual feasibility. Two events can terminate the θ-update: (A) y_U → 0 for some O-labelled U — de-shrink U by removing it from Ω and expanding it back using its stored Hamiltonian cycle C_U, updating M to give a perfect matching on U; or (B) a new edge becomes tight and is added to E_y, enabling further tree growth. The algorithm terminates when M is a perfect matching in G’ (and hence in G via the stored C_U cycles).</em></p>
+
+    <p><a href="/pdfs/comboptclass/8.10.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 8.11: <a href="https://youtu.be/10oLc1yqZqM" target="_blank" rel="noopener noreferrer">Weighted Matching, Part III</a></strong>
+<img src="https://img.youtube.com/vi/10oLc1yqZqM/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We prove two complexity theorems for the weighted matching algorithm. Theorem 1: each iteration runs in O(|E|) time. The proof is direct — each iteration consists of building one M-alternating tree in the quotient graph, which requires scanning edges incident to each newly labelled node; since each edge is scanned at most twice (once per endpoint), the work is O(|E|) per iteration. Theorem 2: the total number of iterations is O(|V|²), giving overall complexity O(|E|·|V|²). The proof of Theorem 2 is deferred to 8.12.</em></p>
+
+    <p><a href="/pdfs/comboptclass/8.11.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 8.12: <a href="https://youtu.be/gmVHSQNS_A0" target="_blank" rel="noopener noreferrer">Weighted Matching, Part IV</a></strong>
+<img src="https://img.youtube.com/vi/gmVHSQNS_A0/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We complete the proof that the algorithm performs O(|V|²) iterations in total (Theorem 2 from 8.11). The key lemma is: once a set U is shrunk into Ω during an iteration, it cannot be de-shrunk until after the next augmentation. This holds because shrinking adds U as an E-labelled node in the quotient graph, de-shrinking only applies to O-labelled nodes, and only an augmentation (Case 1) can change the labelling structure. Between any two consecutive augmentations, the counts are therefore: at most 2|V| de-shrinkings (each set can be shrunk and de-shrunk at most once per augmentation phase), at most 2|V| shrinkings, and at most |V| edge additions to E_y — so O(|V|) iterations between augmentations. Since there are at most |V|/2 augmentations total, the total number of iterations is O(|V|²). We also extend the algorithm to non-perfect max weight matching via a doubling construction: given G with weights w, form the doubled graph G̃ with a copy v’ for each v and zero-weight edges (v, v’) for each v; a max weight perfect matching in G̃ restricts to a max weight (non-perfect) matching in G.</em></p>
+
+    <p><a href="/pdfs/comboptclass/8.11.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+</ul>
+
+<h3 id="module-9-matroids-and-matroid-intersection">Module 9: Matroids and Matroid Intersection</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 9.1: <a href="https://youtu.be/Z2BBK3Se_-s" target="_blank" rel="noopener noreferrer">Matroids, Part I</a></strong>
+<img src="https://img.youtube.com/vi/Z2BBK3Se_-s/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We introduce matroids. A matroid M = (E, I) consists of a finite ground set E and a nonempty family I of independent sets satisfying: (i) downward closure — if I⊆J and J∈I then I∈I; and (ii) the exchange property — if I,J∈I with |I|&lt;|J|, there exists z∈J\I with I+z∈I. We define the related vocabulary: a base of U⊆E is an inclusion-wise maximal independent subset of U; a key lemma states that any two bases of U have the same cardinality, which allows us to define the rank function r_M(U) = size of a base of U. A circuit is an inclusion-wise minimal dependent set; a loop is a singleton circuit. We also state an equivalent formulation of the exchange property (ii’): if I,J∈I with |I\J|=1 and |J\I|=2, then I+z∈I for some z∈J\I (with (ii)→(ii’) clear and (ii’)→(ii) left as an exercise). We illustrate with five families of matroids: linear matroids (independent sets = linearly independent subsets of vectors v_1,…,v_n), graphic matroids (independent sets = forests of a graph G=(V,E)), binary matroids (linear over GF(2)), uniform matroids (all subsets of cardinality ≤k), partition matroids (I={I⊆E: |I∩E_j|≤k_j ∀j} for a partition E=E_1∪…∪E_ℓ), transversal matroids (independent sets = partial systems of distinct representatives), and matching matroids (I={Z⊆V: Z is covered by some matching in G}).</em></p>
+
+    <p><a href="/pdfs/comboptclass/9.1.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 9.2: <a href="https://youtu.be/00LtTNWnEU8" target="_blank" rel="noopener noreferrer">Matroids, Part II</a></strong>
+<img src="https://img.youtube.com/vi/00LtTNWnEU8/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We state and completely prove the greedy theorem: for a given M=(E,I) and weight function w:E→R, the greedy algorithm (order elements by decreasing weight, add element i if I+i∈I) returns a maximum weight base for all w≥0 if and only if M is a matroid. The proof of the forward direction is by induction: at iteration k there exists a max-weight base B_k with I_k⊆B_k and B_k\I_k⊆{k+1,…,n}, maintained across all cases of whether greedy takes element k or not. For the reverse direction (not-a-matroid implies greedy fails), two cases are handled with explicit weight constructions: (A) if I is not downward closed — ∃S⊆T, T∈I but S∉I — choose w_i=2 for i∈S, 1 for i∈T\S, 0 otherwise; greedy skips at least one element of S while the optimum is all of T; (B) if I fails the exchange property — ∃S,T∈I with |S|&lt;|T| but S+i∉I for all i∈T\S — choose w_i=1+1/(2|S|) for i∈S, 1 for i∈T\S, 0 otherwise; greedy returns S with w(S)=|S|+½ but w(T)≥|T|≥|S|+1.</em></p>
+
+    <p><a href="/pdfs/comboptclass/9.2.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 9.3: <a href="https://youtu.be/_6Z4cS0fCg0" target="_blank" rel="noopener noreferrer">Matroids, Part III</a></strong>
+<img src="https://img.youtube.com/vi/_6Z4cS0fCg0/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We study the rank function and span of a matroid, then introduce submodular functions. We define Span(U) = {i∈E: rank(U+i) = rank(U)} and prove three immediate properties: (1) a base of U is also a base of Span(U); (2) for U⊆S⊆E with B a base of U, i∈Span(S) iff B+i∉I; (3) T_1⊆T_2 implies Span(T_1)⊆Span(T_2). We then prove the rank function is monotone (T_1⊆T_2 ⇒ rk(T_1)≤rk(T_2)) and has non-increasing marginal values (rk(T_2+i)−rk(T_2) ≤ rk(T_1+i)−rk(T_1) whenever T_1⊆T_2), using the fact that rk(T+i)−rk(T) equals 1 if i∉Span(T) and 0 otherwise. We define submodular functions: f:2^E→R is submodular if f(A∩B)+f(A∪B)≤f(A)+f(B) for all A,B⊆E, and prove the lemma that f is submodular if and only if it has non-increasing marginal values. We close with the rank-function characterization: r:2^E→R is the rank function of some matroid iff (1) r(∅)=0 and r(S+i)−r(S)∈{0,1} for all S,i; and (2) r is submodular. The proof constructs I={A⊆E: r(A)=|A|} and verifies the matroid axioms.</em></p>
+
+    <p><a href="/pdfs/comboptclass/9.3.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 9.4: <a href="https://youtu.be/x05JH4JEv6E" target="_blank" rel="noopener noreferrer">Matroids, Part IV</a></strong>
+<img src="https://img.youtube.com/vi/x05JH4JEv6E/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We study the independent set polytope P</em>{IndSet}(M) = conv{x^I : I∈I} and its LP relaxation Q_{IndSet}(M) = {x≥0 : x(U)≤r_M(U) ∀U⊆E}. The theorem is Q=P; the inclusion P⊆Q is immediate. For the reverse inclusion Q⊆P, we prove the system is TDI: for integer w≥0, order E so w_1≥w_2≥…≥w_n≥0, let U_i={1,…,i}, and let I={i: r(U_i)=r(U_{i-1})+1} (the greedy output, hence optimal). Expand w(I)=Σ_{i=1}^n w_i(r(U_i)−r(U_{i-1})) = w_n·r(U_n) + Σ(w_i−w_{i+1})·r(U_i) = Σλ_i·r(U_i) where λ_i=w_i−w_{i+1}≥0 and λ_n=w_n≥0. Set dual variables y_{U_i}=λ_i and y_U=0 for all other U; then y is dual feasible and Σy_U·r_M(U)=w(I), certifying optimality. Two conclusions follow: (1) the primal and dual both have integral optimal solutions (TDI); (2) the optimal dual has laminar support (the chain U_1⊆U_2⊆…⊆U_n is a laminar family). As a corollary, the Base Polytope P_{Base}(M) = conv{x^B: B a base} equals Q_{Base}(M) = {x≥0: x(U)≤r_M(U) ∀U⊆E, x(E)=r_M(E)}: since P_{Base}⊆Q_{Base}⊆P_{IndSet}=Q_{IndSet}, any x∈Q_{Base} equals Σα_I x^I with x(E)=r(E) forcing r(I)=r(E) for each I with α_I&gt;0, so each such I is a base._</p>
+
+    <p><a href="/pdfs/comboptclass/9.4.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 9.5: <a href="https://youtu.be/A82QmMg2fm8" target="_blank" rel="noopener noreferrer">Matroids, Part V</a></strong>
+<img src="https://img.youtube.com/vi/A82QmMg2fm8/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We develop matroid duality and related operations. The dual matroid M*=(E,I*) is defined by: I∈I* iff E\I is a base of M. For the graphic matroid of a connected graph G, I⊆E is independent in M*_G iff E\I is a spanning tree. We prove M* is a matroid with dual rank function r*(S)=|S|−(r(E)−r(E\S)), established by showing r* is submodular via the calculation r*(S∪T)+r*(S∩T)=|S∪T|+|S∩T|−2r(E)+r(E\(S∪T))+r(E\(S∩T)) ≤ |S|+|T|−2r(E)+r(E\S)+r(E\T) = r*(S)+r*(T). A useful lemma: r*(E)=|E|−r(E), and a set I is a base of M* iff E\I is a base of M. We define deletion and contraction: M\e=(E−e, {I⊆E−e: I∈I}) with r</em>{M\e}(S)=r_M(S), and M/e=(E−e, {I⊆E−e: I+e∈I}) with r_{M/e}(S)=r_M(S+e)−r_M(e). A key lemma relates these: (M/e)<em>=M</em>\e, proved by cases r(e)=0 and r(e)=1. The duality table records: contraction/deletion/base/independent set/circuit/loop in M correspond to deletion/contraction/complement of base/complement of spanning set/cut (minimal set intersecting every base)/bridge in M<em>. Finally, we derive the Spanning Set Polytope: P_{ss}(M)=conv{x^S: S spans E} equals Q_{ss}(M)={0≤x≤1: x(U)≥r_M(E)−r_M(E\U), ∀U⊆E}, proved via the duality x∈P_{ss}(M) iff 1−x∈P_{IndSet}(M</em>)._</p>
+
+    <p><a href="/pdfs/comboptclass/9.5.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 9.6: <a href="https://youtu.be/q8zZdCdJO8M" target="_blank" rel="noopener noreferrer">Matroids, Part VI</a></strong>
+<img src="https://img.youtube.com/vi/q8zZdCdJO8M/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We prove the strong basis exchange theorem and introduce the exchange graph. Theorem: given two bases B_1, B_2 and any x∈B_1\ B_2, there exists y∈B_2\B_1 such that both B_1−x+y and B_2−y+x are bases simultaneously. The proof goes: B_2+x has a unique circuit C; x∈Span(C-x) (since rank(C)=rank(C-x)); so x∈Span(B_1∪C-x) and span(B_1∪C-x)=E; hence ∃B_3 with B_1-x⊆B_3⊆B_1∪C-x (take y as the element B_3 adds); since C is the only circuit in B_2+x, B_2+x-y has no circuit, so it is a base. For any I∈I, we define the bipartite directed exchange graph D_M(I)=(E,A(I)) where A(I)={(y,z): y∈I, z∈E\ I, I-y+z∈I} (note: if z is in Span(I-y) there is no edge from y). A key corollary (proved by induction on |I\ J| via the exchange theorem and the truncated matroid M’): if I,J∈I with |I|=|J|=k, then A(I) contains a perfect matching on IΔJ. This corollary underlies the local/global optimality results in the next lecture.</em></p>
+
+    <p><a href="/pdfs/comboptclass/9.6.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 9.7: <a href="https://youtu.be/im_wh2hqSVk" target="_blank" rel="noopener noreferrer">Matroids, Part VII</a></strong>
+<img src="https://img.youtube.com/vi/im_wh2hqSVk/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We establish two optimality and uniqueness results using the exchange graph from 9.6. Theorem (Local/Global Optimality): a basis B is maximum weight if and only if w(B’) ≤ w(B) for every basis B’ with |B’\B| = 1 (i.e., differing from B in exactly one element). The proof uses the fact that A(B) has a perfect matching on BΔB’ for any other basis B’: if w(B’) &gt; w(B) for some B’, the matching gives a local swap that improves weight, contradicting local optimality. Theorem (Unique PM → J∈I): if I,J∈I with |I|=|J| and A(I) contains a unique perfect matching N on IΔJ, then J∈I. The proof is by contradiction: assume J∉I, so there exists a circuit C⊆J∪(I\J) with C∩(I\J) ≠ ∅ and C∩(J\I) ≠ ∅; the circuit C forces a second perfect matching in A(I) on IΔJ, contradicting uniqueness. Another Corollary: if r(I∪J)=r(I) and A(I) has a unique PM on IΔJ, and I+s∈I for some s, then J+s∈I. The proof adds s to the ground set, constructs the truncated matroid M’ on I∪{s}, and considers D</em>{M’}(I∪{s}); the unique PM condition propagates to give the result._</p>
+
+    <p><a href="/pdfs/comboptclass/9.7.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 9.8: <a href="https://youtu.be/ftEgEYjJEak" target="_blank" rel="noopener noreferrer">Matroid Intersection, Part I</a></strong>
+<img src="https://img.youtube.com/vi/ftEgEYjJEak/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We motivate and state the matroid intersection theorem. First, we show that greedy fails for matroid intersection: a worked example demonstrates that the greedy algorithm on I_1∩I_2 does not in general return a maximum common independent set, even when both M_1 and M_2 are matroids. We then present two important applications: (1) Bipartite matching as matroid intersection — given a bipartite graph G=(V_1∪V_2, E), define I_1={F⊆E: |F∩δ(v)|≤1 ∀v∈V_1} and I_2={F⊆E: |F∩δ(v)|≤1 ∀v∈V_2} (both partition matroids); then I_1∩I_2 = matchings in G, so max matching = max |I_1∩I_2|. (2) Arborescences as matroid intersection — a spanning arborescence of a directed graph can be expressed as the intersection of a graphic matroid and a partition matroid, yielding an efficient algorithm. Three study questions are posed to the viewer. The main theorem is then stated: for matroids M_1=(E,I_1) and M_2=(E,I_2), max</em>{I∈I_1∩I_2} |I| = min_{U⊆E} r_1(U) + r_2(E\U). Two corollaries follow: (Corollary 1) I_1 and I_2 have a common base iff r_1(U)+r_2(E\U)≥r(E) for all U⊆E; (Corollary 2) the minimum common spanning set satisfies min|S: S spans both M_1 and M_2| = |E| − max|I_1∩I_2| (applied to dual matroids). The easy inequality direction is also established here: for any I∈I_1∩I_2 and U⊆E, |I|=|I∩U|+|I\U|≤r_1(U)+r_2(E\U)._</p>
+
+    <p><a href="/pdfs/comboptclass/9.8.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 9.9: <a href="https://youtu.be/-unoN9uBWn8" target="_blank" rel="noopener noreferrer">Matroid Intersection, Part II</a></strong>
+<img src="https://img.youtube.com/vi/-unoN9uBWn8/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We prove the hard direction of the matroid intersection theorem (due to Woodall): max|I_1∩I_2| ≥ min</em>{U⊆E} r_1(U)+r_2(E\U). The proof is by induction on n_e = |{e∈E: r_1(e)=r_2(e)=1}|. The base case (n_e=0) is left as an exercise (every element is a loop in at least one matroid, so I_1∩I_2={∅} and the minimum is 0). For the inductive step, fix e with r_1(e)=r_2(e)=1 and let U* achieve the minimum. Two sub-cases arise depending on whether e∈U* or e∉U<em>: (Sub-case 1) e∉U</em> — apply the inductive hypothesis to the deletion M_1\e and M_2\e, getting a common independent set I of size r_1(U<em>)+r_2(E\U</em>) in (M_1\e)∩(M_2\e) = (I_1∩I_2)\{sets containing e}; (Sub-case 2) e∈U* — apply induction to the contractions M_1/e and M_2/e; the rank formula r_{M/e}(S)=r_M(S∪{e})-r_M({e}) and submodularity of r_1+r_2 yield a contradiction if the minimum over the contracted instance is strictly less. Combining the two cases shows max|I_1∩I_2|≥min r_1(U)+r_2(E\U). As an application, we re-derive Hall’s Marriage Theorem: a bipartite graph G=(V_1∪V_2,E) has a perfect matching iff |N(S)|≥|S| for all S⊆V_1, by applying the matroid intersection theorem to the two partition matroids and evaluating the minimum over U._</p>
+
+    <p><a href="/pdfs/comboptclass/9.9.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 9.10: <a href="https://youtu.be/AXCL_f0HJ9I" target="_blank" rel="noopener noreferrer">Matroid Intersection, Part III</a></strong>
+<img src="https://img.youtube.com/vi/AXCL_f0HJ9I/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We present the augmenting algorithm for matroid intersection. Given I∈I_1∩I_2, we define the directed exchange graph D</em>{M_1,M_2}(I) with vertex set E: for y∈I and z∈E\I, include arc (y,z) if I-y+z∈I_1, and arc (z,y) if I-y+z∈I_2. We also define X_1={z∈E\I: I+z∈I_1} and X_2={z∈E\I: I+z∈I_2}. Case I: if there exists a directed X_1-to-X_2 path P in D_{M_1,M_2}(I), then I’=IΔV(P) is a common independent set of size |I|+1. The proof of Case I proceeds as follows: let P=(z_0,y_1,z_1,…,y_k,z_k) with z_0∈X_1 and z_k∈X_2. The arcs leaving I in P (of the form (y_i,z_i)) form a unique matching in D_{M_1}(I) on V(P)∩I; since P is a shortest path, no shortcut exists, meaning z∈V(P)\I-z_0 implies I+z∉I_1; hence r_{M_1}(I∪(V(P)\I))=|I|, i.e., I does not span V(P)\I in M_1 only via z_0. The ‘Another Corollary’ from 9.7 then gives I’∩(E\I)=(V(P)\I) together with I’∩I=(I\V(P))∈I_1; a symmetric argument gives I’∈I_2. Case II (if no X_1-to-X_2 path exists) is deferred to 9.11._</p>
+
+    <p><a href="/pdfs/comboptclass/9.10.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 9.11: <a href="https://youtu.be/gjDmXSy5UcQ" target="_blank" rel="noopener noreferrer">Matroid Intersection, Part IV</a></strong>
+<img src="https://img.youtube.com/vi/gjDmXSy5UcQ/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We complete the augmenting algorithm by handling Case II. The lecture opens with a brief recap of the setup: D</em>{M_1,M_2}(I), X_1, X_2, and Case I. Case II: if D_{M_1,M_2}(I) has no X_1-to-X_2 path, then I is a maximum-size common independent set. The proof proceeds via a certifying set U: an exercise shows that if no X_1-X_2 path exists, then ∃U⊆E with U∩X_1=∅, U⊇X_2, and no arc of D_{M_1,M_2}(I) enters U (i.e., the set of vertices reachable from X_1 gives this U). With such U in hand, the key claim is r_{M_1}(U)+r_{M_2}(E\U)≤|I|. Proof of (i) r_{M_1}(U)≤|I∩U|: if not, ∃x∈U\I with I∩U+x∈I_1; but then I+x∉I_1 (otherwise x∈X_1, contradicting U∩X_1=∅); so ∃ circuit C⊆I+x with x∈C and C∩(I\U)=∅ (since I∩U+x∈I_1); hence ∃y∈I\U with I-y+x∈I_1, giving an arc that enters U — contradiction. Proof of (ii) r_{M_2}(E\U)≤|I\U| follows similarly. Together these give r_{M_1}(U)+r_{M_2}(E\U)≤|I∩U|+|I\U|=|I|, so by the Matroid Intersection Theorem, I is maximum._</p>
+
+    <p><a href="/pdfs/comboptclass/9.11.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 9.12: <a href="https://youtu.be/oGE6Gk4KDIo" target="_blank" rel="noopener noreferrer">Matroid Intersection, Part V</a></strong>
+<img src="https://img.youtube.com/vi/oGE6Gk4KDIo/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We state and begin the proof of the matroid intersection polytope theorem, developing the necessary lemmas. The main theorem is: P(M_1∩M_2) = P(M_1)∩P(M_2), where P(M)={x≥0: x(F)≤r(F) ∀F⊆E}; this implies P(M_1∩M_2)={x≥0: x(F)≤r_1(F), x(F)≤r_2(F) ∀F⊆E}. To prove it, we develop two lemmas about tight sets. Definition: for x∈P(M), a set U⊆E is tight if x(U)=r(U). Lemma 1: if x∈P(M) and S,T⊆E are both tight, then S∩T and S∪T are also tight. Proof: r(S∪T)+r(S∩T)≥x(S∪T)+x(S∩T)=x(S)+x(T)≤r(S)+r(T)=r(S∪T)+r(S∩T) (the last equality by submodularity); equality must hold throughout. Lemma 2: let x∈P(M) and let C={C_1,…,C_k} be an inclusion-wise maximal chain of tight sets (∅⊆C_1⊆…⊆C_k, x(C_i)=r(C_i)). Then any tight T⊆E must satisfy χ^T∈span{χ^C: C∈C}. Proof by contradiction: suppose T tight with χ^T∉span{χ^C: C∈C}. If T⊆C_k, then T is a union of increment sets C</em>{j+1}\C_j, so χ^T=Σ(χ^{C_{j+1}}-χ^{C_j})∈span{χ^C: C∈C} — contradiction; otherwise if T⊄C_k, set Ĉ=C_k∪T, which is tight by Lemma 1, extending the chain — contradicting maximality. In the remaining sub-case, one finds j with T∩(C_j\C_{j-1})⊊C_j\C_{j-1} and constructs Ĉ=(T∩C_j)∪C_{j-1}, tight with C_{j-1}⊊Ĉ⊊C_j — again contradicting maximality._</p>
+
+    <p><a href="/pdfs/comboptclass/9.12.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 9.13: <a href="https://youtu.be/FtCm0ILwXBI" target="_blank" rel="noopener noreferrer">Matroid Intersection, Part VI</a></strong>
+<img src="https://img.youtube.com/vi/FtCm0ILwXBI/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We state and prove Lemma 3, then complete the proof of the main theorem P(M_1∩M_2)=P(M_1)∩P(M_2). Lemma 3: if x is a vertex of P(M_1)∩P(M_2), then there exist chains C: ∅⊆C_1⊆…⊆C_k (with x(C_i)=r_1(C_i)) and D: ∅⊆D_1⊆…⊆D_l (with x(D_j)=r_2(D_j)) such that the set of vectors {χ^S: S∈C∪D}⊆R^E contains |supp(x)| linearly independent vectors. Proof of Lemma 3: since P(M_1)∩P(M_2)={x≥0: x(U)≤r_1(U), x(U)≤r_2(U) ∀U⊆E}, a vertex x requires |E| tight linearly independent constraints; |E|-|supp(x)| come from the ‘x_i=0’ constraints; the remaining |supp(x)| must come from linearly independent characteristic vectors χ^T where T is tight for r_1 or r_2. Chains C and D satisfying property (I) can be constructed from x. Lemma 2 gives S_1:=span{χ^C: C∈C}⊇{χ^T: T tight for r_1} and S_2:=span{χ^D: D∈D}⊇{χ^T: T tight for r_2}; hence span{χ^U: U∈C∪D}⊇S_1∪S_2, which contains all needed vectors, giving dim≥|supp(x)|. Main theorem proof by induction on |E|: the easy direction P(M_1∩M_2)⊆P(M_1)∩P(M_2) is an exercise. For the hard direction, let x be a vertex of P(M_1)∩P(M_2). Case (i) Deletion (x_i=0 for some i): form M</em>{1\i}, M_{2\i} and x̃=x_{-i}; by induction x̃∈P(M_{1\i}∩M_{2\i}) so x=(x̃,0)∈P(M_1∩M_2). Case (ii) Contraction (x_i=1 for some i): form M_{1/i}, M_{2/i} and x̃=x_{-i}; one verifies x̃∈P(M_{1/i})∩P(M_{2/i}); by induction x̃=Σλ_α χ^{I_α} with I_α∈I_{1/i}∩I_{2/i}, so I_α+i∈I_1∩I_2 and x=(x̃,1)=Σλ_α χ^{I_α+i}∈P(M_1∩M_2). Case (iii) 0&lt;x_i&lt;1 for all i: by Lemma 3 construct chains C,D; since each increment |C_{i+1}\C_i|≥2 and |D_{j+1}\D_j|≥2, we have k,l≤|E|/2; but {χ^U: U∈C∪D} must contain |supp(x)|=|E| lin. indep. vectors from at most k+l≤|E| total — forcing k=l=|E|/2, C_k=E, D_l=E, and C∪D having at most |E|-1 sets, a contradiction._</p>
+
+    <p><a href="/pdfs/comboptclass/9.13.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+</ul>
+
+<h3 id="module-10-submodularity">Module 10: Submodularity</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 10.1: <a href="https://youtu.be/RqKb1lISY4M" target="_blank" rel="noopener noreferrer">Submodularity, Part I</a></strong>
+<img src="https://img.youtube.com/vi/RqKb1lISY4M/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We introduce submodular functions and develop their basic theory. Definition: f:2^E→R is submodular if ∀A,B⊆E: f(A)+f(B)≥f(A∪B)+f(A∩B). Marginal value: f_A(i)=f(A+i)-f(A). Theorem (T.F.A.E.): the following are equivalent: (1) f is submodular; (2) ∀A⊆B⊆E, ∀i∈E\B: f_A(i)≥f_B(i) (diminishing marginal returns); (3) ∀A⊆E, ∀i,j∈E\A: f_A(i)≥f</em>{A+j}(i). We also define monotone: f is monotone if A⊆B⟹f(A)≤f(B). Three closure lemmas follow: (i) α,β≥0 and f,g submodular ⟹ αf+βg submodular; (ii) f submodular and g linear ⟹ f-g submodular; (iii) f,g submodular and f-g monotone ⟹ min(f,g) submodular. We then give four families of examples: (i) rank functions of matroids; (ii) capacity of cuts in a directed graph D=(V,A) with c:A→R+: for fixed r,s∈V and S⊆V\{r,s}, f(S)=c(δ+(S∪{r})) is submodular (exercise); (iii) number of neighbors in a bipartite graph G=(V,E) with V=V_1∪V_2: f(U)=|Γ(U)| is submodular (exercise); (iv) mixed rank of two matroids M_1=(E,I_1), M_2=(E,I_2): f(S)=r_1(S)+r_2(E\S) is submodular — and by the Matroid Intersection Theorem, min_{S⊆E} f(S) = max_{I∈I_1∩I_2} |I|._</p>
+
+    <p><a href="/pdfs/comboptclass/10.1.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 10.2: <a href="https://youtu.be/4dWY_F05Npk" target="_blank" rel="noopener noreferrer">Submodularity, Part II</a></strong>
+<img src="https://img.youtube.com/vi/4dWY_F05Npk/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We define and analyze the greedy algorithm for submodular maximization. Setting: let I⊆2^E be down-monotone (I∈I, J⊆I ⟹ J∈I). Problem: max f(I) for f submodular, s.t. I∈I. Greedy: initialize S←∅; iterate by setting A={e: S∪e∈I} and selecting e←argmax</em>{e’∈A} f_S(e’)=f(S+e’)-f(S), then S←S∪e. (Exercise: if I is a matroid and f(S)=Σw_i, this recovers the greedy for max-weight base, which is optimal.) In general, greedy is not optimal for submodular f. Theorem: if I is the uniform matroid (|I|≤k) and f is submodular and monotone, then greedy gives a (1-1/e)-approximation, i.e., f(Ŝ)≥(1-1/e)·OPT. Proof by induction: let S_i = first i elements selected, C = optimal solution with f(C)=OPT. Key claim: f(C)-f(S_{i-1})≤Σ_{e∈C\S_{i-1}} f_{S_{i-1}}(e) (by monotonicity and submodularity, telescoping over elements of C\S_{i-1}). Since greedy selects the best element and |C\S_{i-1}|≤k, this gives f_{S_{i-1}}(e_i)≥(1/k)(f(C)-f(S_{i-1})). Substituting: f(C)-f(S_i)≤(1-1/k)(f(C)-f(S_{i-1}))≤(1-1/k)^i·f(C). At i=k: f(C)-f(S_k)≤(1-1/k)^k·f(C)≤e^{-1}·f(C), giving f(S_k)≥(1-1/e)·f(C)._</p>
+
+    <p><a href="/pdfs/comboptclass/10.2.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 10.3: <a href="https://youtu.be/7y6BmN0x-vc" target="_blank" rel="noopener noreferrer">Submodularity, Part III</a></strong>
+<img src="https://img.youtube.com/vi/7y6BmN0x-vc/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We establish the tightness of the (1-1/e) guarantee and prove greedy gives a 1/2-approximation for general matroid constraints. Theorem (Feige): ∀ε&gt;0, it is NP-hard to achieve a (1-1/e+ε)-approximation for Max-k-Cover (given ground set E and subsets S_1,…,S_m⊆E and k≤|E|, maximize |∪</em>{i∈I} S_i| s.t. |I|≤k), so the (1-1/e) guarantee from 10.2 is best possible. We then move to the general matroid constraint: max f(I) s.t. I∈I for I a matroid. As a motivating example, the Submodular Welfare Problem (SWP) has this form: given n items and m agents where each item goes to 1 agent and each agent’s utility is a monotone submodular function f_i(S), the goal of maximizing Σf_i(S_i) over all allocations is an exercise to show it equals max f(I) s.t. I∈I for a suitable matroid. A concrete 1/2-tightness example (n=m=2 items/agents) shows greedy achieves (1+ε) against an optimum of 2, confirming greedy is exactly a 1/2-approx. Theorem: for f monotone submodular and I any matroid, greedy gives a 1/2-approximation. Proof: let Ŝ={g_1,…,g_k} (greedy), C={o_1,…,o_k} (optimal); by monotonicity both are bases; by the strong exchange property from matroid theory, we can re-index so Ŝ-g_i+o_i∈I. Then by the greedy choice, f_{S_i}(g_{i+1})≥f_{S_i}(o_{i+1}). Summing: f(Ŝ)=Σf_{S_i}(g_{i+1}) ≥ Σf_{S_i}(o_{i+1}) ≥ Σf_Ŝ(o_{i+1}) [submodularity] ≥ f_Ŝ(C) = f(C∪Ŝ)-f(Ŝ) ≥ f(C)-f(Ŝ) [monotonicity], giving f(Ŝ)≥1/2·f(C)._</p>
+
+    <p><a href="/pdfs/comboptclass/10.3.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 10.4: <a href="https://youtu.be/HBCJ-5GTSDU" target="_blank" rel="noopener noreferrer">Continuous Extensions, Part I</a></strong>
+<img src="https://img.youtube.com/vi/HBCJ-5GTSDU/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We survey the landscape of submodular maximization/minimization and introduce continuous extensions. Recap: (A) maximizing monotone submodular subject to matroid constraint is NP-hard in general; (B) greedy gives (1-1/e)-approx for uniform matroid — best possible; (C) greedy gives 1/2-approx for general matroid constraint. Continuous extensions offer a different approach for both max and min. Since f:2^E→R is equivalent to f:{0,1}^{|E|}→R, we ask how to extend to [0,1]^{|E|}. Two canonical extensions are defined: Concave Closure f^+(x)=max{Σ</em>{S⊆E} α_S f(S): α_S≥0, Σα_S=1, Σα_S·χ^S=x} and Convex Closure f^-(x)=min{Σ_{S⊆E} α_S f(S): α_S≥0, Σα_S=1, Σα_S·χ^S=x}. The coefficients α_S can be interpreted as a probability distribution over 2^E. Two lemmas follow: f^+ is concave (proof: for x=λx_1+(1-λ)x_2, the convex combination of the achieving distributions gives f^+(x)≥λf^+(x_1)+(1-λ)f^+(x_2)); f^- is convex (similarly). We then define the Lovász Extension: for any x∈[0,1]^{|E|}, re-order coordinates 0≤x_1≤x_2≤…≤x_{|E|} and let S_j = {indices of the j largest values}, then f^L(x)=Σλ_j f(S_j) where λ_j≥0, Σλ_j=1, ∅=S_0⊆S_1⊆…⊆S_n. Note f^L is efficiently computable (order coordinates, evaluate f on the chain). Main theorem: f^L(x)=f^-(x) if and only if f is submodular. Proof (⟸): for f submodular, take the distribution {α_S} achieving f^-(x) and maximizing Σα_S|S|^2; claim this is supported on a chain (if not, A⊄B and A,B have positive weight, replace by A∪B and A∩B using submodularity of f — contradiction). Decomposition into a chain is unique, so f^-(x)=f^L(x). Proof (⟹): if f is not submodular, exhibit a point where f^-(x)&lt;f^L(x)._</p>
+
+    <p><a href="/pdfs/comboptclass/10.4.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 10.5: <a href="https://youtu.be/4bxvRBEC0cY" target="_blank" rel="noopener noreferrer">Continuous Extensions, Part II</a></strong>
+<img src="https://img.youtube.com/vi/4bxvRBEC0cY/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We define the multilinear extension and establish its key properties. Recall from 10.4: the convex closure f^- equals the Lovász extension when f is submodular, but the concave closure f^+ is in general hard to evaluate. We introduce a third extension. Idea: interpret x∈[0,1]^E as a product distribution on E elements. Definition (Multilinear Extension): F(x)=E[f(x̂)] where x̂ is drawn with P(x̂_i=1)=x_i independently; explicitly F(x)=Σ</em>{S⊆E} f(S)·∏<em>{i∈S} x_i·∏</em>{j∉S}(1-x_j). Note ∂²F/∂x_i²=0 (multilinear in each variable). Lemma: (i) if f is monotone then ∂F/∂x_i≥0 ∀i, ∀x∈[0,1]^E; (ii) if f is submodular then ∂²F/∂x_i∂x_j≤0 ∀i≠j, ∀x∈[0,1]^E. Proof of (i): ∂F/∂x_k=F(x_{-k},x_k=1)-F(x_{-k},x_k=0)=E[f(R∪k)-f(R\k)]≥0 where R is random with i∈R w.p. x_i. Proof of (ii): ∂²F/∂x_i∂x_j = E[f_{R∪i}(j)-f_{R\i}(j)]≤0 by submodularity (diminishing marginals). Corollary: (i) f monotone ⟹ F non-decreasing along any d≥0; (ii) f submodular ⟹ F is concave along any d≥0 (since φ’‘(t)=Σ d_id_j·∂²F/∂x_i∂x_j≤0 when d≥0); (iii) f submodular ⟹ F is convex along d=e_ℓ-e_k (the ∂²F/∂x_ℓ²-2·∂²F/∂x_ℓ∂x_k+∂²F/∂x_k² term is ≥0). We cannot evaluate F exactly with polynomially many oracle calls to f, but since F(x)=E[f(x̂)], we can approximate it by sampling: if R_1,…,R_t are sampled iid ~ x, then |1/t·Σf(R_i)-F(x)|≤ε·max|f(S)| w.p.≥1-exp(-tε²/4)._</p>
+
+    <p><a href="/pdfs/comboptclass/10.5.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 10.6: <a href="https://youtu.be/wxT0bsCgB0M" target="_blank" rel="noopener noreferrer">Continuous Greedy, Part I</a></strong>
+<img src="https://img.youtube.com/vi/wxT0bsCgB0M/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We develop Step 1 of the two-step roadmap for (1−1/e)-approximation of max f(S) s.t. S∈I (f monotone submodular, I a matroid independent set family). The goal is to maximize the multilinear extension F(x)=E_x[f(S)] over the matroid polytope P(M). We use the Frank-Wolfe (conditional gradient) strategy: the Continuous Greedy algorithm sets x(0)=0 and follows dx/dt=v_max(x(t)), where v_max(x)=argmax</em>{v∈P} ∇F(x)^T·v; the algorithm returns x(1). The key lemma states: for any x∈P, there exists v∈P s.t. ∇F(x)^T·v≥OPT−F(x). Proof: since F is concave along any d≥0 direction (from 10.5), ∇F(x)^T·x<em>≥F(x+x</em>)−F(x)≥F(x<em>)−F(x)≥OPT−F(x), so v=x</em> works. The main theorem gives F(x(1))≥(1−1/e)·OPT. Proof via ODE: (d/dt)(e^t·F(x(t)))=e^t(∇F·v_max+F)≥e^t·OPT; integrating from 0 to 1 gives e·F(x(1))−F(x(0))≥(e−1)·OPT, and since F(x(0))=F(0)=0 we get F(x(1))≥(1−1/e)·OPT. The lecture closes by noting Step 1 is complete and Step 2 (rounding x(1)∈P(M) to a set S∈I) is still needed._</p>
+
+    <p><a href="/pdfs/comboptclass/10.6.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 10.7: <a href="https://youtu.be/LjJEN0tROF0" target="_blank" rel="noopener noreferrer">Continuous Greedy, Part II</a></strong>
+<img src="https://img.youtube.com/vi/LjJEN0tROF0/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We complete the (1−1/e)-approximation by proving the rounding theorem (Step 2). The agenda thus far: (1) f submodular monotone ⟹ F concave along d≥0; (2) continuous greedy gives x(1)∈P(M) with F(x(1))≥(1−1/e)·OPT; (3) need rounding x₀∈P_Base(M) to base B* with E[f(B*)]≥F(x₀). The main theorem: there exists an efficient randomized rounding procedure that, given x₀∈P_Base(M), outputs B*∈Bases(M) with E[f(B*)]≥F(x₀). Note: if F were linear this would be immediate since F(x₀)=E[f(B)] for a random basis, but F is multilinear, not linear. The key construction assumes x₀=(1/N)Σ</em>{i=1}^N χ^{B_i} (obtained from discretizing the continuous greedy path, N=2^q). The MergeBases subroutine takes two bases B₁,B₂: while B₁≠B₂, find i∈B₁\B₂ and j∈B₂\B₁ such that both B₁−i+j and B₂+i−j are in I (possible by strong exchange), then flip with probability 1/2; each element i,j participates in at most one swap. The key lemma is E[F(x−(1/N)(χ^{B₁}+χ^{B₂})+(2/N)χ^B)]≥F(x₀), proved using the fact that F is convex along d=e_i−e_j (from 10.5), which ensures E[f(B)]≥(F(x₀)|B₁)+F(x₀|B₂))/2 at each merge step. The full algorithm pairs up the N=2^q bases and applies MergeBases repeatedly (log₂N rounds) until a single base B* remains, giving E[f(B<em>)]≥F(x₀). Combined with Step 1, this yields f(B</em>)≥(1−1/e)·OPT in expectation._</p>
+
+    <p><a href="/pdfs/comboptclass/10.7.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+</ul>
+
+<h3 id="module-11-extended-formulations">Module 11: Extended Formulations</h3>
+
+<ul>
+  <li>
+    <p><strong>Lecture 11.1: <a href="https://youtu.be/TvQMV8GTwSw" target="_blank" rel="noopener noreferrer">Extended Formulations, Part I</a></strong>
+<img src="https://img.youtube.com/vi/TvQMV8GTwSw/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We introduce the central question of extended formulations: can a polytope P⊆ℝⁿ with exp(n) facets be described as the projection of P_E⊆ℝᴺ where N=poly(n) and P_E has poly(n) facets? Significance: if P=AP_E for an n×N matrix A, then min c^Tx s.t. x∈P equals min (A^Tc)^TX s.t. X∈P_E, so optimization over P reduces to optimization over P_E. The main example is the permutahedron P_perm^(n) = conv{(π(1),…,π(n)): π∈S^n} (n! vertices, exponentially many facets). Claim: P_perm^(n) = {x≥0, Σx_i=(n+1 choose 2), Σ</em>{i∈S}x_i≥(|S|+1 choose 2) ∀S⊆[n]}, equivalently {x≥0, x([n])=(n+1 choose 2), x(T)≤f(T) ∀T⊆[n]} where f(T) is submodular — so P_perm^(n) is a polymatroid. The greedy algorithm for max c^Tx s.t. x∈P (c≥0): re-order coordinates c₁≥…≥c_{|E|}≥0 and set x*=(f(e₁), f(e₁,e₂)−f(e₁), …, f(e₁,…,e_{|E|})−f(e₁,…,e_{|E|-1})). Note: f integer-valued submodular ⟹ P has integral vertices, so the facet description is correct. The Lovász extension satisfies f̂(c)=max_{x∈P} c^Tx. Extended formulation: given π∈Sⁿ define Y_π(i,j)=1<em>{j=π(i)}, then x_π(i)=Σ_j j·Y_π(i,j) and conv{Y_π: π∈Sⁿ} = bipartite matching polytope on K</em>{n×n}. Thus P_perm^(n) = {x∈ℝⁿ: ∃Y≥0, Σ_j Y_{ij}=Σ_i Y_{ij}=1 ∀i,j, x_i=Σ_j j·Y_{ij} ∀i}, an extended formulation in N=n²+n dimensions with n²+3n constraints._</p>
+
+    <p><a href="/pdfs/comboptclass/11.1.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 11.2: <a href="https://youtu.be/_NWgluhUkLg" target="_blank" rel="noopener noreferrer">Extended Formulations, Part II</a></strong>
+<img src="https://img.youtube.com/vi/_NWgluhUkLg/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We define extension complexity: xc(P) is the minimum number of inequalities needed to describe a polytope Q s.t. P is an affine map of Q (i.e., P={x: Ax≤b}, Q={(x,y): Cx+Dy≤d} with x∈P iff ∃y s.t. (x,y)∈Q). Key facts: (1) by the ellipsoid algorithm, a LP is efficiently solvable iff ∃ poly-time separation oracle; (2) if P has poly-size extension, the OPT problem is efficiently solvable, and if OPT is not solvable efficiently then P cannot have poly-size ext. complexity; (3) however, statement (2) is not ‘iff’. Theorem (Thomas Rothvoss, ‘17): the extension complexity of the perfect matching polytope for the complete graph K_n is 2^{Ω(n)}. We then prove Yannakakis’ ‘91 theorem: xc(P) = rk</em>+(S), the nonnegative rank of the slack matrix. Given P=conv{x₁,…,x_v}={x: Ax≤b} (m rows), define S_{ij}=b_i−a_i^T x_j. Nonneg rank: rk_+(M)=min{r: M=UV^T, U∈ℝ^{m×r}<em>{≥0}, V∈ℝ^{v×r}</em>{≥0}}. Proof: (⟹) Given r=rk_+(S) and S=UV^T, define Q={(x,y)∈ℝ^{n+r}: Ax+Uy=b, y≥0}. Claim Q is an ext form of P: for each vertex x_j, let y_j=j-th row of V (so y_j≥0 and Ax_j+Uy_j=b); for x̂∉P, ∃ violated constraint A_i x̂&gt;b_i but U≥0,y≥0 prevent satisfying equality. (⟸) Suppose Q={(x,y): Bx+Cy≤d} is an ext form with r inequalities. Fix y_j for each vertex x_j. Let V_j=d−Bx_j−Cy_j≥0. By LP strong duality, ∀i ∃p_i≥0 s.t. p_i^T[B C d]=[A_i 0 b_i]. Setting U_i=p_i gives U_i^T V_j=b_i−A_i^T x_j=S_{ij}, so S=UV^T with U,V≥0, hence r≥rk_+(S)._</p>
+
+    <p><a href="/pdfs/comboptclass/11.2.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 11.3: <a href="https://youtu.be/PE1owqWlL5M" target="_blank" rel="noopener noreferrer">Lower Bounds, Part I</a></strong>
+<img src="https://img.youtube.com/vi/PE1owqWlL5M/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We introduce communication complexity as a tool. A function f:X×Y→{0,1} (X,Y finite) can be encoded as an |X|×|Y| zero-one matrix M(f). The goal (informally): Alice has x∈X, Bob has y∈Y, and they want to evaluate f(x,y) with minimum communication. There are many variants (1-way, 2-way, etc.), used elsewhere e.g. in sketching lower bounds (Clarkson, Woodruff, and others). We focus on non-deterministic communication complexity: (1) Alice &amp; Bob see f and M(f) and can collaborate; (2) they separate and receive x,y respectively; (3) a ‘Prover’ sees both x and y and sends both parties the same ‘hint’ or ‘proof’: an index i∈{1,…,t}; (4) Bob and Alice independently accept or reject the proof. The protocol succeeds if: ∃ a mutually acceptable proof whenever f(x,y)=1, and ∄ a mutually acceptable proof when f(x,y)=0. The non-deterministic communication complexity of f is log₂ t, where t is the minimum number of possible hints needed.</em></p>
+
+    <p><a href="/pdfs/comboptclass/11.3.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 11.4: <a href="https://youtu.be/GvdtOUT-Glc" target="_blank" rel="noopener noreferrer">Lower Bounds, Part II</a></strong>
+<img src="https://img.youtube.com/vi/GvdtOUT-Glc/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We define the FACE-VERTEX problem for a polytope P: FV:{faces}×{vertices}→{0,1} where FV(f,v)=1 if v∉f and 0 if v∈f. Alice holds a face f, Bob holds a vertex v. The key lemma connecting extended formulations to communication complexity: if P has an extended formulation Q with r inequalities, then the non-deterministic communication complexity of FACE-VERTEX(P) is at most log₂ r. First proof (via Yannakakis): supp(S) encodes FV; the r-inequality ext form gives S=UV^T with U,V≥0; then S</em>{f,v}=U_f·V_v&gt;0 iff ∃j∈{1,…,r} s.t. U_{fj}&gt;0 and V_{vj}&gt;0. Protocol: Prover sees f&amp;v and announces index j; Alice accepts iff U_{fj}&gt;0; Bob accepts iff V_{vj}&gt;0. Second proof (via facets of Q): for FV(f,v)=1 (vertex v∉face f), the prover announces a facet G of Q∈{1,…,r} s.t. (i) ∃y_v with (v,y_v)∉G (π^{-1}(v)∩Q⊄G), and (ii) ∀(x,y)∈Q with x∈f, (x,y)∈G (π^{-1}(f)∩Q⊆G). Both Alice and Bob can check conditions (i) and (ii). Such G exists because: π^{-1}(f)∩Q is a face of Q equaling ∩G_{i_k}, and since v∉f the set π^{-1}(v)∩Q does not intersect π^{-1}(f)∩Q, so π^{-1}(v)∩Q cannot be contained in all G_{i_k}, giving at least one G satisfying both conditions. Conclusion: to lower bound xc(P), it suffices to lower bound the non-det comm complexity of FACE-VERTEX(P)._</p>
+
+    <p><a href="/pdfs/comboptclass/11.4.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 11.5: <a href="https://youtu.be/YTdkstndu-E" target="_blank" rel="noopener noreferrer">Lower Bounds, Part III</a></strong>
+<img src="https://img.youtube.com/vi/YTdkstndu-E/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We introduce the correlation polytope P_corr^(n) = conv{xx^T: x∈{0,1}^n} ⊆ ℝ^{n²}; its extreme points are y^B:=χ^B(χ^B)^T for B⊆[n]. Theorem: the extension complexity of P_corr^(n) is at least 1.5^n. To apply the FACE-VERTEX framework, we construct a special face F_A for each A⊆[n]. Starting from the valid inequality (Σ</em>{i∈A} x_i−1)²≥0, expanding and substituting y_{ij}=x_ix_j gives: Σ_{i≠j∈A} y_{ij}−Σ_{i∈A} y_{ii}+1≥0, valid for all y∈P_corr. The face F_A is the equality face of this constraint. Lemma: y^B∈F_A iff |A∩B|=1. Using these special faces, we consider FV(A,B): FV(F_A,y^B)=1 iff y^B∉F_A iff |A∩B|≠1. With the promise |A∩B|∈{0,1}, FV(A,B)=1 iff |A∩B|≠1 iff A∩B=∅. The road map then has three steps: ① focus on the subset of the slack matrix corresponding to faces F_A; ② make the problem easier — under the promise, Bob and Alice only need to agree on 1’s in the subset of supp(S) corresponding to A∩B=∅; ③ show that any ext form Q for P_corr with r inequalities implies a covering of D(n)={(A,B)∈2^{[n]}×2^{[n]}: A∩B=∅} of size r (with valid sets). This reduces the ext. complexity lower bound to a combinatorial covering lower bound._</p>
+
+    <p><a href="/pdfs/comboptclass/11.5.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 11.6: <a href="https://youtu.be/Eu6Ka-qO5mk" target="_blank" rel="noopener noreferrer">Lower Bounds, Part IV</a></strong>
+<img src="https://img.youtube.com/vi/Eu6Ka-qO5mk/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We complete the road map for the lower bound. Recap: support of slack matrix encodes FV; focusing on faces F_A and vertices y^B, FV(A,B)=1 iff |A∩B|≠1; with promise |A∩B|∈{0,1}, FV(A,B)=1 iff A∩B=∅. We formally define valid sets: R⊆D(n) is valid if ∀(A,B),(A’,B’)∈R: |A∩B’|≠1 and |A’∩B|≠1. Given a covering D(n)⊆R₁∪…∪R_r (R_i valid), the protocol is: Alice receives A, Bob receives B, Prover sees (A,B); if FV(A,B)=1 then A∩B=∅ so (A,B)∈D(n)⊆∪R_i — prover sends index i; Alice checks ∃B̃ s.t. (A,B̃)∈R_i and Bob checks ∃Ã s.t. (Ã,B)∈R_i; R_i valid ensures (A,B̃),(Ã,B)∈R_i ⟹ |A∩B|=0 ✓. Lemma (Extended Formulations Give Coverings): if Q is an ext form for P_corr with r facets π(Q)=P_corr, then ∃ covering of D(n) of size r with valid sets. Proof: for each facet G of Q define R_G={(A,B)∈D(n): (i) π^{-1}(F_A)∩Q⊆G, (ii) π^{-1}(y^B)∩Q⊄G}. Claim 1 (R_G valid): if |A∩B’|=1 then y^{B’}∈F_A ⟹ π^{-1}(y^{B’})∩Q⊆π^{-1}(F_A)∩Q⊆G, violating (ii) — contradiction. Claim 2 (∪R</em>{G_i} covers D(n)): for (Â,B̂)∈D(n) with Â∩B̂=∅, π^{-1}(F_Â)∩Q is a face of Q equal to ∩G_{i_k}; since B̂∉F_Â, π^{-1}(y^{B̂})∩Q⊄∩G_{i_k}, so ∃ facet G_{i_ℓ} with π^{-1}(y^{B̂})∩Q⊄G_{i_ℓ} (condition ii) and π^{-1}(F_Â)∩Q⊆G_{i_ℓ} (condition i), thus (Â,B̂)∈R_{G_{i_ℓ}}. Hence xc(P_corr)≥ size of min valid covering of D(n). Step 2 (show any covering needs ≥1.5^n sets) is proved in the next lecture._</p>
+
+    <p><a href="/pdfs/comboptclass/11.6.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+  <li>
+    <p><strong>Lecture 11.7: <a href="https://youtu.be/3_d9tvO6gIk" target="_blank" rel="noopener noreferrer">Lower Bounds, Part V</a></strong>
+<img src="https://img.youtube.com/vi/3_d9tvO6gIk/hqdefault.jpg" alt="Lecture Thumbnail" style="width: 300px; height: auto;" />
+<em>We prove the final lower bound. Recall: xc(P_corr^(n)) ≥ size of min valid covering of D(n), where D(n)={(A,B)∈2^{[n]}×2^{[n]}: A∩B=∅}. Lemma 1: |D(n)|=3^n (each element can be in A only, B only, or neither). Lemma 2: any covering of D(n) by valid sets requires at least 1.5^n sets. Proof: let p(n)=max cardinality of a valid subset of D(n); we show p(n)≤2^n. Then D(n)⊆R₁∪…∪R_r with each R_i valid implies r·p(n)≥|D(n)|=3^n, so r≥3^n/2^n=1.5^n. To prove p(n)≤2p(n-1) by induction: given R⊆D(n), define R₁=({(A,B)∈R: n∈A}∪{(A,B)∈R: (A∪{n},B)∉R})∩([n]×[n-1]) and R₂=({(A,B)∈R: n∈B}∪{(A,B)∈R: (A,B∪{n})∉R})∩([n-1]×[n]). Define π_n:R→D(n-1) by (A,B)↦(A\{n},B\{n}). R valid ⟹ R₁,R₂ valid (both ⊆R). Claim: R₁ valid ⟹ π_n(R₁) valid — since R₁⊆[n]×[n-1], n∉B’ for any (A’,B’)∈R₁, so |A∩n ∩ B’\n|=|·|≠1; similarly π_n(R₂) valid. π_n is injective on R₁ and R₂ by their definitions (each element of [n-1]×[n-1] has a unique preimage in R₁ and R₂). Thus |R₁|+|R₂|=|π_n(R₁)|+|π_n(R₂)|≤2p(n-1). Since R⊆R₁∪R₂ by construction, |R|≤2p(n-1)≤2^n. Hence p(n)≤2^n and xc(P_corr^(n))≥1.5^n.</em></p>
+
+    <p><a href="/pdfs/comboptclass/11.7.pdf" target="_blank" rel="noopener noreferrer">Slides (PDF)</a></p>
+  </li>
+</ul>
+
+<hr />
+
+    </div>
+    
+  </body>
+</html>
