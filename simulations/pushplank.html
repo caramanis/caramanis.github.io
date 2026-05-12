@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💪 Push &amp; Plank Challenge</title>
+<style>
+/* ══════════════════════════════════════════
+   CSS VARIABLES
+══════════════════════════════════════════ */
+:root {
+  --c-blue:       #42a5f5;
+  --c-blue-dark:  #1565c0;
+  --c-blue-glow:  rgba(66,165,245,0.32);
+  --l-red:        #ef9a9a;
+  --l-red-dark:   #c62828;
+  --l-red-glow:   rgba(239,83,80,0.32);
+  --gold:         #f9a825;
+  --green:        #4caf50;
+  --card-bg:      rgba(255,255,255,0.05);
+  --card-border:  rgba(255,255,255,0.09);
+  --text-dim:     #666;
+  --text-mid:     #999;
+  --text-bright:  #eee;
+  --radius:       16px;
+}
+
+/* ══════════════════════════════════════════
+   RESET & BASE
+══════════════════════════════════════════ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #0a0a18;
+  min-height: 100vh;
+  color: var(--text-bright);
+  padding: 0 0 60px;
+  overflow-x: hidden;
+}
+
+/* ══════════════════════════════════════════
+   BACKGROUND LAYERS
+══════════════════════════════════════════ */
+/* Main gradient */
+#bg-base {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background: linear-gradient(175deg, #0d0d22 0%, #0f172a 45%, #0c1a2e 100%);
+}
+/* Arena floor glow */
+#bg-floor {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(ellipse 90% 40% at 50% 110%,
+    rgba(15,40,80,0.7) 0%, transparent 70%);
+}
+/* Player glows */
+#bg-glow-c {
+  position: fixed; top: 15vh; left: 5%; z-index: 0; pointer-events: none;
+  width: 38vw; height: 55vh;
+  background: radial-gradient(ellipse, rgba(21,101,192,0.22) 0%, transparent 70%);
+  border-radius: 50%;
+}
+#bg-glow-l {
+  position: fixed; top: 15vh; right: 5%; z-index: 0; pointer-events: none;
+  width: 38vw; height: 55vh;
+  background: radial-gradient(ellipse, rgba(183,28,28,0.22) 0%, transparent 70%);
+  border-radius: 50%;
+}
+/* Vignette */
+#bg-vignette {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(ellipse at 50% 40%, transparent 35%, rgba(0,0,0,0.72) 100%);
+}
+/* Stars canvas */
+#bg-stars {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  opacity: 0.6;
+}
+/* Subtle grid lines */
+#bg-grid {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* All real content sits above bg */
+.layer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ══════════════════════════════════════════
+   HEADER
+══════════════════════════════════════════ */
+.banner {
+  text-align: center;
+  padding: 28px 20px 18px;
+  background: rgba(0,0,0,0.45);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  position: relative;
+}
+.banner::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--c-blue), transparent);
+  opacity: 0.35;
+}
+.banner h1 {
+  font-size: clamp(1.6em, 4.5vw, 3em);
+  font-weight: 900;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, #f9a825, #ef5350, #42a5f5, #f9a825);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+  text-shadow: none;
+}
+@keyframes shimmer { to { background-position: 300% center; } }
+.banner-sub {
+  color: var(--text-dim);
+  font-size: 0.8em;
+  margin-top: 5px;
+  letter-spacing: 0.07em;
+}
+.status-line {
+  margin-top: 8px;
+  font-size: 0.72em;
+  color: var(--text-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.status-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.status-dot.ok   { background: var(--green); box-shadow: 0 0 6px var(--green); }
+.status-dot.err  { background: #f44336;      box-shadow: 0 0 6px #f44336; }
+.status-dot.spin { background: #ff9800;      animation: pulse 1s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.25} }
+
+/* ══════════════════════════════════════════
+   SETUP NOTICE
+══════════════════════════════════════════ */
+.setup-notice {
+  background: rgba(249,168,37,0.1);
+  border: 1px solid rgba(249,168,37,0.3);
+  border-radius: 10px;
+  padding: 12px 18px;
+  margin: 14px 20px;
+  font-size: 0.8em;
+  color: #f9a825;
+  display: none;
+}
+.setup-notice code {
+  background: rgba(255,255,255,0.1);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+/* ══════════════════════════════════════════
+   GAINS JOURNEY STRIP
+══════════════════════════════════════════ */
+.prog-section {
+  background: rgba(0,0,0,0.35);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  padding: 8px 0 10px;
+}
+.prog-strip-title {
+  text-align: center;
+  font-size: 0.58em;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.18);
+  margin-bottom: 4px;
+}
+.prog-track {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 4px 20px 8px;
+  overflow-x: auto;
+  gap: 0;
+}
+/* glowing path line */
+.prog-track::before {
+  content: '';
+  position: absolute;
+  bottom: 22px; left: 12%; right: 12%;
+  height: 2px;
+  background: linear-gradient(90deg,
+    rgba(76,175,80,0.7), rgba(66,165,245,0.7),
+    rgba(255,167,38,0.7), rgba(239,83,80,0.8));
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(249,168,37,0.4);
+}
+.prog-figure {
+  flex: 0 0 auto;
+  width: clamp(67px, 12.65vw, 101px);
+  text-align: center;
+  position: relative;
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+}
+.prog-figure.active-stage {
+  transform: translateY(-7px);
+}
+.prog-figure.active-stage .prog-name {
+  color: var(--gold);
+  text-shadow: 0 0 10px rgba(249,168,37,0.7);
+}
+.prog-figure.active-stage .prog-svg {
+  filter: drop-shadow(0 0 6px rgba(249,168,37,0.45));
+}
+.prog-figure.active-stage::after {
+  content: '▲';
+  position: absolute;
+  bottom: -2px; left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.55em;
+  color: var(--gold);
+  opacity: 0.85;
+}
+.prog-svg { display: block; width: 100%; height: auto; }
+.prog-name {
+  font-size: clamp(0.46em, 1.3vw, 0.6em);
+  font-weight: 700;
+  color: #555;
+  margin-bottom: 3px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+/* ══════════════════════════════════════════
+   TODAY'S MISSION BAR
+══════════════════════════════════════════ */
+.mission-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  padding: 9px 20px;
+  background: rgba(249,168,37,0.055);
+  border-bottom: 1px solid rgba(249,168,37,0.1);
+  flex-wrap: wrap;
+}
+.mission-label {
+  font-size: 0.7em;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  opacity: 0.8;
+}
+.mission-items { display: flex; gap: 10px; align-items: center; }
+.mission-item {
+  font-size: 0.8em;
+  font-weight: 700;
+  color: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.06);
+  padding: 3px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* ══════════════════════════════════════════
+   ARENA
+══════════════════════════════════════════ */
+.arena {
+  display: flex;
+  gap: 0;
+  justify-content: center;
+  padding: 22px 10px 0;
+  flex-wrap: wrap;
+}
+.fighter {
+  flex: 1;
+  min-width: 280px;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 8px;
+}
+
+/* ══════════════════════════════════════════
+   PLAYER STAT CARD
+══════════════════════════════════════════ */
+.score-banner {
+  text-align: center;
+  background: linear-gradient(150deg, rgba(255,255,255,0.075) 0%, rgba(255,255,255,0.025) 100%);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 14px 20px 12px;
+  margin-bottom: 8px;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow:
+    0 4px 28px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.06);
+  transition: box-shadow 0.45s ease, border-color 0.45s ease;
+}
+.score-banner.leading-c {
+  border-color: rgba(66,165,245,0.45);
+  box-shadow:
+    0 0 0 1px rgba(66,165,245,0.2),
+    0 0 32px var(--c-blue-glow),
+    0 4px 28px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(66,165,245,0.12);
+}
+.score-banner.leading-l {
+  border-color: rgba(239,83,80,0.45);
+  box-shadow:
+    0 0 0 1px rgba(239,83,80,0.2),
+    0 0 32px var(--l-red-glow),
+    0 4px 28px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(239,83,80,0.12);
+}
+.fighter-name {
+  font-size: 1.3em;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-shadow: 0 0 22px currentColor;
+}
+.score-row {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 9px;
+}
+.score-item { text-align: center; }
+.score-num {
+  font-size: 1.85em;
+  font-weight: 900;
+  line-height: 1;
+}
+.score-num.bump { animation: scoreBump 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+@keyframes scoreBump {
+  0%   { transform: scale(1); }
+  55%  { transform: scale(1.38); }
+  100% { transform: scale(1); }
+}
+.score-lbl {
+  font-size: 0.62em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-top: 2px;
+}
+.level-badge {
+  margin-top: 7px;
+  font-size: 0.78em;
+  font-weight: 700;
+  padding: 3px 14px;
+  border-radius: 20px;
+  display: inline-block;
+  letter-spacing: 0.04em;
+}
+.earned-badge {
+  font-size: 0.68em;
+  color: var(--text-dim);
+  margin-top: 4px;
+  font-style: italic;
+  min-height: 1.2em;
+}
+.streak-row {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 6px;
+  font-size: 0.76em;
+  color: var(--text-mid);
+}
+.streak-flame { font-size: 1.1em; }
+.streak-count { font-weight: 800; color: #ffa726; }
+
+/* ══════════════════════════════════════════
+   AVATAR
+══════════════════════════════════════════ */
+.avatar-wrap {
+  width: 100%;
+  max-width: 280px;
+}
+.avatar-wrap svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  animation: idleBounce 3.2s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+@keyframes idleBounce {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-7px); }
+}
+
+/* ══════════════════════════════════════════
+   30-DAY DOTS
+══════════════════════════════════════════ */
+.day-dots {
+  width: 100%;
+  max-width: 280px;
+  padding: 5px 4px 2px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+}
+.dots-label {
+  width: 100%;
+  text-align: center;
+  font-size: 0.58em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  margin-bottom: 2px;
+}
+.day-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.day-dot.done-c {
+  background: var(--c-blue);
+  border-color: var(--c-blue);
+  box-shadow: 0 0 5px var(--c-blue);
+}
+.day-dot.done-l {
+  background: var(--l-red);
+  border-color: var(--l-red);
+  box-shadow: 0 0 5px var(--l-red);
+}
+
+/* ══════════════════════════════════════════
+   PROGRESS BAR
+══════════════════════════════════════════ */
+.progress-wrap {
+  width: 100%;
+  max-width: 280px;
+  margin: 5px 0 3px;
+}
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.6em;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+.progress-bar-bg {
+  width: 100%;
+  height: 6px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.65s cubic-bezier(0.4,0,0.2,1);
+}
+.progress-bar-fill.fill-c {
+  background: linear-gradient(90deg, #1565c0, #42a5f5);
+  box-shadow: 0 0 8px var(--c-blue-glow);
+}
+.progress-bar-fill.fill-l {
+  background: linear-gradient(90deg, #b71c1c, #ef5350);
+  box-shadow: 0 0 8px var(--l-red-glow);
+}
+
+/* ══════════════════════════════════════════
+   ENTRY FORM
+══════════════════════════════════════════ */
+.entry-panel {
+  width: 100%;
+  background: linear-gradient(150deg, rgba(255,255,255,0.055) 0%, rgba(0,0,0,0.15) 100%);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-top: 8px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.entry-panel h3 {
+  font-size: 0.72em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+.entry-fields { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+.field { flex: 1; min-width: 76px; }
+.field label {
+  display: block;
+  font-size: 0.66em;
+  color: #555;
+  margin-bottom: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.field input {
+  width: 100%;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 8px;
+  padding: 7px 10px;
+  color: white;
+  font-size: 1em;
+  font-weight: 700;
+  text-align: center;
+  transition: border-color 0.2s, background 0.2s;
+}
+.field input:focus {
+  outline: none;
+  border-color: rgba(255,255,255,0.28);
+  background: rgba(0,0,0,0.5);
+}
+.field input::placeholder { color: #3a3a3a; font-weight: 400; }
+.add-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9em;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.12s, filter 0.15s, box-shadow 0.15s;
+  letter-spacing: 0.6px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.45);
+}
+.add-btn:hover  { transform: translateY(-2px); filter: brightness(1.18); }
+.add-btn:active { transform: translateY(0);    filter: brightness(0.93); }
+
+/* ══════════════════════════════════════════
+   LOG TABLE
+══════════════════════════════════════════ */
+.log-wrap { margin-top: 10px; max-height: 148px; overflow-y: auto; }
+.log-wrap::-webkit-scrollbar { width: 3px; }
+.log-wrap::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 4px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.76em; }
+th {
+  color: #494949;
+  text-transform: uppercase;
+  font-size: 0.66em;
+  letter-spacing: 0.05em;
+  padding: 4px 6px;
+  text-align: right;
+}
+th:first-child { text-align: left; }
+td {
+  padding: 4px 6px;
+  color: #aaa;
+  border-top: 1px solid rgba(255,255,255,0.035);
+  text-align: right;
+}
+td:first-child { text-align: left; color: #777; }
+.del-btn {
+  background: none; border: none;
+  color: rgba(255,70,70,0.3);
+  cursor: pointer; font-size: 1em; padding: 0 2px;
+  transition: color 0.15s;
+}
+.del-btn:hover { color: rgba(255,70,70,0.9); }
+
+/* ══════════════════════════════════════════
+   VS DIVIDER
+══════════════════════════════════════════ */
+.vs-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6px;
+  margin-top: 55px;
+  flex-shrink: 0;
+  gap: 2px;
+}
+.vs-text {
+  font-size: clamp(2.4em, 5vw, 4.2em);
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.07);
+  text-shadow:
+    0 0 30px rgba(249,168,37,0.18),
+    0 0 60px rgba(255,255,255,0.04);
+  line-height: 1;
+}
+.vs-sub {
+  font-size: 0.5em;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: rgba(255,255,255,0.1);
+  font-weight: 700;
+}
+
+/* ══════════════════════════════════════════
+   TAUNT ZONE
+══════════════════════════════════════════ */
+.taunt-zone {
+  text-align: center;
+  padding: 18px 24px 6px;
+  max-width: 580px;
+  margin: 0 auto;
+}
+.taunt-text {
+  font-size: 0.87em;
+  font-style: italic;
+  color: rgba(255,255,255,0.28);
+  min-height: 1.3em;
+  transition: opacity 0.6s;
+}
+.taunt-text.fade { opacity: 0; }
+.taunt-source {
+  font-size: 0.62em;
+  color: rgba(255,255,255,0.12);
+  margin-top: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ══════════════════════════════════════════
+   CONFETTI
+══════════════════════════════════════════ */
+#celebOverlay {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+.cpp {
+  position: absolute;
+  width: 8px; height: 8px;
+  border-radius: 2px;
+  animation: cppFall var(--dur) ease-in forwards;
+  animation-delay: var(--delay);
+}
+@keyframes cppFall {
+  0%   { transform: translateY(-20px) rotate(0deg);   opacity: 1; }
+  100% { transform: translateY(105vh) rotate(750deg); opacity: 0; }
+}
+
+/* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
+.footer {
+  text-align: center;
+  color: #2e2e2e;
+  font-size: 0.65em;
+  margin-top: 44px;
+  line-height: 2;
+  padding: 0 20px;
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .vs-divider { display: none; }
+  .arena { flex-direction: column; align-items: center; padding-top: 14px; }
+  .fighter { max-width: 380px; width: 100%; }
+  .mission-bar { flex-direction: column; gap: 8px; }
+  #bg-glow-c, #bg-glow-l { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── BACKGROUND ──────────────────────── -->
+<div id="bg-base"></div>
+<div id="bg-floor"></div>
+<div id="bg-glow-c"></div>
+<div id="bg-glow-l"></div>
+<canvas id="bg-stars"></canvas>
+<div id="bg-grid"></div>
+<div id="bg-vignette"></div>
+
+<!-- ─── HEADER ──────────────────────────── -->
+<div class="banner layer">
+  <h1>💪 PUSH &amp; PLANK CHALLENGE 💪</h1>
+  <div class="banner-sub">Constantine vs. Lance Pants · may the gains be with you</div>
+  <div class="status-line">
+    <span class="status-dot spin" id="syncDot"></span>
+    <span id="syncMsg">Connecting…</span>
+  </div>
+</div>
+
+<div class="setup-notice layer" id="setupNotice">
+  ⚙️ <strong>Storage not configured.</strong>  Fill in <code>JSONBIN_ID</code> and <code>JSONBIN_KEY</code>.
+  Get a free key at <a href="https://jsonbin.io" target="_blank" style="color:#f9a825">jsonbin.io</a>.
+</div>
+
+<!-- ─── GAINS JOURNEY ────────────────────── -->
+<div class="prog-section layer">
+  <p class="prog-strip-title">✦ The Gains Journey ✦</p>
+  <div class="prog-track" id="progStrip"></div>
+</div>
+
+<!-- ─── TODAY'S MISSION ─────────────────── -->
+<div class="mission-bar layer">
+  <div class="mission-label">⚔️ Today's Mission</div>
+  <div class="mission-items">
+    <div class="mission-item">🤜 20 pushups</div>
+    <div class="mission-item">🧘 2 min plank</div>
+  </div>
+</div>
+
+<!-- ─── ARENA ────────────────────────────── -->
+<div class="arena layer">
+
+  <!-- CONSTANTINE -->
+  <div class="fighter">
+    <div class="score-banner" id="card-c">
+      <div class="fighter-name" style="color:#64b5f6">CONSTANTINE</div>
+      <div class="score-row">
+        <div class="score-item">
+          <div class="score-num" id="c-pushups" style="color:#64b5f6">0</div>
+          <div class="score-lbl">Pushups</div>
+        </div>
+        <div class="score-item">
+          <div class="score-num" id="c-plank" style="color:#64b5f6">0</div>
+          <div class="score-lbl">Plank min</div>
+        </div>
+        <div class="score-item">
+          <div class="score-num" id="c-power" style="color:#64b5f6">0</div>
+          <div class="score-lbl">Power</div>
+        </div>
+      </div>
+      <div class="level-badge" id="c-badge">—</div>
+      <div class="earned-badge" id="c-earned"></div>
+      <div class="streak-row" id="c-streak-row">
+        <span class="streak-flame">🔥</span>
+        <span class="streak-count" id="c-streak">0</span>
+        <span style="color:#555">day streak</span>
+      </div>
+    </div>
+
+    <div class="avatar-wrap">
+      <svg id="svg-constantine" viewBox="0 0 260 390"></svg>
+    </div>
+
+    <div class="day-dots" id="c-dots">
+      <div class="dots-label">Last 30 Days</div>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span>30-Day Power</span>
+        <span id="c-prog-label">0 / 2500</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill fill-c" id="c-prog-bar" style="width:0%"></div>
+      </div>
+    </div>
+
+    <div class="entry-panel">
+      <h3>Log Today</h3>
+      <div class="entry-fields">
+        <div class="field">
+          <label>Date</label>
+          <input type="date" id="c-date">
+        </div>
+        <div class="field">
+          <label>Pushups</label>
+          <input type="number" id="c-pu" min="0" placeholder="0">
+        </div>
+        <div class="field">
+          <label>Plank min</label>
+          <input type="number" id="c-pl" min="0" step="0.5" placeholder="0">
+        </div>
+      </div>
+      <button class="add-btn"
+        style="background:linear-gradient(135deg,#0d47a1,#42a5f5);box-shadow:0 4px 18px rgba(21,101,192,0.45)"
+        onclick="addEntry('constantine')">⚡ Log It</button>
+      <div class="log-wrap">
+        <table>
+          <thead><tr><th>Date</th><th>Pushups</th><th>Plank</th><th></th></tr></thead>
+          <tbody id="c-log"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- VS -->
+  <div class="vs-divider">
+    <div class="vs-text">VS</div>
+    <div class="vs-sub">30-Day Duel</div>
+  </div>
+
+  <!-- LANCE PANTS -->
+  <div class="fighter">
+    <div class="score-banner" id="card-l">
+      <div class="fighter-name" style="color:#ef9a9a">LANCE PANTS</div>
+      <div class="score-row">
+        <div class="score-item">
+          <div class="score-num" id="l-pushups" style="color:#ef9a9a">0</div>
+          <div class="score-lbl">Pushups</div>
+        </div>
+        <div class="score-item">
+          <div class="score-num" id="l-plank" style="color:#ef9a9a">0</div>
+          <div class="score-lbl">Plank min</div>
+        </div>
+        <div class="score-item">
+          <div class="score-num" id="l-power" style="color:#ef9a9a">0</div>
+          <div class="score-lbl">Power</div>
+        </div>
+      </div>
+      <div class="level-badge" id="l-badge">—</div>
+      <div class="earned-badge" id="l-earned"></div>
+      <div class="streak-row" id="l-streak-row">
+        <span class="streak-flame">🔥</span>
+        <span class="streak-count" id="l-streak">0</span>
+        <span style="color:#555">day streak</span>
+      </div>
+    </div>
+
+    <div class="avatar-wrap">
+      <svg id="svg-lance" viewBox="0 0 260 390"></svg>
+    </div>
+
+    <div class="day-dots" id="l-dots">
+      <div class="dots-label">Last 30 Days</div>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span>30-Day Power</span>
+        <span id="l-prog-label">0 / 2500</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill fill-l" id="l-prog-bar" style="width:0%"></div>
+      </div>
+    </div>
+
+    <div class="entry-panel">
+      <h3>Log Today</h3>
+      <div class="entry-fields">
+        <div class="field">
+          <label>Date</label>
+          <input type="date" id="l-date">
+        </div>
+        <div class="field">
+          <label>Pushups</label>
+          <input type="number" id="l-pu" min="0" placeholder="0">
+        </div>
+        <div class="field">
+          <label>Plank min</label>
+          <input type="number" id="l-pl" min="0" step="0.5" placeholder="0">
+        </div>
+      </div>
+      <button class="add-btn"
+        style="background:linear-gradient(135deg,#7f0000,#ef5350);box-shadow:0 4px 18px rgba(183,28,28,0.45)"
+        onclick="addEntry('lance')">⚡ Log It</button>
+      <div class="log-wrap">
+        <table>
+          <thead><tr><th>Date</th><th>Pushups</th><th>Plank</th><th></th></tr></thead>
+          <tbody id="l-log"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /arena -->
+
+<!-- ─── TAUNT ZONE ──────────────────────── -->
+<div class="taunt-zone layer">
+  <div class="taunt-text" id="tauntText"></div>
+  <div class="taunt-source" id="tauntSource"></div>
+</div>
+
+<!-- ─── CONFETTI ────────────────────────── -->
+<div id="celebOverlay"></div>
+
+<!-- ─── FOOTER ──────────────────────────── -->
+<div class="footer layer">
+  Pushups × 1 + Plank min × 15 = Power Score &nbsp;·&nbsp;
+  Rolling 30-day window drives avatar &nbsp;·&nbsp;
+  Data synced via JSONBin
+</div>
+
+<!-- ════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════ -->
+<script>
+// ── Config ───────────────────────────────
+const JSONBIN_ID  = '6a038559adc21f119a8e84cf';
+const JSONBIN_KEY = '$2a$10$NtoOoKRgXeKeqJe9G4/TeeD4rd4jACrZ8Zmkgya1BpyU6g9V0IJG6';
+const BASE_URL    = `https://api.jsonbin.io/v3/b/${JSONBIN_ID}`;
+const HEADERS     = { 'Content-Type': 'application/json', 'X-Master-Key': JSONBIN_KEY };
+
+// ── State ────────────────────────────────
+let db = { constantine: [], lance: [] };
+let saveTimer = null;
+
+// ── Storage ──────────────────────────────
+async function loadData() {
+  setSync('spin', 'Loading…');
+  if (JSONBIN_ID === 'YOUR_BIN_ID_HERE') {
+    document.getElementById('setupNotice').style.display = 'block';
+    setSync('err', 'Storage not configured');
+    render(); return;
+  }
+  try {
+    const r = await fetch(BASE_URL + '/latest', { headers: HEADERS });
+    if (!r.ok) throw new Error(r.status);
+    const j = await r.json();
+    db = j.record;
+    if (!db.constantine) db.constantine = [];
+    if (!db.lance) db.lance = [];
+    setSync('ok', 'Synced');
+    render();
+  } catch(e) {
+    setSync('err', 'Load failed: ' + e.message);
+    render();
+  }
+}
+
+async function saveData() {
+  if (JSONBIN_ID === 'YOUR_BIN_ID_HERE') return;
+  setSync('spin', 'Saving…');
+  try {
+    const r = await fetch(BASE_URL, {
+      method: 'PUT', headers: HEADERS, body: JSON.stringify(db)
+    });
+    if (!r.ok) throw new Error(r.status);
+    setSync('ok', 'Saved ✓ ' + new Date().toLocaleTimeString());
+  } catch(e) {
+    setSync('err', 'Save failed: ' + e.message);
+  }
+}
+
+function scheduleSave() { clearTimeout(saveTimer); saveTimer = setTimeout(saveData, 800); }
+
+function setSync(state, msg) {
+  document.getElementById('syncDot').className = 'status-dot ' + state;
+  document.getElementById('syncMsg').textContent = msg;
+}
+
+// ── Data ops ─────────────────────────────
+function addEntry(who) {
+  const pre      = who === 'constantine' ? 'c' : 'l';
+  const date     = document.getElementById(pre + '-date').value;
+  const pushups  = parseFloat(document.getElementById(pre + '-pu').value) || 0;
+  const plankMin = parseFloat(document.getElementById(pre + '-pl').value) || 0;
+  if (!date || (pushups === 0 && plankMin === 0)) return;
+  db[who].push({ date, pushups, plankMin });
+  db[who].sort((a, b) => a.date.localeCompare(b.date));
+  document.getElementById(pre + '-pu').value = '';
+  document.getElementById(pre + '-pl').value = '';
+  render();
+  scheduleSave();
+  // Daily mission celebration
+  const todayStr  = new Date().toISOString().slice(0, 10);
+  const todayRows = db[who].filter(e => e.date === todayStr);
+  const tPu = todayRows.reduce((s, e) => s + (e.pushups  || 0), 0);
+  const tPl = todayRows.reduce((s, e) => s + (e.plankMin || 0), 0);
+  if (tPu >= 20 && tPl >= 2) {
+    celebrate(who === 'constantine' ? '#42a5f5' : '#ef5350');
+  }
+}
+
+function deleteEntry(who, idx) {
+  db[who].splice(idx, 1);
+  render();
+  scheduleSave();
+}
+
+function totals(who) {
+  return db[who].reduce((a, e) => {
+    a.pushups  += e.pushups  || 0;
+    a.plankMin += e.plankMin || 0;
+    return a;
+  }, { pushups: 0, plankMin: 0 });
+}
+
+// ── Fitness levels ────────────────────────
+const LEVELS = [
+  { min:    0, label: '🐣 Rookie',       color: '#aaa',    bg: '#333' },
+  { min:  150, label: '💪 Promising',    color: '#66bb6a', bg: '#1b5e20' },
+  { min:  500, label: '🏋️ Getting Buff', color: '#42a5f5', bg: '#0d47a1' },
+  { min: 1200, label: '🔥 On Fire',      color: '#ffa726', bg: '#e65100' },
+  { min: 2500, label: '👑 BEAST MODE',   color: '#ef5350', bg: '#7f0000' },
+];
+
+function fitnessF(score) { return Math.min(1, score / 2500); }
+function getLevel(score) {
+  let lv = LEVELS[0];
+  for (const l of LEVELS) { if (score >= l.min) lv = l; }
+  return lv;
+}
+
+function rolling30(who) {
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - 30);
+  const cutStr = cutoff.toISOString().slice(0, 10);
+  return db[who]
+    .filter(e => e.date >= cutStr)
+    .reduce((s, e) => s + (e.pushups || 0) + (e.plankMin || 0) * 15, 0);
+}
+
+// ── Earned badges ─────────────────────────
+function earnedBadge(who) {
+  const t   = totals(who);
+  const r30 = rolling30(who);
+  if (r30 >= 2500)      return '👑 Undisputed Legend';
+  if (r30 >= 1200)      return '🔮 Core Sorcerer';
+  if (t.plankMin >= 10) return '🧘 Plank Goblin';
+  if (t.pushups  >= 50) return '✝️ Chest Day Prophet';
+  if (db[who].length >= 1) return '💦 First Sweat';
+  return '';
+}
+
+// ── Streak ───────────────────────────────
+function streak(who) {
+  const dates = new Set(db[who].map(e => e.date));
+  let count = 0;
+  const d = new Date();
+  for (;;) {
+    if (!dates.has(d.toISOString().slice(0, 10))) break;
+    count++;
+    d.setDate(d.getDate() - 1);
+  }
+  return count;
+}
+
+// ── 30-day date list ──────────────────────
+function last30Dates() {
+  const out = [];
+  const now = new Date();
+  for (let i = 29; i >= 0; i--) {
+    const d = new Date(now);
+    d.setDate(now.getDate() - i);
+    out.push(d.toISOString().slice(0, 10));
+  }
+  return out;
+}
+
+// ── Trash talk ────────────────────────────
+const TAUNTS = [
+  { text: "Lance Pants fears the plank.",                     src: "Anonymous gym rat" },
+  { text: "Constantine polishes his glasses before every set.", src: "Gym surveillance" },
+  { text: "The plank does not negotiate.",                     src: "Ancient proverb" },
+  { text: "One of them skipped leg day. We know who.",         src: "Scoreboard intel" },
+  { text: "Pushups are floor hugs for the determined.",        src: "Motivational poster, 1987" },
+  { text: "The gains are made in the reps no one sees.",       src: "Fitness Twitter" },
+  { text: "Lance Pants: strong name, even stronger plank.",    src: "The Iron Oracle" },
+  { text: "30 days. No excuses. Just gains.",                  src: "The Challenge Board" },
+  { text: "The floor is not your enemy — it's your sparring partner.", src: "Floor, probably" },
+  { text: "Every rep is a vote for your future self.",         src: "Philosophy Bro" },
+  { text: "They both showed up. That's already winning.",      src: "Coach's clipboard" },
+  { text: "Constantine enters beast mode. Lance Pants enters panic mode.", src: "Statistical projection" },
+];
+
+let tauntIdx = Math.floor(Math.random() * TAUNTS.length);
+function showTaunt() {
+  const t   = TAUNTS[tauntIdx];
+  const txt = document.getElementById('tauntText');
+  const src = document.getElementById('tauntSource');
+  txt.classList.add('fade');
+  setTimeout(() => {
+    txt.textContent = '"' + t.text + '"';
+    src.textContent = '— ' + t.src;
+    txt.classList.remove('fade');
+  }, 500);
+}
+function rotateTaunt() {
+  tauntIdx = (tauntIdx + 1) % TAUNTS.length;
+  showTaunt();
+}
+showTaunt();
+setInterval(rotateTaunt, 9000);
+
+// ── Confetti ─────────────────────────────
+function celebrate(color) {
+  const overlay = document.getElementById('celebOverlay');
+  const palette = [color, '#f9a825', '#ffffff', '#66bb6a', color, '#ffd54f'];
+  for (let i = 0; i < 55; i++) {
+    const p = document.createElement('div');
+    p.className = 'cpp';
+    p.style.setProperty('--dur',   (1.2 + Math.random() * 1.0) + 's');
+    p.style.setProperty('--delay', (Math.random() * 0.7) + 's');
+    p.style.left   = (Math.random() * 100) + 'vw';
+    p.style.top    = '-10px';
+    p.style.background = palette[Math.floor(Math.random() * palette.length)];
+    p.style.width  = (5 + Math.random() * 7) + 'px';
+    p.style.height = (5 + Math.random() * 7) + 'px';
+    overlay.appendChild(p);
+    setTimeout(() => p.remove(), 2600);
+  }
+}
+
+// ── Stars background ──────────────────────
+(function initStars() {
+  const cvs = document.getElementById('bg-stars');
+  const ctx = cvs.getContext('2d');
+  function resize() {
+    cvs.width  = window.innerWidth;
+    cvs.height = window.innerHeight;
+    ctx.clearRect(0, 0, cvs.width, cvs.height);
+    for (let i = 0; i < 140; i++) {
+      const x = Math.random() * cvs.width;
+      const y = Math.random() * cvs.height * 0.75; // stars only in upper 75%
+      const r = Math.random() * 1.2 + 0.2;
+      const a = Math.random() * 0.55 + 0.1;
+      ctx.beginPath();
+      ctx.arc(x, y, r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${a})`;
+      ctx.fill();
+    }
+  }
+  resize();
+  window.addEventListener('resize', resize);
+})();
+
+// ════════════════════════════════════════
+// SVG MUSCLE MAN
+// ════════════════════════════════════════
+function drawFigure(svgEl, f, pal) {
+  svgEl.innerHTML = '';
+  const cx = 130;
+
+  function mk(tag, attrs, txt) {
+    const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+    for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
+    if (txt !== undefined) el.textContent = txt;
+    svgEl.appendChild(el);
+    return el;
+  }
+  const L = (a, b) => a + (b - a) * f;
+
+  // ── Dimensions ──────────────────────
+  const headR = 27, headCY = 38;
+  const neckW = L(7, 20), neckH = L(14, 26);
+  const neckY = headCY + headR;
+  const shoulderY = neckY + neckH;
+  const sHW    = L(18, 78);
+  const torsoH = L(68, 100);
+  const waistHW= L(12, 46);
+  const waistY = shoulderY + torsoH;
+  const hipHW  = waistHW + 6;
+  const hipH   = L(18, 32);
+  const hipY   = waistY;
+  const tGap   = L(3, 16);
+  const tHW    = L(6, 28);
+  const tH     = L(58, 74);
+  const kneeY  = hipY + hipH + tH;
+  const shinHW = L(4, 17);
+  const shinH  = L(50, 62);
+  const footY  = kneeY + shinH;
+
+  // Double-bicep flex arms
+  const armDrop = L(4, 22);
+  const armSprd = L(2, 30);
+  const uAThk   = L(3, 20);
+  const biPeak  = L(0, 28);
+  const triSag  = L(0,  9);
+  const elbowY  = shoulderY + armDrop;
+  const elbowLx = cx - sHW - armSprd;
+  const elbowRx = cx + sHW + armSprd;
+  const faThk   = L(3, 15);
+  const faLen   = L(34, 50);
+  const fistY   = elbowY - faLen;
+  const handR   = L(8, 15);
+  const capR    = L(3, 24);
+
+  // ── Draw back→front ─────────────────
+
+  // Shoes
+  mk('ellipse', { cx:cx-tGap-tHW*0.5,            cy:footY+10, rx:L(15,22), ry:9,   fill:pal.shoe });
+  mk('ellipse', { cx:cx+tGap+tHW*0.5,            cy:footY+10, rx:L(15,22), ry:9,   fill:pal.shoe });
+  mk('ellipse', { cx:cx-tGap-tHW*0.5+L(5,7),     cy:footY+8,  rx:L(7,10),  ry:4.5, fill:'white', opacity:0.35 });
+  mk('ellipse', { cx:cx+tGap+tHW*0.5+L(5,7),     cy:footY+8,  rx:L(7,10),  ry:4.5, fill:'white', opacity:0.35 });
+
+  // Shins
+  mk('rect', { x:cx-tGap-tHW-shinHW, y:kneeY, width:shinHW*2, height:shinH, rx:shinHW*0.85, fill:pal.skin });
+  mk('rect', { x:cx+tGap+tHW-shinHW, y:kneeY, width:shinHW*2, height:shinH, rx:shinHW*0.85, fill:pal.skin });
+
+  // Thighs
+  mk('rect', { x:cx-tGap-tHW*2, y:hipY+hipH-4, width:tHW*2, height:tH+8, rx:tHW*0.65, fill:pal.shorts });
+  mk('rect', { x:cx+tGap,       y:hipY+hipH-4, width:tHW*2, height:tH+8, rx:tHW*0.65, fill:pal.shorts });
+
+  // Kneecaps
+  mk('circle', { cx:cx-tGap-tHW, cy:kneeY+4, r:L(8,13), fill:pal.skin });
+  mk('circle', { cx:cx+tGap+tHW, cy:kneeY+4, r:L(8,13), fill:pal.skin });
+
+  // Hips
+  mk('ellipse', { cx, cy:hipY+hipH*0.5, rx:hipHW, ry:hipH*0.6, fill:pal.shorts });
+
+  // Torso
+  mk('polygon', {
+    points:`${cx-sHW},${shoulderY} ${cx+sHW},${shoulderY} ${cx+waistHW},${waistY} ${cx-waistHW},${waistY}`,
+    fill: pal.shirt
+  });
+
+  // Pecs
+  if (f > 0.12) {
+    const pr = L(0, 22) * Math.max(0, (f - 0.12) / 0.88);
+    const pY = shoulderY + L(24, 32);
+    const pX = L(14, 24);
+    mk('circle', { cx:cx-pX, cy:pY, r:pr, fill:pal.shirtShade });
+    mk('circle', { cx:cx+pX, cy:pY, r:pr, fill:pal.shirtShade });
+    if (f > 0.45) {
+      mk('line', { x1:cx, y1:shoulderY+12, x2:cx, y2:shoulderY+L(40,55),
+        stroke:pal.shirtLine, 'stroke-width':L(1.5,2.5), opacity:L(0,0.7) });
+    }
+  }
+
+  // Abs
+  if (f > 0.35) {
+    const opa  = ((f - 0.35) / 0.65) * 0.8;
+    const abY0 = shoulderY + L(48, 62);
+    for (let i = 0; i < 3; i++) {
+      mk('rect', { x:cx-14, y:abY0+i*16, width:11, height:13, rx:3, fill:pal.shirtLine, opacity:opa });
+      mk('rect', { x:cx+3,  y:abY0+i*16, width:11, height:13, rx:3, fill:pal.shirtLine, opacity:opa });
+    }
+  }
+
+  // Forearms
+  mk('rect', { x:elbowLx-faThk, y:fistY, width:faThk*2, height:faLen, rx:faThk*0.8, fill:pal.skin });
+  mk('rect', { x:elbowRx-faThk, y:fistY, width:faThk*2, height:faLen, rx:faThk*0.8, fill:pal.skin });
+
+  // Upper arms (left)
+  const lSX = cx - sHW;
+  mk('path', {
+    d:`M ${lSX},${shoulderY-uAThk}
+       C ${lSX-armSprd*0.45},${shoulderY-uAThk-biPeak}
+         ${elbowLx+armSprd*0.2},${elbowY-uAThk-biPeak*0.5}
+         ${elbowLx},${elbowY-uAThk}
+       L ${elbowLx},${elbowY+uAThk*0.65}
+       C ${elbowLx+armSprd*0.2},${elbowY+uAThk*0.65+triSag}
+         ${lSX-armSprd*0.45},${shoulderY+uAThk*0.65+triSag*0.5}
+         ${lSX},${shoulderY+uAThk*0.65}
+       Z`,
+    fill: pal.skin
+  });
+  // Upper arm (right)
+  const rSX = cx + sHW;
+  mk('path', {
+    d:`M ${rSX},${shoulderY-uAThk}
+       C ${rSX+armSprd*0.45},${shoulderY-uAThk-biPeak}
+         ${elbowRx-armSprd*0.2},${elbowY-uAThk-biPeak*0.5}
+         ${elbowRx},${elbowY-uAThk}
+       L ${elbowRx},${elbowY+uAThk*0.65}
+       C ${elbowRx-armSprd*0.2},${elbowY+uAThk*0.65+triSag}
+         ${rSX+armSprd*0.45},${shoulderY+uAThk*0.65+triSag*0.5}
+         ${rSX},${shoulderY+uAThk*0.65}
+       Z`,
+    fill: pal.skin
+  });
+
+  // Deltoid caps
+  mk('circle', { cx:cx-sHW, cy:shoulderY+8, r:capR, fill:pal.shirt });
+  mk('circle', { cx:cx+sHW, cy:shoulderY+8, r:capR, fill:pal.shirt });
+
+  // Bicep veins (high fitness)
+  if (f > 0.75) {
+    const vOpa  = (f - 0.75) / 0.25;
+    const midLx = (lSX + elbowLx) * 0.5, midRx = (rSX + elbowRx) * 0.5;
+    const midY  = (shoulderY + elbowY) * 0.5;
+    mk('path', { d:`M ${lSX-4},${shoulderY-uAThk*0.3} Q ${midLx},${midY-uAThk-biPeak*0.6} ${elbowLx+3},${elbowY-uAThk*0.4}`,
+      stroke:'rgba(100,140,255,0.65)', 'stroke-width':1.8, fill:'none', opacity:vOpa });
+    mk('path', { d:`M ${rSX+4},${shoulderY-uAThk*0.3} Q ${midRx},${midY-uAThk-biPeak*0.6} ${elbowRx-3},${elbowY-uAThk*0.4}`,
+      stroke:'rgba(100,140,255,0.65)', 'stroke-width':1.8, fill:'none', opacity:vOpa });
+  }
+
+  // Neck
+  mk('rect', { x:cx-neckW*0.5, y:neckY, width:neckW, height:neckH, rx:neckW*0.45, fill:pal.skin });
+
+  // Head
+  mk('circle', { cx, cy:headCY, r:headR, fill:pal.skin });
+
+  // Fists
+  mk('circle', { cx:elbowLx, cy:fistY, r:handR, fill:pal.skin });
+  mk('circle', { cx:elbowRx, cy:fistY, r:handR, fill:pal.skin });
+  mk('ellipse', { cx:elbowLx, cy:fistY-handR*0.5, rx:handR*0.85, ry:handR*0.32, fill:pal.skinShade, opacity:0.55 });
+  mk('ellipse', { cx:elbowRx, cy:fistY-handR*0.5, rx:handR*0.85, ry:handR*0.32, fill:pal.skinShade, opacity:0.55 });
+
+  // Hair
+  if (f < 0.5) {
+    mk('path', {
+      d:`M ${cx-headR*0.85},${headCY-headR*0.3}
+         Q ${cx-headR*0.3},${headCY-headR*1.35} ${cx},${headCY-headR*1.25}
+         Q ${cx+headR*0.3},${headCY-headR*1.35} ${cx+headR*0.85},${headCY-headR*0.3}`,
+      fill: pal.hair
+    });
+  } else {
+    const spikes = 6;
+    const spikeH = L(0, headR * 0.9) * Math.max(0, (f - 0.5) / 0.5);
+    let d = `M ${cx-headR*0.85},${headCY-headR*0.3}`;
+    for (let i = 0; i < spikes; i++) {
+      const bx2 = (cx - headR * 0.85) + ((i + 0.5) / spikes) * headR * 1.7;
+      const bx3 = (cx - headR * 0.85) + ((i + 1)   / spikes) * headR * 1.7;
+      d += ` L ${bx2},${headCY-headR*0.3-spikeH} L ${bx3},${headCY-headR*0.3}`;
+    }
+    mk('path', { d, fill: pal.hair });
+  }
+
+  // Eyebrows
+  const eY      = headCY - headR * 0.12;
+  const eSpread = headR * 0.44;
+  const eBrowY  = eY - headR * 0.38;
+  const eFierce = L(0, 5);
+  mk('path', { d:`M ${cx-eSpread-7},${eBrowY+eFierce} L ${cx-eSpread+7},${eBrowY}`,
+    stroke:pal.hair, 'stroke-width':L(2,3.5), 'stroke-linecap':'round' });
+  mk('path', { d:`M ${cx+eSpread-7},${eBrowY} L ${cx+eSpread+7},${eBrowY+eFierce}`,
+    stroke:pal.hair, 'stroke-width':L(2,3.5), 'stroke-linecap':'round' });
+
+  // Eyes
+  if (f > 0.65) {
+    mk('path', { d:`M ${cx-eSpread-7},${eY} Q ${cx-eSpread},${eY-6} ${cx-eSpread+7},${eY}`,
+      stroke:'#222', 'stroke-width':2.5, fill:pal.eyeWhite, 'stroke-linecap':'round' });
+    mk('path', { d:`M ${cx+eSpread-7},${eY} Q ${cx+eSpread},${eY-6} ${cx+eSpread+7},${eY}`,
+      stroke:'#222', 'stroke-width':2.5, fill:pal.eyeWhite, 'stroke-linecap':'round' });
+    mk('circle', { cx:cx-eSpread, cy:eY, r:3, fill:'#222' });
+    mk('circle', { cx:cx+eSpread, cy:eY, r:3, fill:'#222' });
+  } else {
+    mk('circle', { cx:cx-eSpread, cy:eY, r:L(4.5,5), fill:'#222' });
+    mk('circle', { cx:cx+eSpread, cy:eY, r:L(4.5,5), fill:'#222' });
+    mk('circle', { cx:cx-eSpread+1.5, cy:eY-1.5, r:1.5, fill:'white' });
+    mk('circle', { cx:cx+eSpread+1.5, cy:eY-1.5, r:1.5, fill:'white' });
+  }
+
+  // Glasses (Constantine only)
+  if (pal.glasses) {
+    const lR = 9.5, gY = eY + 0.5;
+    const lLX = cx - eSpread, lRX = cx + eSpread;
+    mk('circle', { cx:lLX, cy:gY, r:lR, fill:'rgba(180,230,255,0.13)', stroke:'#aaa', 'stroke-width':2.2 });
+    mk('circle', { cx:lRX, cy:gY, r:lR, fill:'rgba(180,230,255,0.13)', stroke:'#aaa', 'stroke-width':2.2 });
+    mk('line',   { x1:lLX+lR, y1:gY, x2:lRX-lR, y2:gY, stroke:'#aaa', 'stroke-width':2 });
+    mk('line',   { x1:lLX-lR, y1:gY, x2:cx-headR*0.92, y2:gY+3, stroke:'#aaa', 'stroke-width':2, 'stroke-linecap':'round' });
+    mk('line',   { x1:lRX+lR, y1:gY, x2:cx+headR*0.92, y2:gY+3, stroke:'#aaa', 'stroke-width':2, 'stroke-linecap':'round' });
+  }
+
+  // Nose
+  mk('ellipse', { cx, cy:headCY+headR*0.22, rx:3, ry:2.5, fill:pal.skinShade });
+
+  // Smile
+  const smY = headCY + headR * 0.42;
+  const smW = L(10, 16), smD = L(5, 10);
+  if (f > 0.5) {
+    mk('path', { d:`M ${cx-smW},${smY} Q ${cx},${smY+smD+4} ${cx+smW},${smY}`,
+      stroke:'#c0392b', 'stroke-width':2.5, fill:'none', 'stroke-linecap':'round' });
+    mk('path', { d:`M ${cx-smW+2},${smY+1} Q ${cx},${smY+smD+3} ${cx+smW-2},${smY+1}`,
+      fill:'white', opacity:0.7 });
+  } else {
+    mk('path', { d:`M ${cx-smW},${smY} Q ${cx},${smY+smD} ${cx+smW},${smY}`,
+      stroke:'#c0392b', 'stroke-width':2.5, fill:'none', 'stroke-linecap':'round' });
+  }
+
+  // Beard
+  if (pal.beard) {
+    const bW = headR * 0.76;
+    const bT = smY - 2;
+    const bB = headCY + headR * 0.98;
+    mk('path', {
+      d:`M ${cx-bW},${bT}
+         C ${cx-bW-5},${bT+10} ${cx-headR*0.45},${bB+6} ${cx},${bB}
+         C ${cx+headR*0.45},${bB+6} ${cx+bW+5},${bT+10} ${cx+bW},${bT}
+         Q ${cx},${bT+8} ${cx-bW},${bT} Z`,
+      fill: pal.beardColor
+    });
+    mk('ellipse', { cx:cx-7, cy:smY-2, rx:7, ry:4.5, fill:pal.beardColor });
+    mk('ellipse', { cx:cx+7, cy:smY-2, rx:7, ry:4.5, fill:pal.beardColor });
+    mk('path', { d:`M ${cx},${bT+6} Q ${cx},${bB-4} ${cx},${bB-2}`,
+      stroke:pal.beardHighlight, 'stroke-width':1.2, fill:'none', opacity:0.5 });
+  }
+
+  // Blush (Beast level)
+  if (f > 0.88) {
+    const bOpa = (f - 0.88) / 0.12 * 0.45;
+    mk('circle', { cx:cx-eSpread+2, cy:headCY+headR*0.22, r:7, fill:pal.primary, opacity:bOpa });
+    mk('circle', { cx:cx+eSpread-2, cy:headCY+headR*0.22, r:7, fill:pal.primary, opacity:bOpa });
+  }
+
+  // Sparkles (high fitness)
+  if (f > 0.72) {
+    const sOpa = (f - 0.72) / 0.28;
+    const sz   = L(0, 20) * sOpa;
+    [{ x:elbowLx-20, y:fistY-18, s:'⚡' },
+     { x:elbowRx+20, y:fistY-18, s:'⚡' },
+     { x:cx,         y:fistY-30, s:'✦'  }]
+    .forEach(p => mk('text', { x:p.x, y:p.y, 'text-anchor':'middle', 'font-size':sz, opacity:sOpa*0.9 }, p.s));
+  }
+
+  // Crown (Beast Mode)
+  if (f >= 0.99) {
+    mk('text', { x:cx, y:headCY-headR-18, 'text-anchor':'middle', 'font-size':26 }, '👑');
+  }
+}
+
+// ── Palettes ─────────────────────────────
+const PAL = {
+  constantine: {
+    skin:'#f4c07e', skinShade:'#d4956a', hair:'#3e2723',
+    shirt:'#1565c0', shirtShade:'#0d47a1', shirtLine:'#082d6c',
+    shorts:'#263238', shoe:'#1a237e',
+    primary:'#42a5f5', eyeWhite:'#e0f0ff',
+    beard:true, glasses:true,
+    beardColor:'#4e342e', beardHighlight:'#795548',
+  },
+  lance: {
+    skin:'#f4c07e', skinShade:'#d4956a', hair:'#5d4037',
+    shirt:'#c62828', shirtShade:'#b71c1c', shirtLine:'#7f0000',
+    shorts:'#1b0000', shoe:'#880e4f',
+    primary:'#ef9a9a', eyeWhite:'#ffe0e0',
+    beard:true, glasses:false,
+    beardColor:'#6d4c41', beardHighlight:'#8d6e63',
+  }
+};
+
+// ── Progression strip ─────────────────────
+const SHOWCASE_STAGES = [
+  { f:0,    label:'🐣 Rookie'    },
+  { f:0.25, label:'💪 Promising' },
+  { f:0.5,  label:'🏋️ Buff'     },
+  { f:0.75, label:'🔥 On Fire'  },
+  { f:1.0,  label:'👑 Beast Mode'},
+];
+const PAL_SHOWCASE = {
+  skin:'#c68642', skinShade:'#a0522d', hair:'#2c1a0e',
+  shirt:'#2e7d32', shirtShade:'#1b5e20', shirtLine:'#388e3c',
+  shorts:'#1a1a1a', shoe:'#222222',
+  primary:'#81c784', eyeWhite:'#dddddd',
+  beard:false, glasses:false,
+  beardColor:'#333333', beardHighlight:'#555555',
+};
+
+function drawProgression(activeF) {
+  const strip = document.getElementById('progStrip');
+  strip.innerHTML = '';
+  let activeIdx = 0;
+  SHOWCASE_STAGES.forEach((s, i) => { if (activeF >= s.f) activeIdx = i; });
+
+  SHOWCASE_STAGES.forEach((stage, idx) => {
+    const div = document.createElement('div');
+    div.className = 'prog-figure' + (idx === activeIdx ? ' active-stage' : '');
+    const lbl = document.createElement('div');
+    lbl.className = 'prog-name';
+    lbl.textContent = stage.label;
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 260 390');
+    svg.classList.add('prog-svg');
+    div.appendChild(lbl);
+    div.appendChild(svg);
+    strip.appendChild(div);
+    drawFigure(svg, stage.f, PAL_SHOWCASE);
+  });
+}
+
+// ── Render ───────────────────────────────
+function render() {
+  const r30C = rolling30('constantine');
+  const r30L = rolling30('lance');
+
+  ['constantine', 'lance'].forEach(who => {
+    const pre  = who === 'constantine' ? 'c' : 'l';
+    const t    = totals(who);
+    const r30  = who === 'constantine' ? r30C : r30L;
+    const f    = fitnessF(r30);
+    const lv   = getLevel(r30);
+
+    // Scores with bump animation
+    function setNum(id, val) {
+      const el = document.getElementById(id);
+      const s  = String(val);
+      if (el.textContent !== s) {
+        el.textContent = s;
+        el.classList.remove('bump');
+        void el.offsetWidth; // reflow to restart animation
+        el.classList.add('bump');
+      }
+    }
+    setNum(pre + '-pushups', t.pushups.toLocaleString());
+    setNum(pre + '-plank',   t.plankMin % 1 === 0 ? String(t.plankMin) : t.plankMin.toFixed(1));
+    setNum(pre + '-power',   r30.toLocaleString());
+
+    // Level badge
+    const badge = document.getElementById(pre + '-badge');
+    badge.textContent = lv.label + '  · 30d';
+    badge.style.color      = lv.color;
+    badge.style.background = lv.bg + '88';
+
+    // Earned badge
+    document.getElementById(pre + '-earned').textContent = earnedBadge(who);
+
+    // Streak
+    const s = streak(who);
+    const sRow = document.getElementById(pre + '-streak-row');
+    if (s >= 2) {
+      sRow.style.display = 'flex';
+      document.getElementById(pre + '-streak').textContent = s;
+    } else {
+      sRow.style.display = 'none';
+    }
+
+    // Avatar
+    drawFigure(document.getElementById('svg-' + who), f, PAL[who]);
+
+    // 30-day dots
+    const dotsEl    = document.getElementById(pre + '-dots');
+    dotsEl.innerHTML = '<div class="dots-label">Last 30 Days</div>';
+    const activeDays = new Set(db[who].map(e => e.date));
+    last30Dates().forEach(d => {
+      const dot = document.createElement('div');
+      dot.className = 'day-dot' + (activeDays.has(d) ? ' done-' + pre : '');
+      dot.title = d;
+      dotsEl.appendChild(dot);
+    });
+
+    // Progress bar
+    const pct = Math.min(100, (r30 / 2500) * 100);
+    document.getElementById(pre + '-prog-bar').style.width = pct + '%';
+    document.getElementById(pre + '-prog-label').textContent =
+      r30.toLocaleString() + ' / 2500';
+
+    // Log table
+    const tbody = document.getElementById(pre + '-log');
+    tbody.innerHTML = '';
+    [...db[who]].reverse().forEach((e, ri) => {
+      const realIdx = db[who].length - 1 - ri;
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${e.date}</td><td>${e.pushups||0}</td><td>${e.plankMin||0}</td>
+        <td><button class="del-btn" onclick="deleteEntry('${who}',${realIdx})">✕</button></td>`;
+      tbody.appendChild(tr);
+    });
+  });
+
+  // Leader glow
+  const cCard = document.getElementById('card-c');
+  const lCard = document.getElementById('card-l');
+  cCard.classList.remove('leading-c', 'leading-l');
+  lCard.classList.remove('leading-c', 'leading-l');
+  if      (r30C > r30L) cCard.classList.add('leading-c');
+  else if (r30L > r30C) lCard.classList.add('leading-l');
+
+  // Progression strip active stage (highlight max of both players)
+  drawProgression(Math.max(fitnessF(r30C), fitnessF(r30L)));
+}
+
+// ── Init ─────────────────────────────────
+const todayStr = new Date().toISOString().slice(0, 10);
+document.getElementById('c-date').value = todayStr;
+document.getElementById('l-date').value = todayStr;
+
+drawProgression(0);
+loadData();
+</script>
+</body>
+</html>
