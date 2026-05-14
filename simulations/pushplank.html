@@ -898,9 +898,20 @@ const JSONBIN_KEY = '$2a$10$NtoOoKRgXeKeqJe9G4/TeeD4rd4jACrZ8Zmkgya1BpyU6g9V0IJG
 const BASE_URL    = `https://api.jsonbin.io/v3/b/${JSONBIN_ID}`;
 const HEADERS     = { 'Content-Type': 'application/json', 'X-Master-Key': JSONBIN_KEY };
 
+// ── Local date helper (avoids UTC offset bugs) ──
+// new Date().toISOString() returns UTC, which is "tomorrow" for US timezones
+// after ~6–7 PM. Always use local wall-clock date for entries and comparisons.
+function localDateStr(d) {
+  const dt = d || new Date();
+  return dt.getFullYear() + '-' +
+    String(dt.getMonth() + 1).padStart(2, '0') + '-' +
+    String(dt.getDate()).padStart(2, '0');
+}
+
 // ── State ────────────────────────────────
 let db = { constantine: [], lance: [] };
 let saveTimer = null;
+let dbLoaded = false;  // stays false until a successful load; blocks saves on stale/failed data
 
 // ── Storage ──────────────────────────────
 async function loadData() {
@@ -917,6 +928,7 @@ async function loadData() {
     db = j.record;
     if (!db.constantine) db.constantine = [];
     if (!db.lance) db.lance = [];
+    dbLoaded = true;
     setSync('ok', 'Synced');
     render();
   } catch(e) {
@@ -927,6 +939,7 @@ async function loadData() {
 
 async function saveData() {
   if (JSONBIN_ID === 'YOUR_BIN_ID_HERE') return;
+  if (!dbLoaded) { setSync('err', 'Save blocked — data not yet confirmed loaded'); return; }
   setSync('spin', 'Saving…');
   try {
     const r = await fetch(BASE_URL, {
@@ -960,7 +973,7 @@ function addEntry(who) {
   render();
   scheduleSave();
   // Daily mission celebration
-  const todayStr  = new Date().toISOString().slice(0, 10);
+  const todayStr  = localDateStr();
   const todayRows = db[who].filter(e => e.date === todayStr);
   const tPu = todayRows.reduce((s, e) => s + (e.pushups  || 0), 0);
   const tPl = todayRows.reduce((s, e) => s + (e.plankMin || 0), 0);
@@ -1002,7 +1015,7 @@ function getLevel(score) {
 function rolling30(who) {
   const cutoff = new Date();
   cutoff.setDate(cutoff.getDate() - 30);
-  const cutStr = cutoff.toISOString().slice(0, 10);
+  const cutStr = localDateStr(cutoff);
   return db[who]
     .filter(e => e.date >= cutStr)
     .reduce((s, e) => s + (e.pushups || 0) + (e.plankMin || 0) * 15, 0);
@@ -1026,7 +1039,7 @@ function streak(who) {
   let count = 0;
   const d = new Date();
   for (;;) {
-    if (!dates.has(d.toISOString().slice(0, 10))) break;
+    if (!dates.has(localDateStr(d))) break;
     count++;
     d.setDate(d.getDate() - 1);
   }
@@ -1040,7 +1053,7 @@ function last30Dates() {
   for (let i = 29; i >= 0; i--) {
     const d = new Date(now);
     d.setDate(now.getDate() - i);
-    out.push(d.toISOString().slice(0, 10));
+    out.push(localDateStr(d));
   }
   return out;
 }
@@ -1548,7 +1561,7 @@ function render() {
 }
 
 // ── Init ─────────────────────────────────
-const todayStr = new Date().toISOString().slice(0, 10);
+const todayStr = localDateStr();
 document.getElementById('c-date').value = todayStr;
 document.getElementById('l-date').value = todayStr;
 
